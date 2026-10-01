@@ -76,8 +76,7 @@
 .co p{margin:0 0 8px}.co p:last-child{margin:0}
 .co.tip{background:#fff;border:1.5px solid var(--ink)}
 .co.tip>.ic{color:var(--violet)}
-.co.trap{background:var(--pink);color:#fff;border-color:var(--pink)}
-.co.trap code{color:var(--ink)}
+.co.trap{background:var(--pink);color:var(--ink);border-color:var(--pink)}
 .co.life{background:var(--ink);color:#fff;border-color:var(--ink)}
 .co.life>.ic,.co.life b.t{color:var(--burst)}
 .co.info{background:var(--noon);border-color:var(--noon)}
