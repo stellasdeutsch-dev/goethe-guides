@@ -34,3 +34,11 @@ export function plural(n: number, one: string, few: string, many: string) {
   if (m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return few;
   return many;
 }
+
+const ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+/** Подпись уровней: одна-две капсулы как есть, больше — диапазон «A1–B1». */
+export function levelLabels(levels: readonly string[]): string[] {
+  if (levels.length <= 2) return [...levels];
+  const sorted = [...levels].sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b));
+  return [`${sorted[0]}–${sorted[sorted.length - 1]}`];
+}

@@ -2,7 +2,7 @@
 /* Тренажёр Schreiben: таймер, счётчик слов, автопроверка формы текста под тип задания. */
 interface Props {
   points: string[];
-  mode?: 'informal' | 'forum' | 'formal';
+  mode?: 'informal' | 'forum' | 'formal' | 'basic';
   minutes?: number;
   target?: number;
   id?: string;
@@ -25,6 +25,12 @@ const CHECKS: Record<string, { k: string; t: string; s: string }[]> = {
     { k: 'konn', t: 'Минимум 3 связки', s: 'außerdem, aber, trotzdem, einerseits…' },
     { k: 'schluss', t: 'Есть вывод', s: 'Deshalb finde ich… / Alles in allem… / Insgesamt…' },
     { k: 'len', t: `Объём не меньше ${Math.round(target * 0.875)} слов`, s: `Меньше ${Math.round(target / 2)} = 0 баллов за всю часть` },
+  ],
+  basic: [
+    { k: 'hello', t: 'Есть обращение', s: 'Liebe Anna, / Lieber Tom, / Hallo, / Sehr geehrte …' },
+    { k: 'bye', t: 'Есть прощание', s: 'Viele Grüße / Liebe Grüße / Mit freundlichen Grüßen' },
+    { k: 'sents', t: 'Минимум 3 предложения', s: 'По одному на каждый пункт задания' },
+    { k: 'len', t: `Объём не меньше ${Math.round(target * 0.875)} слов`, s: `Меньше ${Math.round(target / 2)} = рискуешь баллами за содержание` },
   ],
   formal: [
     { k: 'anredeF', t: 'Вежливое обращение', s: 'Sehr geehrte Frau … / Liebe Frau … / Guten Tag,' },
@@ -155,6 +161,9 @@ const checks = CHECKS[mode];
           nodu: n > 5 && !test(W('du|dir|dich|dein|deine|deinen|deinem|deiner'), t),
           bitte: /(entschuldig|tut mir (sehr )?leid|leider|könnten sie|würden sie|bitte)/.test(low),
           grussF: /(mit freundlichen grüßen|freundliche grüße|viele grüße|beste grüße)/.test(tail),
+          hello: /^(liebe|lieber|hallo|hi|sehr geehrte|sehr geehrter|guten tag)/.test(first),
+          bye: /(grüße|grüßen|bis bald|tschüss|dein|deine)/.test(tail),
+          sents: (t.match(/[.!?](\s|$)/g) || []).length >= 3,
         };
         $$<HTMLLIElement>('[data-chk]', root).forEach((li) => {
           const was = li.classList.contains('ok');

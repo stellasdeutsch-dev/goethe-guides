@@ -3,7 +3,7 @@ import '../styles/guide.css';
 import Base from './Base.astro';
 import { sectionById } from '../data/sections';
 import { SITE, url } from '../data/site';
-import { guideHref, plural, readingTime, ruDate, type Guide } from '../lib/guides';
+import { guideHref, levelLabels, plural, readingTime, ruDate, type Guide } from '../lib/guides';
 import type { MarkdownHeading } from 'astro';
 
 interface Props {
@@ -60,7 +60,7 @@ if (d.faq.length) {
         <li><svg class="ic"><use href="#i-chevron-right" /></svg></li>
         <li><a href={url(`/ru/guides/${s.id}/`)}>{s.title}</a></li>
       </ol>
-      <p class="eyebrow">{s.de} · Goethe-Zertifikat {d.levels.length > 2 ? 'A1–C2' : d.levels.join(', ')}</p>
+      <p class="eyebrow">{s.de} · Goethe-Zertifikat {levelLabels(d.levels).join(', ')}</p>
       <h1 class="g-title" data-pagefind-meta="title">
         {after !== undefined ? <>{before}<span class="hl" style={`--g1:${s.color};--g2:var(--violet)`}>{d.hl}</span>{after}</> : d.title}
       </h1>
@@ -69,7 +69,7 @@ if (d.faq.length) {
         <span class="who"><img src={url('/logo.webp')} alt="" width="38" height="38" /> {SITE.author.name}</span>
         <span><svg class="ic"><use href="#i-calendar-check" /></svg> Обновлено {ruDate(d.updated)}</span>
         <span><svg class="ic"><use href="#i-clock" /></svg> {minutes} мин чтения</span>
-        <span class="lv">{(d.levels.length > 2 ? ['A1–C2'] : d.levels).map((l) => <span class="cap">{l}</span>)}</span>
+        <span class="lv">{levelLabels(d.levels).map((l) => <span class="cap">{l}</span>)}</span>
       </div>
       <aside class="kurz" aria-labelledby="kurz-h">
         <h2 id="kurz-h"><svg class="ic"><use href="#i-sparkles" /></svg>Коротко</h2>

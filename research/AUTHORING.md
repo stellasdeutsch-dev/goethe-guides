@@ -122,6 +122,13 @@ sources:                             # ≥ 2, официальные в перв
 | sprechen | kriterii-sprechen-goethe | Критерии Sprechen |
 | grammatik | konnektoren-goethe-b1 | Коннекторы для B1 |
 | (внешний) | https://stellasdeutsch-dev.github.io/dativ/ | Dativ (отдельный сайт) |
+| probniki | goethe-modellsatz-skachat | Официальные пробники A1–C2: где скачать |
+| probniki | a1-modellsatz-razbor, a2-modellsatz-razbor, b1-modellsatz-razbor, b1-uebungssatz-razbor, b2-modellsatz-razbor, c1-modellsatz-razbor | Разборы пробников |
+| lesen | goethe-a2-lesen / goethe-b2-lesen / goethe-c1-lesen / goethe-c2-lesen | Lesen по уровням (волна 3) |
+| hoeren | goethe-b2-hoeren / goethe-c1-hoeren / goethe-c2-hoeren | Hören по уровням (волна 3) |
+| schreiben | goethe-a1-schreiben / goethe-a2-schreiben / goethe-c1-schreiben / goethe-c2-schreiben | Schreiben по уровням (волна 3) |
+| sprechen | goethe-a1-sprechen / goethe-a2-sprechen / goethe-c1-sprechen / goethe-c2-sprechen | Sprechen по уровням (волна 3) |
+| grammatik | grammatika-a1-goethe / grammatika-b2-goethe / grammatika-c1-goethe / grammatika-c2-goethe | Грамматика по уровням (волна 3) |
 
 ## 7. Компоненты (MDX)
 
@@ -169,6 +176,7 @@ import Callout from '../../../components/mdx/Callout.astro';
 `<Trainer id="уникальный-id" mode="informal|forum|formal" minutes={20} target={80} points={['1. …', '2. …']} />`
 - informal (Teil 1, письмо другу): проверяет обращение Liebe/Lieber, прощание, du, предложение встречи, связки, объём.
 - forum (Teil 2, мнение): своё мнение (Meiner Meinung nach / Ich finde), обоснование (weil/denn), пример (zum Beispiel), связки, вывод, объём.
+- basic (A1/A2 короткие сообщения): обращение, прощание, минимум 3 предложения, объём.
 - formal (Teil 3, официальное письмо): обращение Sehr geehrte/Liebe Frau …, Sie-форма, извинение/просьба, вежливое прощание, отсутствие du, объём.
 Перед Trainer всегда ставь `<Task>` с заданием.
 

@@ -2,7 +2,7 @@
 import Base from '../../../../layouts/Base.astro';
 import { SECTIONS, type Section } from '../../../../data/sections';
 import { SITE, url } from '../../../../data/site';
-import { getGuides, guideHref, plural, readingTime, slugOf } from '../../../../lib/guides';
+import { getGuides, guideHref, levelLabels, plural, readingTime, slugOf } from '../../../../lib/guides';
 
 export function getStaticPaths() {
   return SECTIONS.map((s) => ({ params: { section: s.id }, props: { s } }));
@@ -39,7 +39,7 @@ const jsonld = [
       <div class="cards">
         {guides.map((g) => (
           <a class="card rv" href={guideHref(g)}>
-            <div class="row-meta">{g.data.levels.map((l) => <span class="cap">{l}</span>)}<span><svg class="ic"><use href="#i-clock" /></svg> {readingTime(g.body)} мин</span></div>
+            <div class="row-meta">{levelLabels(g.data.levels).map((l) => <span class="cap">{l}</span>)}<span><svg class="ic"><use href="#i-clock" /></svg> {readingTime(g.body)} мин</span></div>
             <h3>{g.data.title}</h3>
             <p>{g.data.description}</p>
             <span class="go">Читать <svg class="ic"><use href="#i-chevron-right" /></svg></span>

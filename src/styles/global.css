@@ -232,8 +232,7 @@ a.row:active{background:var(--fill)}
 .row.soon .t{font-weight:400}
 .row .new{display:inline-block;margin-left:6px;vertical-align:1px}
 .group .nolvl{display:none;margin:0;padding:16px;border-radius:var(--r-m);background:var(--card);box-shadow:var(--shadow);color:var(--text-2);font-size:15px}
-.group.empty .nolvl{display:block}
-.group.empty .list{display:none}
+.group.empty{display:none}
 .group .more{display:inline-flex;align-items:center;gap:4px;margin:10px 4px 0;font-size:15px}
 
 /* ===== Section page ===== */

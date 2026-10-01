@@ -1,7 +1,7 @@
 ---
 import type { Section } from '../data/sections';
 import { url } from '../data/site';
-import { guideHref, plural, slugOf, type Guide } from '../lib/guides';
+import { guideHref, levelLabels, plural, slugOf, type Guide } from '../lib/guides';
 
 interface Props {
   section: Section;
@@ -12,7 +12,7 @@ const published = new Set(guides.map(slugOf));
 const soon = s.planned.filter((p) => !published.has(p.slug));
 const fresh = Date.now() - 1000 * 60 * 60 * 24 * 21;
 const count = guides.length + soon.filter((p) => p.href).length;
-const lv = (levels: string[]) => (levels.length > 2 ? ['A1–C2'] : levels);
+const lv = levelLabels;
 ---
 <section class="group rv" data-sec={s.id} id={`g-${s.id}`}>
   <div class="group-h">
@@ -47,5 +47,4 @@ const lv = (levels: string[]) => (levels.length > 2 ? ['A1–C2'] : levels);
       </li>
     ))}
   </ul>
-  <p class="nolvl">Для этого уровня пока пусто. Пишу.</p>
 </section>
