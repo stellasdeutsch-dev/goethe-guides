@@ -314,3 +314,33 @@
 .sources ol{margin:0;padding-left:20px}
 .sources li{margin:4px 0}
 .sources a{word-break:break-word}
+
+/* ===== AnswerSheet (бланк ответов к пробнику) ===== */
+.ab-top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between}
+.ab-hint{font-size:15px;color:var(--text-2);margin:12px 0 4px}
+.ab-part{border:0;margin:18px 0 0;padding:0;min-width:0}
+.ab-part legend{font:600 13px/1.3 var(--f-body);text-transform:uppercase;color:var(--text-2);padding:0 4px 8px}
+.ab-list{background:var(--card);border-radius:14px;overflow:hidden}
+.ab-row{display:grid;grid-template-columns:30px 1fr;gap:10px;align-items:start;padding:12px 14px;border-top:1px solid var(--sep);transition:background .2s}
+.ab-row:first-child{border-top:0}
+.ab-n{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--fill);font:600 13px/1 var(--f-round);font-variant-numeric:tabular-nums}
+.ab-row.ok .ab-n{background:var(--lime);color:#fff}
+.ab-row.bad .ab-n{background:var(--red);color:#fff}
+.ab-body{min-width:0}
+.ab-q{display:block;font-size:15px;line-height:1.4;color:var(--text-2);margin:3px 0 8px}
+.ab-opts{display:flex;flex-wrap:wrap;gap:6px}
+.ab-opts button{min-width:40px;min-height:34px;padding:6px 12px;border:0;border-radius:980px;background:var(--fill);color:var(--text);font:500 15px/1.2 var(--f-body);transition:background .15s,color .15s,scale .12s,box-shadow .15s}
+.ab-opts button:active:not(:disabled){scale:.94}
+.ab-opts button[aria-checked="true"]{background:var(--accent);color:#fff}
+.ab-opts button:disabled{cursor:default}
+.ab-opts button.right{box-shadow:inset 0 0 0 2px var(--lime)}
+.ab-opts button.right[aria-checked="true"]{background:var(--lime);color:#fff;box-shadow:none}
+.ab-opts button.wrong{background:var(--red);color:#fff}
+.ab-why{margin-top:10px;font-size:15px;line-height:1.5;color:var(--text-2)}
+.ab-why b{color:var(--text)}
+.ab-foot{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-top:18px}
+.ab-prog{font-size:14px;color:var(--text-2)}
+.ab-res{margin-top:18px;padding-top:4px}
+.ab-raw{font-size:15px;color:var(--text-2);margin:10px 0 0}
+.ab-raw b{color:var(--text)}
+.ab-parts{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}

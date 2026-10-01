@@ -1,6 +1,6 @@
 import type { Level } from './site';
 
-export type SectionId = 'pruefung' | 'lesen' | 'hoeren' | 'schreiben' | 'sprechen' | 'grammatik';
+export type SectionId = 'pruefung' | 'probniki' | 'lesen' | 'hoeren' | 'schreiben' | 'sprechen' | 'grammatik';
 
 export interface Planned {
   slug: string;
@@ -38,6 +38,24 @@ export const SECTIONS: Section[] = [
       { slug: 'goethe-v-uzbekistane-cena-zapis', title: 'Goethe в Узбекистане в 2026: цены, центры, запись', levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] },
       { slug: 'goethe-telc-oesd-testdaf', title: 'Goethe, telc, ÖSD или TestDaF: что выбрать', levels: ['B1', 'B2', 'C1'] },
       { slug: 'start-deutsch-1-a1-viza', title: 'A1 для визы воссоединения: что реально проверяют', levels: ['A1'] },
+    ],
+  },
+  {
+    id: 'probniki',
+    title: 'Пробники',
+    de: 'Modellsätze',
+    icon: 'file-text',
+    color: 'var(--teal)',
+    ink: '#fff',
+    lede: 'Официальные пробники Goethe A1–C2. Решаешь оригинал, ответы отмечаешь у нас, получаешь баллы и разбор каждого задания.',
+    planned: [
+      { slug: 'goethe-modellsatz-skachat', title: 'Официальные пробники Goethe A1–C2: где скачать и как готовиться', levels: ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'] },
+      { slug: 'a1-modellsatz-razbor', title: 'Start Deutsch 1 (A1): разбор официального пробника', levels: ['A1'] },
+      { slug: 'a2-modellsatz-razbor', title: 'Goethe A2: разбор официального пробника', levels: ['A2'] },
+      { slug: 'b1-modellsatz-razbor', title: 'Goethe B1 Modellsatz: решение и разбор', levels: ['B1'] },
+      { slug: 'b1-uebungssatz-razbor', title: 'Goethe B1 Übungssatz: решение и разбор', levels: ['B1'] },
+      { slug: 'b2-modellsatz-razbor', title: 'Goethe B2 Modellsatz: решение и разбор', levels: ['B2'] },
+      { slug: 'c1-modellsatz-razbor', title: 'Goethe C1 Modellsatz: решение и разбор', levels: ['C1'] },
     ],
   },
   {

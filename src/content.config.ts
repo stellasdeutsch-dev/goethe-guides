@@ -11,7 +11,7 @@ const guides = defineCollection({
     seoTitle: z.string().max(60),
     description: z.string().max(160),
     lede: z.string().optional(),
-    section: z.enum(['pruefung', 'lesen', 'hoeren', 'schreiben', 'sprechen', 'grammatik']),
+    section: z.enum(['pruefung', 'probniki', 'lesen', 'hoeren', 'schreiben', 'sprechen', 'grammatik']),
     levels: z.array(z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])).min(1),
     kurz: z.array(z.string()).min(2),
     faq: z.array(z.object({ q: z.string(), a: z.string() })).default([]),

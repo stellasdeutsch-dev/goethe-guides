@@ -1,0 +1,230 @@
+---
+/* Бланк ответов к официальному пробнику: человек решает PDF Goethe, ответы отмечает здесь.
+   Таймер, подсчёт баллов по формуле Goethe, объяснение к каждому заданию после проверки. */
+interface Item {
+  /** Номер задания как в официальном пробнике. */
+  n: number | string;
+  /** Часть: «Teil 1» и т. п. Задания группируются по ней. */
+  part: string;
+  /** Варианты: ['Richtig','Falsch'], ['a','b','c'], ['a','b','c','d','e','f','0'] … */
+  o: string[];
+  /** Индекс правильного варианта (с 0). */
+  a: number;
+  /** Объяснение. **жирный** работает. */
+  why: string;
+  /** Короткий пересказ задания по-русски (необязательно). */
+  q?: string;
+}
+interface Props {
+  id: string;
+  title: string;
+  minutes?: number;
+  items: Item[];
+  /** Баллы за один верный ответ. По умолчанию 100 / число заданий. B1–C1 Lesen/Hören: 3.33. */
+  factor?: number;
+  /** Максимум баллов. По умолчанию 100. */
+  maxPoints?: number;
+  /** Порог сдачи в баллах. Если не задан, вердикт не показываем. */
+  pass?: number;
+  /** Где лежит официальный материал (ссылка на PDF/аудио). */
+  source?: string;
+}
+const { id, title, minutes = 0, items, factor, maxPoints = 100, pass, source } = Astro.props;
+const fct = factor ?? maxPoints / items.length;
+const esc = (s: string) => s.replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]!);
+const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+const parts: { name: string; items: Item[] }[] = [];
+for (const it of items) {
+  let p = parts.find((x) => x.name === it.part);
+  if (!p) parts.push((p = { name: it.part, items: [] }));
+  p.items.push(it);
+}
+---
+<div class="ix ab rv" data-ab data-id={id} data-min={minutes} data-factor={fct} data-max={maxPoints} data-pass={pass ?? ''}>
+  <div class="ix-h">
+    <b><svg class="ic"><use href="#i-list-checks" /></svg>{title}</b>
+    <span class="cap">{items.length} заданий{minutes ? ` · ${minutes} мин` : ''}</span>
+  </div>
+  <div class="ab-top">
+    {minutes > 0 && (
+      <div class="tr-time"><output data-clock>{String(minutes).padStart(2, '0')}:00</output><small>Как на экзамене. Можно без таймера</small></div>
+    )}
+    <div class="tr-btns">
+      {minutes > 0 && <button class="btn" type="button" data-start><svg class="ic"><use href="#i-play" /></svg><span>Старт</span></button>}
+      <button class="btn gray" type="button" data-reset aria-label="Начать заново"><svg class="ic"><use href="#i-rotate-ccw" /></svg></button>
+    </div>
+  </div>
+  <p class="ab-hint">
+    Решай в официальном материале{source && <> (<a href={source} rel="noopener" target="_blank">открыть</a>)</>}. Здесь только отмечай ответы. Объяснения откроются после проверки.
+  </p>
+
+  {parts.map((p) => (
+    <fieldset class="ab-part">
+      <legend>{p.name}</legend>
+      <div class="ab-list">
+        {p.items.map((it) => (
+          <div class="ab-row" data-n={it.n} data-a={it.a}>
+            <span class="ab-n">{it.n}</span>
+            <div class="ab-body">
+              {it.q && <span class="ab-q">{it.q}</span>}
+              <div class="ab-opts" role="radiogroup" aria-label={`Задание ${it.n}`}>
+                {it.o.map((o, i) => <button type="button" role="radio" aria-checked="false" data-i={i}>{o}</button>)}
+              </div>
+              <div class="ab-why" hidden>
+                <b>Ответ: {it.o[it.a]}.</b> <span set:html={fmt(it.why)} />
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </fieldset>
+  ))}
+
+  <div class="ab-foot">
+    <button class="btn" type="button" data-check><svg class="ic"><use href="#i-check" /></svg> Проверить</button>
+    <span class="ab-prog" data-prog>Отмечено 0 из {items.length}</span>
+  </div>
+  <div class="ab-res" data-res hidden aria-live="polite"></div>
+</div>
+
+<script>
+  import { $, $$, icon, onReady, pop, spring } from '../../scripts/lib';
+
+  onReady(() => {
+    $$('[data-ab]').forEach((root) => {
+      const key = `ab:${root.dataset.id}`;
+      const rows = $$<HTMLElement>('.ab-row', root);
+      const factor = Number(root.dataset.factor);
+      const max = Number(root.dataset.max);
+      const passAt = root.dataset.pass ? Number(root.dataset.pass) : null;
+      const res = $<HTMLElement>('[data-res]', root)!;
+      const prog = $('[data-prog]', root)!;
+      const checkBtn = $<HTMLButtonElement>('[data-check]', root)!;
+      let answers: Record<string, number> = {};
+      let checked = false;
+
+      const save = () => { try { localStorage.setItem(key, JSON.stringify({ answers, checked })); } catch { /* ignore */ } };
+      const updProg = () => { prog.textContent = `Отмечено ${Object.keys(answers).length} из ${rows.length}`; };
+
+      function paint(row: HTMLElement) {
+        const n = row.dataset.n!;
+        $$<HTMLButtonElement>('.ab-opts button', row).forEach((b) => b.setAttribute('aria-checked', String(answers[n] === Number(b.dataset.i))));
+      }
+      rows.forEach((row) => {
+        $$<HTMLButtonElement>('.ab-opts button', row).forEach((b) =>
+          b.addEventListener('click', () => {
+            if (checked) return;
+            const n = row.dataset.n!;
+            const i = Number(b.dataset.i);
+            if (answers[n] === i) delete answers[n]; else answers[n] = i;
+            paint(row);
+            updProg();
+            save();
+          }),
+        );
+      });
+
+      // ----- таймер -----
+      const clock = $<HTMLOutputElement>('[data-clock]', root);
+      const startBtn = $<HTMLButtonElement>('[data-start]', root);
+      const total = Number(root.dataset.min) * 60;
+      let left = total, timer = 0, running = false;
+      const fmtT = (s: number) => `${s < 0 ? '−' : ''}${String(Math.floor(Math.abs(s) / 60)).padStart(2, '0')}:${String(Math.abs(s) % 60).padStart(2, '0')}`;
+      const label = () => { if (startBtn) startBtn.innerHTML = `${icon(running ? 'pause' : 'play')}<span>${running ? 'Пауза' : left < total ? 'Дальше' : 'Старт'}</span>`; };
+      function setRun(on: boolean) {
+        running = on;
+        clearInterval(timer);
+        if (on) timer = window.setInterval(() => {
+          left--;
+          if (clock) {
+            clock.value = fmtT(left);
+            clock.classList.toggle('warn', left <= 300 && left > 0);
+            clock.classList.toggle('over', left <= 0);
+          }
+        }, 1000);
+        label();
+      }
+      startBtn?.addEventListener('click', () => setRun(!running));
+
+      // ----- проверка -----
+      function check(animate = true) {
+        checked = true;
+        setRun(false);
+        const byPart = new Map<string, [number, number]>();
+        let ok = 0;
+        rows.forEach((row) => {
+          const n = row.dataset.n!;
+          const a = Number(row.dataset.a);
+          const part = row.closest('fieldset')!.querySelector('legend')!.textContent || '';
+          const mine = answers[n];
+          const good = mine === a;
+          if (good) ok++;
+          const pr = byPart.get(part) || [0, 0];
+          byPart.set(part, [pr[0] + (good ? 1 : 0), pr[1] + 1]);
+          row.classList.toggle('ok', good);
+          row.classList.toggle('bad', !good);
+          row.classList.toggle('noans', mine === undefined);
+          $$<HTMLButtonElement>('.ab-opts button', row).forEach((b) => {
+            const i = Number(b.dataset.i);
+            b.disabled = true;
+            b.classList.toggle('right', i === a);
+            b.classList.toggle('wrong', i === mine && !good);
+          });
+          $('.ab-why', row)!.hidden = false;
+        });
+        const points = Math.min(max, Math.round(ok * factor));
+        const verdict = passAt === null ? '' : points >= passAt ? `<span class="verdict ok">Сдал: ${points} из ${max}, порог ${passAt}</span>` : `<span class="verdict bad">Не хватает ${passAt - points} баллов до порога ${passAt}</span>`;
+        res.hidden = false;
+        res.innerHTML =
+          `<div class="pc-out"><div class="big"><span data-total>${points}</span><small> / ${max}</small></div>${verdict}</div>` +
+          `<p class="ab-raw">Верных ответов: <b>${ok} из ${rows.length}</b>${factor !== 1 ? ` × ${String(Math.round(factor * 100) / 100).replace('.', ',')}` : ''}</p>` +
+          `<div class="ab-parts">${[...byPart].map(([p, [g, t]]) => `<span class="cap${g === t ? ' blue' : ''}">${p}: ${g}/${t}</span>`).join('')}</div>` +
+          `<p class="ab-raw">Ошибки подсвечены красным. Под каждым заданием объяснение. Слабая часть = следующий гайд.</p>`;
+        if (animate) {
+          const tot = $<HTMLElement>('[data-total]', res)!;
+          spring(res, 'n', points, (x) => (tot.textContent = String(Math.round(x))), { from: 0, response: 0.5, eps: 0.05 });
+          pop($('.big', res), 0.8, 0.7);
+          res.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+        }
+        checkBtn.disabled = true;
+        save();
+      }
+      checkBtn.addEventListener('click', () => {
+        const missing = rows.length - Object.keys(answers).length;
+        if (missing > 0 && !confirm(`Не отмечено ${missing}. Пустая клетка = 0 баллов. Проверить всё равно?`)) return;
+        check();
+      });
+
+      $('[data-reset]', root)!.addEventListener('click', () => {
+        if ((Object.keys(answers).length || checked) && !confirm('Стереть ответы и начать заново?')) return;
+        answers = {};
+        checked = false;
+        rows.forEach((row) => {
+          row.classList.remove('ok', 'bad', 'noans');
+          $$<HTMLButtonElement>('.ab-opts button', row).forEach((b) => { b.disabled = false; b.classList.remove('right', 'wrong'); });
+          $('.ab-why', row)!.hidden = true;
+          paint(row);
+        });
+        res.hidden = true;
+        checkBtn.disabled = false;
+        setRun(false);
+        left = total;
+        if (clock) { clock.value = fmtT(left); clock.classList.remove('warn', 'over'); }
+        label();
+        updProg();
+        save();
+      });
+
+      // восстановить прогресс
+      try {
+        const s = JSON.parse(localStorage.getItem(key) || 'null');
+        if (s) {
+          answers = s.answers || {};
+          rows.forEach(paint);
+          if (s.checked) check(false);
+        }
+      } catch { /* ignore */ }
+      updProg();
+    });
+  });
+</script>

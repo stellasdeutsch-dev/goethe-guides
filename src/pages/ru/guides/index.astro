@@ -37,7 +37,7 @@ const countOf = (id: string) => guides.filter((g) => g.data.section === id).leng
       {SECTIONS.map((s) => (
         <a class="cat" href={`#g-${s.id}`}>
           <span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
-          {s.id === 'pruefung' ? 'Об экзамене' : s.id === 'grammatik' ? 'Грамматика' : s.de}
+          {s.id === 'pruefung' ? 'Об экзамене' : s.id === 'probniki' ? 'Пробники' : s.id === 'grammatik' ? 'Грамматика' : s.de}
           <small>{countOf(s.id) ? `${countOf(s.id)} ${plural(countOf(s.id), 'гайд', 'гайда', 'гайдов')}` : 'скоро'}</small>
         </a>
       ))}

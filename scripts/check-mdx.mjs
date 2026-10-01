@@ -4,9 +4,9 @@ import { readFileSync } from 'node:fs';
 import { compile } from '@mdx-js/mdx';
 import YAML from 'yaml';
 
-const SECTIONS = ['pruefung', 'lesen', 'hoeren', 'schreiben', 'sprechen', 'grammatik'];
+const SECTIONS = ['pruefung', 'probniki', 'lesen', 'hoeren', 'schreiben', 'sprechen', 'grammatik'];
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-const COMPONENTS = ['Callout', 'Task', 'Score', 'Anatomy', 'Steps', 'Step', 'Phrases', 'Phrase', 'Trainer', 'Quiz', 'Dialog', 'PointsCalc', 'Listen'];
+const COMPONENTS = ['Callout', 'Task', 'Score', 'Anatomy', 'Steps', 'Step', 'Phrases', 'Phrase', 'Trainer', 'Quiz', 'Dialog', 'PointsCalc', 'Listen', 'AnswerSheet'];
 
 let failed = 0;
 for (const file of process.argv.slice(2)) {

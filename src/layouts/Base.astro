@@ -18,7 +18,7 @@ interface Props {
 const { title, description, active, ogType = 'website', jsonld = [], tone = 'white', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url('/og.png'), Astro.site).href;
-const short = (id: string) => ({ pruefung: 'Об экзамене', grammatik: 'Грамматика' })[id] ?? SECTIONS.find((s) => s.id === id)!.de;
+const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: 'Пробники', grammatik: 'Грамматика' })[id] ?? SECTIONS.find((s) => s.id === id)!.de;
 ---
 <!doctype html>
 <html lang="ru">

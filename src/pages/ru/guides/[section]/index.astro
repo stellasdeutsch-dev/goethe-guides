@@ -11,7 +11,7 @@ const { s } = Astro.props as { s: Section };
 const guides = (await getGuides()).filter((g) => g.data.section === s.id);
 const published = new Set(guides.map(slugOf));
 const soon = s.planned.filter((p) => !published.has(p.slug));
-const title = s.id === 'pruefung' || s.id === 'grammatik' ? s.title : `${s.de} · ${s.title}`;
+const title = ['pruefung', 'probniki', 'grammatik'].includes(s.id) ? s.title : `${s.de} · ${s.title}`;
 const jsonld = [
   {
     '@context': 'https://schema.org',
@@ -32,7 +32,7 @@ const jsonld = [
         <li aria-current="page">{s.title}</li>
       </ol>
       <span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
-      <h1 class="display">{s.id === 'pruefung' || s.id === 'grammatik' ? s.title : <>{s.de}. <span class="grad" style={`--g1:${s.color};--g2:var(--violet)`}>{s.title}.</span></>}</h1>
+      <h1 class="display">{['pruefung', 'probniki', 'grammatik'].includes(s.id) ? s.title : <>{s.de}. <span class="grad" style={`--g1:${s.color};--g2:var(--violet)`}>{s.title}.</span></>}</h1>
       <p class="lede">{s.lede}</p>
       <p style="margin:18px 0 0;color:var(--text-2);font-size:15px">{guides.length} {plural(guides.length, 'гайд готов', 'гайда готово', 'гайдов готово')}{soon.length ? ` · ${soon.length} в работе` : ''}</p>
 
