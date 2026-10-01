@@ -52,28 +52,27 @@ if (d.faq.length) {
   });
 }
 ---
-<Base title={d.seoTitle} description={d.description} active={d.section} ogType="article" jsonld={jsonld} gsap>
-  <article class="wrap" style={`--sc:${s.color};--sk:${s.ink}`}>
+<Base title={d.seoTitle} description={d.description} active={d.section} ogType="article" jsonld={jsonld}>
+  <article class="wrap" style={`--sc:${s.color}`}>
     <header class="g-head">
       <ol class="crumbs">
         <li><a href={url('/ru/guides/')}>Гайды</a></li>
         <li><svg class="ic"><use href="#i-chevron-right" /></svg></li>
         <li><a href={url(`/ru/guides/${s.id}/`)}>{s.title}</a></li>
       </ol>
-      <p class="eyebrow"><svg class="ic"><use href={`#i-${s.icon}`} /></svg> {s.de} · Goethe-Zertifikat {d.levels.join(', ')}</p>
+      <p class="eyebrow">{s.de} · Goethe-Zertifikat {d.levels.length > 2 ? 'A1–C2' : d.levels.join(', ')}</p>
       <h1 class="g-title" data-pagefind-meta="title">
-        {after !== undefined ? <>{before}<span class="hl" style={`background:${s.color};color:${s.ink}`}>{d.hl}</span>{after}</> : d.title}
+        {after !== undefined ? <>{before}<span class="hl" style={`--g1:${s.color};--g2:var(--violet)`}>{d.hl}</span>{after}</> : d.title}
       </h1>
       <p class="lede">{d.lede ?? d.description}</p>
       <div class="byline">
         <span class="who"><img src={url('/logo.webp')} alt="" width="38" height="38" /> {SITE.author.name}</span>
         <span><svg class="ic"><use href="#i-calendar-check" /></svg> Обновлено {ruDate(d.updated)}</span>
         <span><svg class="ic"><use href="#i-clock" /></svg> {minutes} мин чтения</span>
-        <span class="lv">{d.levels.map((l) => <span class="pill solid">{l}</span>)}</span>
+        <span class="lv">{(d.levels.length > 2 ? ['A1–C2'] : d.levels).map((l) => <span class="cap">{l}</span>)}</span>
       </div>
       <aside class="kurz" aria-labelledby="kurz-h">
-        <svg class="burst big spin" aria-hidden="true"><use href="#b" /></svg>
-        <h2 id="kurz-h">Коротко</h2>
+        <h2 id="kurz-h"><svg class="ic"><use href="#i-sparkles" /></svg>Коротко</h2>
         <ul>{d.kurz.map((k) => <li set:html={k} />)}</ul>
       </aside>
     </header>
@@ -109,13 +108,14 @@ if (d.faq.length) {
               <div class="next">
                 {d.next.map((n) =>
                   n.href ? (
-                    <a class="card" href={n.href.startsWith('http') ? n.href : url(n.href)} style={`--c:${s.color}`}>
+                    <a class="card" href={n.href.startsWith('http') ? n.href : url(n.href)}>
                       <h3>{n.title}</h3>
                       <p>{n.text}</p>
+                      <span class="go">Читать <svg class="ic"><use href="#i-chevron-right" /></svg></span>
                     </a>
                   ) : (
                     <div class="card soon">
-                      <div class="row"><span>скоро</span></div>
+                      <div class="row-meta"><span class="cap">скоро</span></div>
                       <h3>{n.title}</h3>
                       <p>{n.text}</p>
                     </div>
@@ -127,17 +127,16 @@ if (d.faq.length) {
         </div>
 
         <section class="cta-st rv" aria-labelledby="cta-h">
-          <svg class="burst deco spin" aria-hidden="true"><use href="#b" /></svg>
-          <p class="eyebrow"><svg class="ic"><use href="#i-graduation-cap" /></svg> Платформа Stellas</p>
+          <p class="eyebrow">Платформа Stellas</p>
           <h2 id="cta-h">Этот гайд ты прочитал за {minutes} {plural(minutes, 'минуту', 'минуты', 'минут')}. На платформе их 340+</h2>
           <p>Грамматика A0–C1, слова с озвучкой и раздел экзаменов: Goethe, telc, ÖSD, TestDaF. Работает в Notion, даже офлайн.</p>
           <ul>
             <li><svg class="ic"><use href="#i-check" /></svg> Один платёж, доступ навсегда, обновления бесплатно</li>
             <li><svg class="ic"><use href="#i-check" /></svg> A0–A2 или B1–C1 по 20 €, оба уровня за 30 €</li>
           </ul>
-          <div class="cta-row">
-            <a class="btn lime" href={SITE.platform} rel="noopener" target="_blank">Посмотреть платформу <svg class="ic"><use href="#i-arrow-right" /></svg></a>
-            <a class="btn ghost inv" href={SITE.telegram} rel="noopener" target="_blank"><svg class="ic"><use href="#i-send" /></svg> Вопрос в Telegram</a>
+          <div class="row-btns">
+            <a class="btn" href={SITE.platform} rel="noopener" target="_blank">Посмотреть платформу</a>
+            <a class="btn ghost" href={SITE.telegram} rel="noopener" target="_blank">Вопрос в Telegram <svg class="ic"><use href="#i-chevron-right" /></svg></a>
           </div>
         </section>
 
@@ -146,7 +145,7 @@ if (d.faq.length) {
           <div>
             <b>{SITE.author.name}</b>
             <p>{SITE.author.about}</p>
-            <a class="pill" href={SITE.author.telegram} rel="noopener" target="_blank"><svg class="ic"><use href="#i-send" /></svg> @stellasdeutsch</a>
+            <a href={SITE.author.telegram} rel="noopener" target="_blank">Telegram @stellasdeutsch <svg class="ic"><use href="#i-chevron-right" /></svg></a>
           </div>
         </footer>
 
@@ -168,7 +167,7 @@ if (d.faq.length) {
         <div class="side-cta">
           <b>Готовишься к Goethe?</b>
           <p>Раздел экзаменов на платформе Stellas: Goethe, telc, ÖSD, TestDaF.</p>
-          <a class="btn lime sm" href={SITE.platform} rel="noopener" target="_blank">Платформа <svg class="ic"><use href="#i-arrow-right" /></svg></a>
+          <a class="btn sm" href={SITE.platform} rel="noopener" target="_blank">Платформа</a>
         </div>
       </aside>
     </div>

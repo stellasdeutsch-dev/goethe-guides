@@ -1,24 +1,24 @@
 ---
 import '../styles/global.css';
 import sprite from '../assets/sprite.svg?raw';
-import onestCyr from '../assets/fonts/onest-cyrillic.woff2?url';
-import rubikCyr from '../assets/fonts/rubik-cyrillic.woff2?url';
 import { SITE, url } from '../data/site';
 import { SECTIONS } from '../data/sections';
 
 interface Props {
   title: string;
   description: string;
-  /** Активный раздел в ряду чипсов: id раздела или 'all'. */
+  /** Активный раздел: id раздела или 'all'. */
   active?: string;
   ogType?: 'website' | 'article';
   jsonld?: object[];
-  gsap?: boolean;
+  /** gray = серая подложка (хабы), white = статья. */
+  tone?: 'gray' | 'white';
   noindex?: boolean;
 }
-const { title, description, active, ogType = 'website', jsonld = [], gsap = false, noindex = false } = Astro.props;
+const { title, description, active, ogType = 'website', jsonld = [], tone = 'white', noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url('/og.png'), Astro.site).href;
+const short = (id: string) => ({ pruefung: 'Об экзамене', grammatik: 'Грамматика' })[id] ?? SECTIONS.find((s) => s.id === id)!.de;
 ---
 <!doctype html>
 <html lang="ru">
@@ -29,8 +29,11 @@ const ogImage = new URL(url('/og.png'), Astro.site).href;
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex" />}
-  <meta name="theme-color" content="#E4E4E1" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
   <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+  <link rel="apple-touch-icon" href={url('/logo.webp')} />
   <link rel="alternate" type="application/rss+xml" title={SITE.title} href={url('/ru/guides/rss.xml')} />
   <link rel="sitemap" href={url('/sitemap-index.xml')} />
   <meta property="og:type" content={ogType} />
@@ -41,47 +44,39 @@ const ogImage = new URL(url('/og.png'), Astro.site).href;
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={ogImage} />
   <meta name="twitter:card" content="summary_large_image" />
-  <link rel="preload" href={onestCyr} as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href={rubikCyr} as="font" type="font/woff2" crossorigin />
-  {gsap && <script is:inline defer src={url('/gsap-bundle.min.js')}></script>}
+  <script is:inline>document.documentElement.classList.add('js')</script>
   {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
 </head>
-<body>
+<body class={`tone-${tone}`}>
   <a class="skip" href="#main">К содержанию</a>
   <Fragment set:html={sprite} />
-  <div class="shade" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div class="grain" aria-hidden="true"></div>
 
-  <header class="topbar">
+  <header class="gnav">
     <div class="wrap">
-      <a class="brand" href={url('/ru/guides/')} title="Все гайды">
-        <img src={url('/logo.webp')} alt="" width="30" height="30" />
-        <b>stellas</b>
-        <span class="pill solid">Goethe</span>
+      <a class="brand" href={url('/ru/guides/')}>
+        <img src={url('/logo.webp')} alt="" width="26" height="26" />
+        Stellas <span>Goethe</span>
       </a>
-      <nav class="nav" aria-label="Основная навигация">
-        <a class="navl" href={url('/ru/guides/')} aria-current={active ? 'page' : undefined}>
-          <svg class="ic"><use href="#i-book-open" /></svg> Гайды
-        </a>
-        <a class="navl" href={SITE.telegram} rel="noopener" target="_blank">
-          <svg class="ic"><use href="#i-send" /></svg> Telegram
-        </a>
-        <a class="btn lime sm" href={SITE.platform} rel="noopener" target="_blank">Платформа</a>
+      <nav aria-label="Разделы">
+        {SECTIONS.map((s) => (
+          <a href={url(`/ru/guides/${s.id}/`)} aria-current={active === s.id ? 'page' : undefined}>{short(s.id)}</a>
+        ))}
       </nav>
+      <div class="right">
+        <a class="btn sm" href={SITE.platform} rel="noopener" target="_blank">Платформа</a>
+        <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false" aria-controls="sheet"><svg class="ic"><use href="#i-menu" /></svg></button>
+      </div>
     </div>
     <div class="prog" aria-hidden="true"></div>
   </header>
-
-  <nav class="chips" aria-label="Разделы гайдов">
-    <div class="wrap">
-      <a class="chip" href={url('/ru/guides/')} aria-current={active === 'all' ? 'page' : undefined}>Все гайды</a>
-      {SECTIONS.map((s) => (
-        <a class="chip" href={url(`/ru/guides/${s.id}/`)} style={`--c:${s.color}`} aria-current={active === s.id ? 'page' : undefined}>
-          <i></i>{s.de === 'Prüfung' || s.de === 'Grammatik' ? s.title : s.de}
-        </a>
-      ))}
-    </div>
-  </nav>
+  <div class="sheet" id="sheet" inert>
+    <a href={url('/ru/guides/')}><span class="tile" style="--c:var(--text-3)"><svg class="ic"><use href="#i-book-open" /></svg></span>Все гайды</a>
+    {SECTIONS.map((s) => (
+      <a href={url(`/ru/guides/${s.id}/`)}><span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>{s.title}</a>
+    ))}
+    <a href={SITE.telegram} rel="noopener" target="_blank"><span class="tile" style="--c:var(--deep)"><svg class="ic"><use href="#i-send" /></svg></span>Telegram</a>
+  </div>
+  <div class="scrim" aria-hidden="true"></div>
 
   <main id="main">
     <slot />
@@ -91,14 +86,12 @@ const ogImage = new URL(url('/og.png'), Astro.site).href;
     <div class="wrap">
       <div class="grid">
         <div>
-          <p class="big">stellas</p>
-          <p style="margin:0;max-width:40ch;color:#cfcfc8">Бесплатные гайды по Goethe-Zertifikat. Пишу как человек, который сам учит немецкий. Без воды и без «уважаемых студентов».</p>
+          <h3>Stellas · Goethe</h3>
+          <p>Бесплатные гайды по Goethe-Zertifikat. Пишу как человек, который сам учит немецкий. Без воды и без «уважаемых студентов».</p>
         </div>
         <div>
           <h3>Разделы</h3>
-          <ul>
-            {SECTIONS.map((s) => <li><a href={url(`/ru/guides/${s.id}/`)}>{s.title}{s.id !== 'pruefung' && s.id !== 'grammatik' ? ` · ${s.de}` : ''}</a></li>)}
-          </ul>
+          <ul>{SECTIONS.map((s) => <li><a href={url(`/ru/guides/${s.id}/`)}>{s.title}</a></li>)}</ul>
         </div>
         <div>
           <h3>Ещё</h3>
@@ -111,7 +104,7 @@ const ogImage = new URL(url('/og.png'), Astro.site).href;
       </div>
       <div class="fine">
         <span>Сайт не связан с Goethe-Institut e.V. Goethe-Zertifikat — экзамен Goethe-Institut. Формат заданий сверяем с официальными материалами на goethe.de.</span>
-        <span>© {new Date().getFullYear()} Stellas · Шынгыс Нарсейит</span>
+        <span>© {new Date().getFullYear()} Stellas · {SITE.author.name}</span>
       </div>
     </div>
   </footer>

@@ -6,8 +6,8 @@ const { title, time, words } = Astro.props;
   <div class="hd">
     <b>{title}</b>
     <span>
-      {time && <><svg class="ic"><use href="#i-timer" /></svg> {time}</>}
-      {words && <><svg class="ic"><use href="#i-pen-line" /></svg> {words}</>}
+      {time && <span class="cap"><svg class="ic"><use href="#i-timer" /></svg>{time}</span>}
+      {words && <span class="cap"><svg class="ic"><use href="#i-pen-line" /></svg>{words}</span>}
     </span>
   </div>
   <slot />

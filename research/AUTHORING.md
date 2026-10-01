@@ -1,0 +1,212 @@
+# Как писать гайд для сайта «Stellas · Goethe»
+
+Бриф для любого автора (человека или агента). Перед первой статьёй прочитай целиком.
+
+Образец готовой статьи: `src/content/guides/schreiben/schreiben-b1-teil-1-e-mail.mdx`. Копируй её устройство, а не текст.
+
+## 1. Для кого и зачем
+
+Русскоязычные люди (Казахстан, Узбекистан, Россия, Украина, живущие в Германии/Австрии), которые сдают Goethe-Zertifikat. Им нужно: понять формат, не потерять баллы на ловушках, потренироваться прямо на странице. Аналог по устройству: goprep.gg/ru/guides (гайды по IELTS). Тексты оттуда НЕ копируем.
+
+## 2. Голос Шынгыса (обязательно)
+
+Автор: Шынгыс Нарсейит. Пишет как ровесник, который сам через это прошёл, на «ты». Источники голоса, прочитай оба:
+- `~/.claude/skills/shyngys-grammar-site/references/voice.md` (правила)
+- `/private/tmp/claude-501/-Users-shyngysnarseyit-Desktop-Projects-exams/2891d721-4f0b-4dfc-bb38-4bf77339f966/scratchpad/shyngys-voice-samples.txt` (его реальные посты)
+
+Коротко:
+- Короткие рубленые фразы. Медиана ~5 слов. Одна мысль на строку. Фрагменты: «Вывески. Реклама. Объявления.»
+- Параллелизмы и антитезы. Абзац часто закрывает афоризм: «Голова это черновик. Рот это сцена.» В статье 2–4 таких строк в `<p class="punch">…</p>`.
+- Тире между подлежащим и сказуемым опускает: «Teil 1 это письмо другу.»
+- Юмор в скобках после примеров: «Außerdem ist es billiger. (Аргумент, который работает всегда)».
+- Метафоры: игры и тюнинг (чит, база, финальная форма), выживание (сапёр, совет от выжившего), семья, персонажи.
+- «Подвох», «Но!», «Ловушка». Лёгкий сленг (кайф, база, чит). Без мата.
+- Не учитель, а товарищ. Не «уважаемые студенты», не канцелярит, не «в данной статье».
+
+### Правда о личном
+НЕ выдумывай истории из жизни Шынгыса («я сдавал Goethe и…», «мой друг завалил…»). Он не сдавал Goethe (насколько мы знаем). Можно опираться только на реальное из его постов: учит немецкий в Австрии, IELTS 7.5, НИШ, писал эссе IELTS по одной схеме, работает веб-дизайнером. Хук статьи строй на споре с популярным советом («Все говорят: …») или на боли читателя.
+
+## 3. Правда о фактах (жёстко)
+
+- Любая цифра (время, число заданий, баллы, порог, цена, срок) только из проверяемого источника. Приоритет: официальные PDF goethe.de (Modellsatz, Übungssatz, Durchführungsbestimmungen, Prüfungsordnung). HTML-страницы goethe.de часто отдают 403 — ищи PDF через WebSearch, пробуй разные URL, пробуй через `curl -sL -A "Mozilla/5.0"`.
+- Уже проверенные факты по B1: `research/goethe-b1-facts.md`. Используй их, не перепроверяй заново.
+- Каждый факт, который ты нашёл, запиши в `research/<slug>.md`: факт, URL, короткая цитата на немецком, дата проверки (2026-10-01).
+- Не нашёл подтверждение → не пиши цифру. Пиши «уточняй на сайте Goethe-Institut» и дай ссылку. Лучше без цифры, чем с выдуманной.
+- Цены и даты экзаменов меняются: пиши «на момент проверки (октябрь 2026)» и ссылку на источник.
+- Задания и тексты из Modellsatz НЕ копировать. Пиши свои задания в том же формате (своя тема, свои тексты). Короткие стандартные инструкции на немецком («Schreiben Sie etwas zu allen drei Punkten.») можно.
+- Немецкий во всех примерах должен быть грамматически безупречным и соответствовать уровню. Перепроверь каждую фразу: падежи, порядок слов после weil/dass/obwohl, род существительных, запятые.
+- Не придумывай статистику («90% сдающих…»), отзывы, цены конкурентов.
+
+## 4. Структура статьи
+
+Объём прозы 1200–2200 слов + минимум 2 интерактивных блока (Quiz обязательно, плюс Trainer/Listen/Dialog/PointsCalc/Anatomy по смыслу).
+
+1. Хук: 3–6 коротких строк до первого `##`.
+2. `## Что за задание` (или «Что это»): формат таблицей (markdown-таблица), потом пример задания в `<Task>`.
+3. `## Как считают баллы` / «Где теряют баллы»: критерии, ловушки, `<Callout type="trap">`.
+4. `## Метод` / «По шагам»: `<Steps>` 3–5 шагов, с таймингом.
+5. Практика: `<Trainer>` / `<Listen>` / `<Dialog>` / `<Quiz>` со СВОИМ материалом.
+6. `## Фразы …` (если уместно): `<Phrases>` + `<Phrase>` с озвучкой.
+7. `## Ошибки, которые съедают баллы`: таблица «Ошибка | Что проседает | Как чинить».
+8. `## Проверь себя`: `<Quiz>` 5–8 вопросов.
+9. `## Шпаргалка`: список со стрелками → и финальный `<p class="punch">`.
+
+FAQ, «Что тренировать дальше», CTA, автор и источники шаблон рисует сам из frontmatter. В тексте их не дублируй.
+
+Заголовки `##` короткие (до ~40 символов), один кусок можно выделить: `## Как считают <span class="hl">40 баллов</span>`.
+
+## 5. Frontmatter (схема проверяется)
+
+```yaml
+---
+title: 'Goethe B1 Lesen Teil 3: объявления и ситуации'   # H1, ~40–70 символов, ключевые слова в начале
+hl: 'объявления и ситуации'          # необязательно, точный кусок title для выделения
+seoTitle: 'Goethe B1 Lesen Teil 3: объявления, метод и практика'   # ≤ 60 символов
+description: '…'                     # ≤ 160 символов, для поиска
+lede: '…'                            # 1–3 короткие фразы под заголовком, в голосе
+section: lesen                       # pruefung | lesen | hoeren | schreiben | sprechen | grammatik
+levels: [B1]
+published: 2026-10-01
+updated: 2026-10-01
+kurz:                                # 3–5 пунктов «Коротко», можно <b>
+  - '…'
+faq:                                 # 4–6 вопросов, как их гуглят люди
+  - q: '…'
+    a: '…'
+next:                                # 3–4 ссылки на соседние гайды
+  - title: '…'
+    text: '…'
+    href: '/ru/guides/lesen/bally-lesen-goethe/'   # ровно такой формат, со слэшем в конце
+sources:                             # ≥ 2, официальные в первую очередь
+  - title: '…'
+    url: 'https://…'
+---
+```
+
+Строки в YAML бери в одинарные кавычки. Апостроф внутри удваивай: `'wie wär''s'`.
+
+## 6. Ссылки
+
+- В тексте статьи ссылки на другие гайды делай относительными: `[Teil 2: форум](../../schreiben/schreiben-b1-teil-2-forum/)`.
+- В `next.href` формат `/ru/guides/<section>/<slug>/`.
+- Внешние ссылки обычным markdown.
+
+### Все гайды сайта (slug → тема)
+
+| section | slug | тема |
+|---|---|---|
+| pruefung | goethe-zertifikat-urovni | Уровни A1–C2 и какой нужен тебе |
+| pruefung | kak-schitayutsya-bally-goethe | Как считаются баллы, модули, пересдача |
+| pruefung | goethe-v-kazakhstane-cena-zapis | Goethe в Казахстане 2026: цены, центры, запись |
+| pruefung | goethe-v-uzbekistane-cena-zapis | Goethe в Узбекистане 2026: цены, центры, запись |
+| pruefung | goethe-telc-oesd-testdaf | Goethe, telc, ÖSD или TestDaF |
+| pruefung | start-deutsch-1-a1-viza | A1 для визы воссоединения |
+| lesen | sovety-goethe-b1-lesen | Lesen B1: план на 65 минут |
+| lesen | richtig-falsch-goethe-lesen | Richtig/Falsch |
+| lesen | zuordnung-anzeigen-goethe-b1 | Lesen Teil 3: объявления и ситуации |
+| lesen | ja-nein-meinungen-goethe-b1 | Lesen Teil 4: Ja/Nein по мнениям |
+| lesen | bally-lesen-goethe | Баллы Lesen: пересчёт |
+| hoeren | sovety-goethe-b1-hoeren | Hören B1: что делать в паузах |
+| hoeren | hoeren-teil-1-durchsagen | Hören Teil 1: объявления и сообщения |
+| hoeren | wer-sagt-was-hoeren-teil-4 | Hören Teil 4: кто что сказал |
+| hoeren | zahlen-uhrzeit-hoeren | Числа, время, даты на слух |
+| hoeren | bally-hoeren-goethe | Баллы Hören: пересчёт |
+| schreiben | schreiben-b1-teil-1-e-mail | Teil 1: письмо другу (ГОТОВ) |
+| schreiben | redemittel-schreiben-goethe-b1 | Redemittel для Schreiben B1 |
+| schreiben | schreiben-b1-teil-2-forum | Teil 2: мнение в форуме |
+| schreiben | schreiben-b1-teil-3-formell | Teil 3: формальное письмо |
+| schreiben | kriterii-schreiben-goethe | Критерии Schreiben простым языком |
+| sprechen | sprechen-b1-teil-1-planen | Teil 1: gemeinsam etwas planen |
+| sprechen | sprechen-b1-teil-2-praesentation | Teil 2: презентация |
+| sprechen | sprechen-b1-teil-3-fragen | Teil 3: отзыв и вопрос |
+| sprechen | kriterii-sprechen-goethe | Критерии Sprechen |
+| grammatik | konnektoren-goethe-b1 | Коннекторы для B1 |
+| (внешний) | https://stellasdeutsch-dev.github.io/dativ/ | Dativ (отдельный сайт) |
+
+## 7. Компоненты (MDX)
+
+Импорты в начале тела статьи, только нужные:
+```mdx
+import Callout from '../../../components/mdx/Callout.astro';
+```
+
+Цвета задавай только токенами: `var(--violet)`, `var(--pink)`, `var(--sun)`, `var(--gold)`, `var(--deep)`, `var(--teal)`, `var(--lime)`, `var(--ink)`. Для светлых фонов (`--gold`, `--lime`, `--deep`) добавляй `ink: 'var(--ink)'` там, где компонент это принимает.
+
+**Callout**: `<Callout type="tip|trap|life|info" title="…"><p>…</p></Callout>`. tip = совет, trap = подвох, life = лайфхак, info = важно. Внутри всегда `<p>`.
+
+**Task** (бланк задания, текст задания на немецком):
+```mdx
+<Task title="Aufgabe 1" time="20 Minuten" words="circa 80 Wörter">
+  <p>Ситуация на немецком.</p>
+  <ul>
+    <li><i>1</i><span>Beschreiben Sie: …</span></li>
+  </ul>
+  <p class="ru">Перевод на русский.</p>
+</Task>
+```
+Для Lesen-текстов можно класть в Task сам текст (`<p>`), объявления (`<p><b>A</b> …</p>`).
+
+**Score**: шкала/полоски баллов. `<Score items={[{ name: 'A', pts: 10, max: 10, note: '…', color: 'var(--lime)' }]} />`.
+
+**Anatomy** (разбор текста по частям, кнопки подсвечивают части):
+```mdx
+<Anatomy to="Anna" subject="Betreff" parts={[
+  { id: 'anrede', label: 'Обращение', color: 'var(--violet)', text: 'Liebe Anna,', note: 'Пояснение в голосе.' },
+]} />
+```
+`text` можно с переносом строки `\n`. Подходит для писем, постов в форуме, монолога.
+
+**Steps / Step**: `<Steps><Step title="3 минуты. Прочитай"><p>…</p></Step></Steps>`.
+
+**Phrases / Phrase** (фразы с озвучкой de-DE):
+```mdx
+<Phrases title="Вступление">
+  <Phrase de="Ich bin der Meinung, dass …" ru="Я считаю, что … (Звучит солидно)" />
+</Phrases>
+```
+
+**Trainer** (письменный тренажёр с таймером и автопроверкой формы):
+`<Trainer id="уникальный-id" mode="informal|forum|formal" minutes={20} target={80} points={['1. …', '2. …']} />`
+- informal (Teil 1, письмо другу): проверяет обращение Liebe/Lieber, прощание, du, предложение встречи, связки, объём.
+- forum (Teil 2, мнение): своё мнение (Meiner Meinung nach / Ich finde), обоснование (weil/denn), пример (zum Beispiel), связки, вывод, объём.
+- formal (Teil 3, официальное письмо): обращение Sehr geehrte/Liebe Frau …, Sie-форма, извинение/просьба, вежливое прощание, отсутствие du, объём.
+Перед Trainer всегда ставь `<Task>` с заданием.
+
+**Quiz**: `<Quiz questions={[{ q: 'Вопрос с ___ пропуском?', o: ['вар1', 'вар2', 'вар3'], c: 1, x: 'Объяснение в голосе. **жирный** работает.', say: 'Немецкая фраза для озвучки (необязательно)' }]} />`. `c` это индекс правильного (с 0). 5–8 вопросов. Варианты короткие.
+
+**Dialog** (диалог в виде чата, каждая реплика озвучивается):
+```mdx
+<Dialog title="Teil 1: планируем вечеринку" lines={[
+  { who: 'A', name: 'Du', de: 'Wollen wir am Samstag …?', ru: 'Перевод' },
+  { who: 'B', name: 'Partner', de: 'Gute Idee! …', ru: '…' },
+]} />
+```
+Для Sprechen и Hören (монологи/диалоги).
+
+**Listen** (аудирование через синтез речи: кнопка «слушать», лимит прослушиваний, скрытый транскрипт):
+```mdx
+<Listen title="Durchsage am Bahnhof" plays={2} text="Achtung am Gleis 5: …" ru="Перевод, показывается вместе с транскриптом" />
+```
+После Listen ставь `<Quiz>` с вопросами к нему. Текст пиши сам, естественный, уровня B1 (для A1/A2 проще).
+
+**PointsCalc** (калькулятор баллов):
+- `<PointsCalc kind="raw30" label="Lesen" />`: правильные ответы из 30 → баллы ×3,33 → сдал/нет (порог 60).
+- `<PointsCalc kind="parts" label="Schreiben" parts={[{ name: 'Teil 1', max: 40 }, { name: 'Teil 2', max: 40 }, { name: 'Teil 3', max: 20 }]} />`: сумма частей → порог 60.
+
+HTML внутри MDX: используй `class`, а не `className`. Знак `<` в тексте и фигурные скобки `{}` ломают MDX: пиши «меньше 40», а не «< 40». Таблицы markdown работают.
+
+## 8. Проверка перед сдачей
+
+```sh
+node scripts/check-mdx.mjs src/content/guides/<section>/<slug>.mdx
+```
+Должно быть `✓`. НЕ запускай `npm run build`/`astro build`/`astro dev`: несколько авторов работают параллельно, сборку делает редактор.
+
+Финальная самопроверка:
+- [ ] Каждая цифра есть в `research/<slug>.md` с источником.
+- [ ] Немецкий проверен фраза за фразой.
+- [ ] Свои задания, не из Modellsatz.
+- [ ] Нет выдуманных историй и статистики.
+- [ ] Голос: короткие фразы, «ты», 2–4 punch-строки, юмор в скобках.
+- [ ] Quiz есть, ещё минимум один интерактив.
+- [ ] check-mdx зелёный.

@@ -1,0 +1,70 @@
+---
+/* Калькулятор баллов Goethe.
+   raw30: правильные ответы из 30 → ×3,33 и округление (Lesen/Hören B1).
+   parts: сумма частей модуля (например Schreiben 40 + 40 + 20). Порог модуля 60 из 100. */
+interface Part { name: string; max: number }
+interface Props {
+  kind?: 'raw30' | 'parts';
+  label?: string;
+  parts?: Part[];
+}
+const { kind = 'raw30', label = 'Модуль', parts = [] } = Astro.props;
+const rows = kind === 'raw30' ? [{ name: 'Правильных ответов', max: 30 }] : parts;
+const start = (max: number) => Math.round(max * (kind === 'raw30' ? 0.6 : 0.65));
+---
+<div class="ix pc rv" data-calc data-kind={kind}>
+  <div class="ix-h"><b><svg class="ic"><use href="#i-calculator" /></svg>Калькулятор: {label}</b><span class="cap">порог 60 из 100</span></div>
+  {rows.map((r, i) => (
+    <div class="pc-row">
+      <label for={`pc-${label}-${i}`}><span>{r.name}</span><b><output data-v>{start(r.max)}</output> из {r.max}</b></label>
+      <input id={`pc-${label}-${i}`} type="range" min="0" max={r.max} step="1" value={start(r.max)} data-max={r.max} />
+    </div>
+  ))}
+  <div class="pc-out">
+    <div class="big"><span data-total>0</span><small> / 100</small></div>
+    <span class="verdict" data-verdict>—</span>
+  </div>
+  <div class="pc-bar" aria-hidden="true"><i data-bar></i></div>
+  <p class="pc-note" data-note></p>
+</div>
+
+<script>
+  import { $, $$, onReady, spring } from '../../scripts/lib';
+
+  const grade = (p: number) => (p >= 90 ? 'sehr gut' : p >= 80 ? 'gut' : p >= 70 ? 'befriedigend' : p >= 60 ? 'ausreichend' : 'nicht bestanden');
+
+  onReady(() => {
+    $$('[data-calc]').forEach((root) => {
+      const kind = root.dataset.kind;
+      const inputs = $$<HTMLInputElement>('input[type=range]', root);
+      const totalEl = $('[data-total]', root)!;
+      const verdict = $('[data-verdict]', root)!;
+      const bar = $<HTMLElement>('[data-bar]', root)!;
+      const note = $('[data-note]', root)!;
+      let shown = 0;
+      function upd() {
+        let total = 0;
+        inputs.forEach((inp) => {
+          const v = Number(inp.value);
+          inp.closest('.pc-row')!.querySelector('[data-v]')!.textContent = String(v);
+          total += v;
+        });
+        if (kind === 'raw30') total = Math.min(100, Math.round(total * 3.33));
+        const ok = total >= 60;
+        verdict.textContent = ok ? `Сдал · ${grade(total)}` : 'Не сдал';
+        verdict.className = 'verdict ' + (ok ? 'ok' : 'bad');
+        note.textContent = kind === 'raw30'
+          ? (ok ? `Запас над порогом: ${total - 60} баллов.` : `До порога: ${60 - total} баллов. Это примерно ${Math.ceil((60 - total) / 3.33)} верных ответа.`)
+          : (ok ? `Запас над порогом: ${total - 60} баллов.` : `До порога не хватает ${60 - total} баллов.`);
+        spring(root, 'total', total, (x) => {
+          shown = x;
+          totalEl.textContent = String(Math.round(x));
+          bar.style.width = `${Math.max(0, Math.min(100, x))}%`;
+          bar.style.background = x >= 60 ? 'var(--lime)' : 'var(--accent)';
+        }, { response: 0.3, eps: 0.05, from: shown });
+      }
+      inputs.forEach((i) => i.addEventListener('input', upd));
+      upd();
+    });
+  });
+</script>

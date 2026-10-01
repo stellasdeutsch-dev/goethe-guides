@@ -23,36 +23,38 @@ const jsonld = [
   },
 ];
 ---
-<Base title={`${title} Goethe-Zertifikat: гайды | Stellas`} description={`${s.lede} Гайды по Goethe-Zertifikat от ${SITE.author.name}.`} active={s.id} jsonld={jsonld} gsap>
-  <section class="sec-hero" style={`--c:${s.color};--k:${s.ink}`}>
+<Base title={`${title} Goethe-Zertifikat: гайды | Stellas`} description={`${s.lede} Гайды по Goethe-Zertifikat от ${SITE.author.name}.`} active={s.id} jsonld={jsonld} tone="gray">
+  <section class="sec-hero">
     <div class="wrap">
       <ol class="crumbs">
         <li><a href={url('/ru/guides/')}>Гайды</a></li>
         <li><svg class="ic"><use href="#i-chevron-right" /></svg></li>
         <li aria-current="page">{s.title}</li>
       </ol>
-      <p style="margin-top:22px"><span class="tag"><svg class="ic"><use href={`#i-${s.icon}`} /></svg> {s.de}</span></p>
-      <h1 class="mega">{s.id === 'pruefung' || s.id === 'grammatik' ? s.title : <>{s.de} <span class="hl" style={`background:${s.color};color:${s.ink}`}>{s.title}</span></>}</h1>
+      <span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
+      <h1 class="display">{s.id === 'pruefung' || s.id === 'grammatik' ? s.title : <>{s.de}. <span class="grad" style={`--g1:${s.color};--g2:var(--violet)`}>{s.title}.</span></>}</h1>
       <p class="lede">{s.lede}</p>
-      <p class="eyebrow" style="margin-top:22px">{guides.length} {plural(guides.length, 'гайд готов', 'гайда готово', 'гайдов готово')} · {soon.length} в работе</p>
+      <p style="margin:18px 0 0;color:var(--text-2);font-size:15px">{guides.length} {plural(guides.length, 'гайд готов', 'гайда готово', 'гайдов готово')}{soon.length ? ` · ${soon.length} в работе` : ''}</p>
 
       <div class="cards">
         {guides.map((g) => (
-          <a class="card rv" href={guideHref(g)} style={`--c:${s.color}`}>
-            <div class="row">{g.data.levels.map((l) => <span class="pill solid">{l}</span>)}<span><svg class="ic"><use href="#i-clock" /></svg> {readingTime(g.body)} мин</span></div>
+          <a class="card rv" href={guideHref(g)}>
+            <div class="row-meta">{g.data.levels.map((l) => <span class="cap">{l}</span>)}<span><svg class="ic"><use href="#i-clock" /></svg> {readingTime(g.body)} мин</span></div>
             <h3>{g.data.title}</h3>
             <p>{g.data.description}</p>
+            <span class="go">Читать <svg class="ic"><use href="#i-chevron-right" /></svg></span>
           </a>
         ))}
         {soon.map((p) =>
           p.href ? (
-            <a class="card rv" href={p.href} rel="noopener" target="_blank" style={`--c:${s.color}`}>
-              <div class="row">{p.levels.map((l) => <span class="pill solid">{l}</span>)}<span>отдельный сайт <svg class="ic"><use href="#i-arrow-up-right" /></svg></span></div>
+            <a class="card rv" href={p.href} rel="noopener" target="_blank">
+              <div class="row-meta">{p.levels.map((l) => <span class="cap">{l}</span>)}<span>отдельный сайт</span></div>
               <h3>{p.title}</h3>
+              <span class="go">Открыть <svg class="ic"><use href="#i-arrow-up-right" /></svg></span>
             </a>
           ) : (
             <div class="card soon">
-              <div class="row">{p.levels.length > 2 ? <span class="pill">A1–C2</span> : p.levels.map((l) => <span class="pill">{l}</span>)}<span>скоро</span></div>
+              <div class="row-meta"><span class="cap">скоро</span></div>
               <h3>{p.title}</h3>
             </div>
           ),

@@ -3,7 +3,7 @@ import Base from '../../../layouts/Base.astro';
 import SectionCard from '../../../components/SectionCard.astro';
 import { SECTIONS } from '../../../data/sections';
 import { LEVELS, SITE, url } from '../../../data/site';
-import { getGuides, guideHref } from '../../../lib/guides';
+import { getGuides, guideHref, plural } from '../../../lib/guides';
 
 const guides = await getGuides();
 const pageUrl = new URL(url('/ru/guides/'), Astro.site).href;
@@ -15,113 +15,136 @@ const jsonld = [
     description: SITE.description,
     url: pageUrl,
     inLanguage: 'ru',
-    hasPart: guides.map((g) => ({
-      '@type': 'Article',
-      headline: g.data.title,
-      url: new URL(guideHref(g), Astro.site).href,
-    })),
+    hasPart: guides.map((g) => ({ '@type': 'Article', headline: g.data.title, url: new URL(guideHref(g), Astro.site).href })),
   },
 ];
-const words = ['Lesen', 'Hören', 'Schreiben', 'Sprechen', 'A1', 'B1', 'B2', 'C1'];
+const countOf = (id: string) => guides.filter((g) => g.data.section === id).length;
 ---
-<Base title="Гайды по Goethe-Zertifikat A1–C2 — бесплатно | Stellas" description={SITE.description} active="all" jsonld={jsonld} gsap>
-  <section class="hub-hero">
-    <div class="sun" aria-hidden="true"></div>
-    <div class="wrap">
-      <p class="eyebrow"><svg class="burst spin"><use href="#b" /></svg> Гайды · Goethe-Zertifikat A1–C2</p>
-      <h1 class="mega">Гайды по <span class="hl">Goethe</span></h1>
-      <p class="lede">Учу немецкий в Австрии. Разбираю Goethe так, как хотел бы, чтобы разобрали мне. Формат. Ловушки. Тренажёры. Без воды.</p>
-      <div class="metarow">
-        <div><small><svg class="ic"><use href="#i-layers" /></svg> Модули</small><b>4: Lesen, Hören, Schreiben, Sprechen</b></div>
-        <div><small><svg class="ic"><use href="#i-target" /></svg> Проходной B1</small><b>60 из 100 на модуль</b></div>
-        <div><small><svg class="ic"><use href="#i-graduation-cap" /></svg> Уровни</small><b>A1–C2, старт с B1</b></div>
-        <div><small><svg class="ic"><use href="#i-sparkles" /></svg> Цена</small><b>Бесплатно</b></div>
-      </div>
-    </div>
+<Base title="Гайды по Goethe-Zertifikat A1–C2 — бесплатно | Stellas" description={SITE.description} active="all" jsonld={jsonld} tone="gray">
+  <section class="hub-hero wrap">
+    <p class="eyebrow">Гайды · Goethe-Zertifikat</p>
+    <h1 class="display">Сдай Goethe. <span class="grad">Без паники.</span></h1>
+    <p class="lede">Учу немецкий в Австрии. Разбираю экзамен так, как хотел бы, чтобы разобрали мне. Формат. Ловушки. Тренажёры.</p>
+
+    <label class="search">
+      <span class="sr">Поиск по гайдам</span>
+      <svg class="ic"><use href="#i-search" /></svg>
+      <input id="q" type="search" placeholder="Поиск: «письмо другу», Hören, баллы…" autocomplete="off" />
+    </label>
+    <div class="results" id="res" aria-live="polite"></div>
+
+    <nav class="cats" aria-label="Разделы">
+      {SECTIONS.map((s) => (
+        <a class="cat" href={`#g-${s.id}`}>
+          <span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
+          {s.id === 'pruefung' ? 'Об экзамене' : s.id === 'grammatik' ? 'Грамматика' : s.de}
+          <small>{countOf(s.id) ? `${countOf(s.id)} ${plural(countOf(s.id), 'гайд', 'гайда', 'гайдов')}` : 'скоро'}</small>
+        </a>
+      ))}
+    </nav>
   </section>
 
-  <div class="band" aria-hidden="true">
-    <div class="track">
-      {[0, 1].map(() => (
-        <span>{words.map((w) => <>{w} <svg class="burst"><use href="#b" /></svg></>)}</span>
-      ))}
+  <div class="wrap">
+    <div class="stats rv">
+      <div class="stat"><b>4 модуля</b><span>Lesen, Hören, Schreiben, Sprechen</span></div>
+      <div class="stat"><b>60 / 100</b><span>Проходной балл на модуль B1</span></div>
+      <div class="stat"><b>A1–C2</b><span>Шесть уровней. Начинаем с B1</span></div>
+      <div class="stat"><b>{guides.length}</b><span>{plural(guides.length, 'гайд', 'гайда', 'гайдов')} с тренажёрами. Бесплатно</span></div>
     </div>
-  </div>
 
-  <section class="wrap" aria-label="Поиск и разделы">
-    <div class="finder">
-      <label class="search">
-        <span class="sr">Поиск по гайдам</span>
-        <svg class="ic"><use href="#i-search" /></svg>
-        <input id="q" type="search" placeholder="Поиск, например «письмо другу» или Redemittel" autocomplete="off" />
-      </label>
-      <div class="results" id="res" aria-live="polite"></div>
-      <div class="lvls" role="group" aria-label="Фильтр по уровню">
-        <small>Уровень</small>
-        <button class="lvl" type="button" data-lvl="" aria-pressed="true">Все</button>
-        {LEVELS.map((l) => <button class="lvl" type="button" data-lvl={l} aria-pressed="false">{l}</button>)}
+    <div class="seg-wrap">
+      <div class="seg" role="group" aria-label="Фильтр по уровню">
+        <span class="thumb" aria-hidden="true"></span>
+        <button type="button" data-lvl="" aria-pressed="true">Все</button>
+        {LEVELS.map((l) => <button type="button" data-lvl={l} aria-pressed="false">{l}</button>)}
       </div>
     </div>
 
-    <div class="secgrid">
+    <div class="groups">
       {SECTIONS.map((s) => <SectionCard section={s} guides={guides.filter((g) => g.data.section === s.id)} />)}
     </div>
-  </section>
+  </div>
 </Base>
 
 <script>
-  import { $, $$, esc } from '../../../scripts/lib';
+  import { $, $$, esc, onReady, spring } from '../../../scripts/lib';
 
-  // ----- Фильтр по уровню -----
-  const btns = $$<HTMLButtonElement>('.lvl');
-  function applyLevel(l: string) {
-    btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.lvl === l)));
-    $$('.sec').forEach((sec) => {
-      let shown = 0;
-      $$<HTMLLIElement>('li[data-levels]', sec).forEach((li) => {
-        const ok = !l || (li.dataset.levels || '').split(' ').includes(l);
-        li.hidden = !ok;
-        if (ok) shown++;
+  onReady(() => {
+    // ----- Сегментированный контроль: ползунок едет пружиной и прерывается новым нажатием -----
+    const seg = $('.seg')!;
+    const thumb = $<HTMLElement>('.thumb', seg)!;
+    const btns = $$<HTMLButtonElement>('button', seg);
+    const setX = (v: number) => (thumb.style.transform = `translateX(${v}px)`);
+    const setW = (v: number) => (thumb.style.width = `${v}px`);
+    const place = (b: HTMLButtonElement, animate: boolean) => {
+      const x = b.offsetLeft, w = b.offsetWidth;
+      // Без анимации: ставим на место и обнуляем скорость. С анимацией: пружина от текущего положения.
+      const o = animate ? { response: 0.35, damping: 0.85 } : { from: x, velocity: 0 };
+      spring(thumb, 'x', x, setX, o);
+      spring(thumb, 'w', w, setW, animate ? o : { from: w, velocity: 0 });
+    };
+
+    function applyLevel(l: string, animate = true) {
+      const b = btns.find((x) => x.dataset.lvl === l) || btns[0];
+      btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
+      place(b, animate);
+      $$('.group').forEach((g) => {
+        const items = $$<HTMLLIElement>('li[data-levels]', g);
+        let last: HTMLLIElement | null = null;
+        items.forEach((li) => {
+          const ok = !l || (li.dataset.levels || '').split(' ').includes(l);
+          li.hidden = !ok;
+          li.classList.remove('last-vis');
+          if (ok) last = li;
+        });
+        (last as HTMLLIElement | null)?.classList.add('last-vis');
+        g.classList.toggle('empty', !last);
       });
-      sec.classList.toggle('empty', shown === 0);
-    });
-    try { localStorage.setItem('lvl', l); } catch { /* приватный режим */ }
-  }
-  btns.forEach((b) => b.addEventListener('click', () => applyLevel(b.dataset.lvl || '')));
-  try {
-    const saved = localStorage.getItem('lvl');
-    if (saved) applyLevel(saved);
-  } catch { /* ignore */ }
-
-  // ----- Поиск (Pagefind, индекс строится после astro build) -----
-  const input = $<HTMLInputElement>('#q')!;
-  const out = $('#res')!;
-  let pf: any = null;
-  let t = 0;
-  async function load() {
-    if (pf) return pf;
-    try {
-      const path = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/pagefind/pagefind.js`;
-      pf = await import(/* @vite-ignore */ path);
-      await pf.options?.({ excerptLength: 18 });
-    } catch {
-      pf = false;
+      try { localStorage.setItem('lvl', l); } catch { /* приватный режим */ }
     }
-    return pf;
-  }
-  input.addEventListener('focus', load, { once: true });
-  input.addEventListener('input', () => {
-    clearTimeout(t);
-    t = window.setTimeout(async () => {
-      const q = input.value.trim();
-      if (q.length < 2) { out.innerHTML = ''; return; }
-      const api = await load();
-      if (!api) { out.innerHTML = '<div class="res empty">Поиск включится на опубликованном сайте.</div>'; return; }
-      const r = await api.search(q);
-      const items = await Promise.all(r.results.slice(0, 6).map((x: any) => x.data()));
-      out.innerHTML = items.length
-        ? items.map((d: any) => `<a class="res" href="${esc(d.url)}"><b>${esc(d.meta?.title || '')}</b><span>${d.excerpt}</span></a>`).join('')
-        : `<div class="res empty">По запросу «${esc(q)}» пока ничего. Напиши в Telegram, и я разберу эту тему.</div>`;
-    }, 180);
+    btns.forEach((b) => b.addEventListener('click', () => applyLevel(b.dataset.lvl || '')));
+    let saved = '';
+    try { saved = localStorage.getItem('lvl') || ''; } catch { /* ignore */ }
+    applyLevel(saved, false);
+    window.addEventListener('resize', () => {
+      const b = btns.find((x) => x.getAttribute('aria-pressed') === 'true');
+      if (b) place(b, false);
+    });
+    document.fonts?.ready.then(() => {
+      const b = btns.find((x) => x.getAttribute('aria-pressed') === 'true');
+      if (b) place(b, false);
+    });
+
+    // ----- Поиск (Pagefind, индекс строится после astro build) -----
+    const input = $<HTMLInputElement>('#q')!;
+    const out = $('#res')!;
+    let pf: any = null;
+    let t = 0;
+    async function load() {
+      if (pf !== null) return pf;
+      try {
+        const path = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/pagefind/pagefind.js`;
+        pf = await import(/* @vite-ignore */ path);
+        await pf.options?.({ excerptLength: 18 });
+      } catch {
+        pf = false;
+      }
+      return pf;
+    }
+    input.addEventListener('focus', load, { once: true });
+    input.addEventListener('input', () => {
+      clearTimeout(t);
+      t = window.setTimeout(async () => {
+        const q = input.value.trim();
+        if (q.length < 2) { out.innerHTML = ''; return; }
+        const api = await load();
+        if (!api) { out.innerHTML = '<div class="res empty">Поиск включится на опубликованном сайте.</div>'; return; }
+        const r = await api.search(q);
+        const items = await Promise.all(r.results.slice(0, 6).map((x: any) => x.data()));
+        out.innerHTML = items.length
+          ? items.map((d: any) => `<a class="res" href="${esc(d.url)}"><b>${esc(d.meta?.title || '')}</b><span>${d.excerpt}</span></a>`).join('')
+          : `<div class="res empty">По запросу «${esc(q)}» пока ничего. Напиши в Telegram, и я разберу эту тему.</div>`;
+      }, 160);
+    });
   });
 </script>

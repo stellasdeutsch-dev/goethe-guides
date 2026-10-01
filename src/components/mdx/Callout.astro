@@ -7,7 +7,7 @@ const { type = 'tip', title } = Astro.props;
 const icon = { tip: 'lightbulb', trap: 'triangle-alert', life: 'zap', info: 'info' }[type];
 const def = { tip: 'Совет', trap: 'Подвох', life: 'Лайфхак', info: 'Важно' }[type];
 ---
-<div class={`co ${type} rv`} role="note">
+<aside class={`co ${type} rv`}>
   <svg class="ic" aria-hidden="true"><use href={`#i-${icon}`} /></svg>
   <div><b class="t">{title ?? def}</b><slot /></div>
-</div>
+</aside>

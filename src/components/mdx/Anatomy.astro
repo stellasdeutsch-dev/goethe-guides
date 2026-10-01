@@ -1,5 +1,5 @@
 ---
-/* Разбор письма по частям: кнопки подсвечивают кусок текста, внизу пояснение и счётчик слов. */
+/* Разбор текста по частям в окне «Почты»: капсулы сверху подсвечивают часть, внизу пояснение и счётчик слов. */
 interface Part {
   id: string;
   label: string;
@@ -9,40 +9,44 @@ interface Part {
   note: string;
 }
 interface Props {
-  to: string;
-  subject: string;
+  to?: string;
+  subject?: string;
+  /** Заголовок окна. По умолчанию «Neue E-Mail», для форума/монолога можно своё. */
+  window?: string;
   parts: Part[];
 }
-const { to, subject, parts } = Astro.props;
+const { to, subject, window: win = 'Neue E-Mail', parts } = Astro.props;
 const words = (t: string) => t.trim().split(/\s+/).filter(Boolean).length;
 const total = parts.reduce((n, p) => n + words(p.text), 0);
 ---
-<div class="anat rv" data-anat data-total={total}>
-  <div class="bar" role="group" aria-label="Части письма">
+<div class="anat rv" data-anat>
+  <div class="bar" role="group" aria-label="Части текста">
     {parts.map((p) => (
       <button type="button" data-p={p.id} aria-pressed="false" style={`--c:${p.color};--k:${p.ink ?? '#fff'}`}>
         <i></i>{p.label}
       </button>
     ))}
   </div>
-  <div class="mail" lang="de">
-    <div class="mh">
-      <span>An: <b>{to}</b></span>
-      <span>Betreff: <b>{subject}</b></span>
+  <div class="win">
+    <div class="tb" aria-hidden="true"><i></i><i></i><i></i><span>{win}</span></div>
+    {(to || subject) && (
+      <div class="mh">
+        {to && <span>An: <b>{to}</b></span>}
+        {subject && <span>Betreff: <b>{subject}</b></span>}
+      </div>
+    )}
+    <div class="body" lang="de">
+      {parts.map((p) => (
+        <span class="part" data-part={p.id} data-note={p.note} data-words={words(p.text)} style={`--c:${p.color}`}>{p.text}<button class="say" type="button" data-say={p.text} aria-label="Озвучить"><svg><use href="#i-volume-2" /></svg></button></span>
+      ))}
     </div>
-    {parts.map((p) => (
-      <span class="part" data-part={p.id} data-note={p.note} data-words={words(p.text)} style={`--c:${p.color};--k:${p.ink ?? '#fff'}`}>
-        {p.text}
-        <button class="say" type="button" data-say={p.text} aria-label="Озвучить"><svg><use href="#i-volume-2" /></svg></button>
-      </span>
-    ))}
   </div>
-  <p class="note"><svg class="ic"><use href="#i-brain" /></svg><span>Жми на части письма сверху. Каждая делает свою работу.</span></p>
-  <div class="cnt"><span>Всё письмо: <b>{total}</b> слов</span><span data-cnt hidden>Эта часть: <b></b> слов</span></div>
+  <p class="note"><svg class="ic"><use href="#i-info" /></svg><span>Нажми на часть текста сверху. Каждая делает свою работу.</span></p>
+  <div class="cnt"><span class="cap">Всего: {total} слов</span><span class="cap blue" data-cnt hidden>Эта часть: <b></b> слов</span></div>
 </div>
 
 <script>
-  import { $, $$, G, onReady, whenVisible } from '../../scripts/lib';
+  import { $, $$, onReady, pop, whenVisible } from '../../scripts/lib';
 
   onReady(() => {
     $$('[data-anat]').forEach((root) => {
@@ -53,7 +57,7 @@ const total = parts.reduce((n, p) => n + words(p.text), 0);
       const defNote = note.textContent || '';
       let current = '';
 
-      function show(id: string) {
+      function show(id: string, user = false) {
         current = id;
         root.classList.toggle('focus', !!id);
         btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.p === id)));
@@ -62,11 +66,10 @@ const total = parts.reduce((n, p) => n + words(p.text), 0);
         note.textContent = id ? on[0]?.dataset.note || '' : defNote;
         cnt.hidden = !id;
         if (id) $('b', cnt)!.textContent = String(on.reduce((n, p) => n + Number(p.dataset.words || 0), 0));
-        const g = G();
-        if (g && on[0]) g.fromTo(on[0], { scale: 0.97 }, { scale: 1, duration: 0.5, ease: 'back.out(3)' });
+        if (user) pop(btns.find((b) => b.dataset.p === id) || null, 0.92, 0.7);
       }
 
-      // Автопоказ: один круг по частям, пока человек сам не нажал.
+      // Один спокойный автопоказ, пока человек сам не нажал. Любое касание его останавливает.
       let auto = 0, i = 0, touched = false;
       const stop = () => { clearInterval(auto); auto = 0; };
       whenVisible(root, () => {
@@ -74,15 +77,17 @@ const total = parts.reduce((n, p) => n + words(p.text), 0);
         auto = window.setInterval(() => {
           if (i >= btns.length) { stop(); show(''); return; }
           show(btns[i++].dataset.p || '');
-        }, 1700);
-      }, stop, 0.5);
+        }, 1800);
+      }, stop, 0.6);
 
       btns.forEach((b) =>
         b.addEventListener('click', () => {
-          touched = true; stop();
-          show(current === b.dataset.p ? '' : b.dataset.p || '');
+          touched = true;
+          stop();
+          show(current === b.dataset.p ? '' : b.dataset.p || '', true);
         }),
       );
+      root.addEventListener('pointerdown', () => { touched = true; stop(); }, { once: true });
     });
   });
 </script>

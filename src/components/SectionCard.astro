@@ -12,40 +12,40 @@ const published = new Set(guides.map(slugOf));
 const soon = s.planned.filter((p) => !published.has(p.slug));
 const fresh = Date.now() - 1000 * 60 * 60 * 24 * 21;
 const count = guides.length + soon.filter((p) => p.href).length;
+const lv = (levels: string[]) => (levels.length > 2 ? ['A1–C2'] : levels);
 ---
-<article class="sec rv" style={`--c:${s.color};--k:${s.ink}`} data-sec={s.id}>
-  <header class="sec-h">
-    <a href={url(`/ru/guides/${s.id}/`)}>
-      <svg class="ic"><use href={`#i-${s.icon}`} /></svg>
-      <h2>{s.title}</h2>
-    </a>
-    <small>{count ? `${count} ${plural(count, 'гайд', 'гайда', 'гайдов')}` : 'в работе'}</small>
-  </header>
-  <ul>
+<section class="group rv" data-sec={s.id} id={`g-${s.id}`}>
+  <div class="group-h">
+    <span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
+    <h2><a href={url(`/ru/guides/${s.id}/`)}>{s.title}</a></h2>
+    <small>{count ? `${count} ${plural(count, 'гайд', 'гайда', 'гайдов')}` : 'скоро'}</small>
+  </div>
+  <ul class="list">
     {guides.map((g) => (
       <li data-levels={g.data.levels.join(' ')}>
-        <a class="gl" href={guideHref(g)}>
-          <span class="t">{g.data.title}{g.data.published.getTime() > fresh && <span class="new">new</span>}</span>
-          <span class="lv">{g.data.levels.slice(0, 2).map((l) => <i>{l}</i>)}</span>
+        <a class="row" href={guideHref(g)}>
+          <span class="t">{g.data.title}{g.data.published.getTime() > fresh && <span class="cap blue new">Новое</span>}</span>
+          <span class="lv">{lv(g.data.levels).map((l) => <span class="cap">{l}</span>)}</span>
+          <svg class="ic chev"><use href="#i-chevron-right" /></svg>
         </a>
       </li>
     ))}
     {soon.map((p) => (
       <li data-levels={p.levels.join(' ')}>
         {p.href ? (
-          <a class="gl" href={p.href} rel="noopener" target="_blank">
-            <span class="t">{p.title} <svg class="ic"><use href="#i-arrow-up-right" /></svg></span>
-            <span class="lv">{p.levels.slice(0, 2).map((l) => <i>{l}</i>)}</span>
+          <a class="row" href={p.href} rel="noopener" target="_blank">
+            <span class="t">{p.title}</span>
+            <span class="lv">{lv(p.levels).map((l) => <span class="cap">{l}</span>)}</span>
+            <svg class="ic chev"><use href="#i-arrow-up-right" /></svg>
           </a>
         ) : (
-          <span class="gl soon" title="Скоро">
-            <span class="t">{p.title} · скоро</span>
-            <span class="lv">{p.levels.length > 2 ? <i>A1–C2</i> : p.levels.map((l) => <i>{l}</i>)}</span>
+          <span class="row soon">
+            <span class="t">{p.title}</span>
+            <span class="cap">скоро</span>
           </span>
         )}
       </li>
     ))}
-    <li class="nolvl">Для этого уровня пока пусто. Пишу.</li>
   </ul>
-  <a class="more" href={url(`/ru/guides/${s.id}/`)}>Весь раздел <svg class="ic"><use href="#i-arrow-right" /></svg></a>
-</article>
+  <p class="nolvl">Для этого уровня пока пусто. Пишу.</p>
+</section>

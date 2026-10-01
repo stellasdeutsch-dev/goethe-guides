@@ -1,0 +1,60 @@
+---
+/* Аудирование через синтез речи: лимит прослушиваний как на экзамене, текст спрятан. */
+interface Props {
+  title: string;
+  text: string;
+  ru?: string;
+  /** Сколько раз можно прослушать (как в задании: 1 или 2). */
+  plays?: number;
+  rate?: number;
+}
+const { title, text, ru, plays = 2, rate = 0.92 } = Astro.props;
+---
+<div class="ix rv" data-listen data-plays={plays} data-rate={rate} data-text={text}>
+  <div class="ls-main" data-tts-only>
+    <button class="ls-play" type="button" data-play aria-label="Слушать"><svg class="ic"><use href="#i-play" /></svg></button>
+    <div class="ls-info">
+      <b>{title}</b>
+      <small data-left>{plays === 1 ? 'Звучит один раз' : `Звучит ${plays} раза`}</small>
+      <div class="wave" aria-hidden="true">{Array.from({ length: 28 }).map(() => <i></i>)}</div>
+    </div>
+  </div>
+  <details class="ls-tx">
+    <summary>Показать текст</summary>
+    <p lang="de">{text}</p>
+    {ru && <p class="ru">{ru}</p>}
+    <button class="btn sm gray ls-again" type="button" data-again data-tts-only><svg class="ic"><use href="#i-rotate-ccw" /></svg> Слушать ещё (тренировка)</button>
+  </details>
+</div>
+
+<script>
+  import { $, $$, hush, onReady, say } from '../../scripts/lib';
+
+  onReady(() => {
+    $$('[data-listen]').forEach((root) => {
+      const btn = $<HTMLButtonElement>('[data-play]', root)!;
+      const left = $('[data-left]', root)!;
+      const text = root.dataset.text || '';
+      const rate = Number(root.dataset.rate || 0.92);
+      let rest = Number(root.dataset.plays || 2);
+      let playing = false;
+      const word = (n: number) => (n === 1 ? 'раз' : n >= 2 && n <= 4 ? 'раза' : 'раз');
+      const ui = () => {
+        btn.innerHTML = `<svg class="ic"><use href="#i-${playing ? 'pause' : 'play'}"/></svg>`;
+        btn.disabled = !playing && rest <= 0;
+        root.classList.toggle('playing', playing);
+        left.textContent = playing ? 'Слушай…' : rest > 0 ? `Осталось: ${rest} ${word(rest)}` : 'Прослушивания закончились. Отвечай на вопросы.';
+      };
+      function play(count = true) {
+        if (playing) { hush(); playing = false; ui(); return; }
+        if (count) { if (rest <= 0) return; rest--; }
+        playing = true;
+        ui();
+        say(text, null, { rate, onend: () => { playing = false; ui(); } });
+      }
+      btn.addEventListener('click', () => play(true));
+      $('[data-again]', root)?.addEventListener('click', () => play(false));
+      ui();
+    });
+  });
+</script>
