@@ -2,22 +2,23 @@
 /* Калькулятор баллов Goethe.
    raw30: правильные ответы из 30 → ×3,33 и округление (Lesen/Hören B1).
    parts: сумма частей модуля (например Schreiben 40 + 40 + 20). Порог модуля 60 из 100. */
-interface Part { name: string; max: number }
+/** max — баллы за часть. Если заданы items и factor, ползунок считает верные ответы (0..items), баллы = верные × factor. */
+interface Part { name: string; max: number; items?: number; factor?: number }
 interface Props {
   kind?: 'raw30' | 'parts';
   label?: string;
   parts?: Part[];
 }
 const { kind = 'raw30', label = 'Модуль', parts = [] } = Astro.props;
-const rows = kind === 'raw30' ? [{ name: 'Правильных ответов', max: 30 }] : parts;
+const rows: Part[] = kind === 'raw30' ? [{ name: 'Правильных ответов', max: 30 }] : parts;
 const start = (max: number) => Math.round(max * (kind === 'raw30' ? 0.6 : 0.65));
 ---
 <div class="ix pc rv" data-calc data-kind={kind}>
   <div class="ix-h"><b><svg class="ic"><use href="#i-calculator" /></svg>Калькулятор: {label}</b><span class="cap">порог 60 из 100</span></div>
   {rows.map((r, i) => (
     <div class="pc-row">
-      <label for={`pc-${label}-${i}`}><span>{r.name}</span><b><output data-v>{start(r.max)}</output> из {r.max}</b></label>
-      <input id={`pc-${label}-${i}`} type="range" min="0" max={r.max} step="1" value={start(r.max)} data-max={r.max} />
+      <label for={`pc-${label}-${i}`}><span>{r.name}</span><b><output data-v>{r.items ? start(r.items) : start(r.max)}</output> из {r.items ?? r.max}{r.items && r.factor && <span class="pc-pts"> · <output data-p>{start(r.items) * r.factor}</output> б.</span>}</b></label>
+      <input id={`pc-${label}-${i}`} type="range" min="0" max={r.items ?? r.max} step="1" value={r.items ? start(r.items) : start(r.max)} data-factor={r.items && r.factor ? r.factor : 1} />
     </div>
   ))}
   <div class="pc-out">
@@ -46,8 +47,12 @@ const start = (max: number) => Math.round(max * (kind === 'raw30' ? 0.6 : 0.65))
         let total = 0;
         inputs.forEach((inp) => {
           const v = Number(inp.value);
-          inp.closest('.pc-row')!.querySelector('[data-v]')!.textContent = String(v);
-          total += v;
+          const f = Number(inp.dataset.factor || 1);
+          const row = inp.closest('.pc-row')!;
+          row.querySelector('[data-v]')!.textContent = String(v);
+          const pt = row.querySelector('[data-p]');
+          if (pt) pt.textContent = String(v * f);
+          total += v * f;
         });
         if (kind === 'raw30') total = Math.min(100, Math.round(total * 3.33));
         const ok = total >= 60;

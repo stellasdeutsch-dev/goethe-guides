@@ -1,0 +1,308 @@
+---
+title: 'Goethe C1 Lesen: 4 части нового формата'
+hl: '4 части нового формата'
+seoTitle: 'Goethe C1 Lesen: формат, ловушки и тренировка'
+description: 'Goethe C1 Lesen в модульном формате: 4 части, 30 заданий за 65 минут, ловушки каждой части, план времени и мини-тренировка в формате экзамена.'
+lede: '65 минут. Четыре текста. 30 заданий. Словаря нет. Разбираем каждую часть нового формата и тренируемся на своих мини-текстах.'
+section: lesen
+levels: [C1]
+published: 2026-10-01
+updated: 2026-10-01
+kurz:
+  - 'С 2024 года C1 модульный. Lesen это <b>4 части, 30 заданий, 65 минут</b>.'
+  - 'Задания: 8 + 7 + 8 + 7. Верный ответ = 1 балл, сумма × 3,33. Сдал = <b>18 из 30</b>.'
+  - 'Рекомендованное время 10 + 20 + 20 + 15 = 65. А перенос в бланк (около 5 минут) <b>внутри этих 65</b>.'
+  - 'Teil 1 и Teil 3 проверяют, как сшит текст: связки, местоимения, устойчивые пары слов.'
+  - 'Внизу мини-тренировка по всем четырём частям и калькулятор баллов.'
+faq:
+  - q: 'Сколько длится Lesen Goethe C1?'
+    a: '65 минут на четыре части. Перенос ответов в бланк, около 5 минут, входит в это время. Рекомендованное время по частям: 10, 20, 20 и 15 минут.'
+  - q: 'Сколько правильных ответов нужно, чтобы сдать Lesen C1?'
+    a: '18 из 30. Каждый верный ответ даёт 1 балл, сумму умножают на 3,33 и округляют. 18 × 3,33 = 60, это порог. 17 верных = 57 баллов, модуль не сдан.'
+  - q: 'Можно ли пользоваться словарём на Lesen C1?'
+    a: 'Нет. Словари, телефоны и другие устройства запрещены. Так написано в инструкции официального Modellsatz.'
+  - q: 'Снимают ли баллы за неверный ответ?'
+    a: 'Нет. За каждое задание либо 1 балл, либо 0. Пустая клетка и ошибка стоят одинаково: ноль. Поэтому пустых клеток в бланке быть не должно.'
+  - q: 'В каком порядке решать части?'
+    a: 'В любом. В инструкции прямо написано, что начать можно с любого задания. Главное, уложиться в общие 65 минут вместе с бланком.'
+  - q: 'Старые пробники C1 для Lesen ещё подходят?'
+    a: 'Нет. С 1 января 2024 года C1 модульный, с другими заданиями. На старых PDF написано, что экзамен проводится до 31.12.2023. Тренируйся на модульном Modellsatz.'
+next:
+  - title: 'Goethe C1 Modellsatz: разбор'
+    text: 'Официальный пробник, бланк ответов с подсчётом и разбор всех 30 заданий Lesen.'
+    href: '/ru/guides/probniki/c1-modellsatz-razbor/'
+  - title: 'Goethe C1 Hören'
+    text: '4 части, плотная речь и половина заданий на один раз.'
+    href: '/ru/guides/hoeren/goethe-c1-hoeren/'
+  - title: 'Грамматика для Goethe C1'
+    text: 'Nominalstil, Konjunktiv I, связки. То, на чём держится Teil 1 и Teil 3.'
+    href: '/ru/guides/grammatik/grammatika-c1-goethe/'
+  - title: 'Как считаются баллы Goethe'
+    text: 'Порог 60, модули, пересдача.'
+    href: '/ru/guides/pruefung/kak-schitayutsya-bally-goethe/'
+sources:
+  - title: 'Goethe-Zertifikat C1 (modular), Modellsatz, 2. Auflage Februar 2024, Stand April 2026 (goethe.de, PDF)'
+    url: 'https://www.goethe.de/pro/relaunch/prf/materialien/C1_modular/c1-modular_modellsatz.pdf'
+  - title: 'Durchführungsbestimmungen Goethe-Zertifikat C1, Stand 1.9.2025 (goethe.de, PDF)'
+    url: 'https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf'
+  - title: 'Goethe-Zertifikat C1, Modellsatz online üben (goethe.de)'
+    url: 'https://bfu.goethe.de/c1mod/'
+  - title: 'Übungsmaterialien Goethe-Zertifikat C1 (goethe.de)'
+    url: 'https://www.goethe.de/ins/de/de/prf/prf/gzc1/u24.html'
+---
+import Callout from '../../../components/mdx/Callout.astro';
+import Task from '../../../components/mdx/Task.astro';
+import Steps from '../../../components/mdx/Steps.astro';
+import Step from '../../../components/mdx/Step.astro';
+import Quiz from '../../../components/mdx/Quiz.astro';
+import PointsCalc from '../../../components/mdx/PointsCalc.astro';
+
+Все говорят: для C1 читай Spiegel и Zeit. Каждый день.
+
+Читай. Это полезно.
+
+Но на экзамене тебя не спросят, понял ли ты статью. Тебя спросят, почему в пропуске <i>vielmehr</i>, а не <i>folglich</i>.
+
+Lesen C1 проверяет не только слова. Он проверяет, видишь ли ты швы текста.
+
+## Что за модуль
+
+С 2024 года Goethe-Zertifikat C1 модульный. Lesen сдаётся отдельно и имеет свой порог. Внутри четыре части.
+
+| Teil | Текст | Что делаешь | Заданий | Время |
+|---|---|---|---|---|
+| 1 | научно-популярная статья | 8 пропусков, к каждому 4 варианта (a–d) | 8 | 10 мин |
+| 2 | журнальная статья, плотная по фактам | вопросы с 3 вариантами (a–c) | 7 | 20 мин |
+| 3 | комментарий или репортаж из прессы | 8 пропусков, 10 предложений (a–j), 2 лишних | 8 | 20 мин |
+| 4 | короткие статьи трёх специалистов | кто это говорит: a, b, c или 0 | 7 | 15 мин |
+
+Время в таблице рекомендованное. Его пишут прямо над каждой частью: <span lang="de">vorgeschlagene Arbeitszeit</span>.
+
+Ещё пять правил из официальных документов:
+
+- Всего **65 минут**. Начинать можно с любой части.
+- Словари и телефоны **запрещены**.
+- У каждого задания **один** правильный ответ.
+- Оценивают **только бланк ответов** (Antwortbogen). Пометки в листе с заданиями не считаются.
+- Сдаёшь на компьютере в центре Goethe? Тогда ответы сразу на платформе, переносить ничего не надо.
+
+## Как считают <span class="hl">30 заданий</span>
+
+Каждое задание стоит 1 балл или 0. Сумму умножают на 3,33 и округляют. Максимум 100.
+
+Порог 60. Это **18 верных из 30**. При 17 выходит 57, и модуль не сдан.
+
+Двигай ползунок. Посмотри, сколько у тебя запаса.
+
+<PointsCalc kind="raw30" label="Lesen C1" />
+
+<Callout type="trap" title="Математика, которую никто не делает">
+  <p>Сложи рекомендованное время: 10 + 20 + 20 + 15 = <b>65</b>. Ровно весь модуль.</p>
+  <p>А на перенос ответов в бланк нужно около 5 минут. И они <b>внутри</b> тех же 65. Отдельно их не дают.</p>
+  <p>Значит, рекомендованное время это потолок. 5 минут надо украсть заранее.</p>
+</Callout>
+
+За ошибку минуса нет. Пустая клетка тоже ноль. Значит, пустых клеток в бланке быть не должно. Угадать лучше, чем промолчать.
+
+## Teil 1: слова, которые держат текст
+
+Один текст. 8 пропусков. К каждому 4 варианта.
+
+Выглядит как тест на словарный запас. Но в официальном Modellsatz там вперемешку: глагол по смыслу, предлог в устойчивом сочетании, относительное местоимение, наречие-связка, глагол в пару к существительному.
+
+Это не словарь. Это клей.
+
+Как решать:
+
+- Читай не слово, а **всё предложение**. И следующее тоже.
+- Сначала **грамматика**: падеж, порядок слов, что требует предлог. Она часто вычёркивает два варианта сразу.
+- Потом **логика**: какая связь с прошлой фразой? Причина, контраст, вывод?
+- Устойчивые пары учи парами: <span lang="de">ins Gespräch kommen, zur Verfügung stehen, Kritik üben</span>. Подробно в гайде [по грамматике C1](../../grammatik/grammatika-c1-goethe/).
+
+Попробуй. Четыре пропуска, около пяти минут.
+
+<Task title="Teil 1 · Übung" time="5 Minuten">
+  <p>Sie lesen in einer Zeitschrift einen Artikel über Gemeinschaftsgärten. Wählen Sie für jede Lücke die richtige Lösung.</p>
+  <p><b>Gemüse zwischen Hochhäusern</b></p>
+  <p>In vielen Großstädten entstehen derzeit Gemeinschaftsgärten. Auf brachliegenden Flächen bauen Nachbarinnen und Nachbarn Gemüse an und kommen dabei <b>(1)</b> … Gespräch. Die Initiativen verstehen sich nicht nur als Gartenprojekte, <b>(2)</b> … auch als Orte der Begegnung. Wer mitmachen möchte, braucht keine Vorkenntnisse. <b>(3)</b> … zählen Geduld und die Bereitschaft, Verantwortung für ein Beet zu übernehmen. Kritiker bemängeln allerdings, dass die Flächen oft nur befristet zur Verfügung <b>(4)</b> … .</p>
+  <p>(1) a ins · b zum · c im · d beim<br />(2) a denn · b sondern · c jedoch · d sowie<br />(3) a Vielmehr · b Obwohl · c Folglich · d Sobald<br />(4) a stehen · b stellen · c liegen · d geben</p>
+  <p class="ru">Статья про городские огороды: соседи выращивают овощи на пустырях и знакомятся. Опыт не нужен, важны терпение и готовность отвечать за грядку. Критики недовольны, что участки дают только на время.</p>
+</Task>
+
+<Quiz title="Teil 1: проверь ответы" questions={[
+  { q: 'Lücke 1: Nachbarn kommen dabei ___ Gespräch.', o: ['ins', 'zum', 'im', 'beim'], c: 0, x: '**ins Gespräch kommen** это устойчивая пара: разговориться. zum Gespräch kommen звучит знакомо, но значит другое: прийти на беседу. Ловушка для тех, кто решает на слух.', say: 'Sie kommen dabei ins Gespräch.' },
+  { q: 'Lücke 2: nicht nur als Gartenprojekte, ___ auch als Orte der Begegnung.', o: ['denn', 'sondern', 'jedoch', 'sowie'], c: 1, x: 'Пара **nicht nur … sondern auch**. Видишь nicht nur, ищи sondern. Это не вкус, это конструкция.', say: 'nicht nur als Gartenprojekte, sondern auch als Orte der Begegnung' },
+  { q: 'Lücke 3: ___ zählen Geduld und die Bereitschaft …', o: ['Vielmehr', 'Obwohl', 'Folglich', 'Sobald'], c: 0, x: 'Obwohl и sobald требуют глагол в конец. А тут zählen стоит вторым. Минус два по грамматике. Folglich ломает логику: «опыт не нужен, следовательно важно терпение». **Vielmehr** = «скорее, на самом деле». Ставится после отрицания.', say: 'Vielmehr zählen Geduld und die Bereitschaft, Verantwortung zu übernehmen.' },
+  { q: 'Lücke 4: dass die Flächen nur befristet zur Verfügung ___ .', o: ['stehen', 'stellen', 'liegen', 'geben'], c: 0, x: '**zur Verfügung stehen** = быть в распоряжении. **zur Verfügung stellen** = предоставить, тут нужен тот, кто предоставляет. У грядок рук нет.', say: 'Die Flächen stehen nur befristet zur Verfügung.' },
+]} />
+
+## Teil 2: вопросы на пересказ
+
+Одна длинная статья. 7 вопросов. У каждого три варианта.
+
+Главная ловушка тут не в сложных словах. Она в знакомых.
+
+Верный вариант обычно говорит то же, что текст, но **другими словами**. Неверный часто берёт слово прямо из текста и пришивает к нему чужой смысл. В официальном Modellsatz так устроен как минимум один вопрос: слово из текста стоит в неверном варианте.
+
+Как решать:
+
+- Сначала прочитай **только вопрос**, без вариантов. Найди место в тексте.
+- Сформулируй ответ своими словами. Потом ищи его среди вариантов.
+- В Modellsatz вопросы шли по ходу текста. Это удобно, но не закон. Не нашёл ответ рядом с прошлым, ищи шире.
+
+<Task title="Teil 2 · Übung" time="4 Minuten">
+  <p>Sie lesen in einer Zeitschrift einen Artikel über Großraumbüros. Wählen Sie bei jeder Aufgabe die richtige Lösung.</p>
+  <p><b>Stille als Luxus</b></p>
+  <p>Großraumbüros galten lange als Inbegriff moderner Zusammenarbeit: kurze Wege, flache Hierarchien, schneller Austausch. Inzwischen mehren sich jedoch die kritischen Stimmen. Viele Beschäftigte klagen über ständige Unterbrechungen und fühlen sich in ihrer Konzentration beeinträchtigt. Manche Unternehmen reagieren darauf, indem sie sogenannte Fokusräume einrichten, in denen Telefonate und Gespräche untersagt sind. Ob solche Rückzugsorte das Problem lösen, ist allerdings umstritten. Kritiker geben zu bedenken, dass die Räume meist zu klein sind und vor allem von denjenigen genutzt werden, die ohnehin früh im Büro sind.</p>
+  <p>(1) Über Großraumbüros erfährt man, dass sie … a von Anfang an umstritten waren. · b einst als fortschrittlich betrachtet wurden. · c die Konzentration nachweislich fördern.</p>
+  <p>(2) Die Fokusräume … a werden von allen Beschäftigten gleichermaßen genutzt. · b werden nicht von allen als Lösung gesehen. · c sind vor allem für Telefonate gedacht.</p>
+  <p class="ru">Статья про опенспейсы: раньше их считали символом современной работы, теперь их критикуют за постоянные отвлечения. Некоторые фирмы делают «тихие комнаты». Помогает ли это, спорно: комнаты маленькие, и занимают их те, кто приходит рано.</p>
+</Task>
+
+<Quiz title="Teil 2: проверь ответы" questions={[
+  { q: '(1) Über Großraumbüros erfährt man, dass sie …', o: ['von Anfang an umstritten waren', 'einst als fortschrittlich betrachtet wurden', 'die Konzentration nachweislich fördern'], c: 1, x: '«galten lange als Inbegriff moderner Zusammenarbeit» = **einst als fortschrittlich betrachtet**. Пересказ, ни одного общего слова. Вариант a ловит на «kritische Stimmen», но там стоит **inzwischen**: критика появилась позже. Вариант c берёт слово Konzentration и переворачивает смысл.' },
+  { q: '(2) Die Fokusräume …', o: ['werden von allen Beschäftigten gleichermaßen genutzt', 'werden nicht von allen als Lösung gesehen', 'sind vor allem für Telefonate gedacht'], c: 1, x: '«ist allerdings umstritten» = **nicht von allen als Lösung gesehen**. Вариант c классика: слово Telefonate из текста, но там они как раз **запрещены**. Вариант a спорит с «vor allem von denjenigen …».' },
+]} />
+
+<Callout type="trap" title="Совпало слово? Проверь смысл">
+  <p>Нашёл в варианте слово из текста, и стало спокойно? Вот тут и остановись.</p>
+  <p>Совпадение слов это не доказательство. Это приманка. Проверь, что текст говорит про это слово. Часто ровно обратное.</p>
+</Callout>
+
+## Teil 3: предложения в дыры
+
+Комментарий или репортаж. 8 пропусков. 10 предложений, от a до j. Два лишние.
+
+Лишние предложения не «про другое». Они по теме. Иначе было бы слишком легко. Они просто не сшиваются с соседями.
+
+Ищи крючки:
+
+- **Указатели**: <span lang="de">dies, diese Maßnahmen, das, solche</span>. Если в предложении «эти меры», то меры должны быть **до** пропуска.
+- **Связки**: <span lang="de">denn, daher, jedoch, nämlich, dabei</span>. Они говорят, какая логика с прошлой фразой.
+- **Фраза после пропуска**. Она часто продолжает мысль вставленного предложения. Читай в обе стороны.
+
+<Task title="Teil 3 · Übung" time="6 Minuten">
+  <p>Sie lesen in einer Zeitung einen Kommentar. Welche Sätze passen in die Lücken? Ein Satz passt nicht.</p>
+  <p><b>Kaputt? Na und!</b></p>
+  <p>Wer heute einen defekten Toaster besitzt, kauft meist einen neuen. <b>(1)</b> … Doch dieser Reflex hat seinen Preis: Rohstoffe werden verschwendet, die Müllberge wachsen. Genau hier setzen Repair-Cafés an. Ehrenamtliche helfen dort, Geräte gemeinsam mit ihren Besitzerinnen und Besitzern wieder instand zu setzen. <b>(2)</b> … Viele Gäste berichten, sie hätten erst dort verstanden, wie ihre Geräte überhaupt funktionieren. <b>(3)</b> … Denn solange Ersatzteile teuer oder gar nicht erhältlich sind, bleibt Reparieren ein Hobby für Idealisten.</p>
+  <p><b>a</b> Allein werden die Initiativen das Problem jedoch nicht lösen.</p>
+  <p><b>b</b> Eine Reparatur lohnt sich nämlich oft nicht, weil sie mehr kostet als ein neues Gerät.</p>
+  <p><b>c</b> Dabei geht es nicht nur um das Ergebnis, sondern auch um das Lernen.</p>
+  <p><b>d</b> Die reparierten Geräte werden anschließend an Bedürftige verschenkt.</p>
+  <p class="ru">Комментарий про Repair-Café: сломанные вещи обычно выбрасывают, это дорого обходится природе. В Repair-Café волонтёры чинят вещи вместе с владельцами. Но пока запчасти дорогие, ремонт остаётся хобби идеалистов.</p>
+</Task>
+
+<Quiz title="Teil 3: проверь ответы" questions={[
+  { q: 'Lücke 1: Wer einen defekten Toaster besitzt, kauft einen neuen. (1) … Doch dieser Reflex hat seinen Preis.', o: ['a', 'b', 'c', 'd'], c: 1, x: '**nämlich** объясняет прошлую фразу: почему покупают новый. А «dieser Reflex» после пропуска всё ещё указывает на покупку. Шов сошёлся с двух сторон.' },
+  { q: 'Lücke 2: Ehrenamtliche helfen, Geräte instand zu setzen. (2) … Viele Gäste berichten, sie hätten erst dort verstanden …', o: ['a', 'b', 'c', 'd'], c: 2, x: '**Dabei** цепляется за ремонт. А «das Lernen» продолжается в следующей фразе: гости наконец поняли, как работают их вещи.' },
+  { q: 'Lücke 3: (3) … Denn solange Ersatzteile teuer sind, bleibt Reparieren ein Hobby für Idealisten.', o: ['a', 'b', 'c', 'd'], c: 0, x: '**jedoch** разворачивает текст от похвалы к проблеме. А **Denn** после пропуска объясняет, почему инициативы сами не справятся. Крючок стоял после пропуска, не до.' },
+  { q: 'Какое предложение лишнее?', o: ['a', 'b', 'c', 'd'], c: 3, x: 'd по теме, но спорит с текстом: вещи чинят **вместе с владельцами**, их никто не раздаёт. И «die reparierten Geräte» не цепляется ни за один пропуск. Тема та же, шва нет.' },
+]} />
+
+<p class="punch">Не вставляй по теме. Вставляй по шву.</p>
+
+## Teil 4: кто что сказал
+
+Три коротких текста трёх специалистов: a, b, c. Семь утверждений. Пять из них принадлежат кому-то. Два никому, для них ставишь **0**.
+
+Один автор может получить несколько утверждений. В официальном Modellsatz так и было: у двоих авторов по два утверждения, у третьего одно.
+
+Где теряют баллы:
+
+- Утверждение по теме, но **никто его не произносит**. Рука тянется поставить букву «самого похожего» автора. Не надо. Это 0.
+- Автор говорит **обратное**. Слова те же, знак минус. Это тоже 0, а не его буква.
+- Слово из утверждения есть у одного автора, а **мысль** у другого.
+
+Как решать: прочитай все утверждения и выдели в каждом 2–3 ключевых слова. Потом читай авторов по одному и отмечай номера утверждений прямо на полях.
+
+<Task title="Teil 4 · Übung" time="7 Minuten">
+  <p>Sie lesen in einer Fachzeitschrift Beiträge zur Vier-Tage-Woche. Wählen Sie bei jeder Aussage: Wer äußert das? Zwei Aussagen passen nicht. Markieren Sie in diesem Fall 0.</p>
+  <p><b>a Dr. Miriam Kessler, Arbeitspsychologin</b><br />Wer nur noch vier Tage arbeitet, ist nicht automatisch erholter. Entscheidend ist, ob die Arbeitsmenge tatsächlich sinkt. Wird dieselbe Arbeit lediglich auf weniger Tage verteilt, steigt der Druck, und der freie Freitag dient dann vor allem dazu, sich von der Woche zu erholen. Zudem halte ich es für unverzichtbar, dass die Beschäftigten bei der Gestaltung ihrer Arbeitszeit mitreden dürfen.</p>
+  <p><b>b Prof. Jonas Weber, Volkswirt</b><br />Aus ökonomischer Sicht ist die Vier-Tage-Woche kein Selbstläufer. In Branchen, in denen ohnehin Fachkräfte fehlen, etwa in der Pflege, lässt sich die Arbeitszeit kaum verkürzen, ohne zusätzliches Personal einzustellen. Für viele Büroberufe mag das Modell funktionieren. Es per Gesetz für alle verbindlich zu machen, halte ich jedoch für unrealistisch.</p>
+  <p><b>c Dr. Aylin Demir, Soziologin</b><br />Die Debatte zeigt vor allem, wie stark sich die Erwartungen an Arbeit gewandelt haben. Viele, gerade jüngere Beschäftigte wollen ihren Beruf mit Familie, Ehrenamt oder Weiterbildung vereinbaren. Unternehmen, die flexible Modelle anbieten, dürften daher im Wettbewerb um Fachkräfte im Vorteil sein.</p>
+  <ul>
+    <li><i>1</i><span>Eine kürzere Woche entlastet nur, wenn auch weniger Arbeit anfällt.</span></li>
+    <li><i>2</i><span>Nicht in allen Wirtschaftszweigen lässt sich das Modell gleich gut umsetzen.</span></li>
+    <li><i>3</i><span>Flexible Arbeitszeiten können Firmen helfen, Personal zu gewinnen.</span></li>
+    <li><i>4</i><span>Die Vier-Tage-Woche senkt nachweislich die Zahl der Krankheitstage.</span></li>
+    <li><i>5</i><span>Beschäftigte sollten an der Planung ihrer Arbeitszeit beteiligt werden.</span></li>
+    <li><i>6</i><span>Der Gesetzgeber sollte die Vier-Tage-Woche für alle Betriebe vorschreiben.</span></li>
+  </ul>
+  <p class="ru">Три мнения о четырёхдневке. Психолог: отдых будет, только если работы станет меньше, и сотрудники должны участвовать в планировании. Экономист: в отраслях с нехваткой кадров это трудно, закон для всех нереалистичен. Социолог: ожидания от работы изменились, гибкие фирмы выиграют в борьбе за кадры.</p>
+</Task>
+
+<Quiz title="Teil 4: кто это говорит?" questions={[
+  { q: '1. Eine kürzere Woche entlastet nur, wenn auch weniger Arbeit anfällt.', o: ['a', 'b', 'c', '0'], c: 0, x: 'Kessler: «Entscheidend ist, ob die Arbeitsmenge tatsächlich sinkt». Arbeitsmenge sinkt = weniger Arbeit fällt an.' },
+  { q: '2. Nicht in allen Wirtschaftszweigen lässt sich das Modell gleich gut umsetzen.', o: ['a', 'b', 'c', '0'], c: 1, x: 'Weber: в уходе за больными сложно, для офиса может работать. Branchen = Wirtschaftszweige.' },
+  { q: '3. Flexible Arbeitszeiten können Firmen helfen, Personal zu gewinnen.', o: ['a', 'b', 'c', '0'], c: 2, x: 'Demir: «im Wettbewerb um Fachkräfte im Vorteil». Кстати, **dürften** тут значит «вероятно». Это модальный глагол-догадка, разбор в гайде по грамматике C1.' },
+  { q: '4. Die Vier-Tage-Woche senkt nachweislich die Zahl der Krankheitstage.', o: ['a', 'b', 'c', '0'], c: 3, x: 'Про больничные никто ни слова. Тема рядом, автора нет. **0**.' },
+  { q: '5. Beschäftigte sollten an der Planung ihrer Arbeitszeit beteiligt werden.', o: ['a', 'b', 'c', '0'], c: 0, x: 'Kessler: «dass die Beschäftigten bei der Gestaltung ihrer Arbeitszeit mitreden dürfen». У одного автора может быть два утверждения.' },
+  { q: '6. Der Gesetzgeber sollte die Vier-Tage-Woche für alle Betriebe vorschreiben.', o: ['a', 'b', 'c', '0'], c: 3, x: 'Самая злая ловушка. Weber говорит про закон, но **против**: «halte ich jedoch für unrealistisch». Слова совпали, мнение обратное. **0**, а не b.' },
+]} />
+
+<p class="punch">Ноль это тоже ответ. Иногда самый честный.</p>
+
+## План на <span class="hl pink">65 минут</span>
+
+Рекомендованное время не оставляет места бланку. Поэтому срезаем с каждой части по минуте-две.
+
+<Steps>
+  <Step title="9 минут. Teil 1">
+    <p>Пропуск не идёт дольше минуты? Поставь лучший вариант, отметь «?» и иди дальше. Вернёшься, если останется время.</p>
+  </Step>
+  <Step title="18 минут. Teil 2">
+    <p>Вопрос → место в тексте → свой ответ → варианты. Не наоборот.</p>
+  </Step>
+  <Step title="18 минут. Teil 3">
+    <p>Сначала все 10 предложений, выдели крючки. Потом текст. Начни с пропусков, где крючок очевиден. Самые мутные оставь на конец: к тому времени вариантов станет меньше.</p>
+  </Step>
+  <Step title="14 минут. Teil 4">
+    <p>Ключевые слова утверждений → авторы по одному → номера на полях. Помни: два утверждения ничьи.</p>
+  </Step>
+  <Step title="6 минут. Бланк">
+    <p>Перенеси всё. Проверь, что номер задания совпал с номером строки. Пустых клеток ноль.</p>
+  </Step>
+</Steps>
+
+Порядок можешь менять. Любишь начинать с Teil 4? Начинай. Но общий счёт держи.
+
+<Callout type="life" title="Тренируйся на 59 минутах">
+  <p>Когда решаешь пробник дома, ставь таймер не на 65, а на 59 минут. Последние 6 минут не твои. Они бланка.</p>
+  <p>Официальный пробник с ключами и разбором каждого задания тут: <a href="../../probniki/c1-modellsatz-razbor/">разбор Modellsatz C1</a>.</p>
+</Callout>
+
+## Ошибки, которые съедают баллы
+
+| Ошибка | Что теряешь | Как чинить |
+|---|---|---|
+| В Teil 3 вставляешь по теме, а не по шву | Часто два задания: ошибка занимает чужое место | Ищи крючки: dies, daher, denn, jedoch. Читай фразу после пропуска |
+| В Teil 2 выбираешь вариант со словом из текста | Задания Teil 2 | Сравнивай смысл, а не слова. Совпадение слов = повод проверить |
+| Боишься ставить 0 в Teil 4 | До двух заданий | Два утверждения ничьи по правилам формата. Ищи их специально |
+| Висишь на одном пропуске в Teil 1 | Время на Teil 2 и 3 | Минута прошла? Лучший вариант, «?» на полях, дальше |
+| Переносишь ответы в последнюю минуту | Сдвиг строк, пустые клетки | 6 минут в конце, заложенные заранее |
+| Оставляешь клетку пустой | Около 3 баллов за каждую | Угадывай. За ошибку минуса нет |
+
+## Проверь себя
+
+Шесть вопросов про формат. Если хоть один удивил, перечитай таблицу сверху.
+
+<Quiz questions={[
+  { q: 'Сколько заданий в Lesen C1?', o: ['25', '30', '40'], c: 1, x: '8 + 7 + 8 + 7 = 30. Каждое стоит 1 балл до пересчёта.' },
+  { q: 'Сколько верных ответов нужно, чтобы сдать?', o: ['15', '18', '20'], c: 1, x: '18 × 3,33 = 59,94 → округляют до 60. Ровно порог. 17 верных дают 57.' },
+  { q: 'В Teil 3 десять предложений на восемь пропусков. Сколько лишних?', o: ['1', '2', 'Ни одного'], c: 1, x: 'Два. И они по теме текста. Отсеивай по шву, а не по смыслу «вообще».' },
+  { q: 'Утверждение в Teil 4 не говорит никто из авторов. Что ставишь?', o: ['Букву самого похожего автора', '0', 'Оставляю пустым'], c: 1, x: 'Ноль. Два утверждения из семи по правилам ничьи. Пустая клетка это гарантированный ноль баллов.' },
+  { q: 'Входит ли перенос ответов в бланк в 65 минут?', o: ['Нет, дают ещё 10 минут', 'Да, около 5 минут внутри 65', 'Бланк заполняет экзаменатор'], c: 1, x: 'По правилам Goethe на перенос закладываешь около 5 минут внутри времени модуля. Отдельно их не дают.' },
+  { q: 'Die Daten stehen allen Mitarbeitenden zur ___ .', o: ['Verfügung', 'Nutzung', 'Hilfe'], c: 0, x: '**zur Verfügung stehen**. Устойчивая пара. Такие любит Teil 1.', say: 'Die Daten stehen allen Mitarbeitenden zur Verfügung.' },
+]} />
+
+## Шпаргалка
+
+- **65 минут** → 4 части, 30 заданий, бланк внутри этого времени
+- **Teil 1** → всё предложение: грамматика вычёркивает, логика выбирает
+- **Teil 2** → смысл, а не слова. Слово из текста в варианте = проверь
+- **Teil 3** → крючки: dies, daher, denn, jedoch. Два предложения лишние
+- **Teil 4** → два утверждения ничьи. Обратное мнение = тоже 0
+- **Бланк** → 6 минут в конце. Пустых клеток ноль
+- **Порог** → 18 из 30
+
+<p class="punch">На C1 текст не просто читают. Его разбирают по швам.</p>
