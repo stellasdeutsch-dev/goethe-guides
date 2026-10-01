@@ -1,0 +1,13 @@
+---
+interface Props {
+  type?: 'tip' | 'trap' | 'life' | 'info';
+  title?: string;
+}
+const { type = 'tip', title } = Astro.props;
+const icon = { tip: 'lightbulb', trap: 'triangle-alert', life: 'zap', info: 'info' }[type];
+const def = { tip: 'Совет', trap: 'Подвох', life: 'Лайфхак', info: 'Важно' }[type];
+---
+<div class={`co ${type} rv`} role="note">
+  <svg class="ic" aria-hidden="true"><use href={`#i-${icon}`} /></svg>
+  <div><b class="t">{title ?? def}</b><slot /></div>
+</div>

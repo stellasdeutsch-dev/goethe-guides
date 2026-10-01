@@ -1,0 +1,8 @@
+---
+interface Props { de: string; ru?: string }
+const { de, ru } = Astro.props;
+---
+<div class="ph">
+  <button class="say" type="button" data-say={de} aria-label={`Озвучить: ${de}`}><svg><use href="#i-volume-2" /></svg></button>
+  <div><span class="de" lang="de">{de}</span>{ru && <span class="ru">{ru}</span>}</div>
+</div>

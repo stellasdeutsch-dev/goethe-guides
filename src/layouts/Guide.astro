@@ -1,0 +1,176 @@
+---
+import '../styles/guide.css';
+import Base from './Base.astro';
+import { sectionById } from '../data/sections';
+import { SITE, url } from '../data/site';
+import { guideHref, plural, readingTime, ruDate, type Guide } from '../lib/guides';
+import type { MarkdownHeading } from 'astro';
+
+interface Props {
+  entry: Guide;
+  headings: MarkdownHeading[];
+}
+const { entry, headings } = Astro.props;
+const d = entry.data;
+const s = sectionById(d.section)!;
+const minutes = readingTime(entry.body);
+const toc = headings.filter((h) => h.depth === 2);
+const href = new URL(guideHref(entry), Astro.site).href;
+const logo = new URL(url('/logo.webp'), Astro.site).href;
+
+// Заголовок с плашкой .hl на нужном куске.
+const [before, after] = d.hl && d.title.includes(d.hl) ? d.title.split(d.hl) : [d.title, undefined];
+
+const jsonld: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: d.title,
+    description: d.description,
+    inLanguage: 'ru',
+    datePublished: d.published.toISOString(),
+    dateModified: d.updated.toISOString(),
+    author: { '@type': 'Person', name: SITE.author.name, url: SITE.author.telegram },
+    publisher: { '@type': 'Organization', name: 'Stellas', logo: { '@type': 'ImageObject', url: logo } },
+    mainEntityOfPage: href,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Гайды', item: new URL(url('/ru/guides/'), Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: s.title, item: new URL(url(`/ru/guides/${s.id}/`), Astro.site).href },
+      { '@type': 'ListItem', position: 3, name: d.title, item: href },
+    ],
+  },
+];
+if (d.faq.length) {
+  jsonld.push({
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  });
+}
+---
+<Base title={d.seoTitle} description={d.description} active={d.section} ogType="article" jsonld={jsonld} gsap>
+  <article class="wrap" style={`--sc:${s.color};--sk:${s.ink}`}>
+    <header class="g-head">
+      <ol class="crumbs">
+        <li><a href={url('/ru/guides/')}>Гайды</a></li>
+        <li><svg class="ic"><use href="#i-chevron-right" /></svg></li>
+        <li><a href={url(`/ru/guides/${s.id}/`)}>{s.title}</a></li>
+      </ol>
+      <p class="eyebrow"><svg class="ic"><use href={`#i-${s.icon}`} /></svg> {s.de} · Goethe-Zertifikat {d.levels.join(', ')}</p>
+      <h1 class="g-title" data-pagefind-meta="title">
+        {after !== undefined ? <>{before}<span class="hl" style={`background:${s.color};color:${s.ink}`}>{d.hl}</span>{after}</> : d.title}
+      </h1>
+      <p class="lede">{d.lede ?? d.description}</p>
+      <div class="byline">
+        <span class="who"><img src={url('/logo.webp')} alt="" width="38" height="38" /> {SITE.author.name}</span>
+        <span><svg class="ic"><use href="#i-calendar-check" /></svg> Обновлено {ruDate(d.updated)}</span>
+        <span><svg class="ic"><use href="#i-clock" /></svg> {minutes} мин чтения</span>
+        <span class="lv">{d.levels.map((l) => <span class="pill solid">{l}</span>)}</span>
+      </div>
+      <aside class="kurz" aria-labelledby="kurz-h">
+        <svg class="burst big spin" aria-hidden="true"><use href="#b" /></svg>
+        <h2 id="kurz-h">Коротко</h2>
+        <ul>{d.kurz.map((k) => <li set:html={k} />)}</ul>
+      </aside>
+    </header>
+
+    <div class="g-body">
+      <div>
+        {toc.length > 0 && (
+          <details class="toc mob">
+            <summary>В этом гайде <svg class="ic"><use href="#i-chevron-down" /></svg></summary>
+            <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+          </details>
+        )}
+        <div class="prose" data-pagefind-body>
+          <slot />
+
+          {d.faq.length > 0 && (
+            <>
+              <h2 id="faq">Частые вопросы</h2>
+              <div class="faq">
+                {d.faq.map((f) => (
+                  <details>
+                    <summary>{f.q} <svg class="ic"><use href="#i-plus" /></svg></summary>
+                    <div class="a" set:html={f.a} />
+                  </details>
+                ))}
+              </div>
+            </>
+          )}
+
+          {d.next.length > 0 && (
+            <>
+              <h2 id="dalshe">Что тренировать дальше</h2>
+              <div class="next">
+                {d.next.map((n) =>
+                  n.href ? (
+                    <a class="card" href={n.href.startsWith('http') ? n.href : url(n.href)} style={`--c:${s.color}`}>
+                      <h3>{n.title}</h3>
+                      <p>{n.text}</p>
+                    </a>
+                  ) : (
+                    <div class="card soon">
+                      <div class="row"><span>скоро</span></div>
+                      <h3>{n.title}</h3>
+                      <p>{n.text}</p>
+                    </div>
+                  ),
+                )}
+              </div>
+            </>
+          )}
+        </div>
+
+        <section class="cta-st rv" aria-labelledby="cta-h">
+          <svg class="burst deco spin" aria-hidden="true"><use href="#b" /></svg>
+          <p class="eyebrow"><svg class="ic"><use href="#i-graduation-cap" /></svg> Платформа Stellas</p>
+          <h2 id="cta-h">Этот гайд ты прочитал за {minutes} {plural(minutes, 'минуту', 'минуты', 'минут')}. На платформе их 340+</h2>
+          <p>Грамматика A0–C1, слова с озвучкой и раздел экзаменов: Goethe, telc, ÖSD, TestDaF. Работает в Notion, даже офлайн.</p>
+          <ul>
+            <li><svg class="ic"><use href="#i-check" /></svg> Один платёж, доступ навсегда, обновления бесплатно</li>
+            <li><svg class="ic"><use href="#i-check" /></svg> A0–A2 или B1–C1 по 20 €, оба уровня за 30 €</li>
+          </ul>
+          <div class="cta-row">
+            <a class="btn lime" href={SITE.platform} rel="noopener" target="_blank">Посмотреть платформу <svg class="ic"><use href="#i-arrow-right" /></svg></a>
+            <a class="btn ghost inv" href={SITE.telegram} rel="noopener" target="_blank"><svg class="ic"><use href="#i-send" /></svg> Вопрос в Telegram</a>
+          </div>
+        </section>
+
+        <footer class="author">
+          <img src={url('/logo.webp')} alt="" width="64" height="64" />
+          <div>
+            <b>{SITE.author.name}</b>
+            <p>{SITE.author.about}</p>
+            <a class="pill" href={SITE.author.telegram} rel="noopener" target="_blank"><svg class="ic"><use href="#i-send" /></svg> @stellasdeutsch</a>
+          </div>
+        </footer>
+
+        {d.sources.length > 0 && (
+          <div class="sources">
+            <b>Источники</b>
+            <ol>{d.sources.map((x) => <li><a href={x.url} rel="noopener" target="_blank">{x.title}</a></li>)}</ol>
+          </div>
+        )}
+      </div>
+
+      <aside class="aside">
+        {toc.length > 0 && (
+          <details class="toc" open>
+            <summary>В этом гайде <svg class="ic"><use href="#i-chevron-down" /></svg></summary>
+            <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+          </details>
+        )}
+        <div class="side-cta">
+          <b>Готовишься к Goethe?</b>
+          <p>Раздел экзаменов на платформе Stellas: Goethe, telc, ÖSD, TestDaF.</p>
+          <a class="btn lime sm" href={SITE.platform} rel="noopener" target="_blank">Платформа <svg class="ic"><use href="#i-arrow-right" /></svg></a>
+        </div>
+      </aside>
+    </div>
+  </article>
+</Base>

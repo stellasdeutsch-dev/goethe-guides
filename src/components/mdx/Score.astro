@@ -1,0 +1,14 @@
+---
+interface Item { name: string; pts: number; max: number; note?: string; color?: string }
+interface Props { items: Item[] }
+const { items } = Astro.props;
+---
+<div class="score rv">
+  {items.map((it) => (
+    <div class="sc" style={`--w:${(it.pts / it.max) * 100}%;--c:${it.color ?? 'var(--ink)'}`}>
+      <b>{it.name}</b><span>{it.pts.toString().replace('.', ',')} / {it.max}</span>
+      <div class="tr"><i></i></div>
+      {it.note && <small>{it.note}</small>}
+    </div>
+  ))}
+</div>

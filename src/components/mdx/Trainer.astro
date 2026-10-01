@@ -1,0 +1,144 @@
+---
+/* Тренажёр Schreiben Teil 1: таймер, счётчик слов, автопроверка формы письма. */
+interface Props {
+  points: string[];
+  minutes?: number;
+  target?: number;
+  id?: string;
+}
+const { points, minutes = 20, target = 80, id = 'teil1' } = Astro.props;
+---
+<div class="trainer rv" data-trainer data-min={minutes} data-target={target} data-id={id}>
+  <div class="tr-top">
+    <div class="tr-time">
+      <svg class="ic" style="font-size:26px"><use href="#i-timer" /></svg>
+      <output data-clock aria-live="off">{String(minutes).padStart(2, '0')}:00</output>
+    </div>
+    <div class="pills">
+      <button class="btn sm" type="button" data-start><svg class="ic"><use href="#i-timer" /></svg> <span>Старт</span></button>
+      <button class="btn sm ghost" type="button" data-reset><svg class="ic"><use href="#i-repeat" /></svg> Сброс</button>
+    </div>
+  </div>
+
+  <label>
+    <span class="sr">Твоё письмо</span>
+    <textarea data-text lang="de" spellcheck="false" autocapitalize="sentences" placeholder="Liebe Anna, …&#10;&#10;Пиши здесь. Таймер стартует сам, когда начнёшь печатать. Проверки орфографии нет, как на экзамене."></textarea>
+  </label>
+
+  <div class="tr-meter">
+    <div class="lbl"><span>Слов: <b data-words>0</b> из ~{target}</span><span data-hint>Цель: около {target}</span></div>
+    <div class="tr" aria-hidden="true"><i data-fill></i></div>
+  </div>
+
+  <ul class="checks" aria-label="Автопроверка">
+    <li data-chk="anrede"><svg class="ic"><use href="#i-circle-check" /></svg><div>Обращение в начале<small>Liebe Anna, / Lieber Tom, / Hallo Ben,</small></div></li>
+    <li data-chk="gruss"><svg class="ic"><use href="#i-circle-check" /></svg><div>Прощание в конце<small>Viele Grüße / Liebe Grüße + имя</small></div></li>
+    <li data-chk="du"><svg class="ic"><use href="#i-circle-check" /></svg><div>Пишешь на «du»<small>du, dir, dich, dein…</small></div></li>
+    <li data-chk="vorschlag"><svg class="ic"><use href="#i-circle-check" /></svg><div>Есть предложение встретиться<small>Hast du Lust…? / Wollen wir…?</small></div></li>
+    <li data-chk="konn"><svg class="ic"><use href="#i-circle-check" /></svg><div>Минимум 3 связки<small>weil, denn, deshalb, aber, dann, außerdem…</small></div></li>
+    <li data-chk="len"><svg class="ic"><use href="#i-circle-check" /></svg><div>Объём не меньше 70 слов<small>Меньше 40 = 0 баллов за всю часть</small></div></li>
+  </ul>
+
+  <div class="tr-pts" role="group" aria-label="Три пункта задания">
+    <b style="font:800 13px/1 var(--f-display);text-transform:uppercase;letter-spacing:.06em">Три пункта. Отметь сам, это машина не проверит</b>
+    {points.map((p) => <label><input type="checkbox" data-pt /> <span>{p}</span></label>)}
+  </div>
+  <p class="tr-out" data-out></p>
+</div>
+
+<script>
+  import { $, $$, G, onReady } from '../../scripts/lib';
+
+  // \b не видит умлауты, поэтому границы слова через \p{L}.
+  const CONN = /(?<!\p{L})(weil|denn|deshalb|deswegen|darum|dann|danach|aber|sondern|obwohl|trotzdem|außerdem|ausserdem|zuerst|zum schluss|leider|übrigens|dass|wenn|als)(?!\p{L})/giu;
+  const VORSCHLAG = /(hast du (lust|zeit)|wollen wir|sollen wir|wie wäre es|wie wär's|wir könnten|lass uns|treffen wir uns|was hältst du|kommst du|können wir)/i;
+
+  onReady(() => {
+    $$('[data-trainer]').forEach((root) => {
+      const ta = $<HTMLTextAreaElement>('[data-text]', root)!;
+      const clock = $<HTMLOutputElement>('[data-clock]', root)!;
+      const startBtn = $<HTMLButtonElement>('[data-start]', root)!;
+      const fill = $<HTMLElement>('[data-fill]', root)!;
+      const wordsEl = $('[data-words]', root)!;
+      const hint = $('[data-hint]', root)!;
+      const out = $('[data-out]', root)!;
+      const total = Number(root.dataset.min) * 60;
+      const target = Number(root.dataset.target);
+      const key = `trainer:${root.dataset.id}`;
+      let left = total, timer = 0, running = false;
+
+      const fmt = (s: number) => `${s < 0 ? '−' : ''}${String(Math.floor(Math.abs(s) / 60)).padStart(2, '0')}:${String(Math.abs(s) % 60).padStart(2, '0')}`;
+      function tick() {
+        left--;
+        clock.value = fmt(left);
+        clock.classList.toggle('warn', left <= 300 && left > 0);
+        clock.classList.toggle('over', left <= 0);
+        if (left === 0) out.textContent = 'Время вышло. На экзамене ты бы уже переходил к следующей части. Допиши и посмотри, сколько не успел.';
+      }
+      function setRun(on: boolean) {
+        running = on;
+        clearInterval(timer);
+        if (on) timer = window.setInterval(tick, 1000);
+        $('span', startBtn)!.textContent = on ? 'Пауза' : left < total ? 'Дальше' : 'Старт';
+      }
+      startBtn.addEventListener('click', () => setRun(!running));
+      $('[data-reset]', root)!.addEventListener('click', () => {
+        setRun(false);
+        left = total;
+        clock.value = fmt(left);
+        clock.className = '';
+        $('span', startBtn)!.textContent = 'Старт';
+        out.textContent = '';
+      });
+
+      function check() {
+        const t = ta.value.trim();
+        const n = t ? t.split(/\s+/).length : 0;
+        wordsEl.textContent = String(n);
+        fill.style.width = `${Math.min(100, (n / (target * 1.5)) * 100)}%`;
+        fill.style.background = n < target / 2 ? 'var(--pink)' : n < target * 0.9 ? 'var(--gold)' : n <= target * 1.4 ? 'var(--lime)' : 'var(--sun)';
+        hint.textContent =
+          n === 0 ? `Цель: около ${target}` :
+          n < target / 2 ? 'Меньше половины. Это 0 баллов за часть' :
+          n < target * 0.9 ? 'Ещё немного' :
+          n <= target * 1.4 ? 'Объём в норме' : 'Многовато. Больше слов = больше ошибок';
+        const lines = t.split('\n').map((x) => x.trim()).filter(Boolean);
+        const first = (lines[0] || '').toLowerCase();
+        const tail = lines.slice(-3).join(' ').toLowerCase();
+        const res: Record<string, boolean> = {
+          anrede: /^(liebe|lieber|hallo|hi|servus|grüß dich)\b/.test(first),
+          gruss: /(viele|liebe|herzliche|beste) grüße|bis bald|bis dann|dein[e]?\s+\S+$|lg\b/.test(tail),
+          du: /\b(du|dir|dich|dein\w*)\b/i.test(t),
+          vorschlag: VORSCHLAG.test(t),
+          konn: (t.match(CONN) || []).length >= 3,
+          len: n >= 70,
+        };
+        const g = G();
+        $$<HTMLLIElement>('[data-chk]', root).forEach((li) => {
+          const was = li.classList.contains('ok');
+          const ok = !!res[li.dataset.chk || ''];
+          li.classList.toggle('ok', ok);
+          if (ok && !was && g) g.fromTo($('.ic', li), { scale: 0.4, rotation: -90 }, { scale: 1, rotation: 0, duration: 0.6, ease: 'back.out(3)' });
+        });
+        try { localStorage.setItem(key, ta.value); } catch { /* ignore */ }
+      }
+
+      ta.addEventListener('input', () => {
+        if (!running && left === total && ta.value.trim()) setRun(true);
+        check();
+      });
+      try {
+        const saved = localStorage.getItem(key);
+        if (saved) { ta.value = saved; check(); }
+      } catch { /* ignore */ }
+
+      const pts = $$<HTMLInputElement>('[data-pt]', root);
+      pts.forEach((p) =>
+        p.addEventListener('change', () => {
+          const all = pts.every((x) => x.checked);
+          out.textContent = all ? 'Все три пункта закрыты. Это главное условие для Erfüllung. Остальное уже шлифовка.' : '';
+        }),
+      );
+    });
+  });
+</script>

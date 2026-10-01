@@ -1,0 +1,98 @@
+---
+/* Квиз из Dativ-гайда: вопрос, варианты, объяснение, конфетти. */
+interface Q {
+  q: string;
+  o: string[];
+  c: number;
+  x: string;
+  /** Немецкая фраза, которую озвучить после ответа. */
+  say?: string;
+}
+interface Props {
+  questions: Q[];
+}
+const { questions } = Astro.props;
+---
+<div class="quiz rv" data-quiz={JSON.stringify(questions)} aria-live="polite">
+  <noscript><p>Для теста нужен JavaScript.</p></noscript>
+</div>
+
+<script>
+  import { $, $$, G, confetti, esc, onReady, say } from '../../scripts/lib';
+
+  type Q = { q: string; o: string[]; c: number; x: string; say?: string };
+
+  onReady(() => {
+    $$('[data-quiz]').forEach((qz) => {
+      const Q: Q[] = JSON.parse(qz.dataset.quiz || '[]');
+      let qi = 0;
+      let res: boolean[] = [];
+      const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
+      const bar = () =>
+        '<div class="qbar">' +
+        Q.map((_, i) => `<i class="${res[i] === true ? 'ok' : res[i] === false ? 'bad' : i === qi ? 'cur' : ''}"></i>`).join('') +
+        '</div>';
+
+      function draw() {
+        const it = Q[qi];
+        qz.innerHTML =
+          bar() +
+          `<p class="qn">Вопрос ${qi + 1} из ${Q.length}</p>` +
+          `<p class="qq">${fmt(it.q).replace('___', '<u data-blank>___</u>')}</p>` +
+          `<div class="qo">${it.o.map((o, i) => `<button type="button" data-i="${i}">${fmt(o)}</button>`).join('')}</div>` +
+          '<div class="qx" data-x><svg class="ic"><use href="#i-brain"/></svg><span>Выбери вариант. Не подглядывай.</span></div>';
+        $$<HTMLButtonElement>('.qo button', qz).forEach((b) => (b.onclick = () => answer(Number(b.dataset.i))));
+        const g = G();
+        if (g) g.from($$('.qo button', qz), { y: 20, scale: 0.92, duration: 0.5, ease: 'back.out(2)', stagger: 0.06 });
+      }
+
+      function answer(i: number) {
+        const it = Q[qi];
+        const ok = i === it.c;
+        res[qi] = ok;
+        const bs = $$<HTMLButtonElement>('.qo button', qz);
+        bs.forEach((b) => {
+          b.disabled = true;
+          const k = Number(b.dataset.i);
+          if (k === it.c) b.classList.add('ok');
+          else if (k === i) b.classList.add('bad');
+        });
+        const g = G();
+        if (g) ok ? g.fromTo(bs[i], { scale: 0.88 }, { scale: 1, duration: 0.6, ease: 'elastic.out(1,.4)' }) : g.fromTo(bs[i], { x: -8 }, { x: 0, duration: 0.5, ease: 'elastic.out(1.2,.2)' });
+        const blank = $('[data-blank]', qz);
+        if (blank) blank.textContent = it.o[it.c];
+        const qx = $('[data-x]', qz)!;
+        qx.classList.toggle('bad', !ok);
+        qx.innerHTML = `<svg class="ic"><use href="#i-${ok ? 'circle-check' : 'circle-x'}"/></svg><span>${ok ? '<b>Верно.</b> ' : '<b>Мимо.</b> '}${fmt(it.x)}</span>`;
+        if (ok) confetti(qz, 10);
+        if (it.say) say(it.say);
+        $('.qbar', qz)!.outerHTML = bar();
+        const nb = document.createElement('button');
+        nb.className = 'btn lime qnext';
+        nb.type = 'button';
+        nb.innerHTML = qi < Q.length - 1 ? 'Дальше <svg class="ic"><use href="#i-arrow-right"/></svg>' : 'Результат <svg class="ic"><use href="#i-trophy"/></svg>';
+        nb.onclick = () => { qi++; qi < Q.length ? draw() : done(); };
+        qz.appendChild(nb);
+        nb.focus({ preventScroll: true });
+      }
+
+      function done() {
+        const s = res.filter(Boolean).length;
+        const n = Q.length;
+        const msg =
+          s === n ? `${n} из ${n}. На экзамене так же. Серьёзно.` :
+          s >= n - 2 ? 'Почти. Глянь, где ошибся. Там обычно и падают.' :
+          'Нормально. Первый раз у всех так. Пролистай шпаргалку и попробуй ещё.';
+        qz.innerHTML =
+          bar() +
+          `<div class="qres"><div class="big">${s}/${n} <svg class="ic"><use href="#i-trophy"/></svg></div><p class="qq" style="margin-top:6px">${msg}</p>` +
+          '<div class="cta-row"><button type="button" class="btn lime" data-again><svg class="ic"><use href="#i-repeat"/></svg> Ещё раз</button></div></div>';
+        $<HTMLButtonElement>('[data-again]', qz)!.onclick = () => { qi = 0; res = []; draw(); };
+        const g = G();
+        if (g) { g.from($('.qres .big', qz), { scale: 0.3, rotation: -20, duration: 1, ease: 'elastic.out(1,.4)' }); confetti(qz, s * 6); }
+      }
+
+      draw();
+    });
+  });
+</script>

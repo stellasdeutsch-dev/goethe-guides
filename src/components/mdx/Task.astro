@@ -1,0 +1,14 @@
+---
+interface Props { title: string; time?: string; words?: string }
+const { title, time, words } = Astro.props;
+---
+<figure class="task rv" lang="de">
+  <div class="hd">
+    <b>{title}</b>
+    <span>
+      {time && <><svg class="ic"><use href="#i-timer" /></svg> {time}</>}
+      {words && <><svg class="ic"><use href="#i-pen-line" /></svg> {words}</>}
+    </span>
+  </div>
+  <slot />
+</figure>

@@ -1,0 +1,15 @@
+---
+import { url } from '../data/site';
+const to = url('/ru/guides/');
+---
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <title>Гайды по Goethe-Zertifikat</title>
+  <meta http-equiv="refresh" content={`0; url=${to}`} />
+  <link rel="canonical" href={new URL(to, Astro.site).href} />
+  <meta name="robots" content="noindex" />
+</head>
+<body><a href={to}>Гайды по Goethe-Zertifikat</a></body>
+</html>
