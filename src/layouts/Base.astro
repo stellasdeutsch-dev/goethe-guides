@@ -1,7 +1,7 @@
 ---
 import '../styles/global.css';
 import sprite from '../assets/sprite.svg?raw';
-import { SITE, url } from '../data/site';
+import { LEVELS, SITE, url } from '../data/site';
 import { SECTIONS } from '../data/sections';
 
 interface Props {
@@ -58,6 +58,7 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
         Stellas <span>Goethe</span>
       </a>
       <nav aria-label="Разделы">
+        <a href={url('/ru/guides/#start')}>С чего начать</a>
         {SECTIONS.map((s) => (
           <a href={url(`/ru/guides/${s.id}/`)} aria-current={active === s.id ? 'page' : undefined}>{short(s.id)}</a>
         ))}
@@ -70,6 +71,9 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
     <div class="prog" aria-hidden="true"></div>
   </header>
   <div class="sheet" id="sheet" inert>
+    <p class="sheet-h">Маршрут по уровню</p>
+    <div class="sheet-lv">{LEVELS.map((l) => <a href={url(`/ru/guides/uroven/${l.toLowerCase()}/`)}>{l}</a>)}</div>
+    <p class="sheet-h">Разделы</p>
     <a href={url('/ru/guides/')}><span class="tile" style="--c:var(--text-3)"><svg class="ic"><use href="#i-book-open" /></svg></span>Все гайды</a>
     {SECTIONS.map((s) => (
       <a href={url(`/ru/guides/${s.id}/`)}><span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>{s.title}</a>

@@ -10,6 +10,17 @@ onReady(() => {
     say(b.dataset.say || '', b.classList.contains('say') || b.classList.contains('bub') ? b : null);
   });
 
+  // Отмечаем прочитанный гайд для маршрутов по уровням.
+  if (document.querySelector('[data-pagefind-body]')) {
+    try {
+      const seen: string[] = JSON.parse(localStorage.getItem('seen') || '[]');
+      if (!seen.includes(location.pathname)) {
+        seen.push(location.pathname);
+        localStorage.setItem('seen', JSON.stringify(seen.slice(-300)));
+      }
+    } catch { /* приватный режим */ }
+  }
+
   // Навигация: волосяная линия появляется, только когда под ней едет контент.
   const nav = $('.gnav');
   const prog = $<HTMLElement>('.prog');

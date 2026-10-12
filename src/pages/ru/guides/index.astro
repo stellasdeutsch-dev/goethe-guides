@@ -4,6 +4,7 @@ import SectionCard from '../../../components/SectionCard.astro';
 import { SECTIONS } from '../../../data/sections';
 import { LEVELS, SITE, url } from '../../../data/site';
 import { getGuides, guideHref, plural } from '../../../lib/guides';
+import { LEVEL_INFO } from '../../../lib/route';
 
 const guides = await getGuides();
 const pageUrl = new URL(url('/ru/guides/'), Astro.site).href;
@@ -19,12 +20,13 @@ const jsonld = [
   },
 ];
 const countOf = (id: string) => guides.filter((g) => g.data.section === id).length;
+const countLevel = (l: string) => guides.filter((g) => (g.data.levels as string[]).includes(l)).length;
 ---
 <Base title="Гайды по Goethe-Zertifikat A1–C2 — бесплатно | Stellas" description={SITE.description} active="all" jsonld={jsonld} tone="gray">
   <section class="hub-hero wrap">
-    <p class="eyebrow">Гайды · Goethe-Zertifikat</p>
+    <p class="eyebrow">Гайды · Goethe-Zertifikat A1–C2</p>
     <h1 class="display">Сдай Goethe. <span class="grad">Без паники.</span></h1>
-    <p class="lede">Учу немецкий в Австрии. Разбираю экзамен так, как хотел бы, чтобы разобрали мне. Формат. Ловушки. Тренажёры.</p>
+    <p class="lede">{guides.length} бесплатных гайдов, официальные пробники с разбором и тренажёры прямо на странице.</p>
 
     <label class="search">
       <span class="sr">Поиск по гайдам</span>
@@ -32,89 +34,68 @@ const countOf = (id: string) => guides.filter((g) => g.data.section === id).leng
       <input id="q" type="search" placeholder="Поиск: «письмо другу», Hören, баллы…" autocomplete="off" />
     </label>
     <div class="results" id="res" aria-live="polite"></div>
-
-    <nav class="cats" aria-label="Разделы">
-      {SECTIONS.map((s) => (
-        <a class="cat" href={`#g-${s.id}`}>
-          <span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
-          {s.id === 'pruefung' ? 'Об экзамене' : s.id === 'probniki' ? 'Пробники' : s.id === 'grammatik' ? 'Грамматика' : s.de}
-          <small>{countOf(s.id) ? `${countOf(s.id)} ${plural(countOf(s.id), 'гайд', 'гайда', 'гайдов')}` : 'скоро'}</small>
-        </a>
-      ))}
-    </nav>
   </section>
 
   <div class="wrap">
-    <div class="stats rv">
-      <div class="stat"><b>4 модуля</b><span>Lesen, Hören, Schreiben, Sprechen</span></div>
-      <div class="stat"><b>60 / 100</b><span>Проходной балл на модуль B1</span></div>
-      <div class="stat"><b>A1–C2</b><span>Шесть уровней. Начинаем с B1</span></div>
-      <div class="stat"><b>{guides.length}</b><span>{plural(guides.length, 'гайд', 'гайда', 'гайдов')} с тренажёрами. Бесплатно</span></div>
-    </div>
+    <section class="howto rv" id="start" aria-labelledby="howto-h">
+      <h2 class="hub-h2" id="howto-h">С чего начать</h2>
+      <ol class="howto-steps">
+        <li><span class="rnum">1</span><div><b>Выбери свой уровень</b><p>Ниже карточки A1–C2. Откроется маршрут: что читать и в каком порядке.</p></div></li>
+        <li><span class="rnum">2</span><div><b>Сдай пробник</b><p>Официальный пробник Goethe и наш бланк. Узнаешь баллы и слабое место.</p></div></li>
+        <li><span class="rnum">3</span><div><b>Тренируй слабое</b><p>Гайды по модулю, где меньше всего баллов. С тренажёрами и аудио.</p></div></li>
+      </ol>
+    </section>
 
-    <div class="seg-wrap">
-      <div class="seg" role="group" aria-label="Фильтр по уровню">
-        <span class="thumb" aria-hidden="true"></span>
-        <button type="button" data-lvl="" aria-pressed="true">Все</button>
-        {LEVELS.map((l) => <button type="button" data-lvl={l} aria-pressed="false">{l}</button>)}
+    <section class="levels-sec rv" aria-labelledby="lv-h">
+      <h2 class="hub-h2" id="lv-h">Выбери свой уровень</h2>
+      <div class="lvl-cards">
+        {LEVELS.map((l) => (
+          <a class="lvl-card" href={url(`/ru/guides/uroven/${l.toLowerCase()}/`)} style={`--c:${LEVEL_INFO[l].color}`}>
+            <span class="lvl-big">{l}</span>
+            <b>{LEVEL_INFO[l].title}</b>
+            <span class="lvl-text">{LEVEL_INFO[l].text}</span>
+            <span class="go">{countLevel(l)} {plural(countLevel(l), 'гайд', 'гайда', 'гайдов')} · открыть маршрут <svg class="ic"><use href="#i-chevron-right" /></svg></span>
+          </a>
+        ))}
       </div>
-    </div>
+      <p class="lvl-help"><svg class="ic"><use href="#i-info" /></svg> Не знаешь, какой уровень нужен для визы, работы или учёбы? <a href={url('/ru/guides/pruefung/goethe-zertifikat-urovni/')}>Уровни A1–C2 и для чего каждый</a></p>
+    </section>
 
-    <div class="groups">
-      {SECTIONS.map((s) => <SectionCard section={s} guides={guides.filter((g) => g.data.section === s.id)} />)}
-    </div>
+    <section class="inside rv" aria-labelledby="in-h">
+      <h2 class="hub-h2" id="in-h">Что внутри гайдов</h2>
+      <div class="inside-grid">
+        <div><span class="tile" style="--c:var(--deep);--ts:36px"><svg class="ic"><use href="#i-sparkles" /></svg></span><b>Коротко</b><span>Главное в 5 пунктах в начале каждого гайда</span></div>
+        <div><span class="tile" style="--c:var(--teal);--ts:36px"><svg class="ic"><use href="#i-list-checks" /></svg></span><b>Бланк пробника</b><span>Отмечаешь ответы, получаешь баллы и разбор</span></div>
+        <div><span class="tile" style="--c:var(--lime);--ts:36px"><svg class="ic"><use href="#i-pen-line" /></svg></span><b>Тренажёр письма</b><span>Таймер, счётчик слов, проверка формы</span></div>
+        <div><span class="tile" style="--c:var(--pink);--ts:36px"><svg class="ic"><use href="#i-headphones" /></svg></span><b>Аудио</b><span>Слушаешь 1–2 раза, как на экзамене</span></div>
+        <div><span class="tile" style="--c:var(--sun);--ts:36px"><svg class="ic"><use href="#i-messages-square" /></svg></span><b>Диалоги</b><span>Нажми на реплику, и она прозвучит</span></div>
+        <div><span class="tile" style="--c:var(--violet);--ts:36px"><svg class="ic"><use href="#i-brain" /></svg></span><b>Квиз</b><span>Проверка с объяснением каждой ошибки</span></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="all-h">
+      <h2 class="hub-h2" id="all-h">Все гайды по разделам</h2>
+      <p class="hub-sub">Если уже знаешь, что ищешь.</p>
+      <nav class="cats" aria-label="Разделы">
+        {SECTIONS.map((s) => (
+          <a class="cat" href={`#g-${s.id}`}>
+            <span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
+            {s.id === 'pruefung' ? 'Об экзамене' : s.id === 'probniki' ? 'Пробники' : s.id === 'grammatik' ? 'Грамматика' : s.de}
+            <small>{countOf(s.id)} {plural(countOf(s.id), 'гайд', 'гайда', 'гайдов')}</small>
+          </a>
+        ))}
+      </nav>
+      <div class="groups">
+        {SECTIONS.map((s) => <SectionCard section={s} guides={guides.filter((g) => g.data.section === s.id)} />)}
+      </div>
+    </section>
   </div>
 </Base>
 
 <script>
-  import { $, $$, esc, onReady, spring } from '../../../scripts/lib';
+  import { $, esc, onReady } from '../../../scripts/lib';
 
   onReady(() => {
-    // ----- Сегментированный контроль: ползунок едет пружиной и прерывается новым нажатием -----
-    const seg = $('.seg')!;
-    const thumb = $<HTMLElement>('.thumb', seg)!;
-    const btns = $$<HTMLButtonElement>('button', seg);
-    const setX = (v: number) => (thumb.style.transform = `translateX(${v}px)`);
-    const setW = (v: number) => (thumb.style.width = `${v}px`);
-    const place = (b: HTMLButtonElement, animate: boolean) => {
-      const x = b.offsetLeft, w = b.offsetWidth;
-      // Без анимации: ставим на место и обнуляем скорость. С анимацией: пружина от текущего положения.
-      const o = animate ? { response: 0.35, damping: 0.85 } : { from: x, velocity: 0 };
-      spring(thumb, 'x', x, setX, o);
-      spring(thumb, 'w', w, setW, animate ? o : { from: w, velocity: 0 });
-    };
-
-    function applyLevel(l: string, animate = true) {
-      const b = btns.find((x) => x.dataset.lvl === l) || btns[0];
-      btns.forEach((x) => x.setAttribute('aria-pressed', String(x === b)));
-      place(b, animate);
-      $$('.group').forEach((g) => {
-        const items = $$<HTMLLIElement>('li[data-levels]', g);
-        let last: HTMLLIElement | null = null;
-        items.forEach((li) => {
-          const ok = !l || (li.dataset.levels || '').split(' ').includes(l);
-          li.hidden = !ok;
-          li.classList.remove('last-vis');
-          if (ok) last = li;
-        });
-        (last as HTMLLIElement | null)?.classList.add('last-vis');
-        g.classList.toggle('empty', !last);
-      });
-      try { localStorage.setItem('lvl', l); } catch { /* приватный режим */ }
-    }
-    btns.forEach((b) => b.addEventListener('click', () => applyLevel(b.dataset.lvl || '')));
-    let saved = '';
-    try { saved = localStorage.getItem('lvl') || ''; } catch { /* ignore */ }
-    applyLevel(saved, false);
-    window.addEventListener('resize', () => {
-      const b = btns.find((x) => x.getAttribute('aria-pressed') === 'true');
-      if (b) place(b, false);
-    });
-    document.fonts?.ready.then(() => {
-      const b = btns.find((x) => x.getAttribute('aria-pressed') === 'true');
-      if (b) place(b, false);
-    });
-
     // ----- Поиск (Pagefind, индекс строится после astro build) -----
     const input = $<HTMLInputElement>('#q')!;
     const out = $('#res')!;
@@ -143,7 +124,7 @@ const countOf = (id: string) => guides.filter((g) => g.data.section === id).leng
         const items = await Promise.all(r.results.slice(0, 6).map((x: any) => x.data()));
         out.innerHTML = items.length
           ? items.map((d: any) => `<a class="res" href="${esc(d.url)}"><b>${esc(d.meta?.title || '')}</b><span>${d.excerpt}</span></a>`).join('')
-          : `<div class="res empty">По запросу «${esc(q)}» пока ничего. Напиши в Telegram, и я разберу эту тему.</div>`;
+          : `<div class="res empty">По запросу «${esc(q)}» пока ничего. Напиши в Telegram, и мы разберём эту тему.</div>`;
       }, 160);
     });
   });

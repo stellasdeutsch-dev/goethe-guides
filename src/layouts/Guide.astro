@@ -3,7 +3,8 @@ import '../styles/guide.css';
 import Base from './Base.astro';
 import { sectionById } from '../data/sections';
 import { SITE, url } from '../data/site';
-import { guideHref, levelLabels, plural, readingTime, ruDate, type Guide } from '../lib/guides';
+import { guideHref, levelLabels, plural, readingTime, ruDate, slugOf, type Guide } from '../lib/guides';
+import { stepOf } from '../lib/route';
 import type { MarkdownHeading } from 'astro';
 
 interface Props {
@@ -14,6 +15,9 @@ const { entry, headings } = Astro.props;
 const d = entry.data;
 const s = sectionById(d.section)!;
 const minutes = readingTime(entry.body);
+const step = stepOf(d.section, slugOf(entry));
+const ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+const routeLevels = [...d.levels].sort((a, b) => ORDER.indexOf(a) - ORDER.indexOf(b));
 const toc = headings.filter((h) => h.depth === 2);
 const href = new URL(guideHref(entry), Astro.site).href;
 const logo = new URL(url('/logo.webp'), Astro.site).href;
@@ -71,6 +75,10 @@ if (d.faq.length) {
         <span><svg class="ic"><use href="#i-clock" /></svg> {minutes} мин чтения</span>
         <span class="lv">{levelLabels(d.levels).map((l) => <span class="cap">{l}</span>)}</span>
       </div>
+      <p class="in-route">
+        <svg class="ic"><use href="#i-route" /></svg> Шаг {step} в маршруте:
+        {routeLevels.map((l) => <a href={url(`/ru/guides/uroven/${l.toLowerCase()}/#step-${step}`)}>{l}</a>)}
+      </p>
       <aside class="kurz" aria-labelledby="kurz-h">
         <h2 id="kurz-h"><svg class="ic"><use href="#i-sparkles" /></svg>Коротко</h2>
         <ul>{d.kurz.map((k) => <li set:html={k} />)}</ul>
