@@ -30,7 +30,7 @@ const jsonld: object[] = [
     inLanguage: 'ru',
     datePublished: d.published.toISOString(),
     dateModified: d.updated.toISOString(),
-    author: { '@type': 'Person', name: SITE.author.name, url: SITE.author.telegram },
+    author: { '@type': 'Organization', name: 'Stellas', url: SITE.author.telegram },
     publisher: { '@type': 'Organization', name: 'Stellas', logo: { '@type': 'ImageObject', url: logo } },
     mainEntityOfPage: href,
   },

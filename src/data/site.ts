@@ -3,10 +3,10 @@ export const SITE = {
   title: 'Гайды по Goethe-Zertifikat',
   description:
     'Бесплатные гайды по Goethe-Zertifikat A1–C2: Lesen, Hören, Schreiben, Sprechen. Формат заданий, ловушки, шаблоны и тренажёры.',
+  /** Автор на сайте — бренд, без личного имени. */
   author: {
-    name: 'Шынгыс Нарсейит',
-    about:
-      'Казах. Учу немецкий в Австрии. IELTS 7.5. Пишу гайды, которые сам хотел бы прочитать перед экзаменом.',
+    name: 'Команда Stellas',
+    about: 'Пишем гайды по Goethe-Zertifikat простым языком. Формат сверяем с официальными материалами Goethe-Institut.',
     telegram: 'https://t.me/stellasdeutsch',
   },
   platform: 'https://app.lava.top/801303618?tabId=products&sort=published',

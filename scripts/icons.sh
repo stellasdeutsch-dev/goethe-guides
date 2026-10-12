@@ -3,7 +3,7 @@
 set -e
 OUT=src/assets/sprite.svg
 TMP=$(mktemp)
-node ~/.claude/skills/shyngys-grammar-site/scripts/extract_icons.js "$TMP" \
+node scripts/extract_icons.js "$TMP" \
   ArrowRight ArrowLeft ArrowUpRight ChevronDown ChevronRight Search Menu X Clock CalendarCheck User Users \
   BookOpen Headphones Mic PenLine FileText ListChecks TriangleAlert Lightbulb Info CircleCheck CircleX Brain \
   Trophy Repeat Volume2 Mail Send Timer Target Sparkles Zap Eye Flag Route GraduationCap MessageCircle \
