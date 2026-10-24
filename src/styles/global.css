@@ -337,3 +337,27 @@ a.card:active{scale:.98}
   .rstep .row .t{font-size:16px}
   .rstep .row .cap{display:none}
 }
+
+/* ===== Мой план ===== */
+.plan-form{display:grid;gap:22px}
+@media (min-width:860px){.plan-form{grid-template-columns:1fr 1fr}}
+.plan-q b{display:block;font:600 17px/1.3 var(--f-display);margin-bottom:10px}
+.plan-q small{display:block;color:var(--text-2);font-size:14px;margin-top:8px}
+.plan-q .lvl-switch{margin-top:0}
+.plan-date{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.plan-date input{min-height:40px;border:0;border-radius:10px;background:var(--card);color:var(--text);padding:6px 12px;font:500 16px/1.2 var(--f-body);box-shadow:inset 0 0 0 1px var(--sep)}
+.plan-days{font:600 15px/1.2 var(--f-body);color:var(--link)}
+.plan-res{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (min-width:860px){.plan-res{grid-template-columns:repeat(4,1fr)}}
+.plan-card{background:var(--card);border-radius:var(--r-m);padding:16px;box-shadow:var(--shadow);display:grid;gap:4px}
+.plan-card b{font:600 15px/1.25 var(--f-display)}
+.plan-card .pv{font:700 34px/1 var(--f-round);letter-spacing:-.02em;color:var(--text-3)}
+.plan-card small{font-size:13px;color:var(--text-2)}
+.plan-card.ok .pv{color:var(--ok)}.plan-card.mid .pv{color:var(--warn)}.plan-card.bad .pv{color:var(--bad)}
+.plan-note{font-size:15px;color:var(--text-2);margin:12px 4px 0}
+.plan-daily{display:flex;gap:8px;align-items:flex-start;margin:12px 4px 0;font-size:15px;color:var(--text-2)}
+.plan-daily .ic{color:var(--accent);margin-top:3px}
+.plan-empty{margin:24px 4px;color:var(--text-2)}
+.plan-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:14px;padding:18px 20px;border-radius:var(--r-m);background:var(--dark-card);color:var(--dark-text)}
+.plan-cta b{font:600 17px/1.3 var(--f-display)}
+.plan-cta p{margin:2px 0 0;color:#a1a1a6;font-size:15px}

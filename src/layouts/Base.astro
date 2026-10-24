@@ -59,6 +59,7 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
       </a>
       <nav aria-label="Разделы">
         <a href={url('/ru/guides/#start')}>С чего начать</a>
+        <a href={url('/ru/guides/plan/')}>Мой план</a>
         {SECTIONS.map((s) => (
           <a href={url(`/ru/guides/${s.id}/`)} aria-current={active === s.id ? 'page' : undefined}>{short(s.id)}</a>
         ))}
@@ -71,6 +72,7 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
     <div class="prog" aria-hidden="true"></div>
   </header>
   <div class="sheet" id="sheet" inert>
+    <a href={url('/ru/guides/plan/')}><span class="tile" style="--c:var(--accent)"><svg class="ic"><use href="#i-calendar-check" /></svg></span>Мой план</a>
     <p class="sheet-h">Маршрут по уровню</p>
     <div class="sheet-lv">{LEVELS.map((l) => <a href={url(`/ru/guides/uroven/${l.toLowerCase()}/`)}>{l}</a>)}</div>
     <p class="sheet-h">Разделы</p>

@@ -1,0 +1,581 @@
+---
+title: 'Пробник Stellas A2 №1: полный экзамен на странице'
+hl: 'полный экзамен на странице'
+seoTitle: 'Пробный экзамен Goethe A2 онлайн: все 4 части'
+description: 'Пробный экзамен Goethe A2 онлайн: Lesen, Hören с аудио, Schreiben и Sprechen в формате Goethe. Баллы по официальной формуле и разбор всех 40 заданий.'
+lede: 'Весь экзамен A2 на одной странице. Тексты, аудио, бланки с таймером, тренажёры для письма, образцы для устной части. Тексты наши, формат как у Goethe.'
+section: probniki
+levels: [A2]
+published: 2026-10-24
+updated: 2026-10-24
+kurz:
+  - 'Полный пробник <b>Goethe-Zertifikat A2</b>: Lesen, Hören, Schreiben, Sprechen. Ничего скачивать не надо.'
+  - 'Lesen и Hören по <b>20 заданий</b>. Верный ответ × 1,25, максимум <b>25</b> за часть.'
+  - 'Своего порога у части нет. Нужно <b>45 из 75</b> за письменную часть, <b>15 из 25</b> за Sprechen и 60 в сумме.'
+  - 'Аудио звучит столько раз, сколько на экзамене: Teil 1 и 4 дважды, Teil 2 и 3 один раз.'
+  - 'Schreiben: SMS на <b>20–30 слов</b> и e-mail на <b>30–40</b> в тренажёрах с таймером.'
+faq:
+  - q: 'Это официальный пробник Goethe?'
+    a: 'Нет. Все тексты и аудиосценарии написала Команда Stellas. Формат, число заданий, сколько раз звучит аудио и подсчёт баллов взяты из официальных документов Goethe-Institut. Официальный Modellsatz A2 разобран у нас отдельно.'
+  - q: 'Сколько баллов нужно, чтобы сдать Goethe A2?'
+    a: 'Минимум 60 из 100. При этом минимум 45 из 75 за письменную часть (Lesen, Hören, Schreiben) и минимум 15 из 25 за Sprechen. Не выполнил одно условие, не сдан весь экзамен.'
+  - q: 'Сколько правильных ответов в Lesen нужно на A2?'
+    a: 'Своего порога у Lesen нет. Ориентир: 12 из 20 = 15 баллов. Если так в Lesen, Hören и Schreiben, выходит ровно 45. Это арифметика, а не правило Goethe.'
+  - q: 'Сколько раз звучит аудио в Hören A2?'
+    a: 'Teil 1 и Teil 4 два раза. Teil 2 и Teil 3 один раз. Кнопка «слушать» в этом пробнике даёт ровно столько попыток.'
+  - q: 'Аудио не играет. Что делать?'
+    a: 'Озвучку делает браузер. Открой страницу в свежем Chrome, Safari или Edge и проверь звук. Под каждым аудио есть кнопка «Показать текст», но открывай её только после ответа.'
+next:
+  - title: 'Разбор официального пробника A2'
+    text: 'Тот же формат, материалы Goethe. Бланк и разбор каждой ловушки.'
+    href: '/ru/guides/probniki/a2-modellsatz-razbor/'
+  - title: 'Lesen A2'
+    text: 'Четыре части, план на 30 минут, вариант «нет подходящего».'
+    href: '/ru/guides/lesen/goethe-a2-lesen/'
+  - title: 'Schreiben A2'
+    text: 'SMS и e-mail. Как закрыть три пункта и не уйти в ноль.'
+    href: '/ru/guides/schreiben/goethe-a2-schreiben/'
+  - title: 'Sprechen A2'
+    text: 'Вопросы по карточкам, рассказ о себе, договориться о встрече.'
+    href: '/ru/guides/sprechen/goethe-a2-sprechen/'
+sources:
+  - title: 'Durchführungsbestimmungen Goethe-Zertifikat A2, Stand 1.9.2025 (goethe.de, PDF)'
+    url: 'https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_A2.pdf'
+  - title: 'Goethe-Zertifikat A2, Modellsatz Erwachsene (goethe.de, PDF): формат частей и критерии'
+    url: 'https://www.goethe.de/pro/relaunch/prf/materialien/A2/A2_Modellsatz_Erwachsene.pdf'
+  - title: 'Goethe-Zertifikat A2, Übungssatz Erwachsene (goethe.de, PDF)'
+    url: 'https://www.goethe.de/pro/relaunch/prf/materialien/A2/A2_Uebungssatz_Erwachsene.pdf'
+---
+import Callout from '../../../components/mdx/Callout.astro';
+import Score from '../../../components/mdx/Score.astro';
+import Task from '../../../components/mdx/Task.astro';
+import Listen from '../../../components/mdx/Listen.astro';
+import AnswerSheet from '../../../components/mdx/AnswerSheet.astro';
+import Trainer from '../../../components/mdx/Trainer.astro';
+import Anatomy from '../../../components/mdx/Anatomy.astro';
+import Dialog from '../../../components/mdx/Dialog.astro';
+
+Официальных пробников A2 для взрослых у Goethe два.
+
+Два вечера. И материалы закончились.
+
+А до экзамена ещё месяц.
+
+Вот третий. Наш. Формат Goethe, тексты новые.
+
+Всё на одной странице: тексты, аудио, бланки, таймер.
+
+## Как пройти пробник
+
+Этот пробник написала Команда Stellas. Все тексты и аудио наши. Из материалов Goethe взят только формат: части, число заданий, сколько раз звучит аудио, как считают баллы.
+
+| Часть | Время | Заданий | Баллы |
+|---|---|---|---|
+| Lesen | 30 минут | 4 части, 20 | 25 |
+| Hören | около 30 минут | 4 части, 20 | 25 |
+| Schreiben | 30 минут | SMS + e-mail | 25 |
+| Sprechen | 15 минут на двоих | 3 части | 25 |
+
+На экзамене письменные части идут подряд, 90 минут без пауз. Словарь и телефон нельзя.
+
+Как работать:
+
+1. Лист бумаги, ручка, телефон в другую комнату.
+2. **Lesen.** Запусти таймер в бланке на 30 минут. Тексты над бланком.
+3. **Hören.** Прочитай задание, нажми «слушать». Попыток столько, сколько на экзамене. Ответы на листе, потом в бланк.
+4. **Schreiben.** Два тренажёра, 30 минут на оба.
+5. **Sprechen.** Найди партнёра или говори с зеркалом. Потом сравни с образцами.
+
+<Callout type="trap" title="Не открывай «Показать текст»">
+  <p>Под каждым аудио спрятан текст. Открыл до ответа, и задание сгорело.</p>
+  <p>Текст нужен после проверки. Нашёл место ошибки, переслушал, понял.</p>
+</Callout>
+
+## Как считают <span class="hl">45 из 75</span>
+
+A2 сдают целиком. Итог один на весь экзамен.
+
+Lesen и Hören устроены одинаково. 20 заданий. Верный ответ = 1 балл. Сумму умножают на 1,25. Максимум 25. 16 верных = 20 баллов. 12 верных = 15.
+
+<Score items={[
+  { name: 'Письменная часть', pts: 45, max: 75, note: 'Lesen + Hören + Schreiben. Минимум 45', color: 'var(--violet)' },
+  { name: 'Sprechen', pts: 15, max: 25, note: 'Минимум 15', color: 'var(--pink)' },
+  { name: 'Всего', pts: 60, max: 100, note: 'Минимум 60. Все условия сразу', color: 'var(--teal)' },
+]} />
+
+Поэтому бланки ниже не пишут «сдал». Они показывают баллы части.
+
+<Callout type="tip" title="Ориентир: 12 из 20">
+  <p>45 на три части это по 15 на каждую. 15 баллов = 12 верных из 20.</p>
+  <p>Это не правило Goethe, а арифметика. Слабый Hören можно вытянуть сильным Lesen. И наоборот.</p>
+</Callout>
+
+Мелочь для педантов. Goethe округляет только итог. Бланк округляет баллы части. Разница не больше полбалла.
+
+## Lesen: <span class="hl pink">30 минут</span>
+
+Четыре части по 5 заданий. Около 3 минут оставь на перенос ответов. Запусти таймер в бланке и иди сверху вниз.
+
+### Teil 1: статья из газеты
+
+Sie lesen in einer Zeitung diesen Text. Wählen Sie für die Aufgaben 1 bis 5 die richtige Lösung a, b oder c.
+
+<Task title="Die Bibliothek kommt ins Dorf">
+  <p>Seit drei Jahren fährt Jonas Krüger jeden Tag mit einem großen Bus durch die Dörfer in seiner Region. Im Bus sitzen aber keine Fahrgäste. Dort stehen 4000 Bücher, Zeitschriften und Spiele. „In vielen Dörfern gibt es keine Bibliothek und keinen Buchladen mehr“, sagt der 41-Jährige. „Darum komme ich zu den Leuten.“</p>
+  <p>Früher hat Krüger in einer Bank gearbeitet. „Das war gut bezahlt, aber ich habe den ganzen Tag nur Zahlen gesehen.“ Heute verdient er weniger, aber er ist viel zufriedener.</p>
+  <p>Der Bus hält einmal pro Woche in jedem Dorf, immer am gleichen Tag und immer für zwei Stunden. Die meisten Besucher sind Kinder und ältere Menschen. Die Kinder leihen am liebsten Comics aus, die Älteren lieber Krimis. Das Ausleihen kostet nichts. Man braucht nur einen Leseausweis, und den bekommt man direkt im Bus.</p>
+  <p>Im Winter ist die Arbeit manchmal schwer. „Wenn viel Schnee liegt, komme ich nicht in jedes Dorf“, erzählt Krüger. Dann informiert er seine Leser im Internet. Nächstes Jahr bekommt die Region einen zweiten Bus.</p>
+</Task>
+
+<Task title="Aufgaben 1–5">
+  <p><b>1</b> Jonas Krüger …<br /><b>a</b> fährt Touristen durch die Dörfer. <b>b</b> bringt Bücher zu den Menschen. <b>c</b> verkauft Bücher und Spiele.</p>
+  <p><b>2</b> Früher hat Krüger …<br /><b>a</b> mehr Geld verdient. <b>b</b> in einer Bibliothek gearbeitet. <b>c</b> als Busfahrer gearbeitet.</p>
+  <p><b>3</b> Der Bus kommt in jedes Dorf …<br /><b>a</b> zweimal pro Woche. <b>b</b> jede Woche am gleichen Tag. <b>c</b> nur am Wochenende.</p>
+  <p><b>4</b> Einen Leseausweis …<br /><b>a</b> bekommt man in der Stadtbibliothek. <b>b</b> bestellt man im Internet. <b>c</b> bekommt man im Bus.</p>
+  <p><b>5</b> Der Text informiert über …<br /><b>a</b> eine Bibliothek auf Rädern. <b>b</b> neue Bücher für Kinder. <b>c</b> Probleme auf dem Land im Winter.</p>
+</Task>
+
+### Teil 2: табличка в библиотеке
+
+Sie sind in der Stadtbibliothek. Lesen Sie die Aufgaben 6 bis 10 und die Informationstafel. In welchen Stock gehen Sie? Wählen Sie die richtige Lösung a, b oder c.
+
+<Task title="Stadtbibliothek · Wegweiser">
+  <p><b>3. Stock</b> Musik: CDs und Noten · Filme auf DVD · Lesecafé mit Dachterrasse</p>
+  <p><b>2. Stock</b> Sachbücher: Reisen, Kochen, Gesundheit, Computer · Lernzentrum: Sprachkurse mit Büchern und Audio · Gruppenräume</p>
+  <p><b>1. Stock</b> Romane und Krimis · Zeitungen und Zeitschriften · Computerplätze mit Internet</p>
+  <p><b>EG</b> Information · Anmeldung und Leseausweis · Rückgabe · Kinderbibliothek: Bücher und Spiele</p>
+  <p><b>UG</b> Garderobe · Schließfächer · Toiletten · Kopierer und Drucker</p>
+</Task>
+
+<Task title="Aufgaben 6–10">
+  <p><b>6</b> Sie möchten ein Kochbuch ausleihen.<br /><b>a</b> 1. Stock <b>b</b> 3. Stock <b>c</b> anderer Stock</p>
+  <p><b>7</b> Sie möchten Ihre Jacke abgeben.<br /><b>a</b> UG <b>b</b> EG <b>c</b> anderer Stock</p>
+  <p><b>8</b> Sie möchten eine Seite aus einem Buch kopieren.<br /><b>a</b> 1. Stock <b>b</b> 2. Stock <b>c</b> anderer Stock</p>
+  <p><b>9</b> Ihre Tochter ist sechs und möchte ein Spiel ausleihen.<br /><b>a</b> EG <b>b</b> 3. Stock <b>c</b> anderer Stock</p>
+  <p><b>10</b> Sie möchten einen Film für heute Abend ausleihen.<br /><b>a</b> 1. Stock <b>b</b> 3. Stock <b>c</b> anderer Stock</p>
+</Task>
+
+### Teil 3: e-mail
+
+Sie lesen eine E-Mail. Wählen Sie für die Aufgaben 11 bis 15 die richtige Lösung a, b oder c.
+
+<Task title="E-Mail von Aigerim">
+  <p>Liebe Katja,</p>
+  <p>endlich habe ich Zeit für eine lange E-Mail! Seit Oktober mache ich eine Ausbildung als Krankenpflegerin hier in Freiburg. Die Arbeit im Krankenhaus ist anstrengend, aber sie gefällt mir sehr. Meine Kolleginnen sind sehr nett und helfen mir viel, besonders wenn ich ein Wort nicht verstehe.</p>
+  <p>Am Anfang habe ich bei einer Familie gewohnt. Seit zwei Wochen habe ich ein Zimmer in einer WG, zusammen mit zwei Studentinnen. Das Zimmer ist klein, aber billig. Und zum Krankenhaus brauche ich mit dem Fahrrad nur zehn Minuten.</p>
+  <p>Am Wochenende habe ich meistens frei. Dann fahre ich oft mit dem Zug in den Schwarzwald und wandere. Nächsten Monat muss ich aber auch am Wochenende arbeiten. Das finde ich nicht so toll.</p>
+  <p>Im Dezember habe ich eine Woche Urlaub. Möchtest du mich dann besuchen? Du kannst bei mir im Zimmer schlafen, ich habe noch eine Matratze. Oder wir fahren zusammen zu meinen Eltern nach Bremen. Schreib mir bald!</p>
+  <p>Viele Grüße<br />Aigerim</p>
+</Task>
+
+<Task title="Aufgaben 11–15">
+  <p><b>11</b> Aigerim …<br /><b>a</b> studiert in Freiburg. <b>b</b> lernt einen Beruf. <b>c</b> sucht Arbeit in einem Krankenhaus.</p>
+  <p><b>12</b> Bei der Arbeit …<br /><b>a</b> hat sie Probleme mit den Kolleginnen. <b>b</b> versteht sie schon alle Wörter. <b>c</b> bekommt sie viel Hilfe.</p>
+  <p><b>13</b> Aigerim wohnt jetzt …<br /><b>a</b> mit zwei Studentinnen zusammen. <b>b</b> bei einer Familie. <b>c</b> allein in einer Wohnung.</p>
+  <p><b>14</b> Am Wochenende …<br /><b>a</b> arbeitet sie immer. <b>b</b> besucht sie oft ihre Eltern. <b>c</b> macht sie oft Ausflüge.</p>
+  <p><b>15</b> Aigerim möchte …<br /><b>a</b> im Dezember nach Bremen umziehen. <b>b</b> Katja im Dezember sehen. <b>c</b> eine neue Matratze kaufen.</p>
+</Task>
+
+### Teil 4: объявления
+
+Sechs Personen suchen im Internet nach Kursen. Lesen Sie die Aufgaben 16 bis 20 und die Anzeigen a bis f. Welche Anzeige passt zu welcher Person? Für eine Aufgabe gibt es keine Lösung. Markieren Sie so: X. Die Anzeige aus dem Beispiel können Sie nicht mehr wählen.
+
+<Task title="Personen">
+  <p><b>Beispiel 0</b> Mehmet möchte mit seinem Handy schönere Fotos machen. <i>Lösung: c</i></p>
+  <p><b>16</b> Olga und ihr Freund möchten am Abend zusammen etwas lernen und danach zusammen essen.</p>
+  <p><b>17</b> Herr Brandt ist 72. Er möchte seinen Enkeln in Kanada E-Mails und Fotos schicken.</p>
+  <p><b>18</b> Tomás macht bald den Führerschein. Dafür braucht er noch einen Kurs.</p>
+  <p><b>19</b> Leyla ist 35 und möchte Klavier spielen lernen.</p>
+  <p><b>20</b> Frau Ito möchte ihre Kleidung selbst machen. Eine Nähmaschine hat sie nicht.</p>
+</Task>
+
+<Task title="Anzeigen">
+  <p><b>a</b> Nähen für Anfänger: Machen Sie Ihre Kleidung selbst! Kleine Gruppen, Nähmaschinen haben wir. Jeden Mittwoch, 18 bis 20 Uhr, Familienzentrum Nord.</p>
+  <p><b>b</b> Computer-Hilfe für Senioren: E-Mails schreiben, Fotos an die Familie schicken, im Internet einkaufen. Langsam und mit viel Geduld. Dienstag, 10 bis 12 Uhr, Seniorentreff am Markt.</p>
+  <p><b>c</b> Bessere Fotos mit dem Smartphone! Licht, Farben, die richtige Position. Ein Samstag, 10 bis 16 Uhr. Bringen Sie Ihr Handy mit.</p>
+  <p><b>d</b> Kochen wie in Italien: Pasta, Pizza, Tiramisu. Wir kochen zusammen und essen danach gemeinsam. Freitags ab 19 Uhr. Gern auch zu zweit!</p>
+  <p><b>e</b> Erste Hilfe am Wochenende: Diesen Kurs brauchen Sie für den Führerschein. Samstag und Sonntag, 9 bis 13 Uhr, mit Bescheinigung.</p>
+  <p><b>f</b> Musikschule Do-Re-Mi: Gitarre und Klavier für Kinder von 6 bis 14 Jahren. Einzelunterricht am Nachmittag.</p>
+</Task>
+
+<AnswerSheet
+  id="stellas-a2-1-lesen"
+  title="Lesen · Пробник Stellas A2 №1"
+  level="A2"
+  module="lesen"
+  minutes={30}
+  factor={1.25}
+  maxPoints={25}
+  hint="Тексты выше. Запусти таймер и решай. Отмечай ответы здесь. Объяснения откроются после проверки."
+  items={[
+    { n: 1, part: 'Teil 1', o: ['a', 'b', 'c'], a: 1, q: 'Чем занимается Йонас Крюгер', why: 'В автобусе нет пассажиров, там книги. «Darum komme ich zu den Leuten». Он везёт книги к людям. **Ловушка:** c. Книги бесплатно дают почитать, а не продают.' },
+    { n: 2, part: 'Teil 1', o: ['a', 'b', 'c'], a: 0, q: 'Кем он был раньше', why: 'Работал в банке, «gut bezahlt». А «heute verdient er weniger». Значит, раньше зарабатывал больше. **Ловушка:** b и c собраны из слов текста: Bibliothek и Bus.' },
+    { n: 3, part: 'Teil 1', o: ['a', 'b', 'c'], a: 1, q: 'Как часто автобус в каждой деревне', why: '«einmal pro Woche in jedem Dorf, immer am gleichen Tag». Раз в неделю, в один и тот же день. **Ловушка:** «jeden Tag» в начале про самого Крюгера, а не про одну деревню.' },
+    { n: 4, part: 'Teil 1', o: ['a', 'b', 'c'], a: 2, q: 'Где взять читательский билет', why: '«den bekommt man direkt im Bus». **Ловушка:** Internet в тексте есть, но там он сообщает новости зимой.' },
+    { n: 5, part: 'Teil 1', o: ['a', 'b', 'c'], a: 0, q: 'О чём весь текст', why: 'Весь текст про автобус-библиотеку: что в нём, где ездит, кто приходит. Bibliothek auf Rädern = библиотека на колёсах. **Ловушка:** зима и детские книги это детали одного абзаца.' },
+    { n: 6, part: 'Teil 2', o: ['a', 'b', 'c'], a: 2, q: 'Взять кулинарную книгу', why: 'Kochen стоит в Sachbücher на 2. Stock. Такого этажа в вариантах нет. Значит, c. **Ловушка:** Lesecafé на 3. Stock звучит как еда, но книг о готовке там нет.' },
+    { n: 7, part: 'Teil 2', o: ['a', 'b', 'c'], a: 0, q: 'Сдать куртку', why: 'Garderobe в UG. Это подвал. **Ловушка:** EG с информацией кажется логичным местом для всего. Нет.' },
+    { n: 8, part: 'Teil 2', o: ['a', 'b', 'c'], a: 2, q: 'Скопировать страницу', why: 'Kopierer und Drucker в UG. В вариантах UG нет, значит c. **Ловушка:** компьютеры на 1. Stock. Компьютер не копир.' },
+    { n: 9, part: 'Teil 2', o: ['a', 'b', 'c'], a: 0, q: 'Игра для шестилетней дочки', why: 'Kinderbibliothek: Bücher und Spiele в EG. EG это наш первый этаж.' },
+    { n: 10, part: 'Teil 2', o: ['a', 'b', 'c'], a: 1, q: 'Фильм на вечер', why: '«Filme auf DVD» на 3. Stock. **Ловушка:** на 1. Stock романы и детективы. Krimi бывает и книгой, и фильмом. Но тут это книги.' },
+    { n: 11, part: 'Teil 3', o: ['a', 'b', 'c'], a: 1, q: 'Чем занята Айгерим', why: '«Seit Oktober mache ich eine Ausbildung als Krankenpflegerin». Ausbildung = учится профессии. **Ловушка:** студентки в тексте есть, это соседки. А в больнице она уже работает, ничего не ищет.' },
+    { n: 12, part: 'Teil 3', o: ['a', 'b', 'c'], a: 2, q: 'Как ей на работе', why: 'Коллеги «helfen mir viel». **Ловушка:** b. Ей помогают, «wenn ich ein Wort nicht verstehe». Значит, понимает не всё.' },
+    { n: 13, part: 'Teil 3', o: ['a', 'b', 'c'], a: 0, q: 'Где она живёт сейчас', why: 'Сначала жила в семье. «Seit zwei Wochen» в WG «zusammen mit zwei Studentinnen». **Ловушка:** семья это прошлое: «Am Anfang habe ich … gewohnt».' },
+    { n: 14, part: 'Teil 3', o: ['a', 'b', 'c'], a: 2, q: 'Что она делает на выходных', why: 'Обычно свободна, ездит в Шварцвальд и ходит в походы. Это и есть Ausflüge. **Ловушка:** a. Работать в выходные она будет только в следующем месяце. Не immer.' },
+    { n: 15, part: 'Teil 3', o: ['a', 'b', 'c'], a: 1, q: 'Чего она хочет', why: 'Зовёт Катю в гости в декабре: «Möchtest du mich dann besuchen?» **Ловушка:** Бремен это поездка к родителям, не переезд. Матрас у неё уже есть.' },
+    { n: 16, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'x'], a: 3, q: 'Пара: учиться вечером и поужинать', why: 'd: готовят вместе, потом «essen danach gemeinsam», в 19 часов, «gern auch zu zweit». Все три условия.' },
+    { n: 17, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'x'], a: 1, q: 'Пенсионер: письма и фото внукам', why: 'b: «für Senioren», e-mail и «Fotos an die Familie schicken». **Ловушка:** c тоже про фото, но там учат снимать. И c уже занято примером.' },
+    { n: 18, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'x'], a: 4, q: 'Курс для водительских прав', why: 'e: «Diesen Kurs brauchen Sie für den Führerschein». Совпадение прямое.' },
+    { n: 19, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'x'], a: 6, q: 'Взрослая хочет на пианино', why: 'Klavier есть только в f. Но там «für Kinder von 6 bis 14 Jahren». Лейле 35. Подходящего нет, ставь X. **Ловушка:** совпало слово, не совпал человек.' },
+    { n: 20, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'x'], a: 0, q: 'Шить одежду без машинки', why: 'a: «Machen Sie Ihre Kleidung selbst!» и «Nähmaschinen haben wir». Машинку дадут на месте.' },
+  ]}
+/>
+
+<Callout type="trap" title="«Другой этаж» бывает верным">
+  <p>В Teil 2 вариант c не запасной выход. В этом пробнике он верный два раза из пяти.</p>
+  <p>Нашёл нужное на табличке, сверь этаж с вариантами a и b. Нет совпадения, смело ставь c.</p>
+</Callout>
+
+<p class="punch">Совпало слово, не значит совпал смысл.</p>
+
+## Hören: <span class="hl">20 заданий</span>
+
+| Teil | Что звучит | Сколько раз |
+|---|---|---|
+| 1 | 5 коротких текстов: автоответчик, радио, объявления | 2 раза |
+| 2 | один разговор, варианты a–i | 1 раз |
+| 3 | 5 коротких диалогов | 1 раз |
+| 4 | интервью, Ja или Nein | 2 раза |
+
+Перед каждым аудио прочитай вопрос. В Teil 2 и 3 второго шанса нет. Дослушивай реплику до конца.
+
+### Teil 1: короткие тексты, два раза
+
+Sie hören fünf kurze Texte. Sie hören jeden Text zweimal. Wählen Sie für die Aufgaben 1 bis 5 die richtige Lösung a, b oder c.
+
+<Task title="Aufgabe 1">
+  <p>Wann kann Frau Aliyeva zum Zahnarzt kommen?</p>
+  <p><b>a</b> am Donnerstag um 9 Uhr · <b>b</b> am Dienstag um 11 Uhr · <b>c</b> am Dienstag um 9 Uhr</p>
+</Task>
+
+<Listen title="Teil 1 · Aufgabe 1" plays={2} text="Guten Tag, Frau Aliyeva, hier ist die Zahnarztpraxis Doktor Roth. Leider ist Doktor Roth am Donnerstag nicht in der Praxis. Ihr Termin um neun Uhr ist deshalb nicht möglich. Am Dienstag um elf Uhr haben wir noch einen Termin frei. Wenn das für Sie passt, müssen Sie nicht zurückrufen. Auf Wiederhören." ru="Добрый день, фрау Алиева, это стоматология доктора Рот. К сожалению, в четверг доктора Рот не будет. Поэтому ваш приём в девять невозможен. Во вторник в одиннадцать есть свободное время. Если вам подходит, перезванивать не нужно. До свидания." />
+
+<Task title="Aufgabe 2">
+  <p>Wie wird das Wetter am Sonntag?</p>
+  <p><b>a</b> Regen, 15 Grad · <b>b</b> Sonne, 22 Grad · <b>c</b> Wolken, 22 Grad</p>
+</Task>
+
+<Listen title="Teil 1 · Aufgabe 2" plays={2} text="Und nun das Wetter für das Wochenende. Am Samstag bleibt es trocken und sonnig, bei bis zu 22 Grad. Am Sonntag kommt dann von Westen Regen, und es wird kühler: nur noch 15 Grad. Ab Montag scheint wieder öfter die Sonne." ru="А теперь погода на выходные. В субботу сухо и солнечно, до 22 градусов. В воскресенье с запада придёт дождь, станет прохладнее: всего 15 градусов. С понедельника снова чаще солнце." />
+
+<Task title="Aufgabe 3">
+  <p>Was sollen die Fahrgäste nach Dresden machen?</p>
+  <p><b>a</b> im Zug bleiben · <b>b</b> in Leipzig in einen anderen Zug steigen · <b>c</b> ab Leipzig mit dem Bus fahren</p>
+</Task>
+
+<Listen title="Teil 1 · Aufgabe 3" plays={2} text="Sehr geehrte Fahrgäste, wegen einer Reparatur an den Gleisen endet dieser Zug heute in Leipzig. Reisende nach Dresden fahren bitte ab Leipzig mit dem Bus weiter. Die Busse warten vor dem Hauptbahnhof. Wir bitten um Entschuldigung." ru="Уважаемые пассажиры, из-за ремонта путей этот поезд сегодня следует только до Лейпцига. Пассажиров до Дрездена просим ехать дальше от Лейпцига на автобусе. Автобусы ждут перед главным вокзалом. Приносим извинения." />
+
+<Task title="Aufgabe 4">
+  <p>Was soll Tobias mitbringen?</p>
+  <p><b>a</b> Kisten · <b>b</b> Brötchen · <b>c</b> Kaffee</p>
+</Task>
+
+<Listen title="Teil 1 · Aufgabe 4" plays={2} text="Hallo Tobias, hier ist Marie. Danke, dass du mir am Samstag beim Umzug hilfst! Wir fangen um acht Uhr an. Kaffee und Brötchen gibt es bei mir, die musst du nicht mitbringen. Aber hast du vielleicht ein paar Kisten? Die brauche ich unbedingt. Bis Samstag!" ru="Привет, Тобиас, это Мари. Спасибо, что в субботу помогаешь с переездом! Начинаем в восемь. Кофе и булочки у меня есть, их не надо. Но у тебя, может, есть несколько коробок? Они мне очень нужны. До субботы!" />
+
+<Task title="Aufgabe 5">
+  <p>Was ist heute billiger?</p>
+  <p><b>a</b> Kinderkleidung · <b>b</b> Spielsachen · <b>c</b> Essen für Erwachsene</p>
+</Task>
+
+<Listen title="Teil 1 · Aufgabe 5" plays={2} text="Liebe Kundinnen und Kunden, heute ist bei uns Familientag! Alle Spielsachen im zweiten Stock kosten heute 20 Prozent weniger. Und in unserem Restaurant im dritten Stock essen Kinder bis zehn Jahre heute kostenlos. Wir wünschen Ihnen einen schönen Einkauf!" ru="Дорогие покупатели, сегодня у нас семейный день! Все игрушки на третьем этаже сегодня на 20 процентов дешевле. А в ресторане на четвёртом этаже дети до десяти лет сегодня едят бесплатно. Приятных покупок!" />
+
+### Teil 2: один разговор, один раз
+
+Lena und Sergej planen ein Familienfest. Was bringen die Gäste mit? Sie hören den Text einmal. Wählen Sie für die Aufgaben 6 bis 10 die passende Lösung a bis i. Wählen Sie jeden Buchstaben nur einmal.
+
+<Task title="Aufgaben 6–10">
+  <p><b>Beispiel 0</b> Oma: <i>Lösung a</i></p>
+  <p><b>6</b> Tante Olga · <b>7</b> Cousine Mia · <b>8</b> Onkel Paul · <b>9</b> Herr Wolf, der Nachbar · <b>10</b> Dima, Sergejs Bruder</p>
+  <p><b>a</b> Kuchen · <b>b</b> Salat · <b>c</b> Getränke · <b>d</b> Stühle · <b>e</b> Lautsprecher · <b>f</b> Fleisch · <b>g</b> Blumen · <b>h</b> Brot · <b>i</b> Eis</p>
+</Task>
+
+<Listen title="Teil 2 · Familienfest" plays={1} text="Lena: Sergej, wir müssen noch das Fest am Sonntag planen. Wer bringt was mit? Oma backt natürlich wieder ihren Apfelkuchen. Sergej: Super, Omas Kuchen ist der beste! Und Tante Olga? Bringt sie wieder einen Salat mit? Lena: Nein, diesmal nicht. Sie bringt Brot mit, vom Bäcker neben ihrer Wohnung. Das Brot dort ist sehr gut. Sergej: Und wer macht dann den Salat? Lena: Mia. Sie wollte zuerst Eis mitbringen. Aber sie fährt eine Stunde mit dem Auto, und dann ist das Eis nicht mehr kalt. Also macht sie einen Salat. Sergej: Gut. Und Onkel Paul? Er grillt doch so gern. Bringt er das Fleisch mit? Lena: Nein, das Fleisch kaufen wir selbst. Aber Paul hat viele Gartenstühle. Er bringt sechs Stühle mit. Sergej: Prima, wir haben nämlich nur vier. Kommt Herr Wolf auch? Lena: Ja, unser Nachbar kommt gern. Er bringt seine großen Lautsprecher mit. Dann haben wir gute Musik. Sergej: Und mein Bruder Dima? Lena: Dima hat ein großes Auto. Er bringt die Getränke mit: Wasser, Saft und Limonade. Sergej: Und Blumen für den Tisch? Lena: Die kaufe ich am Samstag auf dem Markt." ru="Лена: Сергей, надо спланировать праздник в воскресенье. Кто что приносит? Бабушка, конечно, опять печёт яблочный пирог. Сергей: Отлично, бабушкин пирог лучший! А тётя Ольга? Опять салат? Лена: Нет, в этот раз нет. Она принесёт хлеб из пекарни рядом с домом. Там очень хороший хлеб. Сергей: А кто тогда делает салат? Лена: Мия. Сначала она хотела привезти мороженое. Но ехать час на машине, мороженое растает. Так что она делает салат. Сергей: Хорошо. А дядя Пауль? Он же любит жарить мясо. Он привезёт мясо? Лена: Нет, мясо купим сами. Но у Пауля много садовых стульев. Он привезёт шесть. Сергей: Отлично, у нас ведь только четыре. Господин Вольф тоже придёт? Лена: Да, сосед придёт с удовольствием. Он принесёт свои большие колонки. Будет хорошая музыка. Сергей: А мой брат Дима? Лена: У Димы большая машина. Он привезёт напитки: воду, сок и лимонад. Сергей: А цветы на стол? Лена: Их куплю я в субботу на рынке." />
+
+### Teil 3: короткие диалоги, один раз
+
+Sie hören fünf kurze Gespräche. Sie hören jeden Text einmal. Wählen Sie für die Aufgaben 11 bis 15 die richtige Lösung a, b oder c.
+
+<Task title="Aufgabe 11">
+  <p>Was kauft die Frau?</p>
+  <p><b>a</b> ein Hemd · <b>b</b> einen Schal · <b>c</b> eine Krawatte</p>
+</Task>
+
+<Listen title="Teil 3 · Aufgabe 11" plays={1} text="Verkäufer: Guten Tag, kann ich Ihnen helfen? Frau: Ja, ich suche ein Geschenk für meinen Mann. Vielleicht ein Hemd? Krawatten trägt er nämlich nie. Verkäufer: Gern. Welche Größe hat Ihr Mann? Frau: Hm, das weiß ich nicht genau. Dann nehme ich lieber diesen Schal. Der passt immer. Verkäufer: Gute Idee. Soll ich ihn als Geschenk einpacken?" ru="Продавец: Добрый день, вам помочь? Женщина: Да, ищу подарок мужу. Может, рубашку? Галстуков он вообще не носит. Продавец: Конечно. Какой у мужа размер? Женщина: Хм, точно не знаю. Тогда лучше возьму этот шарф. Он подходит всегда. Продавец: Хорошая идея. Упаковать как подарок?" />
+
+<Task title="Aufgabe 12">
+  <p>Wie ist Ali heute zur Arbeit gekommen?</p>
+  <p><b>a</b> mit dem Auto · <b>b</b> mit dem Fahrrad · <b>c</b> mit dem Bus</p>
+</Task>
+
+<Listen title="Teil 3 · Aufgabe 12" plays={1} text="Frau: Du kommst heute aber spät, Ali! Ist dein Auto wieder kaputt? Ali: Nein, das Auto ist in Ordnung. Ich fahre jetzt immer mit dem Fahrrad zur Arbeit. Das ist gesund. Aber heute hat es so stark geregnet. Da habe ich den Bus genommen, und der Bus hatte Verspätung." ru="Женщина: Ты сегодня поздно, Али! Машина опять сломалась? Али: Нет, машина в порядке. Я теперь всегда езжу на работу на велосипеде. Это полезно. Но сегодня был сильный дождь. Я поехал на автобусе, а автобус опоздал." />
+
+<Task title="Aufgabe 13">
+  <p>Wo ist die Brille?</p>
+  <p><b>a</b> in der Küche · <b>b</b> im Bad · <b>c</b> auf dem Schreibtisch</p>
+</Task>
+
+<Listen title="Teil 3 · Aufgabe 13" plays={1} text="Mann: Schatz, hast du meine Brille gesehen? Auf dem Schreibtisch ist sie nicht. Frau: Vielleicht im Bad? Mann: Da habe ich schon gesucht. Frau: Moment, ich sehe sie! Sie liegt in der Küche, neben der Kaffeemaschine." ru="Мужчина: Дорогая, ты не видела мои очки? На столе их нет. Женщина: Может, в ванной? Мужчина: Там я уже искал. Женщина: Секунду, вижу! Лежат на кухне, рядом с кофемашиной." />
+
+<Task title="Aufgabe 14">
+  <p>Was macht Petra am Wochenende?</p>
+  <p><b>a</b> Sie wandert in den Bergen. · <b>b</b> Sie besucht ihre Schwester. · <b>c</b> Sie bleibt zu Hause.</p>
+</Task>
+
+<Listen title="Teil 3 · Aufgabe 14" plays={1} text="Mann: Und, Petra, was machst du am Wochenende? Fährst du wieder in die Berge? Petra: Nein, dieses Mal nicht. Meine Schwester hat Geburtstag. Ich fahre zu ihr nach Köln, und am Sonntag gehen wir zusammen ins Museum. Mann: Schön! Ich bleibe zu Hause und lese." ru="Мужчина: Петра, что делаешь на выходных? Опять в горы? Петра: Нет, в этот раз нет. У сестры день рождения. Еду к ней в Кёльн, а в воскресенье вместе идём в музей. Мужчина: Здорово! А я останусь дома и буду читать." />
+
+<Task title="Aufgabe 15">
+  <p>Welches Zimmer nimmt der Gast?</p>
+  <p><b>a</b> ein Zimmer zum Park · <b>b</b> ein Zimmer zur Straße · <b>c</b> ein Zimmer zum Hof</p>
+</Task>
+
+<Listen title="Teil 3 · Aufgabe 15" plays={1} text="Frau: Wir haben noch ein Einzelzimmer zum Park, für 90 Euro. Oder ein Zimmer zur Straße für 70 Euro. Gast: Zur Straße ist es sicher laut, oder? Frau: Ein bisschen, ja. Ach, wir haben auch noch ein Zimmer zum Hof. Es ist ganz ruhig und kostet 75 Euro. Gast: Prima, das nehme ich." ru="Женщина: У нас есть одноместный номер с видом на парк за 90 евро. Или номер на улицу за 70. Гость: На улицу, наверное, шумно? Женщина: Немного, да. Ой, есть ещё номер во двор. Совсем тихий, 75 евро. Гость: Отлично, беру его." />
+
+### Teil 4: интервью, два раза
+
+Sie hören ein Interview. Sie hören den Text zweimal. Wählen Sie für die Aufgaben 16 bis 20 Ja oder Nein.
+
+<Task title="Aufgaben 16–20">
+  <ul>
+    <li><i>16</i><span>Kemal hatte als Kind einen Garten.</span></li>
+    <li><i>17</i><span>Heute arbeiten auch Nachbarn im Garten.</span></li>
+    <li><i>18</i><span>Kemal verkauft das Gemüse auf dem Markt.</span></li>
+    <li><i>19</i><span>Kemal ist am liebsten früh am Morgen im Garten.</span></li>
+    <li><i>20</i><span>Bald kommt eine Schulklasse in den Garten.</span></li>
+  </ul>
+  <p><b>Ja</b> · <b>Nein</b></p>
+</Task>
+
+<Listen title="Teil 4 · Interview" plays={2} text="Moderatorin: Herzlich willkommen bei Stadt und Leute! Heute ist Kemal Arslan bei uns. Herr Arslan, Sie haben einen Garten auf dem Dach von einem Supermarkt. Wie kam das? Kemal: Guten Tag! Ich bin in Berlin groß geworden, in einer kleinen Wohnung im sechsten Stock. Einen Garten hatten wir nie, nur ein paar Blumen auf dem Balkon. Aber ich wollte immer selbst Gemüse pflanzen. Vor vier Jahren habe ich dann den Chef vom Supermarkt gefragt: Darf ich auf dem Dach einen Garten machen? Er hat sofort Ja gesagt. Moderatorin: Machen Sie die ganze Arbeit allein? Kemal: Am Anfang schon. Aber heute helfen zwölf Nachbarn mit. Jeder hat ein kleines Beet. Moderatorin: Was wächst denn dort? Kemal: Tomaten, Salat, Kartoffeln und viele Kräuter. Moderatorin: Verkaufen Sie das Gemüse? Kemal: Nein, das wollen wir nicht. Wer mitarbeitet, nimmt Gemüse mit nach Hause. Den Rest bringen wir in einen Kindergarten in der Nähe. Moderatorin: Wann arbeiten Sie im Garten? Kemal: Ich bin Krankenpfleger und arbeite oft am Nachmittag und am Abend. Deshalb bin ich am liebsten ganz früh im Garten, so um sechs Uhr. Dann ist es noch ruhig und kühl. Moderatorin: Und haben Sie Pläne? Kemal: Ja! Eine Lehrerin von der Grundschule hat gefragt, ob ihre Klasse kommen kann. Ab Mai kommen die Kinder einmal pro Woche. Sie sollen lernen, woher das Gemüse kommt. Darauf freue ich mich sehr. Moderatorin: Vielen Dank, Herr Arslan!" ru="Ведущая: Добро пожаловать в программу «Город и люди»! Сегодня у нас Кемаль Арслан. Господин Арслан, у вас огород на крыше супермаркета. Как так вышло? Кемаль: Добрый день! Я вырос в Берлине, в маленькой квартире на седьмом этаже. Сада у нас никогда не было, только пара цветов на балконе. Но я всегда хотел сам выращивать овощи. Четыре года назад я спросил директора супермаркета: можно сделать огород на крыше? Он сразу согласился. Ведущая: Вы всё делаете один? Кемаль: Сначала да. Но сегодня помогают двенадцать соседей. У каждого своя грядка. Ведущая: А что там растёт? Кемаль: Помидоры, салат, картошка и много зелени. Ведущая: Вы продаёте овощи? Кемаль: Нет, мы этого не хотим. Кто работает, забирает овощи домой. Остальное относим в детский сад рядом. Ведущая: Когда вы работаете в огороде? Кемаль: Я медбрат и часто работаю днём и вечером. Поэтому больше всего люблю приходить очень рано, около шести. Тогда ещё тихо и прохладно. Ведущая: А планы есть? Кемаль: Да! Учительница из начальной школы спросила, можно ли прийти с классом. С мая дети будут приходить раз в неделю. Пусть узнают, откуда берутся овощи. Очень этого жду. Ведущая: Спасибо, господин Арслан!" />
+
+Все 20 прослушал? Перенеси ответы с листа в бланк.
+
+<AnswerSheet
+  id="stellas-a2-1-hoeren"
+  title="Hören · Пробник Stellas A2 №1"
+  level="A2"
+  module="hoeren"
+  minutes={30}
+  factor={1.25}
+  maxPoints={25}
+  hint="Слушай аудио выше: у каждой записи столько попыток, сколько на экзамене. Здесь только отмечай ответы. Объяснения откроются после проверки."
+  items={[
+    { n: 1, part: 'Teil 1', o: ['a', 'b', 'c'], a: 1, q: 'Когда можно к стоматологу', why: 'Четверг в девять отменили. Новое время: «Am Dienstag um elf Uhr». **Ловушка:** c склеен из нового дня и старого часа.' },
+    { n: 2, part: 'Teil 1', o: ['a', 'b', 'c'], a: 0, q: 'Погода в воскресенье', why: 'В воскресенье «Regen» и «nur noch 15 Grad». **Ловушка:** солнце и 22 градуса звучат первыми, но это суббота.' },
+    { n: 3, part: 'Teil 1', o: ['a', 'b', 'c'], a: 2, q: 'Что делать пассажирам до Дрездена', why: 'Поезд заканчивается в Лейпциге. Дальше «mit dem Bus weiter». **Ловушка:** b. Пересадка будет, но на автобус, а не на другой поезд.' },
+    { n: 4, part: 'Teil 1', o: ['a', 'b', 'c'], a: 0, q: 'Что принести Тобиасу', why: 'Кофе и булочки у Мари есть: «die musst du nicht mitbringen». Нужны коробки: «Die brauche ich unbedingt». **Ловушка:** звучат все три, два с отрицанием.' },
+    { n: 5, part: 'Teil 1', o: ['a', 'b', 'c'], a: 1, q: 'Что сегодня дешевле', why: 'Игрушки «kosten heute 20 Prozent weniger». **Ловушка:** бесплатная еда только для детей до десяти лет. Не для взрослых.' },
+    { n: 6, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], a: 7, q: 'Тётя Ольга', why: 'Салат «diesmal nicht». «Sie bringt Brot mit». **Ловушка:** салат прозвучал с её именем первым.' },
+    { n: 7, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], a: 1, q: 'Кузина Мия', why: 'Хотела мороженое, но оно не доедет холодным. «Also macht sie einen Salat». **Ловушка:** Eis в списке есть. Это отменённый план.' },
+    { n: 8, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], a: 3, q: 'Дядя Пауль', why: 'Мясо покупают сами. У Пауля садовые стулья: «Er bringt sechs Stühle mit». **Ловушка:** «Er grillt doch so gern» подталкивает к Fleisch.' },
+    { n: 9, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], a: 4, q: 'Сосед господин Вольф', why: '«Er bringt seine großen Lautsprecher mit». Музыка будет через колонки.' },
+    { n: 10, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'], a: 2, q: 'Брат Дима', why: 'У него большая машина. «Er bringt die Getränke mit»: вода, сок, лимонад. Fleisch и Blumen остаются лишними: их покупают Лена и Сергей сами.' },
+    { n: 11, part: 'Teil 3', o: ['a', 'b', 'c'], a: 1, q: 'Что покупает женщина', why: 'Рубашку не берёт: не знает размер. «Dann nehme ich lieber diesen Schal». Галстуки муж не носит. **Ловушка:** lieber меняет план в последней реплике.' },
+    { n: 12, part: 'Teil 3', o: ['a', 'b', 'c'], a: 2, q: 'Как Али доехал сегодня', why: 'Обычно на велосипеде. Но сегодня дождь: «Da habe ich den Bus genommen». **Ловушка:** вопрос про heute, а «jetzt immer» про обычные дни.' },
+    { n: 13, part: 'Teil 3', o: ['a', 'b', 'c'], a: 0, q: 'Где очки', why: 'На столе нет, в ванной искал. «Sie liegt in der Küche». Ответ в самом конце.' },
+    { n: 14, part: 'Teil 3', o: ['a', 'b', 'c'], a: 1, q: 'Выходные Петры', why: 'В горы «dieses Mal nicht». У сестры день рождения: «Ich fahre zu ihr nach Köln». **Ловушка:** дома остаётся мужчина, а не Петра.' },
+    { n: 15, part: 'Teil 3', o: ['a', 'b', 'c'], a: 2, q: 'Какой номер берёт гость', why: 'Парк дорогой, улица шумная. Третий вариант «zum Hof», тихий: «das nehme ich». **Ловушка:** первые два варианта звучат с ценами и кажутся единственными.' },
+    { n: 16, part: 'Teil 4', o: ['Ja', 'Nein'], a: 1, q: 'В детстве у Кемаля был сад', why: '«Einen Garten hatten wir nie». **Ловушка:** цветы на балконе не сад.' },
+    { n: 17, part: 'Teil 4', o: ['Ja', 'Nein'], a: 0, q: 'Соседи тоже работают в огороде', why: 'Сначала один, «aber heute helfen zwölf Nachbarn mit». У каждого своя грядка.' },
+    { n: 18, part: 'Teil 4', o: ['Ja', 'Nein'], a: 1, q: 'Он продаёт овощи на рынке', why: 'На вопрос о продаже: «Nein, das wollen wir nicht». Овощи забирают помощники, остальное идёт в детский сад.' },
+    { n: 19, part: 'Teil 4', o: ['Ja', 'Nein'], a: 0, q: 'Любимое время рано утром', why: 'Работает днём и вечером, поэтому «am liebsten ganz früh im Garten, so um sechs Uhr».' },
+    { n: 20, part: 'Teil 4', o: ['Ja', 'Nein'], a: 0, q: 'Скоро придёт школьный класс', why: 'Учительница спросила, и «Ab Mai kommen die Kinder einmal pro Woche». Kinder einer Grundschule = Schulklasse.' },
+  ]}
+/>
+
+<Callout type="trap" title="Первое не значит верное">
+  <p>Почти в каждом задании звучат все варианты. Первый предлагают. Второй отменяют. Третий выбирают.</p>
+  <p>Ставь крестик после <span lang="de">aber</span>, <span lang="de">lieber</span>, <span lang="de">diesmal nicht</span>. Не раньше.</p>
+</Callout>
+
+## Schreiben: <span class="hl">SMS и e-mail</span>
+
+30 минут на два текста. Наш совет: 12 минут на SMS, 15 на e-mail, 3 на проверку.
+
+Каждый текст оценивают по двум критериям. Aufgabenerfüllung: все ли три пункта и правильный ли тон. Sprache: слова и грамматика. По 5 баллов, на два текста 20. Потом × 1,25 = 25.
+
+<Callout type="trap" title="Меньше половины = ноль">
+  <p>SMS короче 10 слов или e-mail короче 15: Aufgabenerfüllung получает E. А E обнуляет всё задание.</p>
+</Callout>
+
+### Teil 1: SMS другу
+
+<Task title="Teil 1 · SMS" time="ca. 12 Minuten" words="20–30 Wörter">
+  <p>Sie waren gestern bei Ihrem Freund Daniel. Zu Hause merken Sie: Sie haben etwas bei ihm vergessen. Schreiben Sie Daniel eine SMS.</p>
+  <ul>
+    <li><i>1</i><span>Was haben Sie vergessen?</span></li>
+    <li><i>2</i><span>Warum brauchen Sie es schnell?</span></li>
+    <li><i>3</i><span>Wann holen Sie es ab?</span></li>
+  </ul>
+  <p>Schreiben Sie 20–30 Wörter. Schreiben Sie zu allen drei Punkten.</p>
+  <p class="ru">Вчера ты был у друга Даниэля и что-то у него забыл. Напиши SMS: что забыл, почему нужно срочно, когда заберёшь.</p>
+</Task>
+
+<Trainer id="stellas-a2-1-schreiben-1" mode="basic" minutes={12} target={25} points={['1. Was haben Sie vergessen?', '2. Warum brauchen Sie es schnell?', '3. Wann holen Sie es ab?']} />
+
+Написал? Теперь образец.
+
+<Anatomy
+  window="Neue SMS"
+  to="Daniel"
+  parts={[
+    { id: 'anrede', label: 'Обращение', color: 'var(--violet)', text: 'Hallo Daniel,', note: 'Другу. Hallo звучит естественно.' },
+    { id: 'p1', label: 'Пункт 1', color: 'var(--pink)', text: 'ich habe gestern meine blaue Jacke bei dir vergessen.', note: 'Что и где забыл. Perfekt: habe … vergessen. После запятой с маленькой буквы.' },
+    { id: 'p2', label: 'Пункт 2', color: 'var(--sun)', text: 'Ich brauche sie morgen, denn wir machen einen Ausflug.', note: 'Почему срочно. После denn обычный порядок слов: wir machen. sie, потому что die Jacke.' },
+    { id: 'p3', label: 'Пункт 3', color: 'var(--teal)', text: 'Kann ich sie heute um 19 Uhr abholen? Danke!', note: 'Когда заберёшь. Конкретное время. abholen уходит в конец после модального kann.' },
+    { id: 'gruss', label: 'Подпись', color: 'var(--gold)', ink: 'var(--ink)', text: 'Kerim', note: 'В SMS другу хватает имени.' },
+  ]}
+/>
+
+30 слов вместе с обращением и именем, 27 без них. Ровно в коридоре.
+
+### Teil 2: e-mail соседке
+
+<Task title="Teil 2 · E-Mail" time="ca. 15 Minuten" words="30–40 Wörter">
+  <p>Ihre Nachbarin, Frau Lorenz, hat gestern ein Paket für Sie angenommen. Sie wissen: Frau Lorenz fährt nächste Woche in Urlaub. Schreiben Sie Frau Lorenz eine E-Mail.</p>
+  <ul>
+    <li><i>1</i><span>Bedanken Sie sich.</span></li>
+    <li><i>2</i><span>Wann holen Sie das Paket ab?</span></li>
+    <li><i>3</i><span>Bieten Sie Ihre Hilfe für die Urlaubszeit an.</span></li>
+  </ul>
+  <p>Schreiben Sie 30–40 Wörter. Schreiben Sie zu allen drei Punkten.</p>
+  <p class="ru">Соседка фрау Лоренц вчера приняла для тебя посылку. Ты знаешь, что она через неделю уезжает в отпуск. Напиши ей: поблагодари, скажи, когда заберёшь посылку, предложи помощь на время отпуска.</p>
+</Task>
+
+<Trainer id="stellas-a2-1-schreiben-2" mode="basic" minutes={15} target={35} points={['1. Bedanken Sie sich.', '2. Wann holen Sie das Paket ab?', '3. Bieten Sie Ihre Hilfe für die Urlaubszeit an.']} />
+
+Образец после своего текста.
+
+<Anatomy
+  to="Frau Lorenz"
+  subject="Mein Paket"
+  parts={[
+    { id: 'anrede', label: 'Обращение', color: 'var(--violet)', text: 'Liebe Frau Lorenz,', note: 'Соседка: знакомая, но на Sie. Liebe Frau + фамилия попадает в тон.' },
+    { id: 'p1', label: 'Пункт 1', color: 'var(--pink)', text: 'vielen Dank, dass Sie gestern mein Paket angenommen haben.', note: 'Благодарность. После dass глагол в конец: angenommen haben.' },
+    { id: 'p2', label: 'Пункт 2', color: 'var(--sun)', text: 'Kann ich es heute um 18 Uhr bei Ihnen abholen?', note: 'Когда заберёшь. Вопрос звучит вежливее, чем «Ich komme um 18 Uhr». es, потому что das Paket.' },
+    { id: 'p3', label: 'Пункт 3', color: 'var(--teal)', text: 'Sie fahren ja nächste Woche in Urlaub. Soll ich Ihre Blumen gießen? Das mache ich gern.', note: 'Предложить помощь. Soll ich …? это главная рамка для предложения услуги на A2.' },
+    { id: 'gruss', label: 'Прощание', color: 'var(--gold)', ink: 'var(--ink)', text: 'Viele Grüße\nArman Seitkali', note: 'Полуофициально: Viele Grüße. Mit freundlichen Grüßen тоже можно. Tschüss нельзя.' },
+  ]}
+/>
+
+42 слова вместе с обращением и подписью, 35 без них.
+
+<p class="punch">Три пункта. Три мысли. Каждая на своём месте.</p>
+
+## Sprechen: <span class="hl pink">три части</span>
+
+15 минут на двоих, подготовки нет. На карточку смотришь секунд двадцать и говоришь. Сначала скажи свой вариант вслух. Потом сравни с образцом.
+
+| Teil | Что делаешь | Баллы |
+|---|---|---|
+| 1 | 4 вопроса по карточкам и 4 ответа | 2 + 2 |
+| 2 | рассказ о себе + 1–2 вопроса экзаменатора | 4 + 4 |
+| 3 | вместе договориться о времени | 4 + 4 |
+| Произношение | на всю устную часть | 5 |
+
+### Teil 1: вопросы по карточкам
+
+<Task title="Teil 1 · Fragen zur Person">
+  <p><b>Karten A:</b> Frühstück? · Urlaub? · Sport? · Handy?</p>
+  <p><b>Karten B:</b> Wohnung? · Arbeitsweg? · Fernsehen? · Kochen?</p>
+  <p class="ru">Задаёшь партнёру четыре вопроса по своим карточкам. Он отвечает. Потом наоборот.</p>
+</Task>
+
+<Dialog title="Teil 1: Fragen zur Person" lines={[
+  { who: 'A', name: 'Du', de: 'Was essen Sie zum Frühstück?', ru: 'Карточка «Frühstück». Что вы едите на завтрак?' },
+  { who: 'B', name: 'Partnerin', de: 'Meistens Brot mit Käse. Und ich trinke immer grünen Tee.', ru: 'Обычно хлеб с сыром. И всегда пью зелёный чай. Факт + деталь.' },
+  { who: 'A', name: 'Du', de: 'Wohin sind Sie im letzten Urlaub gefahren?', ru: 'Карточка «Urlaub». Куда ездили в последний отпуск? Perfekt в вопросе.' },
+  { who: 'B', name: 'Partnerin', de: 'Ich war mit meiner Familie am Bodensee. Das Wetter war super.', ru: 'Была с семьёй на Боденском озере. Погода супер.' },
+  { who: 'A', name: 'Du', de: 'Machen Sie gern Sport?', ru: 'Карточка «Sport». Любите спорт?' },
+  { who: 'B', name: 'Partnerin', de: 'Ja, ich gehe zweimal pro Woche schwimmen.', ru: 'Да, хожу плавать два раза в неделю.' },
+  { who: 'A', name: 'Du', de: 'Wie oft benutzen Sie Ihr Handy?', ru: 'Карточка «Handy». Как часто пользуетесь телефоном?' },
+  { who: 'B', name: 'Partnerin', de: 'Leider sehr oft! Ich lese auch Nachrichten auf dem Handy.', ru: 'Увы, очень часто! Ещё и новости там читаю. (Честно и по делу)' },
+  { who: 'B', name: 'Partnerin', de: 'Wie groß ist Ihre Wohnung?', ru: 'Теперь её карточки. «Wohnung»: какая у вас квартира?' },
+  { who: 'A', name: 'Du', de: 'Sie hat zwei Zimmer und einen kleinen Balkon.', ru: 'Две комнаты и маленький балкон.' },
+  { who: 'B', name: 'Partnerin', de: 'Wie kommen Sie zur Arbeit?', ru: 'Карточка «Arbeitsweg». Как добираетесь на работу?' },
+  { who: 'A', name: 'Du', de: 'Mit der U-Bahn. Ich brauche ungefähr zwanzig Minuten.', ru: 'На метро. Минут двадцать.' },
+  { who: 'B', name: 'Partnerin', de: 'Was sehen Sie gern im Fernsehen?', ru: 'Карточка «Fernsehen». Что любите смотреть по телевизору?' },
+  { who: 'A', name: 'Du', de: 'Ich sehe gern Fußball und manchmal Krimis.', ru: 'Футбол и иногда детективы.' },
+  { who: 'B', name: 'Partnerin', de: 'Kochen Sie oft selbst?', ru: 'Карточка «Kochen». Часто готовите сами?' },
+  { who: 'A', name: 'Du', de: 'Ja, fast jeden Abend. Am liebsten koche ich Suppe.', ru: 'Да, почти каждый вечер. Больше всего люблю варить суп.' },
+]} />
+
+### Teil 2: рассказ о себе
+
+<Task title="Teil 2 · Von sich erzählen">
+  <p><b>Wie feiern Sie Ihren Geburtstag?</b></p>
+  <p>Wo? · Mit wem? · Essen? · Geschenke?</p>
+  <p class="ru">Расскажи по углам карточки. Потом экзаменатор задаст один-два вопроса.</p>
+</Task>
+
+<Dialog title="Teil 2: Wie feiern Sie Ihren Geburtstag?" lines={[
+  { who: 'A', name: 'Du', de: 'Meinen Geburtstag feiere ich meistens zu Hause. Meine Wohnung ist klein, aber für zehn Gäste ist genug Platz.', ru: 'Угол «Wo?». Обычно дома. Квартира маленькая, но десяти гостям места хватает.' },
+  { who: 'A', name: 'Du', de: 'Ich feiere immer mit meiner Familie und mit ein paar Freunden.', ru: 'Угол «Mit wem?». С семьёй и парой друзей.' },
+  { who: 'A', name: 'Du', de: 'Zum Essen koche ich Plov. Das ist ein Reisgericht aus Usbekistan. Meine Freunde bringen Kuchen und Salate mit.', ru: 'Угол «Essen?». Готовлю плов, это рисовое блюдо из Узбекистана. Друзья приносят торт и салаты.' },
+  { who: 'A', name: 'Du', de: 'Geschenke bekomme ich auch, am liebsten Bücher. Letztes Jahr habe ich ein Fahrrad bekommen. Das war eine tolle Überraschung!', ru: 'Угол «Geschenke?». Подарки тоже, лучше всего книги. В прошлом году подарили велосипед. Сюрприз! Perfekt показывает, что грамматика не только в настоящем.' },
+  { who: 'B', name: 'Prüferin', de: 'Und was machen Sie am Geburtstag von Ihren Freunden?', ru: 'Дополнительный вопрос: а что вы делаете в день рождения друзей?' },
+  { who: 'A', name: 'Du', de: 'Ich rufe sie morgens an. Und ich kaufe ein kleines Geschenk, zum Beispiel Blumen oder Schokolade.', ru: 'Звоню утром. И покупаю маленький подарок, например цветы или шоколад.' },
+]} />
+
+### Teil 3: договориться о времени
+
+<Task title="Teil 3 · Einen Termin finden">
+  <p>Sie möchten am Sonntag zusammen eine Fahrradtour machen. Sie brauchen ungefähr drei Stunden. Finden Sie einen Termin.</p>
+  <p><b>A: Sonntag</b> · 8–10 Uhr Frühstück bei den Eltern · 11–13 Uhr Wohnung putzen · 17–18 Uhr mit dem Bruder telefonieren · ab 19 Uhr Kino mit Anna</p>
+  <p><b>B: Sonntag</b> · 9–10 Uhr joggen · 10–12 Uhr Hausaufgaben für den Deutschkurs · 12–14 Uhr Mittagessen mit der Familie · ab 18 Uhr Geburtstag bei der Tante</p>
+  <p class="ru">На экзамене каждый видит только свой календарь. Здесь оба, чтобы проверить решение. Общее окно на три часа одно: с 14 до 17.</p>
+</Task>
+
+<Dialog title="Teil 3: eine Fahrradtour am Sonntag" lines={[
+  { who: 'A', name: 'Du', de: 'Wollen wir am Sonntag eine Fahrradtour machen? Wir brauchen ungefähr drei Stunden. Wann hast du Zeit?', ru: 'Предложение и вопрос сразу. Партнёру можно на du, если договорились.' },
+  { who: 'B', name: 'Partner', de: 'Gute Idee! Am Vormittag kann ich leider nicht. Um neun gehe ich joggen, und dann mache ich Hausaufgaben.', ru: 'Отказ с причиной. Не просто «nein».' },
+  { who: 'A', name: 'Du', de: 'Und am Mittag? Um eins bin ich mit dem Putzen fertig.', ru: 'Новое предложение. А в обед? В час я закончу уборку.' },
+  { who: 'B', name: 'Partner', de: 'Das geht bei mir nicht. Von zwölf bis zwei esse ich mit meiner Familie. Aber ab zwei habe ich Zeit.', ru: 'Опять отказ, но со своим вариантом. Так и держится диалог.' },
+  { who: 'A', name: 'Du', de: 'Ab zwei passt es gut. Bis fünf bin ich frei. Um fünf telefoniere ich mit meinem Bruder.', ru: 'Согласие и граница по времени.' },
+  { who: 'B', name: 'Partner', de: 'Prima! Von zwei bis fünf, das sind genau drei Stunden. Um sechs muss ich bei meiner Tante sein.', ru: 'Проверили условие задания: три часа. Так видно, что задача решена.' },
+  { who: 'A', name: 'Du', de: 'Super. Wo treffen wir uns?', ru: 'Время нашли. Место тоже стоит обсудить.' },
+  { who: 'B', name: 'Partner', de: 'Vielleicht am Bahnhof? Dann fahren wir zum See.', ru: 'Может, на вокзале? Оттуда поедем к озеру.' },
+  { who: 'A', name: 'Du', de: 'Gute Idee! Soll ich etwas zu essen mitnehmen?', ru: 'Взять что-нибудь поесть?' },
+  { who: 'B', name: 'Partner', de: 'Ja, gern. Ich bringe Wasser mit. Also, bis Sonntag um zwei am Bahnhof!', ru: 'Да. Я возьму воду. Итак, в воскресенье в два на вокзале! Финал с итогом.' },
+]} />
+
+<p class="punch">Отказ без нового предложения убивает диалог. Отказ с предложением его двигает.</p>
+
+## Где ты потерял баллы
+
+| Ошибки тут | Что тренировать | Куда дальше |
+|---|---|---|
+| Lesen Teil 1 и 3 | Слова-двойники: в варианте то же слово, что в тексте, но с другим смыслом | [Lesen A2](../../lesen/goethe-a2-lesen/) |
+| Lesen Teil 2 | Этажи EG, UG, Stock и вариант «другой этаж» | [Lesen A2](../../lesen/goethe-a2-lesen/) |
+| Lesen Teil 4 | Проверяй все условия человека, не одно слово. Помни про X | [Объявления и ситуации](../../lesen/zuordnung-anzeigen-goethe-b1/) |
+| Hören Teil 1 | Время, дни, числа | [Числа, время, даты на слух](../../hoeren/zahlen-uhrzeit-hoeren/) |
+| Hören Teil 2 и 3 | Один раз. Жди aber, lieber, diesmal nicht | [Hören: объявления и сообщения](../../hoeren/hoeren-teil-1-durchsagen/) |
+| Hören Teil 4 | Утверждение против цитаты, синонимы | [Что делать в паузах Hören](../../hoeren/sovety-goethe-b1-hoeren/) |
+| Schreiben | Три пункта, коридор слов, du или Sie | [Schreiben A2](../../schreiben/goethe-a2-schreiben/) |
+| Порядок слов в письме | weil, dass, denn, deshalb | [Коннекторы](../../grammatik/konnektoren-goethe-b1/) |
+| Sprechen | Факт + деталь, отказ + новое предложение | [Sprechen A2](../../sprechen/goethe-a2-sprechen/) |
+
+Хочешь проверить себя на официальном материале? Вот [разбор Modellsatz A2](../../probniki/a2-modellsatz-razbor/) с таким же бланком.
+
+## Шпаргалка
+
+- **Формат** → Lesen 20, Hören 20, Schreiben 2 текста, Sprechen 3 части
+- **Баллы** → верные × 1,25, максимум 25 за часть
+- **Порог** → 45 из 75 письменно, 15 из 25 Sprechen, 60 всего
+- **Ориентир** → 12 из 20 в Lesen и Hören
+- **Аудио** → Teil 1 и 4 дважды, Teil 2 и 3 один раз
+- **Lesen Teil 2** → «другой этаж» бывает верным
+- **Lesen Teil 4** → одно объявление лишнее, один человек без пары
+- **Hören** → звучат все варианты. Решает lieber, aber, diesmal nicht
+- **Schreiben** → SMS 20–30, e-mail 30–40. Меньше половины = 0
+- **Sprechen** → факт + деталь. Отказ + новое предложение
+
+<p class="punch">Третий пробник лучше, чем третий учебник.</p>

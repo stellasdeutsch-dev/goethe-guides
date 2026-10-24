@@ -1,0 +1,167 @@
+---
+/* Проверка письма без ИИ: банк заданий по уровням, тренажёр (таймер, форма),
+   самооценка по критериям Goethe с примерным баллом и образец для сравнения. */
+import Trainer from './Trainer.astro';
+
+export interface WriteTask {
+  id: string;
+  level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
+  teil: string;
+  title: string;
+  mode: 'informal' | 'forum' | 'formal' | 'basic';
+  minutes: number;
+  words: number;
+  maxPoints: number;
+  situation: string;
+  points: string[];
+  ru: string;
+  checklist: string[];
+  model: string;
+}
+interface Props {
+  tasks: WriteTask[];
+}
+const { tasks } = Astro.props;
+const ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+const levels = ORDER.filter((l) => tasks.some((t) => t.level === l));
+
+const CRIT = [
+  { k: 'erf', name: 'Erfüllung', ru: 'Выполнил ли задание', d: ['Все пункты раскрыты, объём и тон верные', 'Один пункт раскрыт слабо', 'Один пункт пропущен или тон местами не тот', 'Раскрыто меньше половины пунктов', 'Мимо темы или меньше половины объёма. За часть 0'] },
+  { k: 'koh', name: 'Kohärenz', ru: 'Связность', d: ['Логичный порядок, разные связки', 'Связки есть, но повторяются', 'Местами скачет, связок мало', 'Трудно следить за мыслью', 'Набор отдельных фраз'] },
+  { k: 'wor', name: 'Wortschatz', ru: 'Слова', d: ['Точные слова, без повторов', 'Мелкие неточности', 'Повторы, но всё понятно', 'Слов не хватает, смысл страдает', 'Понять почти нельзя'] },
+  { k: 'str', name: 'Strukturen', ru: 'Грамматика', d: ['Почти без ошибок', 'Ошибки есть, но не мешают', 'Ошибки иногда мешают понять', 'Много ошибок, понимать трудно', 'Понять почти нельзя'] },
+];
+const GRADES = ['A', 'B', 'C', 'D', 'E'];
+---
+<div class="wc rv" data-wc>
+  <div class="wc-pick">
+    <div class="lvl-switch" role="group" aria-label="Уровень">
+      {levels.map((l, i) => <button type="button" data-wl={l} aria-pressed={String(i === 0)}>{l}</button>)}
+    </div>
+    <label class="wc-sel">
+      <span class="sr">Задание</span>
+      <select data-wsel>
+        {tasks.map((t) => <option value={t.id} data-level={t.level}>{t.level} · {t.teil} · {t.title}</option>)}
+      </select>
+    </label>
+  </div>
+
+  {tasks.map((t, i) => (
+    <section class="wc-panel" data-wp={t.id} data-level={t.level} hidden={i !== 0}>
+      <figure class="task" lang="de">
+        <div class="hd">
+          <b>{t.level} · Schreiben {t.teil}</b>
+          <span>
+            <span class="cap"><svg class="ic"><use href="#i-timer" /></svg>{t.level === 'A1' || t.level === 'A2' ? `≈ ${t.minutes} мин, рекомендация` : `${t.minutes} Minuten`}</span>
+            <span class="cap"><svg class="ic"><use href="#i-pen-line" /></svg>circa {t.words} Wörter</span>
+          </span>
+        </div>
+        <p>{t.situation}</p>
+        <ul>{t.points.map((p, n) => <li><i>{n + 1}</i><span>{p}</span></li>)}</ul>
+        <p class="ru">{t.ru}</p>
+      </figure>
+
+      <Trainer id={`wc-${t.id}`} mode={t.mode} minutes={t.minutes} target={t.words} points={t.checklist} />
+
+      <div class="ix wc-rub" data-rub data-max={t.maxPoints}>
+        <div class="ix-h"><b><svg class="ic"><use href="#i-scale" /></svg>Оцени себя по критериям Goethe</b><span class="cap">макс. {t.maxPoints} баллов</span></div>
+        <p class="ab-hint">Перечитай текст глазами экзаменатора. Для каждого критерия выбери, что ближе к правде. Честно.</p>
+        {CRIT.map((c) => (
+          <fieldset class="wc-crit">
+            <legend><b>{c.name}</b> · {c.ru}</legend>
+            {c.d.map((d, g) => (
+              <label class="wc-opt">
+                <input type="radio" name={`${t.id}-${c.k}`} value={g} data-c={c.k} />
+                <span class="wc-g">{GRADES[g]}</span>
+                <span>{d}</span>
+              </label>
+            ))}
+          </fieldset>
+        ))}
+        <div class="pc-out">
+          <div class="big"><span data-est>—</span><small> / {t.maxPoints}</small></div>
+          <span class="verdict" data-wv hidden></span>
+        </div>
+        <p class="pc-note" data-wnote>Отметь все четыре критерия, и появится примерный балл. Это самооценка, не официальная оценка.</p>
+      </div>
+
+      <details class="wc-model">
+        <summary><svg class="ic"><use href="#i-eye" /></svg> Показать образец ответа</summary>
+        <div class="wc-model-body" lang="de">
+          <p>{t.model}</p>
+          <button class="btn sm gray" type="button" data-say={t.model} data-tts-only><svg class="ic"><use href="#i-volume-2" /></svg> Озвучить</button>
+        </div>
+        <p class="wc-model-note">Сравни структуру и связки, а не слова. Заученный чужой текст на экзамене опасен: по правилам Goethe это повод для исключения.</p>
+      </details>
+    </section>
+  ))}
+</div>
+
+<script>
+  import { $, $$, onReady, pop } from '../../scripts/lib';
+
+  onReady(() => {
+    $$('[data-wc]').forEach((root) => {
+      const sel = $<HTMLSelectElement>('[data-wsel]', root)!;
+      const lvlBtns = $$<HTMLButtonElement>('[data-wl]', root);
+      const panels = $$<HTMLElement>('[data-wp]', root);
+      const opts = Array.from(sel.options);
+
+      const show = (id: string) => {
+        panels.forEach((p) => (p.hidden = p.dataset.wp !== id));
+        sel.value = id;
+        try { localStorage.setItem('wc:last', id); } catch { /* ignore */ }
+      };
+      const setLevel = (l: string, pickFirst = true) => {
+        lvlBtns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.wl === l)));
+        opts.forEach((o) => (o.hidden = o.dataset.level !== l));
+        if (pickFirst) show(opts.find((o) => o.dataset.level === l)!.value);
+      };
+      lvlBtns.forEach((b) => b.addEventListener('click', () => setLevel(b.dataset.wl!)));
+      sel.addEventListener('change', () => show(sel.value));
+
+      // Уровень из адреса (#b1) или последнее задание.
+      let start = '';
+      try { start = localStorage.getItem('wc:last') || ''; } catch { /* ignore */ }
+      const hashLvl = location.hash.replace('#', '').toUpperCase();
+      const byHash = opts.find((o) => o.dataset.level === hashLvl);
+      if (byHash) setLevel(hashLvl);
+      else if (start && opts.some((o) => o.value === start)) { setLevel(opts.find((o) => o.value === start)!.dataset.level!, false); show(start); }
+      else setLevel(lvlBtns[0].dataset.wl!);
+
+      // Самооценка → примерный балл.
+      $$<HTMLElement>('[data-rub]', root).forEach((rub) => {
+        const max = Number(rub.dataset.max);
+        const est = $('[data-est]', rub)!;
+        const v = $<HTMLElement>('[data-wv]', rub)!;
+        const note = $('[data-wnote]', rub)!;
+        rub.addEventListener('change', () => {
+          const picked: Record<string, number> = {};
+          $$<HTMLInputElement>('input[type=radio]:checked', rub).forEach((i) => (picked[i.dataset.c!] = Number(i.value)));
+          if (Object.keys(picked).length < 4) return;
+          let pts: number;
+          if (picked.erf === 4) pts = 0;
+          else {
+            const share = ['erf', 'koh', 'wor', 'str'].reduce((n, k) => n + (4 - picked[k]) / 4, 0) / 4;
+            pts = Math.round(share * max * 2) / 2;
+          }
+          est.textContent = String(pts).replace('.', ',');
+          const pass = pts >= max * 0.6;
+          v.hidden = false;
+          v.className = 'verdict ' + (pass ? 'ok' : 'bad');
+          v.textContent = pass ? 'Уровень порога и выше' : 'Ниже 60 %';
+          note.textContent = picked.erf === 4
+            ? 'Erfüllung E обнуляет всю часть. Проверь, что раскрыл все пункты и написал хотя бы половину объёма.'
+            : `Слабее всего: ${['erf', 'koh', 'wor', 'str'].sort((a, b) => picked[b] - picked[a])[0] === 'erf' ? 'выполнение задания. Перечитай пункты' : 'посмотри критерий с самой низкой оценкой и перепиши текст с упором на него'}.`;
+          pop($('.big', rub), 0.85, 0.7);
+          try {
+            const panel = rub.closest<HTMLElement>('[data-wp]')!;
+            const all = JSON.parse(localStorage.getItem('abres') || '{}');
+            all[`wc-${panel.dataset.wp}`] = { title: 'Проверка письма', level: panel.dataset.level, module: 'schreiben', points: pts, max, at: Date.now() };
+            localStorage.setItem('abres', JSON.stringify(all));
+          } catch { /* ignore */ }
+        });
+      });
+    });
+  });
+</script>

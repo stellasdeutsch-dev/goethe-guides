@@ -56,7 +56,15 @@ export function buildRoute(all: Guide[], level: Level, toItem: (g: Guide) => Rou
   const pruef = of('pruefung')
     .filter((g) => !REG.includes(slugOf(g)))
     .sort((a, b) => (PRUEF_ORDER.indexOf(slugOf(a)) + 99) % 99 - (PRUEF_ORDER.indexOf(slugOf(b)) + 99) % 99);
-  const probe = of('probniki').sort((a, b) => Number(slugOf(a) === 'goethe-modellsatz-skachat') - Number(slugOf(b) === 'goethe-modellsatz-skachat'));
+  // Сначала официальный пробник (диагностика), потом Übungssatz, потом пробники Stellas, в конце обзор.
+  const mockRank = (g: Guide) => {
+    const sl = slugOf(g);
+    if (sl === 'goethe-modellsatz-skachat') return 9;
+    if (sl.startsWith('stellas-')) return 5 + Number(sl.slice(-1) || 0) / 10;
+    if (sl.includes('uebungssatz')) return 2;
+    return 0;
+  };
+  const probe = of('probniki').sort((a, b) => mockRank(a) - mockRank(b));
   const modules = ['lesen', 'hoeren', 'schreiben', 'sprechen'].map((id) => ({
     section: id,
     label: SECTIONS.find((s) => s.id === id)!.de,

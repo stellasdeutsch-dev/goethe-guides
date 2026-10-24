@@ -28,8 +28,15 @@ interface Props {
   pass?: number;
   /** Где лежит официальный материал (ссылка на PDF/аудио). */
   source?: string;
+  /** Своя подсказка над бланком (для пробников Stellas, где тексты на странице). */
+  hint?: string;
+  /** Уровень и модуль для «Моего плана». По умолчанию берутся из id (b1-…-lesen). */
+  level?: string;
+  module?: 'lesen' | 'hoeren';
 }
-const { id, title, minutes = 0, items, factor, maxPoints = 100, pass, source } = Astro.props;
+const { id, title, minutes = 0, items, factor, maxPoints = 100, pass, source, hint } = Astro.props;
+const level = (Astro.props.level ?? id.match(/^(a1|a2|b1|b2|c1|c2)/i)?.[1] ?? '').toUpperCase();
+const module = Astro.props.module ?? (/lesen/.test(id) ? 'lesen' : /hoeren|hören/.test(id) ? 'hoeren' : '');
 const fct = factor ?? maxPoints / items.length;
 const esc = (s: string) => s.replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]!);
 const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');
@@ -40,7 +47,7 @@ for (const it of items) {
   p.items.push(it);
 }
 ---
-<div class="ix ab rv" data-ab data-id={id} data-min={minutes} data-factor={fct} data-max={maxPoints} data-pass={pass ?? ''}>
+<div class="ix ab rv" data-ab data-id={id} data-title={title} data-level={level} data-module={module} data-min={minutes} data-factor={fct} data-max={maxPoints} data-pass={pass ?? ''}>
   <div class="ix-h">
     <b><svg class="ic"><use href="#i-list-checks" /></svg>{title}</b>
     <span class="cap">{items.length} заданий{minutes ? ` · ${minutes} мин` : ''}</span>
@@ -55,7 +62,7 @@ for (const it of items) {
     </div>
   </div>
   <p class="ab-hint">
-    Решай в официальном материале{source && <> (<a href={source} rel="noopener" target="_blank">открыть</a>)</>}. Здесь только отмечай ответы. Объяснения откроются после проверки.
+    {hint ?? <>Решай в официальном материале{source && <> (<a href={source} rel="noopener" target="_blank">открыть</a>)</>}. Здесь только отмечай ответы. Объяснения откроются после проверки.</>}
   </p>
 
   {parts.map((p) => (
@@ -188,6 +195,14 @@ for (const it of items) {
         }
         checkBtn.disabled = true;
         save();
+        if (animate) {
+          // Результат для страницы «Мой план».
+          try {
+            const all = JSON.parse(localStorage.getItem('abres') || '{}');
+            all[root.dataset.id!] = { title: root.dataset.title, level: root.dataset.level, module: root.dataset.module, points, max, at: Date.now() };
+            localStorage.setItem('abres', JSON.stringify(all));
+          } catch { /* ignore */ }
+        }
       }
       checkBtn.addEventListener('click', () => {
         const missing = rows.length - Object.keys(answers).length;

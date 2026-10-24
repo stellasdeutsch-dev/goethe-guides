@@ -1,0 +1,858 @@
+[
+  {
+    "id": "a1-t2-blumen",
+    "level": "A1",
+    "teil": "Teil 2",
+    "title": "Соседу: полить цветы",
+    "mode": "basic",
+    "minutes": 10,
+    "words": 30,
+    "maxPoints": 10,
+    "situation": "Sie fahren nächste Woche in Urlaub. Schreiben Sie Ihrem Nachbarn, Herrn Klein, eine Nachricht. Schreiben Sie zu jedem Punkt ein bis zwei Sätze (circa 30 Wörter). Schreiben Sie auch eine Anrede und einen Gruß.",
+    "points": [
+      "Warum schreiben Sie?",
+      "Bitten Sie: Blumen gießen.",
+      "Fragen Sie: Wann können Sie den Schlüssel bringen?"
+    ],
+    "ru": "На следующей неделе ты уезжаешь в отпуск. Напиши соседу, господину Кляйну: 1. Почему пишешь? 2. Попроси полить цветы. 3. Спроси, когда можно занести ключ. По одному-два предложения на пункт, около 30 слов, с обращением и прощанием.",
+    "checklist": [
+      "1. Написал, почему пишу: уезжаю в отпуск",
+      "2. Попросил полить цветы: Können Sie bitte …?",
+      "3. Спросил, когда занести ключ"
+    ],
+    "model": "Lieber Herr Klein,\nich fahre am Montag für eine Woche nach Spanien. Können Sie bitte meine Blumen gießen? Vielen Dank! Wann kann ich Ihnen den Schlüssel bringen? Heute Abend oder morgen?\nViele Grüße\nMaria"
+  },
+  {
+    "id": "a1-t2-fahrrad",
+    "level": "A1",
+    "teil": "Teil 2",
+    "title": "Покупка велосипеда по объявлению",
+    "mode": "basic",
+    "minutes": 10,
+    "words": 30,
+    "maxPoints": 10,
+    "situation": "Sie möchten ein Fahrrad kaufen. Sie lesen eine Anzeige im Internet. Schreiben Sie Herrn Wolf eine E-Mail. Schreiben Sie zu jedem Punkt ein bis zwei Sätze (circa 30 Wörter). Schreiben Sie auch eine Anrede und einen Gruß.",
+    "points": [
+      "Warum schreiben Sie?",
+      "Fragen Sie: Wie alt? Welche Farbe?",
+      "Bitten Sie: Fahrrad am Samstag ansehen."
+    ],
+    "ru": "Ты хочешь купить велосипед и читаешь объявление в интернете. Напиши господину Вольфу e-mail: 1. Почему пишешь? 2. Спроси, сколько велосипеду лет и какого он цвета. 3. Попроси посмотреть велосипед в субботу. Около 30 слов, с обращением и прощанием.",
+    "checklist": [
+      "1. Написал, почему пишу: хочу купить велосипед",
+      "2. Спросил про возраст и цвет",
+      "3. Попросил посмотреть велосипед в субботу"
+    ],
+    "model": "Sehr geehrter Herr Wolf,\nich habe Ihre Anzeige gelesen und möchte Ihr Fahrrad kaufen. Wie alt ist das Fahrrad und welche Farbe hat es? Kann ich es am Samstag ansehen?\nViele Grüße\nAli Karimov"
+  },
+  {
+    "id": "a1-t2-kino",
+    "level": "A1",
+    "teil": "Teil 2",
+    "title": "Подруге: два билета в кино",
+    "mode": "basic",
+    "minutes": 10,
+    "words": 30,
+    "maxPoints": 10,
+    "situation": "Sie haben zwei Kinokarten für Samstag. Schreiben Sie Ihrer Freundin Lena eine Nachricht. Schreiben Sie zu jedem Punkt ein bis zwei Sätze (circa 30 Wörter). Schreiben Sie auch eine Anrede und einen Gruß.",
+    "points": [
+      "Warum schreiben Sie?",
+      "Fragen Sie: Zeit am Samstag?",
+      "Sagen Sie: Uhrzeit und Treffpunkt."
+    ],
+    "ru": "У тебя два билета в кино на субботу. Напиши подруге Лене: 1. Почему пишешь? 2. Спроси, есть ли у неё время в субботу. 3. Скажи, во сколько и где встречаетесь. Около 30 слов, с обращением и прощанием.",
+    "checklist": [
+      "1. Написал про два билета в кино",
+      "2. Спросил, есть ли время в субботу: Hast du …?",
+      "3. Назвал время и место встречи"
+    ],
+    "model": "Liebe Lena,\nich habe zwei Kinokarten für Samstag. Der Film beginnt um 20 Uhr. Hast du am Samstag Zeit? Wir treffen uns um halb acht vor dem Kino. Ich freue mich!\nViele Grüße\nDaria"
+  },
+  {
+    "id": "a2-t1-schluessel",
+    "level": "A2",
+    "teil": "Teil 1",
+    "title": "SMS: забыл ключи у друга",
+    "mode": "basic",
+    "minutes": 10,
+    "words": 25,
+    "maxPoints": 10,
+    "situation": "Sie waren gestern bei Ihrem Freund Tom und haben dort Ihren Schlüssel vergessen. Schreiben Sie Tom eine SMS. Schreiben Sie 20–30 Wörter. Schreiben Sie zu allen drei Punkten.",
+    "points": [
+      "Schreiben Sie, was Sie vergessen haben.",
+      "Fragen Sie, ob Tom heute Abend zu Hause ist.",
+      "Schreiben Sie, wann Sie kommen können."
+    ],
+    "ru": "Вчера ты был у друга Тома и забыл у него ключ. Напиши Тому SMS: 1. Что ты забыл. 2. Спроси, будет ли он дома сегодня вечером. 3. Напиши, когда можешь зайти. 20–30 слов, все три пункта.",
+    "checklist": [
+      "1. Написал, что забыл ключ (Perfekt: Ich habe … vergessen)",
+      "2. Спросил, дома ли Том вечером",
+      "3. Назвал время, когда зайду"
+    ],
+    "model": "Hallo Tom,\nich habe gestern meinen Schlüssel bei dir vergessen. Bist du heute Abend zu Hause? Ich kann um sieben Uhr kommen und ihn abholen.\nBis bald\nNina"
+  },
+  {
+    "id": "a2-t1-training",
+    "level": "A2",
+    "teil": "Teil 1",
+    "title": "SMS: заболел, не приду на тренировку",
+    "mode": "basic",
+    "minutes": 10,
+    "words": 25,
+    "maxPoints": 10,
+    "situation": "Sie sind krank und können morgen nicht zum Fußballtraining kommen. Schreiben Sie Ihrem Freund Paul aus der Mannschaft eine SMS. Schreiben Sie 20–30 Wörter. Schreiben Sie zu allen drei Punkten.",
+    "points": [
+      "Schreiben Sie, warum Sie nicht kommen.",
+      "Bitten Sie Paul, dem Trainer Bescheid zu sagen.",
+      "Fragen Sie, wann das nächste Spiel ist."
+    ],
+    "ru": "Ты заболел и завтра не придёшь на футбольную тренировку. Напиши SMS другу из команды, Паулю: 1. Почему не придёшь. 2. Попроси предупредить тренера. 3. Спроси, когда следующая игра. 20–30 слов.",
+    "checklist": [
+      "1. Объяснил, почему не приду",
+      "2. Попросил сказать тренеру: Kannst du bitte …?",
+      "3. Спросил про следующую игру"
+    ],
+    "model": "Hallo Paul,\nich habe Fieber und kann morgen leider nicht zum Training kommen. Kannst du das bitte dem Trainer sagen? Wann ist eigentlich das nächste Spiel?\nViele Grüße\nTimur"
+  },
+  {
+    "id": "a2-t1-konzert",
+    "level": "A2",
+    "teil": "Teil 1",
+    "title": "SMS: как прошёл концерт",
+    "mode": "basic",
+    "minutes": 10,
+    "words": 25,
+    "maxPoints": 10,
+    "situation": "Sie waren gestern auf einem Konzert. Ihre Freundin Sara konnte nicht mitkommen. Schreiben Sie Sara eine SMS. Schreiben Sie 20–30 Wörter. Schreiben Sie zu allen drei Punkten.",
+    "points": [
+      "Schreiben Sie, wie das Konzert war.",
+      "Erzählen Sie, was Ihnen besonders gefallen hat.",
+      "Laden Sie Sara zum nächsten Konzert ein."
+    ],
+    "ru": "Вчера ты был на концерте, подруга Сара пойти не смогла. Напиши ей SMS: 1. Каким был концерт. 2. Что понравилось больше всего. 3. Пригласи её на следующий концерт. 20–30 слов.",
+    "checklist": [
+      "1. Написал, каким был концерт",
+      "2. Рассказал, что понравилось больше всего (Perfekt: … hat mir gefallen)",
+      "3. Пригласил на следующий концерт"
+    ],
+    "model": "Liebe Sara,\ndas Konzert gestern war super! Am besten hat mir das letzte Lied gefallen. Im Mai spielt die Band wieder hier. Kommst du dann mit?\nLiebe Grüße\nAnna"
+  },
+  {
+    "id": "a2-t2-heizung",
+    "level": "A2",
+    "teil": "Teil 2",
+    "title": "Завхозу: не работает отопление",
+    "mode": "basic",
+    "minutes": 15,
+    "words": 35,
+    "maxPoints": 10,
+    "situation": "In Ihrer Wohnung funktioniert die Heizung nicht. Schreiben Sie Ihrem Hausmeister, Herrn Brandt, eine E-Mail. Schreiben Sie 30–40 Wörter. Schreiben Sie zu allen drei Punkten.",
+    "points": [
+      "Schreiben Sie, was nicht funktioniert und seit wann.",
+      "Bitten Sie Herrn Brandt, schnell zu kommen.",
+      "Schreiben Sie, wann Sie zu Hause sind."
+    ],
+    "ru": "В квартире не работает отопление. Напиши e-mail завхозу, господину Брандту: 1. Что не работает и с какого времени. 2. Попроси прийти как можно скорее. 3. Напиши, когда ты дома. 30–40 слов.",
+    "checklist": [
+      "1. Написал, что сломалось и с какого дня",
+      "2. Вежливо попросил прийти: Können Sie bitte …?",
+      "3. Написал, когда я дома"
+    ],
+    "model": "Sehr geehrter Herr Brandt,\nin meiner Wohnung funktioniert die Heizung seit Sonntag nicht mehr. Es ist sehr kalt. Können Sie bitte so schnell wie möglich kommen? Ich bin jeden Tag ab 16 Uhr zu Hause.\nMit freundlichen Grüßen\nOlga Ivanova"
+  },
+  {
+    "id": "a2-t2-kochkurs",
+    "level": "A2",
+    "teil": "Teil 2",
+    "title": "Запись на кулинарный курс",
+    "mode": "basic",
+    "minutes": 15,
+    "words": 35,
+    "maxPoints": 10,
+    "situation": "Sie möchten an der Volkshochschule einen Kochkurs machen. Schreiben Sie der Kursleiterin, Frau Lenz, eine E-Mail. Schreiben Sie 30–40 Wörter. Schreiben Sie zu allen drei Punkten.",
+    "points": [
+      "Schreiben Sie, welchen Kurs Sie machen möchten.",
+      "Fragen Sie nach dem Preis.",
+      "Fragen Sie, was Sie mitbringen müssen."
+    ],
+    "ru": "Ты хочешь пойти на кулинарный курс в народном университете (VHS). Напиши руководительнице курса, госпоже Ленц: 1. Какой курс тебя интересует. 2. Спроси цену. 3. Спроси, что нужно принести с собой. 30–40 слов.",
+    "checklist": [
+      "1. Назвал курс",
+      "2. Спросил про цену: Wie viel kostet …?",
+      "3. Спросил, что принести"
+    ],
+    "model": "Liebe Frau Lenz,\nich interessiere mich für Ihren Kochkurs „Italienische Küche“ am Donnerstagabend. Wie viel kostet der Kurs? Und was muss ich mitbringen? Brauche ich eine Schürze?\nVielen Dank und viele Grüße\nSofia Wagner"
+  },
+  {
+    "id": "a2-t2-uhr",
+    "level": "A2",
+    "teil": "Teil 2",
+    "title": "Бассейну: забыл часы",
+    "mode": "basic",
+    "minutes": 15,
+    "words": 35,
+    "maxPoints": 10,
+    "situation": "Sie waren gestern im Schwimmbad und haben dort Ihre Uhr vergessen. Schreiben Sie dem Schwimmbad eine E-Mail. Schreiben Sie 30–40 Wörter. Schreiben Sie zu allen drei Punkten.",
+    "points": [
+      "Schreiben Sie, was passiert ist.",
+      "Beschreiben Sie die Uhr.",
+      "Fragen Sie, wann Sie die Uhr abholen können."
+    ],
+    "ru": "Вчера ты был в бассейне и забыл там часы. Напиши бассейну e-mail: 1. Что случилось. 2. Опиши часы. 3. Спроси, когда можно их забрать. 30–40 слов.",
+    "checklist": [
+      "1. Написал, что забыл часы и где",
+      "2. Описал часы: цвет, размер, ремешок",
+      "3. Спросил, когда можно забрать"
+    ],
+    "model": "Sehr geehrte Damen und Herren,\nich war gestern im Schwimmbad und habe meine Uhr in der Umkleide vergessen. Sie ist klein und silbern und hat ein schwarzes Armband. Wann kann ich sie abholen?\nMit freundlichen Grüßen\nKarim Aliyev"
+  },
+  {
+    "id": "b1-t1-umzug",
+    "level": "B1",
+    "teil": "Teil 1",
+    "title": "Переезд, подруга не помогла",
+    "mode": "informal",
+    "minutes": 20,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie sind vor zwei Wochen in eine neue Wohnung umgezogen. Ihre Freundin Anna konnte beim Umzug nicht helfen, weil sie krank war.",
+    "points": [
+      "Beschreiben Sie: Wie ist die neue Wohnung?",
+      "Begründen Sie: Warum sind Sie umgezogen?",
+      "Machen Sie einen Vorschlag für ein Treffen."
+    ],
+    "ru": "Ты переехал две недели назад, подруга Анна болела и не помогла. Опиши квартиру, объясни причину переезда, предложи встретиться.",
+    "checklist": [
+      "1. Описал квартиру",
+      "2. Объяснил, почему переехал",
+      "3. Предложил встречу: когда и что делаем"
+    ],
+    "model": "Liebe Anna,\nwie geht es dir? Ich hoffe, du bist wieder gesund. Stell dir vor: Ich habe eine neue Wohnung!\nSie ist hell, hat zwei Zimmer und einen kleinen Balkon. Vom Balkon aus sehe ich den Park.\nIch bin umgezogen, weil meine alte Wohnung sehr laut war. Außerdem bin ich jetzt in zehn Minuten bei der Arbeit.\nHast du am Samstag Zeit? Dann zeige ich dir alles und wir kochen zusammen.\nSchreib mir bitte, ob es dir passt!\nViele Grüße\nAlex"
+  },
+  {
+    "id": "b1-t1-hund",
+    "level": "B1",
+    "teil": "Teil 1",
+    "title": "У тебя появилась собака",
+    "mode": "informal",
+    "minutes": 20,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie haben seit einem Monat einen Hund. Ihr Freund Markus weiß das noch nicht.",
+    "points": [
+      "Beschreiben Sie: Wie ist Ihr Hund?",
+      "Begründen Sie: Warum haben Sie sich einen Hund geholt?",
+      "Machen Sie einen Vorschlag für ein Treffen."
+    ],
+    "ru": "У тебя уже месяц живёт собака, а друг Маркус ещё не знает. Опиши собаку, объясни, почему решил её завести, предложи встретиться.",
+    "checklist": [
+      "1. Описал собаку: имя, возраст, характер",
+      "2. Объяснил, почему завёл собаку (weil / denn)",
+      "3. Предложил встречу: когда и что делаем"
+    ],
+    "model": "Lieber Markus,\nwie geht es dir? Ich habe eine große Neuigkeit: Seit einem Monat habe ich einen Hund! Er heißt Bruno, ist zwei Jahre alt und hat braunes Fell. Bruno ist sehr freundlich und spielt gern mit Kindern.\nIch habe ihn aus dem Tierheim geholt, weil ich mich allein in der Wohnung oft gelangweilt habe. Außerdem bewege ich mich jetzt viel mehr, denn wir gehen dreimal am Tag spazieren.\nHast du am Sonntag Zeit? Dann können wir zusammen mit Bruno im Park spazieren gehen.\nViele Grüße\nDaniel"
+  },
+  {
+    "id": "b1-t1-neue-arbeit",
+    "level": "B1",
+    "teil": "Teil 1",
+    "title": "Новая работа",
+    "mode": "informal",
+    "minutes": 20,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie haben vor drei Wochen eine neue Arbeitsstelle angefangen. Ihre Freundin Julia möchte wissen, wie es Ihnen dort geht.",
+    "points": [
+      "Beschreiben Sie: Was machen Sie bei der neuen Arbeit?",
+      "Begründen Sie: Warum haben Sie die Stelle gewechselt?",
+      "Machen Sie einen Vorschlag für ein Treffen."
+    ],
+    "ru": "Три недели назад ты начал работать на новом месте. Подруга Юлия спрашивает, как дела. Опиши, чем занимаешься на новой работе, объясни, почему сменил место, предложи встретиться.",
+    "checklist": [
+      "1. Описал, что делаю на новой работе",
+      "2. Объяснил, почему сменил работу",
+      "3. Предложил встречу: когда и что делаем"
+    ],
+    "model": "Liebe Julia,\nvielen Dank für deine Nachricht! Mir geht es sehr gut. Seit drei Wochen arbeite ich in einem kleinen Reisebüro im Zentrum. Ich berate Kunden und plane Reisen nach Italien und Spanien. Meine Kollegen sind sehr nett und helfen mir viel.\nIch habe die Stelle gewechselt, weil ich in meiner alten Firma jeden Tag nur am Computer gesessen habe. Jetzt spreche ich mit vielen Menschen, und das macht mir Spaß.\nWollen wir am Freitag nach der Arbeit zusammen essen gehen? Ich lade dich ein!\nLiebe Grüße\nAigerim"
+  },
+  {
+    "id": "b1-t1-ostsee",
+    "level": "B1",
+    "teil": "Teil 1",
+    "title": "Отпуск на море без друга",
+    "mode": "informal",
+    "minutes": 20,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie waren letzte Woche im Urlaub an der Ostsee. Ihr Freund Jan wollte mitkommen, aber er musste arbeiten.",
+    "points": [
+      "Beschreiben Sie: Was haben Sie im Urlaub gemacht?",
+      "Begründen Sie: Was hat Ihnen besonders gut gefallen und warum?",
+      "Machen Sie einen Vorschlag für ein Treffen."
+    ],
+    "ru": "На прошлой неделе ты отдыхал на Балтийском море. Друг Ян хотел поехать, но ему пришлось работать. Опиши, что делал в отпуске, объясни, что понравилось больше всего и почему, предложи встретиться.",
+    "checklist": [
+      "1. Описал, что делал в отпуске (Perfekt)",
+      "2. Назвал, что понравилось больше всего, и объяснил почему",
+      "3. Предложил встречу: когда и что делаем"
+    ],
+    "model": "Lieber Jan,\nschade, dass du nicht mitkommen konntest! Ich war eine Woche an der Ostsee. Jeden Morgen bin ich am Strand gelaufen, und nachmittags habe ich eine Radtour gemacht oder gelesen. Einmal bin ich sogar mit dem Schiff auf eine kleine Insel gefahren.\nAm besten hat mir die Ruhe gefallen. Es gab keine Autos und keinen Stress, deshalb konnte ich mich endlich richtig erholen.\nIch habe viele Fotos gemacht. Komm doch am Samstagabend zu mir, dann zeige ich sie dir und wir trinken etwas zusammen.\nViele Grüße\nRuslan"
+  },
+  {
+    "id": "b1-t1-garten",
+    "level": "B1",
+    "teil": "Teil 1",
+    "title": "Свой сад за городом",
+    "mode": "informal",
+    "minutes": 20,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie haben seit Kurzem einen kleinen Garten am Stadtrand. Ihre Freundin Eva hat davon gehört und fragt nach.",
+    "points": [
+      "Beschreiben Sie: Wie sieht der Garten aus?",
+      "Begründen Sie: Warum wollten Sie einen Garten haben?",
+      "Machen Sie einen Vorschlag für ein Treffen."
+    ],
+    "ru": "Недавно у тебя появился маленький сад на окраине города. Подруга Ева услышала об этом и спрашивает. Опиши, как выглядит сад, объясни, зачем он тебе, предложи встретиться.",
+    "checklist": [
+      "1. Описал сад",
+      "2. Объяснил, почему хотел сад (weil / außerdem)",
+      "3. Предложил встречу: когда и что делаем"
+    ],
+    "model": "Liebe Eva,\nja, es stimmt: Ich habe jetzt einen Garten! Er ist nicht groß, aber sehr schön. Es gibt einen alten Apfelbaum, ein paar Blumen und eine kleine Hütte mit Tisch und Stühlen. Im Frühling möchte ich dort Tomaten und Kräuter pflanzen.\nIch wollte unbedingt einen Garten haben, weil meine Wohnung keinen Balkon hat. Außerdem arbeite ich den ganzen Tag im Büro, und im Garten kann ich mich nach der Arbeit gut entspannen.\nBesuch mich doch nächstes Wochenende! Wir können draußen grillen.\nHerzliche Grüße\nLina"
+  },
+  {
+    "id": "b1-t2-handyverbot",
+    "level": "B1",
+    "teil": "Teil 2",
+    "title": "Запрет телефонов в школе",
+    "mode": "forum",
+    "minutes": 25,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Handyverbot an Schulen?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung: Jana: „Ich bin Lehrerin. Viele Schüler schauen sogar im Unterricht auf ihr Handy und können sich nicht konzentrieren. In der Pause spielen sie nicht mehr zusammen, sondern sitzen nur vor dem Bildschirm. Handys sollten in der Schule verboten sein.“",
+    "points": [
+      "Schreiben Sie nun Ihre Meinung zum Thema (circa 80 Wörter)."
+    ],
+    "ru": "Ты посмотрел ток-шоу «Запретить телефоны в школах?». В гостевой книге учительница Яна пишет: ученики смотрят в телефон даже на уроке и не могут сосредоточиться, на переменах не играют вместе, а сидят в экранах. Телефоны в школе надо запретить. Напиши своё мнение, около 80 слов.",
+    "checklist": [
+      "1. Сослался на мнение Яны одной фразой",
+      "2. Ясно сказал своё мнение (Meiner Meinung nach / Ich finde)",
+      "3. Дал причину (weil / denn) и пример (zum Beispiel)",
+      "4. Закончил выводом (Insgesamt / Deshalb finde ich)"
+    ],
+    "model": "Ich kann Jana teilweise verstehen. Wenn Schüler im Unterricht ständig auf ihr Handy schauen, lernen sie natürlich weniger. Trotzdem finde ich ein komplettes Verbot falsch.\nMeiner Meinung nach sollten Kinder lernen, vernünftig mit dem Handy umzugehen, denn später brauchen sie es überall. Man kann das Handy im Unterricht auch sinnvoll nutzen, zum Beispiel für kurze Recherchen oder für eine Vokabel-App.\nEine klare Regel ist besser als ein Verbot: In der Stunde bleibt das Handy in der Tasche, außer wenn der Lehrer es erlaubt. Insgesamt bin ich also gegen ein Verbot."
+  },
+  {
+    "id": "b1-t2-essen-bestellen",
+    "level": "B1",
+    "teil": "Teil 2",
+    "title": "Готовить самому или заказывать еду",
+    "mode": "forum",
+    "minutes": 25,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Selbst kochen oder Essen bestellen?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung: Tobias: „Nach der Arbeit bin ich müde und habe keine Lust zu kochen. Deshalb bestelle ich fast jeden Abend Essen über eine App. Das geht schnell, und es gibt alles: Pizza, Sushi, Salat. Kochen ist für mich nur Zeitverschwendung.“",
+    "points": [
+      "Schreiben Sie nun Ihre Meinung zum Thema (circa 80 Wörter)."
+    ],
+    "ru": "Тема ток-шоу: «Готовить самому или заказывать еду?». Тобиас пишет: после работы устаю и не хочу готовить, поэтому почти каждый вечер заказываю еду через приложение. Быстро, и есть всё: пицца, суши, салат. Готовить для меня пустая трата времени. Напиши своё мнение, около 80 слов.",
+    "checklist": [
+      "1. Сослался на мнение Тобиаса",
+      "2. Ясно сказал своё мнение",
+      "3. Дал причины (weil / außerdem) и пример",
+      "4. Закончил выводом"
+    ],
+    "model": "Ich verstehe Tobias, denn nach einem langen Arbeitstag ist man oft müde. Trotzdem sehe ich das anders. Ich finde, selbst zu kochen ist viel gesünder, weil man genau weiß, was im Essen ist. Bestelltes Essen ist oft sehr fett und salzig. Außerdem ist es auf Dauer ziemlich teuer.\nKochen muss auch nicht lange dauern: Eine Suppe oder Nudeln mit Gemüse sind zum Beispiel in zwanzig Minuten fertig. Am Wochenende bestelle ich natürlich auch mal eine Pizza. Aber insgesamt sollte das meiner Meinung nach eine Ausnahme bleiben."
+  },
+  {
+    "id": "b1-t2-soziales-jahr",
+    "level": "B1",
+    "teil": "Teil 2",
+    "title": "Обязательный социальный год",
+    "mode": "forum",
+    "minutes": 25,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Ein soziales Jahr für alle?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung: Laura: „Ich finde, alle jungen Leute sollten nach der Schule ein Jahr lang sozial arbeiten, zum Beispiel im Krankenhaus oder im Altenheim. So lernen sie, Verantwortung zu übernehmen. Und die Gesellschaft braucht diese Hilfe dringend.“",
+    "points": [
+      "Schreiben Sie nun Ihre Meinung zum Thema (circa 80 Wörter)."
+    ],
+    "ru": "Тема ток-шоу: «Социальный год для всех?». Лаура пишет: все молодые люди после школы должны год поработать в социальной сфере, например в больнице или доме престарелых. Так они научатся ответственности, а обществу эта помощь очень нужна. Напиши своё мнение, около 80 слов.",
+    "checklist": [
+      "1. Сослался на мнение Лауры",
+      "2. Ясно сказал своё мнение",
+      "3. Дал причину и пример",
+      "4. Закончил выводом"
+    ],
+    "model": "Die Idee von Laura gefällt mir im Prinzip. Ein soziales Jahr kann jungen Menschen viel bringen, denn sie lernen dabei andere Menschen und Berufe kennen. Viele wissen zum Beispiel danach besser, was sie studieren oder lernen wollen.\nTrotzdem bin ich gegen eine Pflicht für alle. Meiner Meinung nach hilft man anderen Menschen nur gut, wenn man es wirklich möchte. Außerdem haben manche jungen Leute schon einen Ausbildungsplatz.\nDeshalb finde ich: Ein soziales Jahr sollte freiwillig sein, aber der Staat sollte es attraktiver machen."
+  },
+  {
+    "id": "b1-t2-sprache-kita",
+    "level": "B1",
+    "teil": "Teil 2",
+    "title": "Иностранный язык в детском саду",
+    "mode": "forum",
+    "minutes": 25,
+    "words": 80,
+    "maxPoints": 40,
+    "situation": "Sie haben im Fernsehen eine Diskussionssendung zum Thema „Fremdsprachen schon im Kindergarten?“ gesehen. Im Online-Gästebuch der Sendung finden Sie folgende Meinung: Stefan: „Mein Sohn ist vier Jahre alt und lernt im Kindergarten schon Englisch. Ich finde das zu früh. Kinder sollen spielen und zuerst ihre eigene Sprache richtig lernen. Für Fremdsprachen haben sie in der Schule noch genug Zeit.“",
+    "points": [
+      "Schreiben Sie nun Ihre Meinung zum Thema (circa 80 Wörter)."
+    ],
+    "ru": "Тема ток-шоу: «Иностранные языки уже в детском саду?». Штефан пишет: сыну четыре года, и в садике он уже учит английский. По-моему, это слишком рано. Дети должны играть и сначала как следует выучить родной язык. На иностранные языки хватит времени в школе. Напиши своё мнение, около 80 слов.",
+    "checklist": [
+      "1. Сослался на мнение Штефана",
+      "2. Ясно сказал своё мнение",
+      "3. Дал причину и пример",
+      "4. Закончил выводом"
+    ],
+    "model": "Ich sehe das anders als Stefan. Meiner Meinung nach ist der Kindergarten genau der richtige Ort für eine Fremdsprache. Kleine Kinder lernen Sprachen sehr leicht, weil sie keine Angst vor Fehlern haben. Außerdem lernen sie dort spielerisch, zum Beispiel mit Liedern und Spielen. Das bedeutet keinen Stress, sondern Spaß.\nViele Kinder wachsen heute sowieso mit zwei Sprachen auf und sprechen trotzdem beide gut. Natürlich darf der Unterricht nicht wie in der Schule sein. Insgesamt finde ich eine Fremdsprache im Kindergarten also sehr sinnvoll, wenn das Lernen Spaß macht."
+  },
+  {
+    "id": "b1-t3-arzttermin",
+    "level": "B1",
+    "teil": "Teil 3",
+    "title": "Отмена приёма у врача",
+    "mode": "formal",
+    "minutes": 15,
+    "words": 40,
+    "maxPoints": 20,
+    "situation": "Sie haben morgen um 10 Uhr einen Termin bei Ihrer Ärztin, Frau Dr. Hoffmann. Sie können aber nicht kommen. Schreiben Sie an Frau Dr. Hoffmann. Schreiben Sie eine E-Mail (circa 40 Wörter). Vergessen Sie nicht die Anrede und den Gruß am Schluss.",
+    "points": [
+      "Entschuldigen Sie sich höflich.",
+      "Berichten Sie, warum Sie nicht kommen können."
+    ],
+    "ru": "Завтра в 10 у тебя приём у врача, госпожи доктора Хофман, но ты не можешь прийти. Напиши ей: вежливо извинись и объясни, почему не придёшь. Около 40 слов, не забудь обращение и прощание.",
+    "checklist": [
+      "1. Вежливо извинился (Leider … / Es tut mir leid …)",
+      "2. Объяснил, почему не приду",
+      "Бонус: попросил новый термин"
+    ],
+    "model": "Sehr geehrte Frau Dr. Hoffmann,\nleider kann ich morgen nicht um 10 Uhr zu meinem Termin kommen. Es tut mir sehr leid. Mein Sohn ist krank, und ich muss bei ihm zu Hause bleiben. Könnte ich nächste Woche einen neuen Termin bekommen?\nMit freundlichen Grüßen\nAnna Kowalski"
+  },
+  {
+    "id": "b1-t3-elternabend",
+    "level": "B1",
+    "teil": "Teil 3",
+    "title": "Не приду на родительское собрание",
+    "mode": "formal",
+    "minutes": 15,
+    "words": 40,
+    "maxPoints": 20,
+    "situation": "Der Klassenlehrer Ihrer Tochter, Herr Schmidt, hat alle Eltern zu einem Elternabend am Donnerstag eingeladen. Sie können aber nicht teilnehmen. Schreiben Sie an Herrn Schmidt. Schreiben Sie eine E-Mail (circa 40 Wörter). Vergessen Sie nicht die Anrede und den Gruß am Schluss.",
+    "points": [
+      "Entschuldigen Sie sich höflich.",
+      "Berichten Sie, warum Sie nicht kommen können."
+    ],
+    "ru": "Классный руководитель дочери, господин Шмидт, пригласил всех родителей на собрание в четверг. Ты не можешь прийти. Напиши ему: вежливо извинись и объясни причину. Около 40 слов.",
+    "checklist": [
+      "1. Вежливо извинился",
+      "2. Объяснил, почему не приду (weil …)",
+      "Бонус: попросил прислать информацию"
+    ],
+    "model": "Sehr geehrter Herr Schmidt,\nvielen Dank für die Einladung zum Elternabend. Leider kann ich am Donnerstag nicht kommen, weil ich an diesem Abend arbeiten muss. Das tut mir sehr leid. Könnten Sie mir vielleicht die wichtigsten Informationen per E-Mail schicken?\nMit freundlichen Grüßen\nGulnara Saidova"
+  },
+  {
+    "id": "b1-t3-schicht",
+    "level": "B1",
+    "teil": "Teil 3",
+    "title": "Коллеге: не смогу подменить",
+    "mode": "formal",
+    "minutes": 15,
+    "words": 40,
+    "maxPoints": 20,
+    "situation": "Ihre Kollegin, Frau Krause, hat Sie gefragt, ob Sie am Freitag ihre Schicht übernehmen können. Sie haben an diesem Tag aber keine Zeit. Schreiben Sie an Frau Krause. Schreiben Sie eine E-Mail (circa 40 Wörter). Vergessen Sie nicht die Anrede und den Gruß am Schluss.",
+    "points": [
+      "Entschuldigen Sie sich höflich.",
+      "Berichten Sie, warum Sie die Schicht nicht übernehmen können."
+    ],
+    "ru": "Коллега, госпожа Краузе, спросила, можешь ли ты выйти вместо неё в пятницу. Но у тебя в этот день нет времени. Напиши ей: вежливо извинись и объясни, почему не можешь. Около 40 слов.",
+    "checklist": [
+      "1. Вежливо извинился",
+      "2. Объяснил, почему не могу подменить",
+      "Бонус: предложил, кто может помочь"
+    ],
+    "model": "Liebe Frau Krause,\nes tut mir wirklich leid, aber ich kann Ihre Schicht am Freitag nicht übernehmen. Meine Eltern kommen an diesem Tag zu Besuch, und ich muss sie vom Flughafen abholen. Vielleicht kann Herr Berg Ihnen helfen?\nViele Grüße\nIrina Popova"
+  },
+  {
+    "id": "b1-t3-bibliothek",
+    "level": "B1",
+    "teil": "Teil 3",
+    "title": "Библиотеке: продлить книгу",
+    "mode": "formal",
+    "minutes": 15,
+    "words": 40,
+    "maxPoints": 20,
+    "situation": "Sie haben ein Buch aus der Stadtbibliothek ausgeliehen. Sie müssen es bis Freitag zurückgeben, aber Sie sind zurzeit nicht in der Stadt. Schreiben Sie an die Bibliothekarin, Frau Peters. Schreiben Sie eine E-Mail (circa 40 Wörter). Vergessen Sie nicht die Anrede und den Gruß am Schluss.",
+    "points": [
+      "Entschuldigen Sie sich höflich und berichten Sie, warum Sie das Buch nicht pünktlich zurückgeben können.",
+      "Bitten Sie um eine Verlängerung."
+    ],
+    "ru": "Ты взял книгу в городской библиотеке. Вернуть её нужно до пятницы, но тебя сейчас нет в городе. Напиши библиотекарю, госпоже Петерс: вежливо извинись, объясни, почему не вернёшь вовремя, и попроси продлить срок. Около 40 слов.",
+    "checklist": [
+      "1. Извинился и объяснил, почему не верну вовремя",
+      "2. Вежливо попросил продлить (Könnten Sie bitte …?)"
+    ],
+    "model": "Sehr geehrte Frau Peters,\nleider kann ich das Buch „Deutsche Geschichte“ nicht bis Freitag zurückgeben. Entschuldigen Sie bitte! Ich bin noch bis Ende des Monats beruflich in Hamburg. Könnten Sie die Ausleihe bitte um zwei Wochen verlängern?\nMit freundlichen Grüßen\nMarat Bekov"
+  },
+  {
+    "id": "b2-t1-homeoffice",
+    "level": "B2",
+    "teil": "Teil 1",
+    "title": "Хоумофис: будущее работы?",
+    "mode": "forum",
+    "minutes": 50,
+    "words": 150,
+    "maxPoints": 60,
+    "situation": "Sie schreiben zum Thema „Homeoffice – die Zukunft der Arbeit?“ einen Beitrag in einem Online-Forum. Denken Sie an eine Einleitung und einen Schluss.",
+    "points": [
+      "Äußern Sie Ihre Meinung zum Arbeiten im Homeoffice.",
+      "Nennen Sie Gründe, warum viele Beschäftigte gern von zu Hause arbeiten.",
+      "Beschreiben Sie mögliche Nachteile für Beschäftigte und Firmen.",
+      "Machen Sie einen Vorschlag, wie man Homeoffice und Büro sinnvoll kombinieren kann."
+    ],
+    "ru": "Пост в онлайн-форуме на тему «Хоумофис: будущее работы?». 1. Выскажи мнение о работе из дома. 2. Назови причины, почему многие любят работать из дома. 3. Опиши возможные минусы для сотрудников и фирм. 4. Предложи, как разумно совместить дом и офис. Не забудь вступление и заключение.",
+    "checklist": [
+      "1. Высказал своё мнение о хоумофисе",
+      "2. Назвал причины, почему людям нравится работать из дома",
+      "3. Описал минусы для сотрудников и для фирм",
+      "4. Предложил модель «дом + офис»",
+      "Вступление и заключение на месте"
+    ],
+    "model": "Liebe Forumsmitglieder,\ndas Thema Homeoffice wird seit einigen Jahren heftig diskutiert, und auch ich habe dazu eine klare Meinung. Hier sind meine Gedanken.\nIch halte das Arbeiten von zu Hause grundsätzlich für eine gute Entwicklung. Viele Beschäftigte schätzen vor allem, dass der tägliche Weg zur Arbeit wegfällt. Dadurch sparen sie nicht nur Zeit und Geld, sondern können auch Beruf und Familie besser miteinander verbinden. Außerdem arbeiten viele Menschen zu Hause konzentrierter, weil sie seltener gestört werden.\nAllerdings hat das Homeoffice auch Schattenseiten. Wer nur noch allein am Schreibtisch sitzt, verliert leicht den Kontakt zu den Kollegen. Für Firmen wird es zudem schwieriger, neue Mitarbeiter einzuarbeiten und ein Gemeinschaftsgefühl zu schaffen.\nAlles in allem liegt die Lösung meiner Meinung nach in einem Mittelweg: Man arbeitet zum Beispiel zwei oder drei Tage pro Woche im Büro und die restliche Zeit zu Hause. So bleiben die Vorteile erhalten, ohne dass das Team auseinanderfällt.\nViele Grüße\nMehmet"
+  },
+  {
+    "id": "b2-t1-massentourismus",
+    "level": "B2",
+    "teil": "Teil 1",
+    "title": "Массовый туризм в популярных городах",
+    "mode": "forum",
+    "minutes": 50,
+    "words": 150,
+    "maxPoints": 60,
+    "situation": "Sie schreiben zum Thema „Massentourismus – Fluch oder Segen für beliebte Reiseziele?“ einen Beitrag in einem Online-Forum. Denken Sie an eine Einleitung und einen Schluss.",
+    "points": [
+      "Äußern Sie Ihre Meinung zum Massentourismus in beliebten Städten.",
+      "Nennen Sie Gründe, warum bestimmte Orte so viele Touristen anziehen.",
+      "Beschreiben Sie, welche Folgen der Tourismus für die Einwohner hat.",
+      "Machen Sie Vorschläge, wie man den Tourismus besser steuern könnte."
+    ],
+    "ru": "Пост в онлайн-форуме: «Массовый туризм: проклятие или благо для популярных направлений?». 1. Выскажи мнение о массовом туризме в популярных городах. 2. Назови причины, почему некоторые места притягивают столько туристов. 3. Опиши последствия для местных жителей. 4. Предложи, как лучше управлять потоком туристов. Вступление и заключение обязательны.",
+    "checklist": [
+      "1. Высказал мнение о массовом туризме",
+      "2. Назвал причины популярности таких мест",
+      "3. Описал последствия для жителей",
+      "4. Предложил меры",
+      "Вступление и заключение на месте"
+    ],
+    "model": "Hallo zusammen,\nin den letzten Jahren liest man immer häufiger, dass Städte wie Venedig oder Barcelona unter zu vielen Touristen leiden. Dazu möchte ich gern meine Meinung sagen.\nIch finde Tourismus grundsätzlich positiv, aber in manchen Städten ist eindeutig eine Grenze erreicht. Dass gerade diese Orte so beliebt sind, ist kein Wunder: Sie bieten eine einzigartige Architektur, ein mildes Klima und gutes Essen. Hinzu kommen günstige Flüge, mit denen man schon für wenig Geld übers Wochenende verreisen kann.\nFür die Einwohner hat das jedoch ernste Folgen. Viele Wohnungen werden nur noch an Feriengäste vermietet, sodass die Mieten stark steigen. Außerdem sind Straßen und Busse ständig überfüllt, und viele traditionelle Läden müssen Souvenirgeschäften weichen.\nDeshalb sollten die Städte den Tourismus stärker regulieren, zum Beispiel durch eine Touristenabgabe oder strenge Regeln für Ferienwohnungen. Gleichzeitig könnte man weniger bekannte Regionen gezielt bewerben. Insgesamt profitieren davon sowohl die Gäste als auch die Einheimischen.\nViele Grüße\nElena"
+  },
+  {
+    "id": "b2-t1-lebensmittel",
+    "level": "B2",
+    "teil": "Teil 1",
+    "title": "Выброшенная еда",
+    "mode": "forum",
+    "minutes": 50,
+    "words": 150,
+    "maxPoints": 60,
+    "situation": "Sie schreiben zum Thema „Lebensmittelverschwendung – was kann jeder Einzelne tun?“ einen Beitrag in einem Online-Forum. Denken Sie an eine Einleitung und einen Schluss.",
+    "points": [
+      "Äußern Sie Ihre Meinung zum Umgang mit Lebensmitteln in unserer Gesellschaft.",
+      "Nennen Sie Gründe, warum so viele Lebensmittel im Müll landen.",
+      "Beschreiben Sie, was Supermärkte und Restaurants dagegen tun könnten.",
+      "Machen Sie Vorschläge, wie jeder Einzelne weniger Lebensmittel wegwerfen kann."
+    ],
+    "ru": "Пост в онлайн-форуме: «Выброшенные продукты: что может сделать каждый?». 1. Выскажи мнение о том, как общество обращается с едой. 2. Назови причины, почему так много продуктов оказывается в мусоре. 3. Опиши, что могли бы сделать супермаркеты и рестораны. 4. Предложи, как каждому выбрасывать меньше. Вступление и заключение обязательны.",
+    "checklist": [
+      "1. Высказал мнение о том, как обращаются с едой",
+      "2. Назвал причины",
+      "3. Описал, что могут сделать супермаркеты и рестораны",
+      "4. Предложил, что может сделать каждый",
+      "Вступление и заключение на месте"
+    ],
+    "model": "Liebe Leserinnen und Leser,\njeden Tag landen riesige Mengen an Lebensmitteln im Müll, obwohl sie noch essbar wären. Meiner Meinung nach ist das nicht nur ärgerlich, sondern auch verantwortungslos, denn weltweit hungern noch immer viele Menschen.\nDie Gründe dafür sind vielfältig. Viele Menschen kaufen mehr ein, als sie brauchen, weil große Packungen oft günstiger sind. Andere werfen Joghurt oder Käse sofort weg, sobald das Mindesthaltbarkeitsdatum abgelaufen ist, obwohl die Produkte meist noch gut sind.\nAuch Supermärkte und Restaurants tragen Verantwortung. Sie könnten Lebensmittel kurz vor Ablauf des Datums billiger verkaufen oder an soziale Einrichtungen spenden. Restaurants könnten außerdem kleinere Portionen anbieten oder ihren Gästen Reste ganz selbstverständlich zum Mitnehmen einpacken.\nAber auch jeder Einzelne kann etwas tun: Wer zum Beispiel einen Einkaufszettel schreibt und Reste am nächsten Tag verwertet, wirft deutlich weniger weg. Hilfreich sind auch Apps, über die Restaurants übrig gebliebene Gerichte günstig anbieten. Insgesamt lässt sich viel erreichen, wenn wir alle ein wenig bewusster einkaufen.\nViele Grüße\nThomas"
+  },
+  {
+    "id": "b2-t2-sommerfest",
+    "level": "B2",
+    "teil": "Teil 2",
+    "title": "Председателю клуба: не смогу организовать праздник",
+    "mode": "formal",
+    "minutes": 25,
+    "words": 100,
+    "maxPoints": 40,
+    "situation": "Sie sind Mitglied in einem Sportverein. Die Vorsitzende, Frau Kaiser, hat Sie gebeten, im Juni das Sommerfest des Vereins zu organisieren. Im Juni haben Sie jedoch kaum Zeit. Schreiben Sie Frau Kaiser eine Nachricht. Überlegen Sie sich eine passende Reihenfolge für die Inhaltspunkte. Vergessen Sie nicht Anrede und Gruß.",
+    "points": [
+      "Bedanken Sie sich für das Vertrauen.",
+      "Erklären Sie, warum Sie das Fest nicht allein organisieren können.",
+      "Beschreiben Sie, wobei Sie trotzdem helfen könnten.",
+      "Machen Sie einen Vorschlag, wer die Organisation übernehmen könnte."
+    ],
+    "ru": "Ты член спортивного клуба. Председатель, госпожа Кайзер, попросила тебя организовать летний праздник клуба в июне. Но в июне у тебя почти нет времени. Напиши ей: 1. Поблагодари за доверие. 2. Объясни, почему не сможешь организовать всё один. 3. Опиши, чем всё-таки можешь помочь. 4. Предложи, кто мог бы взять организацию на себя. Порядок пунктов выбираешь сам, обращение и прощание обязательны.",
+    "checklist": [
+      "1. Поблагодарил за доверие",
+      "2. Объяснил, почему не смогу один",
+      "3. Описал, чем помогу",
+      "4. Предложил другого организатора",
+      "Обращение и прощание на месте"
+    ],
+    "model": "Liebe Frau Kaiser,\nvielen Dank, dass Sie bei der Organisation des Sommerfests an mich gedacht haben. Ihr Vertrauen freut mich sehr.\nLeider kann ich diese Aufgabe nicht allein übernehmen. Im Juni schreibe ich meine Abschlussprüfungen und brauche jede freie Minute zum Lernen.\nTrotzdem möchte ich gern einen Beitrag leisten. Am Tag des Festes könnte ich zum Beispiel beim Aufbau helfen oder den Kuchenverkauf betreuen. Auch bei der Suche nach Helfern unterstütze ich Sie gern.\nWie wäre es, wenn Herr Novak die Leitung übernähme? Er hat letztes Jahr schon das Vereinsturnier organisiert und kennt viele Sponsoren.\nIch hoffe auf Ihr Verständnis.\nMit freundlichen Grüßen\nLea Schmidt"
+  },
+  {
+    "id": "b2-t2-weiterbildung",
+    "level": "B2",
+    "teil": "Teil 2",
+    "title": "Начальнику: отпустить на семинар",
+    "mode": "formal",
+    "minutes": 25,
+    "words": 100,
+    "maxPoints": 40,
+    "situation": "Sie möchten an einer zweitägigen Weiterbildung teilnehmen, die während Ihrer Arbeitszeit stattfindet. Schreiben Sie Ihrem Vorgesetzten, Herrn Lorenz, eine Nachricht. Überlegen Sie sich eine passende Reihenfolge für die Inhaltspunkte. Vergessen Sie nicht Anrede und Gruß.",
+    "points": [
+      "Beschreiben Sie die Weiterbildung.",
+      "Erklären Sie, warum sie für Ihre Arbeit nützlich ist.",
+      "Bitten Sie höflich darum, für diese Zeit freigestellt zu werden.",
+      "Machen Sie einen Vorschlag, wie Ihre Aufgaben in dieser Zeit erledigt werden können."
+    ],
+    "ru": "Ты хочешь пойти на двухдневное повышение квалификации, которое проходит в рабочее время. Напиши руководителю, господину Лоренцу: 1. Опиши семинар. 2. Объясни, чем он полезен для твоей работы. 3. Вежливо попроси освободить тебя на это время. 4. Предложи, как будут выполнены твои задачи. Порядок пунктов выбираешь сам.",
+    "checklist": [
+      "1. Описал семинар: когда, где, о чём",
+      "2. Объяснил пользу для работы",
+      "3. Вежливо попросил отпустить (Konjunktiv II)",
+      "4. Предложил, кто и как сделает мою работу",
+      "Обращение и прощание на месте"
+    ],
+    "model": "Sehr geehrter Herr Lorenz,\nich möchte Sie um etwas bitten. Am 14. und 15. November findet in Köln ein Seminar zum Thema „Projektmanagement mit digitalen Werkzeugen“ statt. Dort lernen die Teilnehmenden, wie man Projekte effizient plant und Aufgaben im Team verteilt.\nDa ich ab Januar das neue Kundenprojekt koordinieren soll, wäre diese Weiterbildung für meine Arbeit sehr hilfreich. Deshalb würde ich mich freuen, wenn Sie mich für diese zwei Tage freistellen könnten.\nMeine dringenden Aufgaben würde ich vorher erledigen. Außerdem hat sich Frau Weiß bereit erklärt, mich in dieser Zeit zu vertreten.\nFür ein kurzes Gespräch stehe ich Ihnen jederzeit gern zur Verfügung.\nMit freundlichen Grüßen\nJana Horvat"
+  },
+  {
+    "id": "b2-t2-internet",
+    "level": "B2",
+    "teil": "Teil 2",
+    "title": "Общежитие: плохой интернет",
+    "mode": "formal",
+    "minutes": 25,
+    "words": 100,
+    "maxPoints": 40,
+    "situation": "Sie wohnen in einem Studentenwohnheim. Seit zwei Wochen funktioniert das Internet in Ihrem Gebäude nur sehr schlecht. Schreiben Sie dem Hausverwalter, Herrn Becker, eine Nachricht. Überlegen Sie sich eine passende Reihenfolge für die Inhaltspunkte. Vergessen Sie nicht Anrede und Gruß.",
+    "points": [
+      "Beschreiben Sie das Problem.",
+      "Erklären Sie, welche Folgen das für Sie hat.",
+      "Zeigen Sie Verständnis für die Situation der Verwaltung.",
+      "Machen Sie einen Vorschlag für eine Übergangslösung."
+    ],
+    "ru": "Ты живёшь в студенческом общежитии. Уже две недели интернет в здании работает очень плохо. Напиши управляющему, господину Беккеру: 1. Опиши проблему. 2. Объясни, к чему это приводит для тебя. 3. Покажи понимание ситуации администрации. 4. Предложи временное решение. Порядок пунктов выбираешь сам.",
+    "checklist": [
+      "1. Описал проблему: что и с какого времени",
+      "2. Объяснил последствия для учёбы",
+      "3. Показал понимание (Mir ist klar, dass …)",
+      "4. Предложил временное решение",
+      "Обращение и прощание на месте"
+    ],
+    "model": "Sehr geehrter Herr Becker,\nseit etwa zwei Wochen ist das Internet in Haus C kaum noch zu benutzen. Die Verbindung bricht mehrmals täglich ab, und abends ist sie so langsam, dass sich keine Videos laden lassen.\nFür mich ist das ein großes Problem, denn ich besuche viele Online-Seminare und muss nächste Woche eine Hausarbeit abgeben. Für die Recherche bin ich dringend auf eine stabile Verbindung angewiesen.\nMir ist klar, dass Sie für viele Gebäude zuständig sind und eine Reparatur Zeit braucht. Könnte man aber bis dahin vielleicht den Gemeinschaftsraum im Erdgeschoss länger öffnen? Dort ist das WLAN deutlich stabiler.\nVielen Dank im Voraus für Ihre Hilfe.\nMit freundlichen Grüßen\nBekzod Rahimov"
+  },
+  {
+    "id": "c1-t1-ki-unterricht",
+    "level": "C1",
+    "teil": "Teil 1",
+    "title": "Искусственный интеллект на уроках",
+    "mode": "forum",
+    "minutes": 50,
+    "words": 230,
+    "maxPoints": 60,
+    "situation": "Für das Internetforum „Bildung heute“ verfassen Sie einen Diskussionsbeitrag zu diesem Thema: „Künstliche Intelligenz im Unterricht: Chance oder Risiko?“",
+    "points": [
+      "Erklären Sie, warum der Einsatz von KI an Schulen derzeit so umstritten ist.",
+      "Erläutern Sie anhand eines Beispiels, wie KI das Lernen unterstützen kann.",
+      "Nennen Sie Gefahren, die mit dem Einsatz von KI verbunden sind.",
+      "Machen Sie einen Vorschlag, wie Schulen sinnvoll mit KI umgehen könnten."
+    ],
+    "ru": "Пост в форум «Образование сегодня»: искусственный интеллект на уроках, шанс или риск? 1. Объясни, почему ИИ в школах сейчас вызывает столько споров. 2. Покажи на примере, как ИИ может помогать учиться. 3. Назови опасности. 4. Предложи, как школам разумно обращаться с ИИ.",
+    "checklist": [
+      "1. Объяснил, почему тема спорная",
+      "2. Конкретный пример пользы ИИ для учёбы",
+      "3. Назвал опасности",
+      "4. Предложил, что делать школам"
+    ],
+    "model": "Kaum ein Thema spaltet Lehrkräfte und Eltern derzeit so sehr wie der Einsatz künstlicher Intelligenz im Unterricht. Das liegt vor allem daran, dass sich die Technik schneller entwickelt, als Schulen darauf reagieren können. Während die einen von einer Revolution des Lernens sprechen, befürchten die anderen, dass Schülerinnen und Schüler das eigenständige Denken verlernen.\nIch persönlich sehe in der KI durchaus eine Chance. Nehmen wir zum Beispiel den Fremdsprachenunterricht: Ein Schüler, der Schwierigkeiten mit der Grammatik hat, kann sich von einem KI-Programm jederzeit Übungen erstellen lassen, die genau auf seine Schwächen zugeschnitten sind. Eine Lehrkraft mit dreißig Kindern in der Klasse könnte eine solche individuelle Förderung kaum leisten.\nGleichwohl dürfen die Risiken nicht verschwiegen werden. Wer Hausaufgaben einfach von einem Programm erledigen lässt, lernt nichts. Hinzu kommt, dass KI-Systeme gelegentlich falsche Informationen liefern, die ungeübte Nutzer nicht als solche erkennen. Nicht zuletzt stellt sich die Frage, was mit den Daten der Kinder geschieht.\nStatt KI zu verbieten, sollten Schulen daher lernen, verantwortungsvoll mit ihr umzugehen. Sinnvoll wäre es, Medienkompetenz als festen Bestandteil in den Lehrplan aufzunehmen. Dort könnten Jugendliche lernen, Ergebnisse kritisch zu prüfen und Quellen zu vergleichen. Zugleich müssten Prüfungsformate so verändert werden, dass eigenes Denken gefragt ist, etwa durch mündliche Präsentationen.\nAlles in allem gilt: Nur wenn wir die Technik weder verteufeln noch verklären, kann sie den Unterricht tatsächlich bereichern."
+  },
+  {
+    "id": "c1-t1-landleben",
+    "level": "C1",
+    "teil": "Teil 1",
+    "title": "Переезд из города в деревню",
+    "mode": "forum",
+    "minutes": 50,
+    "words": 230,
+    "maxPoints": 60,
+    "situation": "Für das Internetforum „Wohnen & Leben“ verfassen Sie einen Diskussionsbeitrag zu diesem Thema: „Raus aus der Stadt: Ist das Leben auf dem Land die bessere Wahl?“",
+    "points": [
+      "Erklären Sie, warum immer mehr Menschen über einen Umzug aufs Land nachdenken.",
+      "Argumentieren Sie anhand eines konkreten Beispiels.",
+      "Nennen Sie Nachteile, die das Leben auf dem Land mit sich bringen kann.",
+      "Machen Sie einen Vorschlag, wie ländliche Regionen attraktiver werden könnten."
+    ],
+    "ru": "Пост в форум «Жильё и жизнь»: прочь из города, жизнь в деревне лучше? 1. Объясни, почему всё больше людей думают о переезде за город. 2. Аргументируй на конкретном примере. 3. Назови минусы сельской жизни. 4. Предложи, как сделать сельские регионы привлекательнее.",
+    "checklist": [
+      "1. Объяснил причины тренда",
+      "2. Аргумент на конкретном примере",
+      "3. Назвал минусы",
+      "4. Предложил меры для регионов"
+    ],
+    "model": "Seit einigen Jahren lässt sich ein bemerkenswerter Trend beobachten: Immer mehr Menschen kehren der Großstadt den Rücken und ziehen aufs Land. Ausschlaggebend dafür sind in erster Linie die stark steigenden Mieten in den Ballungsräumen. Hinzu kommt, dass viele Beschäftigte inzwischen zumindest teilweise von zu Hause arbeiten und daher nicht mehr täglich ins Büro pendeln müssen.\nWie attraktiv das Landleben sein kann, lässt sich am Beispiel einer jungen Familie veranschaulichen, die aus einer Großstadt in ein kleines Dorf zieht. Für die Miete einer engen Dreizimmerwohnung kann sie dort oft ein ganzes Haus mit Garten bewohnen. Die Kinder können draußen spielen, und die Eltern genießen nach Feierabend die Ruhe. Zudem ist der Zusammenhalt in kleinen Orten oft stärker: Man kennt seine Nachbarn und hilft einander.\nDennoch sollte man die Schattenseiten nicht unterschätzen. In vielen Dörfern fährt der Bus nur zweimal am Tag, sodass man ohne Auto kaum zurechtkommt. Auch Ärzte, Geschäfte und kulturelle Angebote sind oft weit entfernt. Gerade ältere Menschen sind dadurch schnell auf die Hilfe anderer angewiesen. Wer auf schnelles Internet angewiesen ist, wird zudem nicht selten enttäuscht.\nDamit ländliche Regionen auf Dauer eine echte Alternative darstellen, müsste die Politik meines Erachtens vor allem in die Infrastruktur investieren. Denkbar wären etwa flexible Rufbusse, Gemeinschaftsbüros im Ortskern und der flächendeckende Ausbau von Glasfaser. Alles in allem wird das Landleben erst dann nicht nur für Idealisten, sondern für breite Bevölkerungsschichten attraktiv."
+  },
+  {
+    "id": "c1-t1-social-media",
+    "level": "C1",
+    "teil": "Teil 1",
+    "title": "Соцсети только с 16 лет?",
+    "mode": "forum",
+    "minutes": 50,
+    "words": 230,
+    "maxPoints": 60,
+    "situation": "Für das Internetforum „Familie & Gesellschaft“ verfassen Sie einen Diskussionsbeitrag zu diesem Thema: „Soziale Netzwerke erst ab 16?“",
+    "points": [
+      "Erklären Sie, warum ein Mindestalter für soziale Netzwerke gefordert wird.",
+      "Erläutern Sie anhand eines Beispiels, welche Vorteile soziale Netzwerke für Jugendliche haben können.",
+      "Nennen Sie Schwierigkeiten bei der Umsetzung eines solchen Verbots.",
+      "Machen Sie einen Vorschlag, wie Jugendliche besser geschützt werden könnten."
+    ],
+    "ru": "Пост в форум «Семья и общество»: соцсети только с 16 лет? 1. Объясни, почему требуют возрастной ценз. 2. Покажи на примере, чем соцсети полезны подросткам. 3. Назови трудности с введением такого запрета. 4. Предложи, как лучше защитить подростков.",
+    "checklist": [
+      "1. Объяснил, откуда требование возрастного ценза",
+      "2. Пример пользы соцсетей для подростков",
+      "3. Назвал трудности с запретом",
+      "4. Предложил альтернативу запрету"
+    ],
+    "model": "In mehreren Ländern wird zurzeit darüber diskutiert, soziale Netzwerke erst ab 16 Jahren zu erlauben. Befürworter argumentieren, eine intensive Nutzung könne mit Schlafmangel, Konzentrationsproblemen und einem geringen Selbstwertgefühl einhergehen. Zudem sind Kinder auf diesen Plattformen häufig Cybermobbing oder ungeeigneten Inhalten ausgesetzt. Viele Eltern klagen außerdem, es gelinge ihnen kaum, die Bildschirmzeit ihrer Kinder zu begrenzen.\nEin generelles Verbot halte ich dennoch für zu kurz gedacht, denn soziale Netzwerke haben für Jugendliche auch positive Seiten. Ein Beispiel: Eine Fünfzehnjährige, die sich in ihrer Kleinstadt als Außenseiterin fühlt, kann online Gleichgesinnte finden, die ihre Interessen teilen. Gerade für Jugendliche in schwierigen Lebenslagen können solche Online-Gemeinschaften eine wichtige Stütze sein. Viele Jugendliche informieren sich außerdem über das Weltgeschehen oder entdecken kreative Hobbys wie Fotografie und Videoschnitt.\nHinzu kommt, dass sich ein solches Verbot kaum durchsetzen ließe. Eine zuverlässige Altersprüfung würde voraussetzen, dass alle Nutzer ihren Ausweis hochladen, was wiederum erhebliche Datenschutzprobleme mit sich brächte. Technisch versierte Jugendliche dürften ohnehin Wege finden, solche Sperren zu umgehen.\nSinnvoller wäre es meines Erachtens, die Plattformen stärker in die Pflicht zu nehmen. Sie sollten für Minderjährige standardmäßig strenge Privatsphäre-Einstellungen vorsehen und auf Funktionen verzichten, die süchtig machen, etwa das endlose Scrollen. Denkbar wären auch altersgerechte Versionen der Apps mit begrenzter Nutzungsdauer. Gleichzeitig brauchen Schulen und Eltern mehr Unterstützung, um Kinder frühzeitig für die Risiken zu sensibilisieren.\nAlles in allem sollte die Devise daher lauten: Schutz statt Verbot."
+  },
+  {
+    "id": "c1-t2-sanierung",
+    "level": "C1",
+    "teil": "Teil 2",
+    "title": "Управляющей: ремонт фасада и хоумофис",
+    "mode": "formal",
+    "minutes": 25,
+    "words": 120,
+    "maxPoints": 40,
+    "situation": "In Ihrem Wohnhaus soll in den nächsten drei Monaten die Fassade saniert werden. Die Arbeiten finden werktags von 7 bis 17 Uhr statt. Sie arbeiten überwiegend im Homeoffice. Schreiben Sie eine E-Mail an Ihre Hausverwalterin, Frau Brenner.",
+    "points": [
+      "Zeigen Sie Verständnis für die geplanten Arbeiten.",
+      "Machen Sie auf Ihre besondere Situation aufmerksam.",
+      "Beschreiben Sie, welche Folgen der Lärm für Ihre Arbeit hätte.",
+      "Bitten Sie darum, rechtzeitig über besonders laute Arbeiten informiert zu werden."
+    ],
+    "ru": "В твоём доме три месяца будут ремонтировать фасад, по будням с 7 до 17. Ты в основном работаешь из дома. Напиши управляющей, госпоже Бреннер: 1. Покажи понимание. 2. Обрати внимание на свою ситуацию. 3. Опиши, как шум повлияет на работу. 4. Попроси заранее сообщать об особенно шумных работах.",
+    "checklist": [
+      "1. Показал понимание",
+      "2. Обратил внимание на свою ситуацию (Ich möchte Sie darauf hinweisen …)",
+      "3. Описал последствия шума",
+      "4. Вежливо попросил предупреждать заранее",
+      "Обращение и прощание формальные"
+    ],
+    "model": "Sehr geehrte Frau Brenner,\nvielen Dank für Ihr Schreiben zur geplanten Fassadensanierung. Dass das Gebäude nach so vielen Jahren renoviert werden muss, ist für mich selbstverständlich nachvollziehbar. Schließlich profitieren auch die Mieterinnen und Mieter von einer besseren Wärmedämmung.\nAllerdings möchte ich Sie auf eine Schwierigkeit hinweisen: Ich arbeite überwiegend im Homeoffice und nehme täglich an Videokonferenzen mit Kunden teil. Bei Bohrarbeiten direkt vor meinem Fenster wäre konzentriertes Arbeiten kaum möglich, und Kundengespräche müsste ich womöglich absagen.\nIch wäre Ihnen daher sehr dankbar, wenn Sie mir besonders laute Arbeiten an meiner Seite des Hauses einige Tage im Voraus mitteilen könnten. So könnte ich mir für diese Tage rechtzeitig einen Arbeitsplatz in einem Co-Working-Büro organisieren.\nMit freundlichen Grüßen\nDaniyar Akhmetov"
+  },
+  {
+    "id": "c1-t2-seminar",
+    "level": "C1",
+    "teil": "Teil 2",
+    "title": "Организатору: семинар не как в описании",
+    "mode": "formal",
+    "minutes": 25,
+    "words": 120,
+    "maxPoints": 40,
+    "situation": "Sie haben an einem dreitägigen Fortbildungsseminar teilgenommen. Das Seminar entsprach in mehreren Punkten nicht der Beschreibung im Programm. Schreiben Sie eine E-Mail an die Veranstalterin, Frau Seidel.",
+    "points": [
+      "Beschreiben Sie, was nicht Ihren Erwartungen entsprach.",
+      "Erwähnen Sie auch positive Aspekte des Seminars.",
+      "Machen Sie einen Vorschlag für künftige Seminare.",
+      "Bitten Sie um eine angemessene Reaktion."
+    ],
+    "ru": "Ты был на трёхдневном семинаре повышения квалификации. В нескольких пунктах он не соответствовал описанию в программе. Напиши организатору, госпоже Зайдель: 1. Опиши, что не совпало с ожиданиями. 2. Упомяни и плюсы семинара. 3. Предложи, что улучшить в будущем. 4. Попроси о соответствующей реакции (например, частичный возврат).",
+    "checklist": [
+      "1. Описал, что не совпало с программой",
+      "2. Отметил плюсы",
+      "3. Предложил улучшение",
+      "4. Вежливо попросил компенсацию (Ich wäre Ihnen dankbar, wenn …)",
+      "Тон: критика, но вежливо"
+    ],
+    "model": "Sehr geehrte Frau Seidel,\nvom 6. bis 8. Oktober habe ich an Ihrem Seminar „Moderne Präsentationstechniken“ teilgenommen. Leider entsprach es in mehreren Punkten nicht der Ausschreibung. Statt der angekündigten praktischen Übungen bestand der Kurs größtenteils aus Vorträgen, und die versprochene Videoanalyse fand überhaupt nicht statt.\nPositiv hervorheben möchte ich hingegen die Kompetenz des Referenten sowie die hervorragende Organisation vor Ort.\nFür künftige Seminare würde ich anregen, die Programmbeschreibung genauer an den tatsächlichen Ablauf anzupassen oder kleinere Gruppen zu bilden, damit ausreichend Zeit für Übungen bleibt.\nDa ich die Teilnahmegebühr selbst getragen habe, wäre ich Ihnen dankbar, wenn Sie mir einen Teil davon erstatten oder einen Gutschein für ein weiteres Seminar anbieten könnten.\nMit freundlichen Grüßen\nSvetlana Morozova"
+  },
+  {
+    "id": "c1-t2-bibliothek",
+    "level": "C1",
+    "teil": "Teil 2",
+    "title": "Библиотека будет закрываться раньше",
+    "mode": "formal",
+    "minutes": 25,
+    "words": 120,
+    "maxPoints": 40,
+    "situation": "Die Universitätsbibliothek will aus Kostengründen ab dem nächsten Semester bereits um 18 Uhr statt um 22 Uhr schließen. Schreiben Sie als Vertreterin oder Vertreter Ihres Studiengangs eine E-Mail an die Leiterin der Bibliothek, Frau Hartmann.",
+    "points": [
+      "Zeigen Sie Verständnis für die Sparmaßnahmen.",
+      "Machen Sie auf die Folgen für die Studierenden aufmerksam.",
+      "Beschreiben Sie, welche Gruppen besonders betroffen wären.",
+      "Schlagen Sie eine Alternative vor."
+    ],
+    "ru": "Университетская библиотека из-за экономии хочет со следующего семестра закрываться в 18:00, а не в 22:00. Как представитель своей специальности напиши e-mail руководительнице библиотеки, госпоже Хартман: 1. Покажи понимание мер экономии. 2. Обрати внимание на последствия для студентов. 3. Опиши, кого это коснётся сильнее всего. 4. Предложи альтернативу.",
+    "checklist": [
+      "1. Показал понимание",
+      "2. Назвал последствия для студентов",
+      "3. Описал, кого это коснётся сильнее всего",
+      "4. Предложил альтернативу",
+      "Обращение и прощание формальные"
+    ],
+    "model": "Sehr geehrte Frau Hartmann,\nals Vertreter der Fachschaft Maschinenbau wende ich mich mit einem Anliegen an Sie. Wir haben erfahren, dass die Bibliothek ab dem kommenden Semester bereits um 18 Uhr schließen soll. Uns ist bewusst, dass auch die Universität sparen muss und diese Entscheidung sicher nicht leichtfertig getroffen wurde.\nDennoch hätte die Maßnahme für viele Studierende gravierende Folgen. Gerade in der Prüfungsphase sind die Lernplätze abends stark gefragt. Besonders betroffen wären diejenigen, die tagsüber arbeiten, um ihr Studium zu finanzieren, sowie Studierende mit Kindern, die oft erst abends Zeit zum Lernen finden.\nWäre es denkbar, zumindest einen Lesesaal, der mit dem Studierendenausweis zugänglich ist und ohne zusätzliches Personal auskommt, bis 22 Uhr geöffnet zu lassen?\nMit freundlichen Grüßen\nNikolai Weber"
+  },
+  {
+    "id": "c2-t2-wissenschaftssprache",
+    "level": "C2",
+    "teil": "Teil 2",
+    "title": "Английский как язык науки",
+    "mode": "forum",
+    "minutes": 60,
+    "words": 350,
+    "maxPoints": 80,
+    "situation": "Sie haben in einer deutschsprachigen Tageszeitung eine Artikelserie zum Thema „Englisch als Sprache der Wissenschaft“ gelesen. Sie schreiben einen ausführlichen Leserbrief (circa 350 Wörter) an die Redaktion, in dem Sie sich auf die drei folgenden Aussagen beziehen und Ihre Meinung dazu äußern.",
+    "points": [
+      "„Eine gemeinsame Wissenschaftssprache beschleunigt den Austausch von Wissen weltweit.“",
+      "„Wer nur noch auf Englisch forscht und lehrt, lässt seine Muttersprache verarmen.“",
+      "„Englischsprachige Studiengänge machen Hochschulen internationaler, aber nicht unbedingt besser.“"
+    ],
+    "ru": "Ты прочитал в газете серию статей «Английский как язык науки». Напиши подробное письмо в редакцию (около 350 слов): отреагируй на три высказывания и скажи своё мнение. 1. Общий язык науки ускоряет обмен знаниями по всему миру. 2. Кто исследует и преподаёт только на английском, обедняет родной язык. 3. Англоязычные программы делают вузы международнее, но не обязательно лучше.",
+    "checklist": [
+      "1. Высказался по тезису об обмене знаниями: аргумент и пример",
+      "2. Высказался по тезису об обеднении родного языка",
+      "3. Высказался по тезису об англоязычных программах",
+      "Вступление с поводом и тезисом, вывод с решением",
+      "Формальное обращение и прощание"
+    ],
+    "model": "Sehr geehrte Damen und Herren,\nmit großem Interesse habe ich Ihre Artikelserie über Englisch als Sprache der Wissenschaft verfolgt. Als jemand, der selbst in einer Fremdsprache studiert hat, kenne ich die Vorzüge wie auch die Tücken dieser Entwicklung aus eigener Erfahrung. Eine pauschale Antwort auf die Frage, ob die Dominanz des Englischen Segen oder Fluch sei, halte ich allerdings für unmöglich.\nUnbestreitbar ist, dass eine gemeinsame Sprache den Austausch von Wissen erheblich beschleunigt. Eine Medizinerin in Seoul kann die Ergebnisse eines Teams in Heidelberg lesen, sobald diese veröffentlicht sind, ohne auf eine Übersetzung warten zu müssen. Zudem erleichtert eine Lingua franca die Zusammenarbeit in internationalen Teams, die heute eher die Regel als die Ausnahme sind. Gerade in Krisenzeiten, etwa während einer Pandemie, kann dieser Zeitgewinn Leben retten. Wer forderte, jede Disziplin solle wieder in ihrer Landessprache publizieren, würde die Wissenschaft in eine Vielzahl isolierter Inseln zersplittern.\nWeniger leicht von der Hand zu weisen ist hingegen die Sorge, die Muttersprache könne verarmen. Wenn neue Fachbegriffe ausschließlich auf Englisch geprägt werden, fehlen dem Deutschen irgendwann die Wörter, um über moderne Forschung zu sprechen. Die Folgen reichen weit über die Hochschulen hinaus: Wie soll eine Gesellschaft über Gentechnik oder künstliche Intelligenz debattieren, wenn ihr dafür das Vokabular fehlt? Wissenschaft lebt schließlich auch davon, dass sie der Öffentlichkeit verständlich vermittelt wird. Wer seine Forschung nicht mehr in der Landessprache erklären kann, entfremdet sich von denjenigen, die sie letztlich finanzieren.\nWas die englischsprachigen Studiengänge betrifft, so teile ich die skeptische Einschätzung weitgehend. Zwar ziehen sie internationale Studierende an und bereiten auf einen globalen Arbeitsmarkt vor. Doch wenn sich Lehrende wie Lernende in einer Sprache ausdrücken, die keiner von beiden wirklich beherrscht, leidet zwangsläufig die Tiefe der Diskussion. Internationalität ist ein Mittel, aber kein Qualitätsmerkmal an sich.\nAlles in allem plädiere ich für eine bewusste Zweisprachigkeit: Englisch als Brücke zur internationalen Fachwelt, Deutsch als Sprache der Lehre und des gesellschaftlichen Dialogs. Hochschulen sollten ihre Forschenden ermutigen, ihre Ergebnisse auch auf Deutsch zugänglich zu machen, zum Beispiel in Form allgemeinverständlicher Zusammenfassungen. Nur so bleibt die Wissenschaft zugleich weltoffen und in der eigenen Gesellschaft verankert.\nMit freundlichen Grüßen\nAruzhan Seitkali"
+  },
+  {
+    "id": "c2-t2-museen",
+    "level": "C2",
+    "teil": "Teil 2",
+    "title": "Бесплатный вход в музеи",
+    "mode": "forum",
+    "minutes": 60,
+    "words": 350,
+    "maxPoints": 80,
+    "situation": "Sie haben in einem deutschsprachigen Nachrichtenmagazin mehrere Beiträge zum Thema „Freier Eintritt in Museen?“ gelesen. Sie schreiben eine ausführliche E-Mail (circa 350 Wörter) an die Redaktion, in der Sie sich auf die drei folgenden Aussagen beziehen und Ihre Meinung dazu äußern.",
+    "points": [
+      "„Kultur ist ein öffentliches Gut und sollte allen ohne Eintrittsgeld offenstehen.“",
+      "„Was nichts kostet, ist nichts wert – auch im Museum.“",
+      "„Freier Eintritt allein bringt keine neuen Besucherinnen und Besucher ins Museum.“"
+    ],
+    "ru": "Ты прочитал в новостном журнале несколько материалов на тему «Бесплатный вход в музеи?». Напиши подробное письмо в редакцию (около 350 слов): отреагируй на три высказывания и скажи своё мнение. 1. Культура это общественное благо, она должна быть открыта всем без платы за вход. 2. Что ничего не стоит, то ничего не ценно, и в музее тоже. 3. Один лишь бесплатный вход не приведёт в музей новых посетителей.",
+    "checklist": [
+      "1. Высказался по тезису «культура как общественное благо»",
+      "2. Высказался по тезису «бесплатное не ценят»",
+      "3. Высказался по тезису о новых посетителях",
+      "Вступление с поводом, вывод с позицией",
+      "Формальное обращение и прощание"
+    ],
+    "model": "Sehr geehrte Damen und Herren,\nIhre Beiträge zur Frage, ob Museen auf Eintrittsgelder verzichten sollten, haben mich zum Nachdenken angeregt. Da ich selbst regelmäßig Ausstellungen besuche, möchte ich mich gern an der Debatte beteiligen. Meines Erachtens greift die Diskussion jedoch zu kurz, wenn sie sich allein auf den Preis konzentriert.\nDer Forderung, Kultur müsse als öffentliches Gut allen offenstehen, kann ich grundsätzlich zustimmen. Museen werden zu einem erheblichen Teil aus Steuermitteln finanziert; es erscheint daher nur folgerichtig, die Bürgerinnen und Bürger nicht ein zweites Mal zur Kasse zu bitten. Für eine Familie mit drei Kindern summieren sich die Eintrittspreise rasch auf einen Betrag, der einen spontanen Museumsbesuch von vornherein ausschließt. Hinzu kommt, dass gerade Schülerinnen und Schüler, Studierende oder Menschen mit geringem Einkommen oft auf Kultur verzichten, weil sie jeden Euro zweimal umdrehen müssen. Ein Museum, das sich nur ein Teil der Bevölkerung leisten kann, verfehlt seinen Bildungsauftrag.\nDie Redensart „Was nichts kostet, ist nichts wert“ überzeugt mich dagegen wenig. Niemand würde behaupten, ein Spaziergang durch einen öffentlichen Park sei wertlos, nur weil er nichts kostet. Zuzugeben ist allerdings, dass kostenlose Angebote mitunter unverbindlicher wahrgenommen werden. Wer kein Geld ausgegeben hat, verlässt eine Ausstellung womöglich schneller, wenn sie ihn nicht auf Anhieb fesselt. Das spricht jedoch eher für eine bessere Vermittlung als für Eintrittsgelder. Denkbar wäre auch ein freiwilliger Beitrag am Ausgang, den jeder nach eigenem Ermessen zahlt.\nAm treffendsten finde ich die dritte Aussage. Ich vermute, dass in erster Linie diejenigen häufiger kämen, die ohnehin kulturell interessiert sind. Menschen, die Museen als elitäre Orte empfinden, lassen sich durch einen Preisnachlass allein kaum umstimmen. Hier bedarf es vielmehr gezielter Angebote, zum Beispiel Führungen in mehreren Sprachen, Kooperationen mit Schulen und Stadtteilzentren oder Abendveranstaltungen mit Musik. Ein Museum muss also nicht nur seine Türen öffnen, sondern auch auf die Menschen zugehen.\nInsgesamt halte ich freien Eintritt für einen wichtigen, aber keineswegs hinreichenden Schritt. Erst wenn sich Museen zugleich aktiv um neue Zielgruppen bemühen, werden sie tatsächlich zu Orten, an denen sich die ganze Gesellschaft wiederfindet.\nMit freundlichen Grüßen\nTimur Iskakov"
+  }
+]
