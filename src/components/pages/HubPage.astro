@@ -35,6 +35,7 @@ const jsonld = [
 ---
 <Base title={`Гайды по ${EX.full} ${range} — бесплатно | Stellas`} description={desc} active="all" jsonld={jsonld} tone="gray" exam={exam}>
   <section class="hub-hero wrap">
+    <div class="hero-card glow">
     <p class="eyebrow">Гайды · {EX.full} {range}</p>
     <h1 class="display">Сдай {EX.name}. <span class="grad">Без паники.</span></h1>
     <p class="lede">{guides.length} {plural(guides.length, 'бесплатный гайд', 'бесплатных гайда', 'бесплатных гайдов')}, официальные пробники с разбором и тренажёры прямо на странице.</p>
@@ -46,6 +47,7 @@ const jsonld = [
       <input id="q" type="search" placeholder="Поиск: «письмо другу», Hören, баллы…" autocomplete="off" />
     </label>
     <div class="results" id="res" aria-live="polite"></div>
+    </div>
   </section>
 
   <div class="wrap">

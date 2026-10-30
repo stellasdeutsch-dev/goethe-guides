@@ -41,9 +41,8 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex" />}
-  <meta name="color-scheme" content="light dark" />
-  <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)" />
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#F0EFEB" />
   <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
   <link rel="apple-touch-icon" href={url('/logo.webp')} />
   <link rel="alternate" type="application/rss+xml" title={SITE.title} href={url('/ru/guides/rss.xml')} />
@@ -66,7 +65,7 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
   <header class="gnav">
     <div class="wrap">
       <a class="brand" href={url(`${B}/`)}>
-        <img src={url('/logo.webp')} alt="" width="26" height="26" />
+        <img src={url('/favicon.svg')} alt="" width="30" height="30" />
         Stellas <span>{EX.name}</span>
       </a>
       <nav aria-label="Разделы">
