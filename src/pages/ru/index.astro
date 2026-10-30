@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import { EXAMS, EXAM_IDS } from '../../data/exams';
+import { url } from '../../data/site';
+import { getGuides, plural } from '../../lib/guides';
+
+const counts = Object.fromEntries(await Promise.all(EXAM_IDS.map(async (e) => [e, (await getGuides(e)).length] as const)));
+const ready = EXAM_IDS.filter((e) => counts[e] > 0);
+---
+<Base title="Подготовка к экзаменам по немецкому: Goethe, telc, ÖSD | Stellas" description="Бесплатная подготовка к экзаменам по немецкому языку: Goethe-Zertifikat, telc Deutsch, ÖSD. Формат, пробники с разбором и маршруты по уровням." tone="gray">
+  <section class="hub-hero wrap">
+    <p class="eyebrow">Экзамены по немецкому</p>
+    <h1 class="display">Какой экзамен <span class="grad">сдаёшь?</span></h1>
+    <p class="lede">Выбери экзамен. Откроется подготовка под его формат: части, баллы, пробники и маршрут по уровням.</p>
+  </section>
+  <div class="wrap">
+    <div class="ex-cards">
+      {ready.map((e) => (
+        <a class="lvl-card ex-card" href={url(`${EXAMS[e].base}/`)} style={`--c:${EXAMS[e].color}`}>
+          <span class="lvl-big">{EXAMS[e].name}</span>
+          <b>{EXAMS[e].full}</b>
+          <span class="lvl-text">{EXAMS[e].blurb}</span>
+          <span class="go">{counts[e]} {plural(counts[e], 'гайд', 'гайда', 'гайдов')} · открыть <svg class="ic"><use href="#i-chevron-right" /></svg></span>
+        </a>
+      ))}
+    </div>
+    <p class="lvl-help"><svg class="ic"><use href="#i-info" /></svg> Не знаешь, что выбрать? <a href={url('/ru/guides/pruefung/goethe-telc-oesd-testdaf/')}>Goethe, telc, ÖSD или TestDaF: сравнение</a></p>
+  </div>
+</Base>

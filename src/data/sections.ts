@@ -1,6 +1,6 @@
 import type { Level } from './site';
 
-export type SectionId = 'pruefung' | 'probniki' | 'lesen' | 'hoeren' | 'schreiben' | 'sprechen' | 'grammatik';
+export type SectionId = 'pruefung' | 'probniki' | 'sprachbausteine' | 'lesen' | 'hoeren' | 'schreiben' | 'sprechen' | 'grammatik';
 
 export interface Planned {
   slug: string;

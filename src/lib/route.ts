@@ -1,5 +1,6 @@
 import type { Level } from '../data/site';
 import { SECTIONS } from '../data/sections';
+import { EXAMS, type ExamId } from '../data/exams';
 import type { Guide } from './guides';
 import { slugOf } from './guides';
 
@@ -48,7 +49,8 @@ function rank(slug: string): number {
 }
 const PRUEF_ORDER = ['goethe-zertifikat-urovni', 'start-deutsch-1-a1-viza', 'kak-schitayutsya-bally-goethe', 'goethe-telc-oesd-testdaf'];
 
-export function buildRoute(all: Guide[], level: Level, toItem: (g: Guide) => RouteItem): RouteStep[] {
+export function buildRoute(all: Guide[], level: Level, toItem: (g: Guide) => RouteItem, exam: ExamId = 'goethe'): RouteStep[] {
+  const EX = EXAMS[exam];
   const has = (g: Guide) => g.data.levels.includes(level);
   const of = (section: string) => all.filter((g) => g.data.section === section && has(g));
   const sortRank = (a: Guide, b: Guide) => rank(slugOf(a)) - rank(slugOf(b)) || slugOf(a).localeCompare(slugOf(b));
@@ -59,25 +61,26 @@ export function buildRoute(all: Guide[], level: Level, toItem: (g: Guide) => Rou
   // Сначала официальный пробник (диагностика), потом Übungssatz, потом пробники Stellas, в конце обзор.
   const mockRank = (g: Guide) => {
     const sl = slugOf(g);
-    if (sl === 'goethe-modellsatz-skachat') return 9;
+    if (sl === 'goethe-modellsatz-skachat' || sl.endsWith('-skachat') || sl.startsWith('probniki-')) return 9;
     if (sl.startsWith('stellas-')) return 5 + Number(sl.slice(-1) || 0) / 10;
     if (sl.includes('uebungssatz')) return 2;
     return 0;
   };
   const probe = of('probniki').sort((a, b) => mockRank(a) - mockRank(b));
-  const modules = ['lesen', 'hoeren', 'schreiben', 'sprechen'].map((id) => ({
+  const moduleIds = EX.sections.map((s) => s.id).filter((id) => !['pruefung', 'probniki', 'grammatik'].includes(id));
+  const modules = moduleIds.map((id) => ({
     section: id,
-    label: SECTIONS.find((s) => s.id === id)!.de,
+    label: EX.sections.find((s) => s.id === id)!.de,
     items: of(id).sort(sortRank).map(toItem),
   })).filter((g) => g.items.length);
   const gram = of('grammatik').map(toItem);
-  const dativ = SECTIONS.find((s) => s.id === 'grammatik')!.planned.find((p) => p.href && p.levels.includes(level));
+  const dativ = exam === 'goethe' ? SECTIONS.find((s) => s.id === 'grammatik')!.planned.find((p) => p.href && p.levels.includes(level)) : undefined;
   if (dativ) gram.push({ title: dativ.title, href: dativ.href!, section: 'grammatik', external: true, slug: dativ.slug });
   const reg = all.filter((g) => REG.includes(slugOf(g))).map(toItem);
 
   return [
     { n: 1, title: 'Пойми экзамен', text: 'Из чего состоит экзамен, сколько длится и как считают баллы. 10 минут, и паника уходит.', icon: 'graduation-cap', groups: [{ items: pruef.map(toItem) }] },
-    { n: 2, title: 'Сдай пробник', text: 'Реши официальный пробник Goethe с нашим бланком ответов. Узнаешь баллы и своё слабое место.', icon: 'file-text', groups: [{ items: probe.map(toItem) }] },
+    { n: 2, title: 'Сдай пробник', text: `Реши официальный пробник ${EX.name} с нашим бланком ответов. Узнаешь баллы и своё слабое место.`, icon: 'file-text', groups: [{ items: probe.map(toItem) }] },
     { n: 3, title: 'Тренируй модули', text: 'Начни с модуля, где в пробнике было меньше всего баллов. В каждом гайде есть тренажёр или упражнения.', icon: 'target', groups: modules },
     { n: 4, title: 'Подтяни грамматику', text: 'Только то, что поднимает баллы в Schreiben и Sprechen.', icon: 'puzzle', groups: [{ items: gram }] },
     { n: 5, title: 'Запишись на экзамен', text: 'Где сдавать, сколько стоит и как не пропустить запись.', icon: 'calendar-check', groups: [{ items: reg }] },
@@ -87,5 +90,5 @@ export function buildRoute(all: Guide[], level: Level, toItem: (g: Guide) => Rou
 /** На какой шаг маршрута ведёт раздел гайда. */
 export function stepOf(section: string, slug: string): number {
   if (REG.includes(slug)) return 5;
-  return { pruefung: 1, probniki: 2, lesen: 3, hoeren: 3, schreiben: 3, sprechen: 3, grammatik: 4 }[section] ?? 3;
+  return ({ pruefung: 1, probniki: 2, lesen: 3, hoeren: 3, sprachbausteine: 3, schreiben: 3, sprechen: 3, grammatik: 4 } as Record<string, number>)[section] ?? 3;
 }

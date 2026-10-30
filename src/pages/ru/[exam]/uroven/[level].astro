@@ -1,0 +1,17 @@
+---
+import RoutePage from '../../../../components/pages/RoutePage.astro';
+import { LEVELS, type Level } from '../../../../data/site';
+import { getGuides } from '../../../../lib/guides';
+import type { ExamId } from '../../../../data/exams';
+
+export async function getStaticPaths() {
+  const out = [];
+  for (const exam of ['telc', 'oesd'] as ExamId[]) {
+    const all = await getGuides(exam);
+    for (const l of LEVELS) if (all.some((g) => (g.data.levels as string[]).includes(l))) out.push({ params: { exam, level: l.toLowerCase() }, props: { exam, level: l } });
+  }
+  return out;
+}
+const { exam, level } = Astro.props as { exam: ExamId; level: Level };
+---
+<RoutePage exam={exam} level={level} />

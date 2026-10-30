@@ -1,7 +1,7 @@
 ---
 import '../styles/guide.css';
 import Base from './Base.astro';
-import { sectionById } from '../data/sections';
+import { EXAMS, sectionOf } from '../data/exams';
 import { SITE, url } from '../data/site';
 import { guideHref, levelLabels, plural, readingTime, ruDate, slugOf, type Guide } from '../lib/guides';
 import { stepOf } from '../lib/route';
@@ -13,7 +13,9 @@ interface Props {
 }
 const { entry, headings } = Astro.props;
 const d = entry.data;
-const s = sectionById(d.section)!;
+const EX = EXAMS[d.exam];
+const B = EX.base;
+const s = sectionOf(d.exam, d.section)!;
 const minutes = readingTime(entry.body);
 const step = stepOf(d.section, slugOf(entry));
 const ORDER = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -42,8 +44,8 @@ const jsonld: object[] = [
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
-      { '@type': 'ListItem', position: 1, name: 'Гайды', item: new URL(url('/ru/guides/'), Astro.site).href },
-      { '@type': 'ListItem', position: 2, name: s.title, item: new URL(url(`/ru/guides/${s.id}/`), Astro.site).href },
+      { '@type': 'ListItem', position: 1, name: `Гайды ${EX.name}`, item: new URL(url(`${B}/`), Astro.site).href },
+      { '@type': 'ListItem', position: 2, name: s.title, item: new URL(url(`${B}/${s.id}/`), Astro.site).href },
       { '@type': 'ListItem', position: 3, name: d.title, item: href },
     ],
   },
@@ -56,15 +58,15 @@ if (d.faq.length) {
   });
 }
 ---
-<Base title={d.seoTitle} description={d.description} active={d.section} ogType="article" jsonld={jsonld}>
+<Base title={d.seoTitle} description={d.description} active={d.section} ogType="article" jsonld={jsonld} exam={d.exam}>
   <article class="wrap" style={`--sc:${s.color}`}>
     <header class="g-head">
       <ol class="crumbs">
-        <li><a href={url('/ru/guides/')}>Гайды</a></li>
+        <li><a href={url(`${B}/`)}>Гайды {EX.name}</a></li>
         <li><svg class="ic"><use href="#i-chevron-right" /></svg></li>
-        <li><a href={url(`/ru/guides/${s.id}/`)}>{s.title}</a></li>
+        <li><a href={url(`${B}/${s.id}/`)}>{s.title}</a></li>
       </ol>
-      <p class="eyebrow">{s.de} · Goethe-Zertifikat {levelLabels(d.levels).join(', ')}</p>
+      <p class="eyebrow">{s.de} · {EX.full} {levelLabels(d.levels).join(', ')}</p>
       <h1 class="g-title" data-pagefind-meta="title">
         {after !== undefined ? <>{before}<span class="hl" style={`--g1:${s.color};--g2:var(--violet)`}>{d.hl}</span>{after}</> : d.title}
       </h1>
@@ -77,7 +79,7 @@ if (d.faq.length) {
       </div>
       <p class="in-route">
         <svg class="ic"><use href="#i-route" /></svg> Шаг {step} в маршруте:
-        {routeLevels.map((l) => <a href={url(`/ru/guides/uroven/${l.toLowerCase()}/#step-${step}`)}>{l}</a>)}
+        {routeLevels.map((l) => <a href={url(`${B}/uroven/${l.toLowerCase()}/#step-${step}`)}>{l}</a>)}
       </p>
       <aside class="kurz" aria-labelledby="kurz-h">
         <h2 id="kurz-h"><svg class="ic"><use href="#i-sparkles" /></svg>Коротко</h2>
@@ -173,7 +175,7 @@ if (d.faq.length) {
           </details>
         )}
         <div class="side-cta">
-          <b>Готовишься к Goethe?</b>
+          <b>Готовишься к {EX.name}?</b>
           <p>Раздел экзаменов на платформе Stellas: Goethe, telc, ÖSD, TestDaF.</p>
           <a class="btn sm" href={SITE.platform} rel="noopener" target="_blank">Платформа</a>
         </div>

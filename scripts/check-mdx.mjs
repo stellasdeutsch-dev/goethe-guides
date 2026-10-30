@@ -4,7 +4,7 @@ import { readFileSync } from 'node:fs';
 import { compile } from '@mdx-js/mdx';
 import YAML from 'yaml';
 
-const SECTIONS = ['pruefung', 'probniki', 'lesen', 'hoeren', 'schreiben', 'sprechen', 'grammatik'];
+const SECTIONS = ['pruefung', 'probniki', 'sprachbausteine', 'lesen', 'hoeren', 'schreiben', 'sprechen', 'grammatik'];
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const COMPONENTS = ['Callout', 'Task', 'Score', 'Anatomy', 'Steps', 'Step', 'Phrases', 'Phrase', 'Trainer', 'Quiz', 'Dialog', 'PointsCalc', 'Listen', 'AnswerSheet', 'WriteCheck'];
 
@@ -24,13 +24,16 @@ for (const file of process.argv.slice(2)) {
       if (d.description && d.description.length > 160) errs.push(`description ${d.description.length} > 160`);
       if (d.hl && d.title && !d.title.includes(d.hl)) errs.push('hl не найден в title');
       if (d.section && !SECTIONS.includes(d.section)) errs.push('section: ' + d.section);
-      if (d.section && !file.includes(`/guides/${d.section}/`)) errs.push('файл лежит не в папке своего section');
+      const exam = d.exam || 'goethe';
+      if (!['goethe', 'telc', 'oesd'].includes(exam)) errs.push('exam: ' + exam);
+      const dir = exam === 'goethe' ? `/guides/${d.section}/` : `/guides/${exam}/${d.section}/`;
+      if (d.section && !file.includes(dir)) errs.push(`файл должен лежать в src/content${dir}`);
       (d.levels || []).forEach((l) => LEVELS.includes(l) || errs.push('level: ' + l));
       if ((d.kurz || []).length < 3) errs.push('kurz < 3 пунктов');
       if ((d.faq || []).length < 4) errs.push('faq < 4 вопросов');
       if ((d.sources || []).length < 2) errs.push('sources < 2');
       (d.sources || []).forEach((s) => /^https?:\/\//.test(s.url || '') || errs.push('source без url'));
-      (d.next || []).forEach((n) => n.href && !/^(\/ru\/guides\/[a-z]+\/[a-z0-9-]+\/|https?:\/\/)/.test(n.href) && errs.push('next.href формат: ' + n.href));
+      (d.next || []).forEach((n) => n.href && !/^(\/ru\/(guides|telc|oesd)\/[a-z]+\/[a-z0-9-]+\/|https?:\/\/)/.test(n.href) && errs.push('next.href формат: ' + n.href));
     }
   }
   // Импорты компонентов должны быть известны.

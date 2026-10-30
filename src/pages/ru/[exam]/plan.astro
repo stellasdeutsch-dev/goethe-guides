@@ -1,0 +1,13 @@
+---
+import PlanPage from '../../../components/pages/PlanPage.astro';
+import { getGuides } from '../../../lib/guides';
+import type { ExamId } from '../../../data/exams';
+
+export async function getStaticPaths() {
+  const out = [];
+  for (const exam of ['telc', 'oesd'] as ExamId[]) if ((await getGuides(exam)).length) out.push({ params: { exam }, props: { exam } });
+  return out;
+}
+const { exam } = Astro.props as { exam: ExamId };
+---
+<PlanPage exam={exam} />

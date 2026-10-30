@@ -361,3 +361,12 @@ a.card:active{scale:.98}
 .plan-cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-top:14px;padding:18px 20px;border-radius:var(--r-m);background:var(--dark-card);color:var(--dark-text)}
 .plan-cta b{font:600 17px/1.3 var(--f-display)}
 .plan-cta p{margin:2px 0 0;color:#a1a1a6;font-size:15px}
+.sheet .sheet-ex{grid-template-columns:repeat(3,1fr)}
+.sheet .sheet-lv a[aria-current="page"]{background:var(--accent);color:#fff}
+.ex-switch{display:inline-flex;gap:2px;padding:2px;border-radius:9px;background:var(--fill);margin-top:18px}
+.ex-switch a{padding:6px 14px;border-radius:7px;color:var(--text);font:500 14px/1.2 var(--f-body)}
+.ex-switch a:hover{text-decoration:none;background:var(--fill-2)}
+.ex-switch a[aria-current="page"]{background:var(--card);font-weight:600;box-shadow:0 3px 8px rgba(0,0,0,.12)}
+.ex-cards{display:grid;gap:14px;margin-top:28px}
+@media (min-width:760px){.ex-cards{grid-template-columns:repeat(3,1fr)}}
+.ex-card .lvl-big{font-size:40px}

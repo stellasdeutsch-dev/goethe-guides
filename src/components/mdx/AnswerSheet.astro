@@ -32,11 +32,11 @@ interface Props {
   hint?: string;
   /** Уровень и модуль для «Моего плана». По умолчанию берутся из id (b1-…-lesen). */
   level?: string;
-  module?: 'lesen' | 'hoeren';
+  module?: string;
 }
 const { id, title, minutes = 0, items, factor, maxPoints = 100, pass, source, hint } = Astro.props;
-const level = (Astro.props.level ?? id.match(/^(a1|a2|b1|b2|c1|c2)/i)?.[1] ?? '').toUpperCase();
-const module = Astro.props.module ?? (/lesen/.test(id) ? 'lesen' : /hoeren|hören/.test(id) ? 'hoeren' : '');
+const level = (Astro.props.level ?? id.match(/(?:^|-)(a1|a2|b1|b2|c1|c2)(?:-|$)/i)?.[1] ?? '').toUpperCase();
+const module = Astro.props.module ?? (/lesen/.test(id) ? 'lesen' : /hoeren|hören/.test(id) ? 'hoeren' : /sprachbaust/.test(id) ? 'sprachbausteine' : '');
 const fct = factor ?? maxPoints / items.length;
 const esc = (s: string) => s.replace(/[&<>"']/g, (ch) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[ch]!);
 const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, '<b>$1</b>');

@@ -1,0 +1,194 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LEVELS, url, type Level } from '../../data/site';
+import { getGuides, guideHref, readingTime, slugOf, type Guide } from '../../lib/guides';
+import { buildRoute, type RouteItem } from '../../lib/route';
+import { EXAMS, type ExamId } from '../../data/exams';
+
+interface Props { exam: ExamId }
+const { exam } = Astro.props;
+const EXM = EXAMS[exam];
+const B = EXM.base;
+
+const all = await getGuides(exam);
+const levels = LEVELS.filter((l) => all.some((g) => (g.data.levels as string[]).includes(l)));
+const toItem = (g: Guide): RouteItem => ({ title: g.data.title, href: guideHref(g), section: g.data.section, minutes: readingTime(g.body), slug: slugOf(g) });
+
+// Данные для генератора плана: по каждому уровню гайды по шагам и модулям.
+const data = Object.fromEntries(
+  levels.map((l: Level) => {
+    const steps = buildRoute(all, l, toItem, exam);
+    const step = (n: number) => steps.find((s) => s.n === n);
+    const modules: Record<string, { title: string; href: string }[]> = {};
+    for (const g of step(3)?.groups ?? []) modules[g.section!] = g.items.map((i) => ({ title: i.title, href: i.href }));
+    const mocks = (step(2)?.groups[0].items ?? []).filter((i) => !i.slug.endsWith('-skachat') && !i.slug.startsWith('probniki-')).map((i) => ({ title: i.title, href: i.href }));
+    return [l, {
+      basics: (step(1)?.groups[0].items ?? []).slice(0, 2).map((i) => ({ title: i.title, href: i.href })),
+      mocks,
+      modules,
+      register: (step(5)?.groups[0].items ?? []).map((i) => ({ title: i.title, href: i.href })),
+      route: url(`${B}/uroven/${l.toLowerCase()}/`),
+    }];
+  }),
+);
+const extras = {
+  write: exam === 'goethe' ? url(`${B}/schreiben/proverka-pisma/`) : '',
+  exam,
+  modNames: Object.fromEntries(EXM.sections.map((x) => [x.id, x.de === x.title ? x.title : `${x.de} · ${x.title.toLowerCase()}`])),
+};
+---
+<Base title={`Мой план подготовки к ${EXM.name} | Stellas`} description={`Составь план подготовки к ${EXM.full}: уровень, дата экзамена и результаты пробников. План по неделям с упором на слабые части.`} active="all" tone="gray" exam={exam}>
+  <section class="route-hero wrap">
+    <ol class="crumbs">
+      <li><a href={url(`${B}/`)}>Гайды {EXM.name}</a></li>
+      <li><svg class="ic"><use href="#i-chevron-right" /></svg></li>
+      <li aria-current="page">Мой план</li>
+    </ol>
+    <p class="eyebrow" style="margin-top:22px">Мой план</p>
+    <h1 class="display">План до <span class="grad">экзамена.</span></h1>
+    <p class="lede">Два вопроса, и у тебя план по неделям. Слабые модули идут первыми. Всё хранится только в твоём браузере.</p>
+  </section>
+
+  <div class="wrap">
+    <section class="ix plan-form rv">
+      <div class="plan-q">
+        <b>1. Какой уровень сдаёшь?</b>
+        <div class="lvl-switch" role="group" aria-label="Уровень">
+          {levels.map((l) => <button type="button" data-pl={l} aria-pressed="false">{l}</button>)}
+        </div>
+      </div>
+      <div class="plan-q">
+        <b>2. Когда экзамен?</b>
+        <div class="plan-date">
+          <input type="date" data-pdate aria-label="Дата экзамена" />
+          <span class="plan-days" data-pdays></span>
+        </div>
+        <small>Не знаешь дату? Оставь пустым, план будет на 4 недели.</small>
+      </div>
+    </section>
+
+    <section class="plan-out" data-pout hidden>
+      <h2 class="hub-h2">Твои результаты</h2>
+      <div class="plan-res" data-pres></div>
+      <p class="plan-note" data-pnote></p>
+
+      <h2 class="hub-h2">План по неделям</h2>
+      <ol class="route" data-pweeks></ol>
+
+      <div class="route-end">
+        <b>Как пользоваться планом</b>
+        <p>Каждую неделю открывай свой блок и иди по ссылкам. Прочитанные гайды отмечаются сами. После нового пробника вернись сюда: план перестроится под новые баллы.</p>
+      </div>
+    </section>
+    <p class="plan-empty" data-pempty>Выбери уровень, чтобы увидеть план.</p>
+  </div>
+
+  <script type="application/json" id="plan-data" set:html={JSON.stringify({ data, extras, info: EXM.levelInfo })} />
+</Base>
+
+<script>
+  import { $, $$, esc, onReady } from '../../scripts/lib';
+
+  type Link = { title: string; href: string };
+  type LevelData = { basics: Link[]; mocks: Link[]; modules: Record<string, Link[]>; register: Link[]; route: string };
+  const MOD_NAME: Record<string, string> = { sprachbausteine: 'Sprachbausteine', lesen: 'Lesen · чтение', hoeren: 'Hören · аудирование', schreiben: 'Schreiben · письмо', sprechen: 'Sprechen · говорение' };
+  const MOD_DAILY: Record<string, string> = {
+    sprachbausteine: 'Каждый день: один текст с пропусками на время, потом разбор каждой ошибки.',
+    lesen: 'Каждый день: одна часть Lesen на время, потом разбор ошибок.',
+    hoeren: 'Каждый день: 15 минут немецкого на слух и одно упражнение из гайда.',
+    schreiben: 'Каждый день: одно письмо в «Проверке письма» с таймером и самооценкой.',
+    sprechen: 'Каждый день: проговори вслух одну тему из гайда, как на экзамене.',
+  };
+
+  onReady(() => {
+    const raw = JSON.parse($('#plan-data')!.textContent || '{}');
+    const DATA: Record<string, LevelData> = raw.data;
+    const EX = raw.extras;
+    Object.assign(MOD_NAME, EX.modNames);
+    const PKEY = EX.exam === 'goethe' ? 'plan' : `plan:${EX.exam}`;
+    const mine = (id: string) => EX.exam === 'goethe' ? !/^(telc|oesd)-/.test(id) : id.startsWith(`${EX.exam}-`);
+    const btns = $$<HTMLButtonElement>('[data-pl]');
+    const date = $<HTMLInputElement>('[data-pdate]')!;
+    const daysEl = $('[data-pdays]')!;
+    const out = $<HTMLElement>('[data-pout]')!;
+    const empty = $<HTMLElement>('[data-pempty]')!;
+    let st: { level: string; date: string } = { level: '', date: '' };
+    try { st = { ...st, ...JSON.parse(localStorage.getItem(PKEY) || '{}') }; } catch { /* ignore */ }
+    let seen: string[] = [];
+    let results: Record<string, { title: string; level: string; module: string; points: number; max: number; at: number }> = {};
+    try { seen = JSON.parse(localStorage.getItem('seen') || '[]'); results = JSON.parse(localStorage.getItem('abres') || '{}'); } catch { /* ignore */ }
+
+    const li = (l: Link, extra = '') => {
+      const done = seen.includes(l.href);
+      return `<li><a class="row${done ? ' seen' : ''}" href="${esc(l.href)}"><span class="seen-ck" aria-hidden="true"><svg class="ic"><use href="#i-check"/></svg></span><span class="t">${esc(l.title)}${extra}</span><svg class="ic chev"><use href="#i-chevron-right"/></svg></a></li>`;
+    };
+    const week = (n: number, title: string, text: string, links: Link[], note = '') =>
+      `<li class="rstep"><div class="rstep-h"><span class="rnum">${n}</span><div><h2>Неделя ${n}. ${esc(title)}</h2><p>${esc(text)}</p></div></div>` +
+      (links.length ? `<ul class="list">${links.map((l) => li(l)).join('')}</ul>` : '') +
+      (note ? `<p class="plan-daily"><svg class="ic"><use href="#i-repeat"/></svg> ${esc(note)}</p>` : '') + '</li>';
+
+    function render() {
+      btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pl === st.level)));
+      date.value = st.date;
+      try { localStorage.setItem(PKEY, JSON.stringify(st)); } catch { /* ignore */ }
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const days = st.date ? Math.round((new Date(st.date).getTime() - today.getTime()) / 864e5) : null;
+      daysEl.textContent = days === null ? '' : days < 0 ? 'Дата уже прошла' : days === 0 ? 'Экзамен сегодня. Удачи!' : `Осталось ${days} дн.`;
+      if (!st.level) { out.hidden = true; empty.hidden = false; return; }
+      out.hidden = false; empty.hidden = true;
+      const d = DATA[st.level];
+
+      // Последний результат по каждому модулю этого уровня.
+      const best: Record<string, { points: number; max: number; title: string }> = {};
+      Object.entries(results).filter(([id, r]) => mine(id) && r.level === st.level && r.module).map(([, r]) => r).sort((a, b) => a.at - b.at)
+        .forEach((r) => (best[r.module] = { points: Math.round((r.points / r.max) * 100), max: 100, title: r.title }));
+      const mods = Object.keys(d.modules);
+      $('[data-pres]')!.innerHTML = mods.map((m) => {
+        const r = best[m];
+        const cls = !r ? '' : r.points >= 60 ? 'ok' : r.points >= 50 ? 'mid' : 'bad';
+        const val = r ? `${r.points}%` : '—';
+        const lab = !r ? (['lesen', 'hoeren', 'sprachbausteine'].includes(m) ? 'Сдай пробник' : m === 'schreiben' && EX.write ? 'Оцени себя в «Проверке письма»' : 'Тренируй по гайдам') : r.points >= 60 ? 'Выше порога' : r.points >= 50 ? 'Рядом с порогом' : 'Слабое место';
+        return `<div class="plan-card ${cls}"><b>${MOD_NAME[m]}</b><span class="pv">${val}</span><small>${lab}</small></div>`;
+      }).join('');
+      const tested = Object.keys(best).length;
+      $('[data-pnote]')!.textContent = tested
+        ? 'Проценты из последних пробников и самооценки письма на сайте. Порог сдачи 60 %.'
+        : 'Пока нет результатов. Первая неделя плана начинается с пробника: так станет видно слабые места.';
+
+      // Порядок модулей: сначала слабые, потом без данных (письмо и речь чаще проседают), потом сильные.
+      const score = (m: string) => best[m]?.points ?? ({ schreiben: 52, sprechen: 54, lesen: 56, hoeren: 55 } as Record<string, number>)[m] ?? 55;
+      const order = [...mods].sort((a, b) => score(a) - score(b));
+      const weeks = Math.min(12, Math.max(1, days === null || days < 0 ? 4 : Math.ceil(days / 7)));
+      const html: string[] = [];
+      const mock1 = d.mocks[0], mock2 = d.mocks.find((m) => m.href.includes('stellas-')) ?? d.mocks[1] ?? d.mocks[0];
+
+      if (weeks === 1) {
+        html.push(week(1, 'Финишная прямая', 'Мало времени: пробник, затем только самый слабый модуль и форма письма.', [
+          ...(tested ? [] : mock1 ? [mock1] : []),
+          ...(d.modules[order[0]] ?? []).slice(0, 2),
+          ...(EX.write ? [{ title: 'Проверка письма: одно задание в день', href: EX.write }] : []),
+        ], MOD_DAILY[order[0]]));
+      } else {
+        html.push(week(1, tested ? 'Формат и слабое место' : 'Пойми экзамен и сдай пробник', tested ? 'Ты уже знаешь баллы. Освежи формат и начни с самого слабого модуля.' : 'Прочитай про формат и реши пробник целиком, с таймером. Это твоя точка отсчёта.',
+          [...d.basics, ...(tested ? (d.modules[order[0]] ?? []).slice(0, 1) : mock1 ? [mock1] : [])]));
+        const middle = weeks - 2;
+        for (let i = 0; i < middle; i++) {
+          const m = order[i % order.length];
+          const round = Math.floor(i / order.length);
+          const list = d.modules[m] ?? [];
+          const links = list.slice(round * 3, round * 3 + 3);
+          const use = links.length ? links : list.slice(0, 3);
+          if (m === 'schreiben' && EX.write) use.push({ title: 'Проверка письма: задания с самооценкой', href: EX.write });
+          html.push(week(i + 2, MOD_NAME[m], best[m] ? `Сейчас ${best[m].points}%. Цель этой недели: плюс 10 процентов.` : 'Модуль без результата. Пройди гайды и сделай упражнения в них.', use, MOD_DAILY[m]));
+        }
+        html.push(week(weeks, 'Финальный пробник и запись', 'За 3–5 дней до экзамена реши другой пробник и сравни баллы с первым. Проверь, что всё готово к экзамену.',
+          [...(mock2 ? [mock2] : []), ...d.register], 'Последние дни: повторяй ошибки из пробников, высыпайся, не учи новое.'));
+      }
+      $('[data-pweeks]')!.innerHTML = html.join('');
+    }
+
+    btns.forEach((b) => b.addEventListener('click', () => { st.level = b.dataset.pl!; render(); }));
+    date.addEventListener('change', () => { st.date = date.value; render(); });
+    render();
+  });
+</script>

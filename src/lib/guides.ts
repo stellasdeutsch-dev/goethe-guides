@@ -1,18 +1,19 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import { url } from '../data/site';
+import { EXAMS, type ExamId } from '../data/exams';
 
 export type Guide = CollectionEntry<'guides'>;
 
-/** Опубликованные гайды, свежие сверху. */
-export async function getGuides(): Promise<Guide[]> {
-  const all = await getCollection('guides', ({ data }) => !data.draft);
+/** Опубликованные гайды экзамена, свежие сверху. */
+export async function getGuides(exam: ExamId = 'goethe'): Promise<Guide[]> {
+  const all = await getCollection('guides', ({ data }) => !data.draft && data.exam === exam);
   return all.sort((a, b) => b.data.updated.getTime() - a.data.updated.getTime());
 }
 
 /** id вида "schreiben/schreiben-b1-teil-1-e-mail" → slug без раздела. */
 export const slugOf = (g: Guide) => g.id.split('/').pop()!;
 
-export const guideHref = (g: Guide) => url(`/ru/guides/${g.data.section}/${slugOf(g)}/`);
+export const guideHref = (g: Guide) => url(`${EXAMS[g.data.exam].base}/${g.data.section}/${slugOf(g)}/`);
 
 /** Время чтения: ~170 слов в минуту, MDX-разметку не считаем. */
 export function readingTime(body = ''): number {

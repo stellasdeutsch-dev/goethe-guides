@@ -2,7 +2,8 @@
 import '../styles/global.css';
 import sprite from '../assets/sprite.svg?raw';
 import { LEVELS, SITE, url } from '../data/site';
-import { SECTIONS } from '../data/sections';
+import { EXAMS, EXAM_IDS, type ExamId } from '../data/exams';
+import { getGuides } from '../lib/guides';
 
 interface Props {
   title: string;
@@ -14,11 +15,22 @@ interface Props {
   /** gray = серая подложка (хабы), white = статья. */
   tone?: 'gray' | 'white';
   noindex?: boolean;
+  /** Экзамен, к которому относится страница: меню и ссылки берутся из него. */
+  exam?: ExamId;
 }
-const { title, description, active, ogType = 'website', jsonld = [], tone = 'white', noindex = false } = Astro.props;
+const { title, description, active, ogType = 'website', jsonld = [], tone = 'white', noindex = false, exam = 'goethe' } = Astro.props;
+const EX = EXAMS[exam];
+// В меню только разделы, где уже есть гайды этого экзамена.
+const examGuides = await getGuides(exam);
+const readyExams: ExamId[] = [];
+for (const e of EXAM_IDS) if ((await getGuides(e)).length) readyExams.push(e);
+const withGuides = new Set(examGuides.map((g) => g.data.section));
+const examLevels = LEVELS.filter((l) => examGuides.some((g) => (g.data.levels as string[]).includes(l)));
+const SECTIONS = EX.sections.filter((s) => withGuides.has(s.id));
+const B = EX.base;
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url('/og.png'), Astro.site).href;
-const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: 'Пробники', grammatik: 'Грамматика' })[id] ?? SECTIONS.find((s) => s.id === id)!.de;
+const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: 'Пробники', grammatik: 'Грамматика', sprachbausteine: 'Sprachbausteine' } as Record<string, string>)[id] ?? (exam === 'goethe' ? SECTIONS.find((s) => s.id === id)!.de : SECTIONS.find((s) => s.id === id)!.title);
 ---
 <!doctype html>
 <html lang="ru">
@@ -53,15 +65,15 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
 
   <header class="gnav">
     <div class="wrap">
-      <a class="brand" href={url('/ru/guides/')}>
+      <a class="brand" href={url(`${B}/`)}>
         <img src={url('/logo.webp')} alt="" width="26" height="26" />
-        Stellas <span>Goethe</span>
+        Stellas <span>{EX.name}</span>
       </a>
       <nav aria-label="Разделы">
-        <a href={url('/ru/guides/#start')}>С чего начать</a>
-        <a href={url('/ru/guides/plan/')}>Мой план</a>
+        <a href={url(`${B}/#start`)}>С чего начать</a>
+        <a href={url(`${B}/plan/`)}>Мой план</a>
         {SECTIONS.map((s) => (
-          <a href={url(`/ru/guides/${s.id}/`)} aria-current={active === s.id ? 'page' : undefined}>{short(s.id)}</a>
+          <a href={url(`${B}/${s.id}/`)} aria-current={active === s.id ? 'page' : undefined}>{short(s.id)}</a>
         ))}
       </nav>
       <div class="right">
@@ -72,13 +84,15 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
     <div class="prog" aria-hidden="true"></div>
   </header>
   <div class="sheet" id="sheet" inert>
-    <a href={url('/ru/guides/plan/')}><span class="tile" style="--c:var(--accent)"><svg class="ic"><use href="#i-calendar-check" /></svg></span>Мой план</a>
+    {readyExams.length > 1 && <p class="sheet-h">Экзамен</p>}
+    {readyExams.length > 1 && <div class="sheet-lv sheet-ex">{readyExams.map((e) => <a href={url(`${EXAMS[e].base}/`)} aria-current={e === exam ? 'page' : undefined}>{EXAMS[e].name}</a>)}</div>}
+    <a href={url(`${B}/plan/`)}><span class="tile" style="--c:var(--accent)"><svg class="ic"><use href="#i-calendar-check" /></svg></span>Мой план</a>
     <p class="sheet-h">Маршрут по уровню</p>
-    <div class="sheet-lv">{LEVELS.map((l) => <a href={url(`/ru/guides/uroven/${l.toLowerCase()}/`)}>{l}</a>)}</div>
+    <div class="sheet-lv">{examLevels.map((l) => <a href={url(`${B}/uroven/${l.toLowerCase()}/`)}>{l}</a>)}</div>
     <p class="sheet-h">Разделы</p>
-    <a href={url('/ru/guides/')}><span class="tile" style="--c:var(--text-3)"><svg class="ic"><use href="#i-book-open" /></svg></span>Все гайды</a>
+    <a href={url(`${B}/`)}><span class="tile" style="--c:var(--text-3)"><svg class="ic"><use href="#i-book-open" /></svg></span>Все гайды</a>
     {SECTIONS.map((s) => (
-      <a href={url(`/ru/guides/${s.id}/`)}><span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>{s.title}</a>
+      <a href={url(`${B}/${s.id}/`)}><span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>{s.title}</a>
     ))}
     <a href={SITE.telegram} rel="noopener" target="_blank"><span class="tile" style="--c:var(--deep)"><svg class="ic"><use href="#i-send" /></svg></span>Telegram</a>
   </div>
@@ -97,7 +111,9 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
         </div>
         <div>
           <h3>Разделы</h3>
-          <ul>{SECTIONS.map((s) => <li><a href={url(`/ru/guides/${s.id}/`)}>{s.title}</a></li>)}</ul>
+          <ul>{SECTIONS.map((s) => <li><a href={url(`${B}/${s.id}/`)}>{s.title}</a></li>)}</ul>
+          <h3 style="margin-top:16px">Экзамены</h3>
+          <ul>{readyExams.map((e) => <li><a href={url(`${EXAMS[e].base}/`)}>{EXAMS[e].full}</a></li>)}</ul>
         </div>
         <div>
           <h3>Ещё</h3>

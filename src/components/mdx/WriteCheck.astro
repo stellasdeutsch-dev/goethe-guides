@@ -36,7 +36,7 @@ const GRADES = ['A', 'B', 'C', 'D', 'E'];
 <div class="wc rv" data-wc>
   <div class="wc-pick">
     <div class="lvl-switch" role="group" aria-label="Уровень">
-      {levels.map((l, i) => <button type="button" data-wl={l} aria-pressed={String(i === 0)}>{l}</button>)}
+      {levels.map((l, i) => <button type="button" data-wl={l} aria-pressed={i === 0 ? "true" : "false"}>{l}</button>)}
     </div>
     <label class="wc-sel">
       <span class="sr">Задание</span>
