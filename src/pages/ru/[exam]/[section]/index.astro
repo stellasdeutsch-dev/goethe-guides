@@ -1,17 +1,12 @@
 ---
-import SectionPage from '../../../../components/pages/SectionPage.astro';
-import { EXAMS, type ExamId } from '../../../../data/exams';
-import type { Section } from '../../../../data/sections';
-import { getGuides } from '../../../../lib/guides';
-
+import SectionPick from '../../../../components/screens/SectionPick.astro';
+import { sectionsWithTracks } from '../../../../lib/tracks';
+import type { ExamId } from '../../../../data/exams';
 export async function getStaticPaths() {
   const out = [];
-  for (const exam of ['telc', 'oesd'] as ExamId[]) {
-    const all = await getGuides(exam);
-    for (const s of EXAMS[exam].sections) if (all.some((g) => g.data.section === s.id)) out.push({ params: { exam, section: s.id }, props: { exam, s } });
-  }
+  for (const exam of ['telc', 'oesd'] as ExamId[]) for (const section of await sectionsWithTracks(exam)) out.push({ params: { exam, section }, props: { exam, section } });
   return out;
 }
-const { exam, s } = Astro.props as { exam: ExamId; s: Section };
+const { exam, section } = Astro.props as { exam: ExamId; section: string };
 ---
-<SectionPage exam={exam} s={s} />
+<SectionPick exam={exam} section={section} />

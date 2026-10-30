@@ -1,0 +1,149 @@
+---
+// Экран уровня: три шага. У каждого шага одно главное действие.
+import App from '../../layouts/App.astro';
+import { EXAMS, sectionOf, type ExamId } from '../../data/exams';
+import { url } from '../../data/site';
+import { getGuides, plural, slugOf } from '../../lib/guides';
+import { REG, toItem, trackData, trackHref } from '../../lib/tracks';
+
+interface Props { exam: ExamId; track: string }
+const { exam, track: trackId } = Astro.props;
+const EX = EXAMS[exam];
+const { track, guides, bySection, modules } = await trackData(exam, trackId);
+const reg = exam === 'goethe' ? (await getGuides(exam)).filter((g) => REG.includes(slugOf(g))) : [];
+const name = `${EX.name} ${track.label}`;
+const MOD_ICON: Record<string, string> = { lesen: 'book-open', hoeren: 'headphones', schreiben: 'pen-line', sprechen: 'mic', sprachbausteine: 'puzzle' };
+
+const steps = [
+  { id: 'pruefung', title: 'Пойми формат', text: 'Части экзамена и баллы.' },
+  { id: 'probniki', title: 'Реши пробник', text: 'Узнаешь баллы и слабое место.' },
+].filter((s) => bySection[s.id]);
+const items = guides.map(toItem);
+const jsonld = [{
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Подготовка к ${EX.full} ${track.label}`,
+  itemListElement: items.map((i, n) => ({ '@type': 'ListItem', position: n + 1, url: new URL(i.href, Astro.site).href, name: i.title })),
+}];
+---
+<App title={`${name}: подготовка по шагам | Stellas`} description={`Как подготовиться к ${EX.full} ${track.label}: формат, официальный пробник с разбором и гайды по каждой части. ${items.length} бесплатных гайдов.`} jsonld={jsonld} exam={exam} trail={[{ label: EX.name, href: url(`${EX.base}/`) }, { label: track.label }]}>
+  <section class="screen split" data-home data-exam={exam} data-track={track.id} data-short={name} data-label={track.label} data-goethe={exam === 'goethe' ? track.label : undefined}>
+    <div class="side">
+    <div class="hero">
+      <span class="tag"><i class="dot"></i>{track.title}</span>
+      <h1 class="ask">{EX.name} <em>{track.label}</em></h1>
+      <p class="sub">{track.text}</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat lime" style="--i:0">
+        <small>Прочитано</small>
+        <b><span data-read>0</span> / {items.length}</b>
+        <div class="track"><i data-bar></i></div>
+      </div>
+      <div class="stat sky" style="--i:1">
+        <small>Пробник</small>
+        <b data-mock>—</b>
+        <div class="track"><i data-mock-bar></i></div>
+      </div>
+    </div>
+    </div>
+
+    <div class="main">
+
+    <ol class="path" role="list">
+      {steps.map((s, i) => {
+        const list = bySection[s.id].map(toItem);
+        return (
+          <li class="stage" style={`--i:${i + 2}`} data-step data-hrefs={list.map((x) => x.href).join(' ')}>
+            <span class="stage-n" aria-hidden="true">{i + 1}</span>
+            <div>
+              <h2>{s.title}</h2>
+              <p>{s.text}</p>
+              <a class={`go${s.id === 'probniki' ? ' primary' : ''}`} href={list[0].href}>
+                <span>{list[0].title}</span>
+                <small>{list[0].minutes} мин <i><svg class="ic"><use href="#i-arrow-right" /></svg></i></small>
+              </a>
+              {list.length > 1 && <a class="more" href={trackHref(exam, track.id, s.id)}>Ещё {list.length - 1} {plural(list.length - 1, 'гайд', 'гайда', 'гайдов')} <svg class="ic"><use href="#i-chevron-right" /></svg></a>}
+            </div>
+          </li>
+        );
+      })}
+      {modules.length > 0 && (
+        <li class="stage" style={`--i:${steps.length + 2}`} data-step data-modules>
+          <span class="stage-n" aria-hidden="true">{steps.length + 1}</span>
+          <div>
+            <h2>Тренируй части</h2>
+            <p>Начни с самой слабой.</p>
+            <ul class="mods" role="list">
+              {modules.map((m, i) => {
+                const s = sectionOf(exam, m)!;
+                const n = bySection[m].length;
+                return (
+                  <li style={`--i:${i}`}>
+                    <a class="mod" href={trackHref(exam, track.id, m)} data-mod={m} data-hrefs={bySection[m].map((g) => toItem(g).href).join(' ')}>
+                      <span class="mod-ic"><svg class="ic"><use href={`#i-${MOD_ICON[m] ?? s.icon}`} /></svg></span>
+                      <b>{s.de}</b>
+                      <small data-mod-meta>{n} {plural(n, 'гайд', 'гайда', 'гайдов')}</small>
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </div>
+        </li>
+      )}
+    </ol>
+
+    <ul class="links" role="list" style={`--i:${steps.length + 3}`}>
+      <li><a href={url(`${EX.base}/plan/`)}><svg class="ic"><use href="#i-calendar-check" /></svg>План по неделям</a></li>
+      {bySection.grammatik && <li><a href={trackHref(exam, track.id, 'grammatik')}><svg class="ic"><use href="#i-puzzle" /></svg>Грамматика {track.label}</a></li>}
+      {reg.length > 0 && <li><a href={toItem(reg[0]).href}><svg class="ic"><use href="#i-map-pin" /></svg>Где сдавать</a></li>}
+    </ul>
+    </div>
+  </section>
+</App>
+
+<script>
+  import { $, $$, onReady } from '../../scripts/lib';
+  import { mockResults } from '../../scripts/results';
+  onReady(() => {
+    const root = $<HTMLElement>('[data-home]');
+    if (!root) return;
+    const { exam = '', track = '', short = '', label = '', goethe } = root.dataset;
+    try { localStorage.setItem(`track:${exam}`, JSON.stringify({ id: track, short, label, href: location.pathname })); } catch { /* ignore */ }
+    let seen: string[] = [];
+    try { seen = JSON.parse(localStorage.getItem('seen') || '[]'); } catch { /* ignore */ }
+    const hrefs = (el: HTMLElement) => (el.dataset.hrefs || '').split(' ').filter(Boolean);
+
+    // Шаг готов, когда прочитан его главный гайд. Первый неготовый подсвечен.
+    let now = false;
+    $$<HTMLElement>('[data-step]').forEach((s) => {
+      const done = !s.hasAttribute('data-modules') && seen.includes(hrefs(s)[0]);
+      s.classList.toggle('done', done);
+      if (!done && !now) { s.classList.add('now'); now = true; }
+    });
+
+    const all = [...new Set($$<HTMLElement>('[data-hrefs]').flatMap(hrefs))];
+    const read = all.filter((h) => seen.includes(h)).length;
+    $('[data-read]')!.textContent = String(read);
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      $<HTMLElement>('[data-bar]')!.style.width = `${all.length ? (read / all.length) * 100 : 0}%`;
+    }));
+
+    // Результаты пробников по частям экзамена.
+    const res = mockResults({ exam, track, goethe });
+    const vals = Object.values(res);
+    if (vals.length) {
+      const avg = Math.round(vals.reduce((n, v) => n + v, 0) / vals.length);
+      $('[data-mock]')!.textContent = `${avg}%`;
+      requestAnimationFrame(() => requestAnimationFrame(() => { $<HTMLElement>('[data-mock-bar]')!.style.width = `${avg}%`; }));
+    }
+    $$<HTMLElement>('[data-mod]').forEach((m) => {
+      const p = res[m.dataset.mod || ''];
+      if (p === undefined) return;
+      $('[data-mod-meta]', m)!.textContent = `Пробник: ${p}%`;
+      m.classList.add(p >= 60 ? 'ok' : p >= 50 ? 'mid' : 'low');
+    });
+  });
+</script>

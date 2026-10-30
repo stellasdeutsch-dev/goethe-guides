@@ -1,0 +1,100 @@
+---
+import '../styles/app.css';
+import sprite from '../assets/sprite.svg?raw';
+import { SITE, url } from '../data/site';
+import { EXAMS, EXAM_IDS, type ExamId } from '../data/exams';
+import { getGuides } from '../lib/guides';
+
+export interface Crumb { label: string; href?: string }
+interface Props {
+  title: string;
+  description: string;
+  ogType?: 'website' | 'article';
+  jsonld?: object[];
+  noindex?: boolean;
+  exam?: ExamId;
+  /** Где человек сейчас: экзамен › уровень › часть. Это вся навигация. */
+  trail?: Crumb[];
+  /** Показывать ли кнопку «Мой план» в капсуле. */
+  plan?: boolean;
+}
+const { title, description, ogType = 'website', jsonld = [], noindex = false, exam = 'goethe', trail = [], plan = true } = Astro.props;
+const ready: ExamId[] = [];
+for (const e of EXAM_IDS) if ((await getGuides(e)).length) ready.push(e);
+const home = url(ready.length > 1 ? '/ru/' : `${EXAMS[exam].base}/`);
+const canonical = new URL(Astro.url.pathname, Astro.site).href;
+const og = new URL(url('/og.png'), Astro.site).href;
+---
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <meta name="theme-color" content="#0B0B0B" />
+  <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+  <link rel="apple-touch-icon" href={url('/logo.webp')} />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />
+  <link rel="alternate" type="application/rss+xml" title={SITE.title} href={url('/ru/guides/rss.xml')} />
+  <link rel="sitemap" href={url('/sitemap-index.xml')} />
+  <meta property="og:type" content={ogType} />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={og} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script is:inline>document.documentElement.classList.add('js');if(!('speechSynthesis' in window))document.documentElement.classList.add('no-tts')</script>
+  {jsonld.map((j) => <script type="application/ld+json" set:html={JSON.stringify(j)} />)}
+</head>
+<body>
+  <a class="skip" href="#main">К содержанию</a>
+  <Fragment set:html={sprite} />
+
+  <header class="bar">
+    <div class="bar-in">
+      <a class="logo" href={home} aria-label="Stellas: на главную">
+        <img src={url('/favicon.svg')} alt="" width="36" height="36" />
+        <span>Stellas</span>
+      </a>
+      {trail.length > 0 && (
+        <nav class="trail" aria-label="Где ты сейчас">
+          <ol>
+            {trail.map((c) => <li>{c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}</li>)}
+          </ol>
+        </nav>
+      )}
+      {plan && <a class="btn sm bar-plan" href={url(`${EXAMS[exam].base}/plan/`)}><svg class="ic"><use href="#i-calendar-check" /></svg>Мой план</a>}
+    </div>
+  </header>
+
+  <main id="main">
+    <slot />
+  </main>
+
+  <footer class="end">
+    <div class="end-card">
+      <h2>Удачи на <em>экзамене!</em></h2>
+      <p>Вопрос по подготовке? Напиши нам в Telegram. Грамматика и слова для экзамена есть на платформе Stellas.</p>
+      <div class="end-row">
+        <a class="btn" href={SITE.telegram} rel="noopener" target="_blank"><svg class="ic"><use href="#i-send" /></svg>Telegram</a>
+        <a class="btn dark" href={SITE.platform} rel="noopener" target="_blank">Платформа Stellas</a>
+      </div>
+    </div>
+    <div class="fine">
+      <span>© {new Date().getFullYear()} Stellas</span>
+      <span>Сайт не связан с Goethe-Institut, telc gGmbH и ÖSD. Формат заданий сверяем с официальными материалами.</span>
+    </div>
+  </footer>
+
+  <script>
+    import '../scripts/site.ts';
+  </script>
+</body>
+</html>

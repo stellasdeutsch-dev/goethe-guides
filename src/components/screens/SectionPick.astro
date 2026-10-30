@@ -1,0 +1,47 @@
+---
+// Страница раздела (старый адрес /lesen/ и т. п.): выбери уровень этой части, плюс общие гайды раздела.
+import App from '../../layouts/App.astro';
+import { EXAMS, sectionOf, type ExamId } from '../../data/exams';
+import { url } from '../../data/site';
+import { getGuides, plural } from '../../lib/guides';
+import { readyTracks, toItem, trackHref, trackIdsOf } from '../../lib/tracks';
+
+interface Props { exam: ExamId; section: string }
+const { exam, section } = Astro.props;
+const EX = EXAMS[exam];
+const s = sectionOf(exam, section)!;
+const inSection = (await getGuides(exam)).filter((g) => g.data.section === section);
+const tracks = (await readyTracks(exam)).filter((t) => inSection.some((g) => trackIdsOf(g).includes(t.id)));
+const general = inSection.filter((g) => trackIdsOf(g).length === 0).map(toItem);
+const name = ['pruefung', 'probniki', 'grammatik'].includes(section) ? s.title : s.de;
+const count = (id: string) => inSection.filter((g) => trackIdsOf(g).includes(id)).length;
+---
+<App title={`${name} ${EX.full}: гайды по уровням | Stellas`} description={`${s.lede} Гайды по ${EX.full} для каждого уровня.`} exam={exam} trail={[{ label: EX.name, href: url(`${EX.base}/`) }, { label: name }]}>
+  <section class="screen">
+    <div class="hero">
+      <span class="tag"><i class="dot"></i>{EX.full}</span>
+      <h1 class="ask">{name}: <em>какой уровень?</em></h1>
+      <p class="sub">{s.lede}</p>
+    </div>
+    <ul class="picks" role="list" style={`--cols:${Math.min(6, Math.max(3, tracks.length))}`}>
+      {tracks.map((t, i) => (
+        <li style={`--i:${i}`}>
+          <a class="pick" href={trackHref(exam, t.id, section)}>
+            <span class="pick-top"><span class="tag">{count(t.id)} {plural(count(t.id), 'гайд', 'гайда', 'гайдов')}</span><span class="go-dot" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right" /></svg></span></span>
+            <span class="pick-big">{t.label}</span>
+            <span class="pick-small">{t.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    {general.length > 0 && (
+      <ol class="list" role="list" style="margin-top:12px">
+        {general.map((i, n) => (
+          <li style={`--i:${n + tracks.length}`}>
+            <a class="row" href={i.href}><span class="row-n" aria-hidden="true"><b>{n + 1}</b></span><span class="row-t">{i.title}</span><small>{i.minutes} мин</small></a>
+          </li>
+        ))}
+      </ol>
+    )}
+  </section>
+</App>

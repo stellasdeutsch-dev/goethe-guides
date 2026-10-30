@@ -1,0 +1,64 @@
+---
+// Экран «Какой уровень?». Один вопрос и сетка плиток.
+import App from '../../layouts/App.astro';
+import { EXAMS, type ExamId } from '../../data/exams';
+import { LEVELS, SITE, url } from '../../data/site';
+import { getGuides, guideHref, slugOf } from '../../lib/guides';
+import { generalGuides, readyTracks, trackHref } from '../../lib/tracks';
+
+interface Props { exam: ExamId }
+const { exam } = Astro.props;
+const EX = EXAMS[exam];
+const all = await getGuides(exam);
+const tracks = await readyTracks(exam);
+const help = all.find((g) => `${g.data.section}/${slugOf(g)}` === EX.helpSlug);
+const extra = generalGuides(all).filter((g) => g !== help).slice(0, 2);
+const range = tracks.length ? `${tracks[0].label}–${tracks[tracks.length - 1].label}` : '';
+const desc = exam === 'goethe' ? SITE.description : `Бесплатная подготовка к ${EX.full}: формат, официальные пробники с разбором и гайды по каждой части экзамена.`;
+const bar = (levels: string[]) => LEVELS.map((l) => (levels.includes(l) ? 'on' : LEVELS.indexOf(l) < LEVELS.indexOf(levels[0] as never) ? 'past' : ''));
+---
+<App title={`Подготовка к ${EX.full} ${range} бесплатно | Stellas`} description={desc} exam={exam} trail={[{ label: EX.name }]}>
+  <section class="screen" data-exam={exam}>
+    <div class="hero">
+      <span class="tag"><i class="dot"></i>{EX.full}</span>
+      <h1 class="ask">Какой у тебя <em>уровень?</em></h1>
+      <p class="sub">Выбери уровень. Дальше покажем три шага подготовки.</p>
+      <div class="hero-row" data-resume hidden>
+        <a class="btn knob" href="#" data-resume-a><span class="knob-i"><svg class="ic"><use href="#i-arrow-right" /></svg></span><span>Продолжить <b data-resume-l></b></span></a>
+      </div>
+    </div>
+
+    <ul class="picks" role="list" style={`--cols:${tracks.length <= 6 ? tracks.length : 4}`}>
+      {tracks.map((t, i) => (
+        <li style={`--i:${i}`}>
+          <a class="pick" href={trackHref(exam, t.id)}>
+            <span class="pick-top">
+              <span class="stairs" aria-hidden="true">{bar(t.levels).map((c) => <i class={c} />)}</span>
+              <span class="go-dot" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right" /></svg></span>
+            </span>
+            <span class="pick-big">{t.label}</span>
+            <span class="pick-small">{t.title}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <ul class="links" role="list" style="--i:8">
+      {help && <li><a href={guideHref(help)}><svg class="ic"><use href="#i-info" /></svg>Не знаешь, какой уровень нужен?</a></li>}
+      {extra.map((g) => <li><a href={guideHref(g)}><svg class="ic"><use href="#i-file-text" /></svg>{g.data.title}</a></li>)}
+    </ul>
+  </section>
+</App>
+
+<script>
+  import { $, onReady } from '../../scripts/lib';
+  onReady(() => {
+    const root = $<HTMLElement>('[data-exam]');
+    let last: { href?: string; short?: string } | null = null;
+    try { last = JSON.parse(localStorage.getItem(`track:${root?.dataset.exam}`) || 'null'); } catch { /* ignore */ }
+    if (!last?.href) return;
+    $<HTMLAnchorElement>('[data-resume-a]')!.href = last.href;
+    $('[data-resume-l]')!.textContent = last.short || '';
+    $('[data-resume]')!.hidden = false;
+  });
+</script>

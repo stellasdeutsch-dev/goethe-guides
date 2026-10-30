@@ -276,7 +276,7 @@ Quiz в разборе необязателен: главный интеракт
 - Разделы telc: `pruefung`, `probniki`, `lesen` (Leseverstehen), `sprachbausteine`, `hoeren` (Hörverstehen), `schreiben` (Schriftlicher Ausdruck), `sprechen` (Mündliche Prüfung).
 - Разделы ÖSD: `pruefung`, `probniki`, `lesen`, `hoeren`, `schreiben`, `sprechen`.
 - Импорты компонентов на один уровень глубже: `import Callout from '../../../../components/mdx/Callout.astro';`
-- Ссылки внутри того же экзамена относительные: `../../lesen/telc-b1-lesen/`. На Goethe-гайды: `../../../../guides/<section>/<slug>/`. В `next.href` формат `/ru/telc/<section>/<slug>/` или `/ru/oesd/<section>/<slug>/`.
+- Ссылки внутри того же экзамена относительные: `../../lesen/telc-b1-lesen/`. На Goethe-гайды: `../../../guides/<section>/<slug>/`. В `next.href` формат `/ru/telc/<section>/<slug>/` или `/ru/oesd/<section>/<slug>/`.
 - `AnswerSheet`: id с префиксом экзамена (`telc-b1-ut1-lesen`, `oesd-b1-ms-hoeren`) и всегда `level="B1"` и `module="lesen|hoeren|sprachbausteine"`. Баллы (`factor`, `maxPoints`, `pass`) только по официальным правилам этого экзамена.
 - Факты только из официальных источников telc (telc.net, Handbücher, Prüfungsordnung, Übungstests) и ÖSD (osd.at, Prüfungsbeschreibungen, Modellsätze). Цифры Goethe на telc и ÖSD не переносить.
 - Проверка: `node scripts/check-mdx.mjs src/content/guides/telc/<section>/<slug>.mdx`.

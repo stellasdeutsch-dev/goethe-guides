@@ -1,0 +1,53 @@
+---
+// Экран части экзамена на уровне: короткий список гайдов по порядку.
+import App from '../../layouts/App.astro';
+import { EXAMS, sectionOf, type ExamId } from '../../data/exams';
+import { url } from '../../data/site';
+import { plural } from '../../lib/guides';
+import { toItem, trackData, trackHref } from '../../lib/tracks';
+
+interface Props { exam: ExamId; track: string; section: string }
+const { exam, track: trackId, section } = Astro.props;
+const EX = EXAMS[exam];
+const { track, bySection } = await trackData(exam, trackId);
+const s = sectionOf(exam, section)!;
+const items = bySection[section].map(toItem);
+const name = ['pruefung', 'probniki', 'grammatik'].includes(section) ? s.title : s.de;
+const minutes = items.reduce((n, i) => n + i.minutes, 0);
+---
+<App title={`${name} ${EX.full} ${track.label}: гайды | Stellas`} description={`${s.lede} ${items.length} ${plural(items.length, 'гайд', 'гайда', 'гайдов')} для ${EX.full} ${track.label}.`} exam={exam} trail={[{ label: EX.name, href: url(`${EX.base}/`) }, { label: track.label, href: trackHref(exam, track.id) }, { label: name }]}>
+  <section class="screen split">
+    <div class="side">
+    <div class="hero">
+      <span class="tag"><i class="dot"></i>{items.length} {plural(items.length, 'гайд', 'гайда', 'гайдов')} · ≈ {minutes} мин</span>
+      <h1 class="ask">{name} <em>{track.label}</em></h1>
+      <p class="sub">{s.lede}</p>
+    </div>
+    <a class="back" href={trackHref(exam, track.id)}><svg class="ic"><use href="#i-arrow-left" /></svg>Все шаги {EX.name} {track.label}</a>
+    </div>
+
+    <div class="main">
+
+    <ol class="list" role="list">
+      {items.map((i, n) => (
+        <li style={`--i:${n}`}>
+          <a class="row" href={i.href} data-href={i.href}>
+            <span class="row-n" aria-hidden="true"><b>{n + 1}</b><svg class="ic"><use href="#i-check" /></svg></span>
+            <span class="row-t">{i.title}</span>
+            <small>{i.minutes} мин</small>
+          </a>
+        </li>
+      ))}
+    </ol>
+    </div>
+  </section>
+</App>
+
+<script>
+  import { $$, onReady } from '../../scripts/lib';
+  onReady(() => {
+    let seen: string[] = [];
+    try { seen = JSON.parse(localStorage.getItem('seen') || '[]'); } catch { /* ignore */ }
+    $$<HTMLAnchorElement>('[data-href]').forEach((a) => a.classList.toggle('done', seen.includes(a.dataset.href || '')));
+  });
+</script>

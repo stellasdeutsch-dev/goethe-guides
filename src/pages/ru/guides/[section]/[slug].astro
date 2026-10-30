@@ -1,19 +1,12 @@
 ---
 import { render } from 'astro:content';
-import Guide from '../../../../layouts/Guide.astro';
+import Article from '../../../../layouts/Article.astro';
 import Table from '../../../../components/mdx/Table.astro';
-import { getGuides, slugOf, type Guide as G } from '../../../../lib/guides';
-
+import { getGuides, slugOf, type Guide } from '../../../../lib/guides';
 export async function getStaticPaths() {
-  const guides = await getGuides();
-  return guides.map((entry) => ({
-    params: { section: entry.data.section, slug: slugOf(entry) },
-    props: { entry },
-  }));
+  return (await getGuides('goethe')).map((entry) => ({ params: { section: entry.data.section, slug: slugOf(entry) }, props: { entry } }));
 }
-const { entry } = Astro.props as { entry: G };
+const { entry } = Astro.props as { entry: Guide };
 const { Content, headings } = await render(entry);
 ---
-<Guide entry={entry} headings={headings}>
-  <Content components={{ table: Table }} />
-</Guide>
+<Article entry={entry} headings={headings}><Content components={{ table: Table }} /></Article>

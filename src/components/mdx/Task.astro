@@ -2,13 +2,13 @@
 interface Props { title: string; time?: string; words?: string }
 const { title, time, words } = Astro.props;
 ---
-<figure class="task rv" lang="de">
-  <div class="hd">
+<figure class="task" lang="de">
+  <figcaption>
     <b>{title}</b>
     <span>
-      {time && <span class="cap"><svg class="ic"><use href="#i-timer" /></svg>{time}</span>}
-      {words && <span class="cap"><svg class="ic"><use href="#i-pen-line" /></svg>{words}</span>}
+      {time && <span class="pill"><svg class="ic"><use href="#i-timer" /></svg>{time}</span>}
+      {words && <span class="pill"><svg class="ic"><use href="#i-pen-line" /></svg>{words}</span>}
     </span>
-  </div>
+  </figcaption>
   <slot />
 </figure>

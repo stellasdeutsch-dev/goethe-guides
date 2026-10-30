@@ -1,8 +1,7 @@
 ---
-import RoutePage from '../../../../components/pages/RoutePage.astro';
+import LevelHome from '../../../../components/screens/LevelHome.astro';
 import { readyTracks } from '../../../../lib/tracks';
 import type { ExamId } from '../../../../data/exams';
-
 export async function getStaticPaths() {
   const out = [];
   for (const exam of ['telc', 'oesd'] as ExamId[]) for (const t of await readyTracks(exam)) out.push({ params: { exam, level: t.id }, props: { exam, track: t.id } });
@@ -10,4 +9,4 @@ export async function getStaticPaths() {
 }
 const { exam, track } = Astro.props as { exam: ExamId; track: string };
 ---
-<RoutePage exam={exam} track={track} />
+<LevelHome exam={exam} track={track} />

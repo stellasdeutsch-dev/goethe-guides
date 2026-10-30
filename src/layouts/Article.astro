@@ -1,0 +1,149 @@
+---
+import '../styles/article.css';
+import App from './App.astro';
+import { EXAMS, sectionOf } from '../data/exams';
+import { SITE, url } from '../data/site';
+import { guideHref, levelLabels, plural, readingTime, ruDate, slugOf, type Guide } from '../lib/guides';
+import { toItem, trackData, trackHref, trackIdsOf } from '../lib/tracks';
+import type { MarkdownHeading } from 'astro';
+
+interface Props { entry: Guide; headings: MarkdownHeading[] }
+const { entry, headings } = Astro.props;
+const d = entry.data;
+const EX = EXAMS[d.exam];
+const B = EX.base;
+const s = sectionOf(d.exam, d.section)!;
+const minutes = readingTime(entry.body);
+const toc = headings.filter((h) => h.depth === 2);
+const href = new URL(guideHref(entry), Astro.site).href;
+const logo = new URL(url('/logo.webp'), Astro.site).href;
+const [before, after] = d.hl && d.title.includes(d.hl) ? d.title.split(d.hl) : [d.title, undefined];
+
+// Трек по умолчанию — первый подходящий. Скрипт ниже подменит его на тот, что человек выбрал сам.
+const tracks = trackIdsOf(entry);
+const primary = tracks.length ? await trackData(d.exam, tracks[0]) : null;
+const partName = ['pruefung', 'probniki', 'grammatik'].includes(s.id) ? s.title : s.de;
+const trail = [
+  { label: EX.name, href: url(`${B}/`) },
+  ...(primary ? [{ label: primary.track.label, href: trackHref(d.exam, primary.track.id) }, { label: partName, href: trackHref(d.exam, primary.track.id, s.id) }] : []),
+];
+
+// Один следующий шаг: дальше по списку части, потом первый гайд следующего шага, иначе назад к шагам.
+let next: { title: string; href: string; minutes?: number; kicker: string } | null = null;
+if (primary) {
+  const order = ['pruefung', 'probniki', ...primary.modules];
+  const list = (primary.bySection[s.id] ?? []).map(toItem);
+  const i = list.findIndex((x) => x.slug === slugOf(entry));
+  if (i >= 0 && i < list.length - 1) next = { ...list[i + 1], kicker: `Дальше: ${partName}` };
+  else {
+    const after = order.slice(order.indexOf(s.id) + 1).find((id) => primary.bySection[id]);
+    if (after) {
+      const ns = sectionOf(d.exam, after)!;
+      next = { ...toItem(primary.bySection[after][0]), kicker: `Следующий шаг: ${['pruefung', 'probniki'].includes(after) ? ns.title : ns.de}` };
+    } else next = { title: `Все шаги ${EX.name} ${primary.track.label}`, href: trackHref(d.exam, primary.track.id), kicker: 'Часть пройдена' };
+  }
+}
+
+const jsonld: object[] = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: d.title,
+    description: d.description,
+    inLanguage: 'ru',
+    datePublished: d.published.toISOString(),
+    dateModified: d.updated.toISOString(),
+    author: { '@type': 'Organization', name: 'Stellas', url: SITE.author.telegram },
+    publisher: { '@type': 'Organization', name: 'Stellas', logo: { '@type': 'ImageObject', url: logo } },
+    mainEntityOfPage: href,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      ...trail.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label, item: new URL(c.href, Astro.site).href })),
+      { '@type': 'ListItem', position: trail.length + 1, name: d.title, item: href },
+    ],
+  },
+];
+if (d.faq.length) jsonld.push({ '@context': 'https://schema.org', '@type': 'FAQPage', mainEntity: d.faq.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })) });
+---
+<App title={d.seoTitle} description={d.description} ogType="article" jsonld={jsonld} exam={d.exam} trail={trail}>
+  <article class="art" data-article data-exam={d.exam} data-tracks={tracks.join(' ')} data-primary={primary?.track.id ?? ''}>
+    <header class="art-head">
+      <div class="art-tags">
+        <span class="tag"><i class="dot"></i>{s.de}</span>
+        <span class="tag">{levelLabels(d.levels).join(', ')}</span>
+        <span class="tag"><svg class="ic"><use href="#i-clock" /></svg>{minutes} мин</span>
+      </div>
+      <h1 class="art-title" data-pagefind-meta="title">{after !== undefined ? <>{before}<em>{d.hl}</em>{after}</> : d.title}</h1>
+      <p class="art-lede">{d.lede ?? d.description}</p>
+      <p class="art-meta">{SITE.author.name} · обновлено {ruDate(d.updated)}</p>
+    </header>
+
+    <div class="paper">
+      <aside class="kurz" aria-labelledby="kurz-h">
+        <h2 id="kurz-h">Коротко</h2>
+        <ul>{d.kurz.map((k, i) => <li style={`--i:${i}`} set:html={k} />)}</ul>
+      </aside>
+
+      <div class="prose" data-pagefind-body>
+        <slot />
+        {d.faq.length > 0 && (
+          <>
+            <h2 id="faq">Частые вопросы</h2>
+            <div class="faq">
+              {d.faq.map((f) => (
+                <details>
+                  <summary>{f.q}<svg class="ic"><use href="#i-plus" /></svg></summary>
+                  <div class="a" set:html={f.a} />
+                </details>
+              ))}
+            </div>
+          </>
+        )}
+      </div>
+
+      {d.sources.length > 0 && (
+        <details class="sources">
+          <summary>Источники · {d.sources.length}</summary>
+          <ol>{d.sources.map((x) => <li><a href={x.url} rel="noopener" target="_blank">{x.title}</a></li>)}</ol>
+        </details>
+      )}
+    </div>
+
+    <aside class="art-side">
+        {toc.length > 2 && (
+        <details class="toc">
+          <summary><span>Содержание</span><small>{toc.length} {plural(toc.length, 'раздел', 'раздела', 'разделов')}</small><svg class="ic"><use href="#i-chevron-down" /></svg></summary>
+          <ol>{toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}</ol>
+        </details>
+      )}
+
+    {next && (
+      <a class="next" href={next.href}>
+        <span class="next-txt"><small>{next.kicker}</small><b>{next.title}</b></span>
+        <span class="next-go"><span>{next.minutes ? `${next.minutes} мин` : 'Открыть'}</span><i><svg class="ic"><use href="#i-arrow-right" /></svg></i></span>
+      </a>
+    )}
+    </aside>
+  </article>
+</App>
+
+<script>
+  import { $, $$, onReady } from '../scripts/lib';
+  onReady(() => {
+    // Если человек выбрал другой уровень, а гайд подходит и ему, крошки ведут туда.
+    const a = $<HTMLElement>('[data-article]');
+    if (!a?.dataset.primary) return;
+    let last: { id?: string; label?: string } | null = null;
+    try { last = JSON.parse(localStorage.getItem(`track:${a.dataset.exam}`) || 'null'); } catch { /* ignore */ }
+    if (!last?.id || last.id === a.dataset.primary || !(a.dataset.tracks || '').split(' ').includes(last.id)) return;
+    const from = `/uroven/${a.dataset.primary}/`;
+    $$<HTMLAnchorElement>('.trail a').forEach((x, i) => {
+      if (!x.href.includes(from)) return;
+      x.href = x.href.replace(from, `/uroven/${last!.id}/`);
+      if (i === 1 && last!.label) x.textContent = last!.label;
+    });
+  });
+</script>

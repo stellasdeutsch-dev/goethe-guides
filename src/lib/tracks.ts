@@ -76,3 +76,9 @@ export async function readyTracks(exam: ExamId): Promise<Track[]> {
 
 export const trackHref = (exam: ExamId, trackId: string, section?: string) =>
   url(`${EXAMS[exam].base}/uroven/${trackId}/${section ? `${section}/` : ''}`);
+
+/** Разделы, где есть хоть один гайд (для страниц /<раздел>/). */
+export async function sectionsWithTracks(exam: ExamId): Promise<string[]> {
+  const all = await getGuides(exam);
+  return [...new Set(all.map((g) => g.data.section))];
+}

@@ -1,39 +1,32 @@
 ---
 /* Калькулятор баллов Goethe.
-   raw30: правильные ответы из 30 → ×3,33 и округление (Lesen/Hören B1).
-   parts: сумма частей модуля (например Schreiben 40 + 40 + 20). Порог модуля 60 из 100. */
-/** max — баллы за часть. Если заданы items и factor, ползунок считает верные ответы (0..items), баллы = верные × factor. */
+   raw30: верные ответы из 30 → ×3,33 и округление (Lesen/Hören B1).
+   parts: сумма частей модуля. Порог модуля 60 из 100. */
 interface Part { name: string; max: number; items?: number; factor?: number }
-interface Props {
-  kind?: 'raw30' | 'parts';
-  label?: string;
-  parts?: Part[];
-}
+interface Props { kind?: 'raw30' | 'parts'; label?: string; parts?: Part[] }
 const { kind = 'raw30', label = 'Модуль', parts = [] } = Astro.props;
 const rows: Part[] = kind === 'raw30' ? [{ name: 'Правильных ответов', max: 30 }] : parts;
 const start = (max: number) => Math.round(max * (kind === 'raw30' ? 0.6 : 0.65));
 ---
-<div class="ix pc rv" data-calc data-kind={kind}>
-  <div class="ix-h"><b><svg class="ic"><use href="#i-calculator" /></svg>Калькулятор: {label}</b><span class="cap">порог 60 из 100</span></div>
+<div class="x calc" data-calc data-kind={kind}>
+  <div class="x-h"><b><svg class="ic"><use href="#i-calculator" /></svg>Калькулятор: {label}</b><span class="x-cap">порог 60 из 100</span></div>
   {rows.map((r, i) => (
-    <div class="pc-row">
-      <label for={`pc-${label}-${i}`}><span>{r.name}</span><b><output data-v>{r.items ? start(r.items) : start(r.max)}</output> из {r.items ?? r.max}{r.items && r.factor && <span class="pc-pts"> · <output data-p>{start(r.items) * r.factor}</output> б.</span>}</b></label>
+    <div class="calc-row">
+      <label for={`pc-${label}-${i}`}><span>{r.name}</span><b><output data-v>{r.items ? start(r.items) : start(r.max)}</output> из {r.items ?? r.max}{r.items && r.factor && <span class="calc-pts"> · <output data-p>{start(r.items) * r.factor}</output> б.</span>}</b></label>
       <input id={`pc-${label}-${i}`} type="range" min="0" max={r.items ?? r.max} step="1" value={r.items ? start(r.items) : start(r.max)} data-factor={r.items && r.factor ? r.factor : 1} />
     </div>
   ))}
-  <div class="pc-out">
+  <div class="total">
     <div class="big"><span data-total>0</span><small> / 100</small></div>
     <span class="verdict" data-verdict>—</span>
   </div>
-  <div class="pc-bar" aria-hidden="true"><i data-bar></i></div>
-  <p class="pc-note" data-note></p>
+  <div class="calc-bar" aria-hidden="true"><i data-bar></i></div>
+  <p class="x-note" data-note></p>
 </div>
 
 <script>
   import { $, $$, onReady, spring } from '../../scripts/lib';
-
   const grade = (p: number) => (p >= 90 ? 'sehr gut' : p >= 80 ? 'gut' : p >= 70 ? 'befriedigend' : p >= 60 ? 'ausreichend' : 'nicht bestanden');
-
   onReady(() => {
     $$('[data-calc]').forEach((root) => {
       const kind = root.dataset.kind;
@@ -48,25 +41,26 @@ const start = (max: number) => Math.round(max * (kind === 'raw30' ? 0.6 : 0.65))
         inputs.forEach((inp) => {
           const v = Number(inp.value);
           const f = Number(inp.dataset.factor || 1);
-          const row = inp.closest('.pc-row')!;
+          const row = inp.closest('.calc-row')!;
           row.querySelector('[data-v]')!.textContent = String(v);
           const pt = row.querySelector('[data-p]');
           if (pt) pt.textContent = String(v * f);
+          inp.style.setProperty('--p', `${(v / Number(inp.max)) * 100}%`);
           total += v * f;
         });
         if (kind === 'raw30') total = Math.min(100, Math.round(total * 3.33));
         const ok = total >= 60;
-        verdict.textContent = ok ? `Сдал · ${grade(total)}` : 'Не сдал';
+        verdict.textContent = ok ? `Сдано · ${grade(total)}` : 'Не сдано';
         verdict.className = 'verdict ' + (ok ? 'ok' : 'bad');
-        note.textContent = kind === 'raw30'
-          ? (ok ? `Запас над порогом: ${total - 60} баллов.` : `До порога: ${60 - total} баллов. Это примерно ${Math.ceil((60 - total) / 3.33)} верных ответа.`)
-          : (ok ? `Запас над порогом: ${total - 60} баллов.` : `До порога не хватает ${60 - total} баллов.`);
+        note.textContent = ok
+          ? `Запас над порогом: ${total - 60} баллов.`
+          : kind === 'raw30' ? `До порога: ${60 - total} баллов. Это примерно ${Math.ceil((60 - total) / 3.33)} верных ответа.` : `До порога не хватает ${60 - total} баллов.`;
         spring(root, 'total', total, (x) => {
           shown = x;
           totalEl.textContent = String(Math.round(x));
           bar.style.width = `${Math.max(0, Math.min(100, x))}%`;
-          bar.style.background = x >= 60 ? 'var(--lime)' : 'var(--accent)';
         }, { response: 0.3, eps: 0.05, from: shown });
+        root.classList.toggle('pass', ok);
       }
       inputs.forEach((i) => i.addEventListener('input', upd));
       upd();

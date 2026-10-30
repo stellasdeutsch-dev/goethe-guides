@@ -1,8 +1,7 @@
 ---
-import TrackSectionPage from '../../../../../components/pages/TrackSectionPage.astro';
+import ModuleList from '../../../../../components/screens/ModuleList.astro';
 import { readyTracks, trackData } from '../../../../../lib/tracks';
 import type { ExamId } from '../../../../../data/exams';
-
 export async function getStaticPaths() {
   const out = [];
   for (const exam of ['telc', 'oesd'] as ExamId[]) {
@@ -15,4 +14,4 @@ export async function getStaticPaths() {
 }
 const { exam, track, section } = Astro.props as { exam: ExamId; track: string; section: string };
 ---
-<TrackSectionPage exam={exam} track={track} section={section} />
+<ModuleList exam={exam} track={track} section={section} />

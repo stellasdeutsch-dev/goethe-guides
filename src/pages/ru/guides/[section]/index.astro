@@ -1,11 +1,9 @@
 ---
-import SectionPage from '../../../../components/pages/SectionPage.astro';
-import { EXAMS } from '../../../../data/exams';
-import type { Section } from '../../../../data/sections';
-
-export function getStaticPaths() {
-  return EXAMS.goethe.sections.map((s) => ({ params: { section: s.id }, props: { s } }));
+import SectionPick from '../../../../components/screens/SectionPick.astro';
+import { sectionsWithTracks } from '../../../../lib/tracks';
+export async function getStaticPaths() {
+  return (await sectionsWithTracks('goethe')).map((section) => ({ params: { section }, props: { section } }));
 }
-const { s } = Astro.props as { s: Section };
+const { section } = Astro.props as { section: string };
 ---
-<SectionPage exam="goethe" s={s} />
+<SectionPick exam="goethe" section={section} />

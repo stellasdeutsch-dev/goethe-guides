@@ -1,27 +1,16 @@
 ---
-/* Квиз: вопрос, варианты строками как в iOS, объяснение, итог. */
-interface Q {
-  q: string;
-  o: string[];
-  c: number;
-  x: string;
-  /** Немецкая фраза, которую озвучить после ответа. */
-  say?: string;
-}
-interface Props {
-  questions: Q[];
-  title?: string;
-}
+/* Квиз: вопрос, варианты-пилюли, объяснение после ответа, итог. */
+interface Q { q: string; o: string[]; c: number; x: string; say?: string }
+interface Props { questions: Q[]; title?: string }
 const { questions, title = 'Проверь себя' } = Astro.props;
 ---
-<div class="ix quiz rv" data-quiz={JSON.stringify(questions)}>
-  <div class="ix-h"><b><svg class="ic"><use href="#i-list-checks" /></svg>{title}</b><span class="cap" data-count>{questions.length} вопросов</span></div>
+<div class="x quiz" data-quiz={JSON.stringify(questions)}>
+  <div class="x-h"><b><svg class="ic"><use href="#i-list-checks" /></svg>{title}</b><span class="x-cap">{questions.length} вопросов</span></div>
   <div data-stage aria-live="polite"><noscript><p>Для теста нужен JavaScript.</p></noscript></div>
 </div>
 
 <script>
   import { $, $$, fmt, icon, onReady, pop, say } from '../../scripts/lib';
-
   type Q = { q: string; o: string[]; c: number; x: string; say?: string };
 
   onReady(() => {
@@ -30,10 +19,7 @@ const { questions, title = 'Проверь себя' } = Astro.props;
       const stage = $('[data-stage]', root)!;
       let qi = 0;
       let res: boolean[] = [];
-      const dots = () =>
-        '<div class="dots" aria-hidden="true">' +
-        Q.map((_, i) => `<i class="${res[i] === true ? 'ok' : res[i] === false ? 'bad' : i === qi ? 'cur' : ''}"></i>`).join('') +
-        '</div>';
+      const dots = () => '<div class="dots" aria-hidden="true">' + Q.map((_, i) => `<i class="${res[i] === true ? 'ok' : res[i] === false ? 'bad' : i === qi ? 'cur' : ''}"></i>`).join('') + '</div>';
 
       function draw(focus = false) {
         const it = Q[qi];
@@ -66,9 +52,9 @@ const { questions, title = 'Проверь себя' } = Astro.props;
         if (it.say) say(it.say);
         $('.dots', stage)!.outerHTML = dots();
         const nb = document.createElement('button');
-        nb.className = 'btn qnext';
+        nb.className = 'btn knob qnext';
         nb.type = 'button';
-        nb.innerHTML = qi < Q.length - 1 ? `Дальше ${icon('arrow-right')}` : `Итог ${icon('trophy')}`;
+        nb.innerHTML = `<span class="knob-i">${icon(qi < Q.length - 1 ? 'arrow-right' : 'trophy')}</span><span>${qi < Q.length - 1 ? 'Дальше' : 'Итог'}</span>`;
         nb.onclick = () => { qi++; qi < Q.length ? draw(true) : done(); };
         stage.appendChild(nb);
         nb.focus({ preventScroll: true });
@@ -77,14 +63,8 @@ const { questions, title = 'Проверь себя' } = Astro.props;
       function done() {
         const s = res.filter(Boolean).length;
         const n = Q.length;
-        const msg =
-          s === n ? `${n} из ${n}. На экзамене так же. Серьёзно.` :
-          s >= n - 2 ? 'Почти. Глянь, где ошибся. Там обычно и падают.' :
-          'Нормально. Первый раз у всех так. Пролистай шпаргалку и попробуй ещё.';
-        stage.innerHTML =
-          dots() +
-          `<div class="qres"><div class="big" data-big>${s}<small>/${n}</small></div><p>${msg}</p>` +
-          `<div class="row-btns"><button type="button" class="btn gray" data-again>${icon('rotate-ccw')} Ещё раз</button></div></div>`;
+        const msg = s === n ? `${n} из ${n}. На экзамене так же.` : s >= n - 2 ? 'Почти. Посмотри, где ошибки: на них обычно и теряют баллы.' : 'Нормально для первого раза. Пролистай шпаргалку и попробуй ещё.';
+        stage.innerHTML = dots() + `<div class="qres"><div class="big" data-big>${s}<small>/${n}</small></div><p>${msg}</p><button type="button" class="btn sm dark" data-again>${icon('rotate-ccw')} Ещё раз</button></div>`;
         $<HTMLButtonElement>('[data-again]', stage)!.onclick = () => { qi = 0; res = []; draw(true); };
         pop($('[data-big]', stage), 0.6, 0.65);
       }

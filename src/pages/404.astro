@@ -1,12 +1,14 @@
 ---
-import Base from '../layouts/Base.astro';
+import App from '../layouts/App.astro';
 import { url } from '../data/site';
 ---
-<Base title="Страница не найдена | Stellas" description="Такой страницы нет." noindex tone="gray">
-  <section class="wrap screen">
-    <p class="eyebrow">404</p>
-    <h1 class="display">Seite <span class="grad">nicht gefunden.</span></h1>
-    <p class="lede">Такой страницы нет. Зато есть гайды.</p>
-    <p style="margin-top:28px"><a class="btn" href={url("/")}>На главную</a></p>
+<App title="Страница не найдена | Stellas" description="Такой страницы нет." noindex plan={false}>
+  <section class="screen">
+    <div class="hero">
+      <span class="tag"><i class="dot"></i>404</span>
+      <h1 class="ask">Seite nicht <em>gefunden</em></h1>
+      <p class="sub">Такой страницы нет. Начни с выбора экзамена.</p>
+      <div class="hero-row"><a class="btn knob" href={url('/')}><span class="knob-i"><svg class="ic"><use href="#i-arrow-right" /></svg></span><span>На главную</span></a></div>
+    </div>
   </section>
-</Base>
+</App>

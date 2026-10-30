@@ -1,0 +1,171 @@
+---
+// «Мой план»: уровень + дата экзамена → план по неделям, слабые части первыми.
+import App from '../../layouts/App.astro';
+import { EXAMS, type ExamId } from '../../data/exams';
+import { url } from '../../data/site';
+import { getGuides, slugOf } from '../../lib/guides';
+import { MODULE_SKIP, REG, readyTracks, toItem, trackData } from '../../lib/tracks';
+
+interface Props { exam: ExamId }
+const { exam } = Astro.props;
+const EX = EXAMS[exam];
+const tracks = await readyTracks(exam);
+const reg = exam === 'goethe' ? (await getGuides(exam)).filter((g) => REG.includes(slugOf(g))).map(toItem) : [];
+const link = (i: { title: string; href: string }) => ({ title: i.title, href: i.href });
+
+const data: Record<string, unknown> = {};
+for (const t of tracks) {
+  const { bySection, modules } = await trackData(exam, t.id);
+  data[t.id] = {
+    label: t.label,
+    levels: t.levels,
+    basics: (bySection.pruefung ?? []).slice(0, 2).map(toItem).map(link),
+    mocks: (bySection.probniki ?? []).map(toItem).filter((i) => !/-skachat$|^probniki-/.test(i.slug)).map(link),
+    modules: Object.fromEntries(modules.filter((m) => !MODULE_SKIP.includes(m)).map((m) => [m, bySection[m].map(toItem).map(link)])),
+    register: reg.map(link),
+  };
+}
+const extras = {
+  exam,
+  write: exam === 'goethe' ? url(`${EX.base}/schreiben/proverka-pisma/`) : '',
+  names: Object.fromEntries(EX.sections.map((x) => [x.id, x.de])),
+};
+---
+<App title={`Мой план подготовки к ${EX.name} | Stellas`} description={`План подготовки к ${EX.full} по неделям: уровень, дата экзамена и результаты пробников. Слабые части идут первыми.`} exam={exam} plan={false} trail={[{ label: EX.name, href: url(`${EX.base}/`) }, { label: 'Мой план' }]}>
+  <section class="screen split">
+    <div class="side">
+    <div class="hero">
+      <span class="tag"><i class="dot"></i>Всё хранится только в твоём браузере</span>
+      <h1 class="ask">План до <em>экзамена</em></h1>
+      <p class="sub">Два вопроса, и у тебя план по неделям.</p>
+    </div>
+
+    <div class="form">
+      <div class="field">
+        <b>1. Какой уровень сдаёшь?</b>
+        <div class="chips" role="group" aria-label="Уровень">
+          {tracks.map((t) => <button type="button" data-pl={t.id} aria-pressed="false">{t.label}</button>)}
+        </div>
+      </div>
+      <div class="field">
+        <b>2. Когда экзамен?</b>
+        <div class="date">
+          <input type="date" data-pdate aria-label="Дата экзамена" />
+          <span data-pdays></span>
+        </div>
+        <small>Не знаешь дату? Оставь пустым, план будет на 4 недели.</small>
+      </div>
+    </div>
+    </div>
+
+    <div class="main">
+
+    <div data-pout hidden>
+      <h2 class="h2">Твои результаты</h2>
+      <div class="scores" data-pres></div>
+      <p class="hint" data-pnote></p>
+      <h2 class="h2">План по неделям</h2>
+      <ol class="path" role="list" data-pweeks></ol>
+    </div>
+    <p class="empty" data-pempty>Выбери уровень, чтобы увидеть план.</p>
+    </div>
+  </section>
+  <script type="application/json" id="plan-data" set:html={JSON.stringify({ data, extras })} />
+</App>
+
+<script>
+  import { $, $$, esc, onReady } from '../../scripts/lib';
+  import { mockResults } from '../../scripts/results';
+
+  type Link = { title: string; href: string };
+  type T = { label: string; levels: string[]; basics: Link[]; mocks: Link[]; modules: Record<string, Link[]>; register: Link[] };
+  const DAILY: Record<string, string> = {
+    sprachbausteine: 'Каждый день: один текст с пропусками на время и разбор ошибок.',
+    lesen: 'Каждый день: одна часть Lesen на время и разбор ошибок.',
+    hoeren: 'Каждый день: 15 минут немецкого на слух и одно упражнение из гайда.',
+    schreiben: 'Каждый день: одно письмо с таймером и проверкой по критериям.',
+    sprechen: 'Каждый день: проговори вслух одну тему, как на экзамене.',
+  };
+
+  onReady(() => {
+    const raw = JSON.parse($('#plan-data')!.textContent || '{}');
+    const DATA: Record<string, T> = raw.data;
+    const EX = raw.extras;
+    const KEY = EX.exam === 'goethe' ? 'plan' : `plan:${EX.exam}`;
+    const btns = $$<HTMLButtonElement>('[data-pl]');
+    const date = $<HTMLInputElement>('[data-pdate]')!;
+    const out = $<HTMLElement>('[data-pout]')!;
+    const empty = $<HTMLElement>('[data-pempty]')!;
+    let st = { level: '', date: '' };
+    try { st = { ...st, ...JSON.parse(localStorage.getItem(KEY) || '{}') }; } catch { /* ignore */ }
+    st.level = (st.level || '').toLowerCase();
+    if (st.level && !DATA[st.level]) st.level = '';
+    let seen: string[] = [];
+    try { seen = JSON.parse(localStorage.getItem('seen') || '[]'); } catch { /* ignore */ }
+
+    const row = (l: Link, n: number) =>
+      `<li><a class="row${seen.includes(l.href) ? ' done' : ''}" href="${esc(l.href)}"><span class="row-n" aria-hidden="true"><b>${n}</b><svg class="ic"><use href="#i-check"/></svg></span><span class="row-t">${esc(l.title)}</span><small></small></a></li>`;
+    const week = (n: number, title: string, text: string, links: Link[], note = '') =>
+      `<li class="stage"><span class="stage-n" aria-hidden="true">${n}</span><div><h2>Неделя ${n}. ${esc(title)}</h2><p>${esc(text)}</p>` +
+      (links.length ? `<ol class="list" role="list">${links.map((l, i) => row(l, i + 1)).join('')}</ol>` : '') +
+      (note ? `<p class="daily"><svg class="ic"><use href="#i-repeat"/></svg>${esc(note)}</p>` : '') + '</div></li>';
+
+    function render() {
+      btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.pl === st.level)));
+      date.value = st.date;
+      try { localStorage.setItem(KEY, JSON.stringify(st)); } catch { /* ignore */ }
+      const today = new Date(); today.setHours(0, 0, 0, 0);
+      const days = st.date ? Math.round((new Date(st.date).getTime() - today.getTime()) / 864e5) : null;
+      $('[data-pdays]')!.textContent = days === null ? '' : days < 0 ? 'Дата уже прошла' : days === 0 ? 'Экзамен сегодня. Удачи!' : `Осталось ${days} дн.`;
+      if (!st.level) { out.hidden = true; empty.hidden = false; return; }
+      out.hidden = false; empty.hidden = true;
+      const d = DATA[st.level];
+      const res = mockResults({ exam: EX.exam, track: st.level, goethe: EX.exam === 'goethe' ? d.label : undefined });
+      const mods = Object.keys(d.modules);
+
+      $('[data-pres]')!.innerHTML = mods.map((m) => {
+        const p = res[m];
+        const cls = p === undefined ? '' : p >= 60 ? 'ok' : p >= 50 ? 'mid' : 'low';
+        const lab = p === undefined ? (['lesen', 'hoeren', 'sprachbausteine'].includes(m) ? 'Реши пробник' : 'Тренируй по гайдам') : p >= 60 ? 'Выше порога' : p >= 50 ? 'Рядом с порогом' : 'Слабое место';
+        return `<div class="score ${cls}"><b>${esc(EX.names[m] || m)}</b><span>${p === undefined ? '—' : p + '%'}</span><small>${lab}</small></div>`;
+      }).join('');
+      const tested = Object.keys(res).length;
+      $('[data-pnote]')!.textContent = tested
+        ? 'Проценты из последних пробников на сайте. Порог сдачи обычно 60 %.'
+        : 'Пока нет результатов. Первая неделя начинается с пробника: так станет видно слабые места.';
+
+      const score = (m: string) => res[m] ?? ({ schreiben: 52, sprechen: 54, lesen: 56, hoeren: 55, sprachbausteine: 55 } as Record<string, number>)[m] ?? 55;
+      const order = [...mods].sort((a, b) => score(a) - score(b));
+      const weeks = Math.min(12, Math.max(1, days === null || days < 0 ? 4 : Math.ceil(days / 7)));
+      const html: string[] = [];
+      const mock1 = d.mocks[0];
+      const mock2 = d.mocks.find((m) => m.href.includes('stellas-')) ?? d.mocks[1] ?? d.mocks[0];
+
+      if (weeks === 1) {
+        html.push(week(1, 'Финишная прямая', 'Мало времени: пробник, потом только самая слабая часть.', [
+          ...(tested ? [] : mock1 ? [mock1] : []),
+          ...(d.modules[order[0]] ?? []).slice(0, 2),
+          ...(EX.write ? [{ title: 'Проверка письма: одно задание в день', href: EX.write }] : []),
+        ], DAILY[order[0]]));
+      } else {
+        html.push(week(1, tested ? 'Формат и слабое место' : 'Формат и пробник', tested ? 'Освежи формат и начни с самой слабой части.' : 'Прочитай про формат и реши пробник целиком, с таймером.',
+          [...d.basics, ...(tested ? (d.modules[order[0]] ?? []).slice(0, 1) : mock1 ? [mock1] : [])]));
+        for (let i = 0; i < weeks - 2; i++) {
+          const m = order[i % order.length];
+          const round = Math.floor(i / order.length);
+          const list = d.modules[m] ?? [];
+          const use = list.slice(round * 3, round * 3 + 3);
+          const links = use.length ? use : list.slice(0, 3);
+          if (m === 'schreiben' && EX.write) links.push({ title: 'Проверка письма: задания с самооценкой', href: EX.write });
+          html.push(week(i + 2, EX.names[m] || m, res[m] !== undefined ? `Сейчас ${res[m]}%. Цель недели: плюс 10 процентов.` : 'Пройди гайды и сделай упражнения в них.', links, DAILY[m]));
+        }
+        html.push(week(weeks, 'Финальный пробник', 'За 3–5 дней до экзамена реши другой пробник и сравни баллы.', [...(mock2 ? [mock2] : []), ...d.register], 'Последние дни: повторяй ошибки, высыпайся, не учи новое.'));
+      }
+      $('[data-pweeks]')!.innerHTML = html.join('');
+    }
+
+    btns.forEach((b) => b.addEventListener('click', () => { st.level = b.dataset.pl!; render(); }));
+    date.addEventListener('change', () => { st.date = date.value; render(); });
+    render();
+  });
+</script>

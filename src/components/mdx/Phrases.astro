@@ -2,7 +2,7 @@
 interface Props { title?: string }
 const { title } = Astro.props;
 ---
-<div class="phr rv">
-  {title && <b>{title}</b>}
-  <div class="plist"><slot /></div>
+<div class="phrases">
+  {title && <b class="phrases-t">{title}</b>}
+  <div class="phrases-list"><slot /></div>
 </div>

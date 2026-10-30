@@ -1,34 +1,25 @@
 ---
-/* Диалог в виде переписки: нажми на реплику, чтобы услышать. «Слушать всё» читает по очереди. */
-interface Line {
-  who: 'A' | 'B' | 'C';
-  name?: string;
-  de: string;
-  ru?: string;
-}
-interface Props {
-  title?: string;
-  lines: Line[];
-}
+/* Диалог-переписка: нажми на реплику, чтобы услышать. «Слушать всё» читает по очереди. */
+interface Line { who: 'A' | 'B' | 'C'; name?: string; de: string; ru?: string }
+interface Props { title?: string; lines: Line[] }
 const { title = 'Диалог', lines } = Astro.props;
 const hasRu = lines.some((l) => l.ru);
 ---
-<div class="ix rv" data-dialog>
-  <div class="ix-h">
+<div class="x" data-dialog>
+  <div class="x-h">
     <b><svg class="ic"><use href="#i-messages-square" /></svg>{title}</b>
-    <span style="display:flex;gap:6px">
+    <span class="x-act">
       <button class="btn sm" type="button" data-all data-tts-only><svg class="ic"><use href="#i-play" /></svg><span>Слушать всё</span></button>
-      {hasRu && <button class="btn sm gray" type="button" data-ru aria-pressed="true">RU</button>}
+      {hasRu && <button class="btn sm dark" type="button" data-ru aria-pressed="true">RU</button>}
     </span>
   </div>
   <div class="dlg" lang="de">
     {lines.map((l, i) => {
-      const prev = lines[i - 1];
-      const showName = l.name && (!prev || prev.who !== l.who);
+      const showName = l.name && (i === 0 || lines[i - 1].who !== l.who);
       return (
         <div class={`msg ${l.who}`}>
           {showName && <span class="nm">{l.name}</span>}
-          <button class="bub" type="button" data-say={l.de} data-line={i}>{l.de}</button>
+          <button class="bub" type="button" data-say={l.de}>{l.de}</button>
           {l.ru && <span class="tr" lang="ru">{l.ru}</span>}
         </div>
       );
@@ -38,7 +29,6 @@ const hasRu = lines.some((l) => l.ru);
 
 <script>
   import { $, $$, hush, onReady, say } from '../../scripts/lib';
-
   onReady(() => {
     $$('[data-dialog]').forEach((root) => {
       const bubs = $$<HTMLButtonElement>('.bub', root);
@@ -59,13 +49,11 @@ const hasRu = lines.some((l) => l.ru);
         setAll(true);
         playFrom(0);
       });
-      // Клик по реплике во время «слушать всё» останавливает общий проигрыватель.
       bubs.forEach((b) => b.addEventListener('pointerdown', () => playing && setAll(false)));
       ru?.addEventListener('click', () => {
         const on = ru.getAttribute('aria-pressed') !== 'true';
         ru.setAttribute('aria-pressed', String(on));
         $('.dlg', root)!.classList.toggle('hide-ru', !on);
-        ru.classList.toggle('gray', on);
       });
     });
   });

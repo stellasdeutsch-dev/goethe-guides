@@ -1,8 +1,7 @@
 ---
-import HubPage from '../../../components/pages/HubPage.astro';
+import LevelPick from '../../../components/screens/LevelPick.astro';
 import { getGuides } from '../../../lib/guides';
 import type { ExamId } from '../../../data/exams';
-
 export async function getStaticPaths() {
   const out = [];
   for (const exam of ['telc', 'oesd'] as ExamId[]) if ((await getGuides(exam)).length) out.push({ params: { exam }, props: { exam } });
@@ -10,4 +9,4 @@ export async function getStaticPaths() {
 }
 const { exam } = Astro.props as { exam: ExamId };
 ---
-<HubPage exam={exam} />
+<LevelPick exam={exam} />

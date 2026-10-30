@@ -1,75 +1,55 @@
 ---
-/* Разбор текста по частям в окне «Почты»: капсулы сверху подсвечивают часть, внизу пояснение и счётчик слов. */
-interface Part {
-  id: string;
-  label: string;
-  color: string;
-  ink?: string;
-  text: string;
-  note: string;
-}
-interface Props {
-  to?: string;
-  subject?: string;
-  /** Заголовок окна. По умолчанию «Neue E-Mail», для форума/монолога можно своё. */
-  window?: string;
-  parts: Part[];
-}
+/* Разбор текста по частям: чипы сверху подсвечивают часть письма, внизу пояснение и счётчик слов. */
+interface Part { id: string; label: string; color: string; ink?: string; text: string; note: string }
+interface Props { to?: string; subject?: string; window?: string; parts: Part[] }
 const { to, subject, window: win = 'Neue E-Mail', parts } = Astro.props;
 const words = (t: string) => t.trim().split(/\s+/).filter(Boolean).length;
 const total = parts.reduce((n, p) => n + words(p.text), 0);
 ---
-<div class="anat rv" data-anat>
-  <div class="bar" role="group" aria-label="Части текста">
-    {parts.map((p) => (
-      <button type="button" data-p={p.id} aria-pressed="false" style={`--c:${p.color};--k:${p.ink ?? '#fff'}`}>
-        <i></i>{p.label}
-      </button>
-    ))}
+<div class="anat" data-anat>
+  <div class="anat-chips" role="group" aria-label="Части текста">
+    {parts.map((p) => <button type="button" data-p={p.id} aria-pressed="false" style={`--c:${p.color};--k:${p.ink ?? '#fff'}`}><i></i>{p.label}</button>)}
   </div>
-  <div class="win">
-    <div class="tb" aria-hidden="true"><i></i><i></i><i></i><span>{win}</span></div>
+  <div class="anat-win">
+    <div class="anat-top" aria-hidden="true"><i></i><i></i><i></i><span>{win}</span></div>
     {(to || subject) && (
-      <div class="mh">
+      <div class="anat-mail">
         {to && <span>An: <b>{to}</b></span>}
         {subject && <span>Betreff: <b>{subject}</b></span>}
       </div>
     )}
-    <div class="body" lang="de">
+    <div class="anat-body" lang="de">
       {parts.map((p) => (
         <span class="part" data-part={p.id} data-note={p.note} data-words={words(p.text)} style={`--c:${p.color}`}>{p.text}<button class="say" type="button" data-say={p.text} aria-label="Озвучить"><svg><use href="#i-volume-2" /></svg></button></span>
       ))}
     </div>
   </div>
-  <p class="note"><svg class="ic"><use href="#i-info" /></svg><span>Нажми на часть текста сверху. Каждая делает свою работу.</span></p>
-  <div class="cnt"><span class="cap">Всего: {total} слов</span><span class="cap blue" data-cnt hidden>Эта часть: <b></b> слов</span></div>
+  <p class="anat-note"><svg class="ic"><use href="#i-info" /></svg><span>Нажми на часть текста сверху. Каждая делает свою работу.</span></p>
+  <div class="anat-cnt"><span class="pill">Всего: {total} слов</span><span class="pill lime" data-cnt hidden>Эта часть: <b></b> слов</span></div>
 </div>
 
 <script>
   import { $, $$, onReady, pop, whenVisible } from '../../scripts/lib';
-
   onReady(() => {
     $$('[data-anat]').forEach((root) => {
-      const btns = $$<HTMLButtonElement>('.bar button', root);
+      const btns = $$<HTMLButtonElement>('.anat-chips button', root);
       const parts = $$('.part', root);
-      const note = $('.note span', root)!;
+      const note = $('.anat-note span', root)!;
       const cnt = $<HTMLElement>('[data-cnt]', root)!;
-      const defNote = note.textContent || '';
+      const def = note.textContent || '';
       let current = '';
-
       function show(id: string, user = false) {
         current = id;
         root.classList.toggle('focus', !!id);
         btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.p === id)));
         const on = parts.filter((p) => p.dataset.part === id);
         parts.forEach((p) => p.classList.toggle('on', p.dataset.part === id));
-        note.textContent = id ? on[0]?.dataset.note || '' : defNote;
+        note.textContent = id ? on[0]?.dataset.note || '' : def;
         cnt.hidden = !id;
         if (id) $('b', cnt)!.textContent = String(on.reduce((n, p) => n + Number(p.dataset.words || 0), 0));
         if (user) pop(btns.find((b) => b.dataset.p === id) || null, 0.92, 0.7);
       }
-
-      // Один спокойный автопоказ, пока человек сам не нажал. Любое касание его останавливает.
+      // Один спокойный автопоказ, пока человек сам не нажал.
       let auto = 0, i = 0, touched = false;
       const stop = () => { clearInterval(auto); auto = 0; };
       whenVisible(root, () => {
@@ -79,14 +59,7 @@ const total = parts.reduce((n, p) => n + words(p.text), 0);
           show(btns[i++].dataset.p || '');
         }, 1800);
       }, stop, 0.6);
-
-      btns.forEach((b) =>
-        b.addEventListener('click', () => {
-          touched = true;
-          stop();
-          show(current === b.dataset.p ? '' : b.dataset.p || '', true);
-        }),
-      );
+      btns.forEach((b) => b.addEventListener('click', () => { touched = true; stop(); show(current === b.dataset.p ? '' : b.dataset.p || '', true); }));
       root.addEventListener('pointerdown', () => { touched = true; stop(); }, { once: true });
     });
   });

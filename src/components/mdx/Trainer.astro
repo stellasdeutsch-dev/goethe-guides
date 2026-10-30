@@ -1,13 +1,14 @@
 ---
-/* Тренажёр Schreiben: таймер, счётчик слов, автопроверка формы текста под тип задания. */
-interface Props {
-  points: string[];
-  mode?: 'informal' | 'forum' | 'formal' | 'basic';
-  minutes?: number;
-  target?: number;
-  id?: string;
-}
+/* Тренажёр письма: таймер, счётчик слов, автопроверка формы текста под тип задания.
+   Правило «меньше половины объёма = 0 баллов» есть только у Goethe, поэтому для telc и ÖSD его не показываем. */
+interface Props { points: string[]; mode?: 'informal' | 'forum' | 'formal' | 'basic'; minutes?: number; target?: number; id?: string }
 const { points, mode = 'informal', minutes = 20, target = 80, id = 'trainer' } = Astro.props;
+const goethe = !/\/ru\/(telc|oesd)\//.test(Astro.url.pathname);
+const min = Math.round(target * 0.875);
+const half = Math.round(target / 2);
+const len = goethe
+  ? { k: 'len', t: `Объём не меньше ${min} слов`, s: mode === 'basic' ? `Меньше ${half} = рискуешь баллами за содержание` : `Меньше ${half} = 0 баллов за всю часть` }
+  : { k: 'len', t: `Объём около ${target} слов`, s: 'Ориентир по объёму из задания' };
 
 const CHECKS: Record<string, { k: string; t: string; s: string }[]> = {
   informal: [
@@ -16,7 +17,7 @@ const CHECKS: Record<string, { k: string; t: string; s: string }[]> = {
     { k: 'du', t: 'Пишешь на «du»', s: 'du, dir, dich, dein…' },
     { k: 'vorschlag', t: 'Есть предложение встретиться', s: 'Hast du Lust…? / Wollen wir…?' },
     { k: 'konn', t: 'Минимум 3 связки', s: 'weil, denn, deshalb, aber, dann, außerdem…' },
-    { k: 'len', t: `Объём не меньше ${Math.round(target * 0.875)} слов`, s: `Меньше ${Math.round(target / 2)} = 0 баллов за всю часть` },
+    len,
   ],
   forum: [
     { k: 'meinung', t: 'Своё мнение прямым текстом', s: 'Meiner Meinung nach… / Ich finde, dass…' },
@@ -24,66 +25,64 @@ const CHECKS: Record<string, { k: string; t: string; s: string }[]> = {
     { k: 'beispiel', t: 'Есть пример', s: 'zum Beispiel / z. B. / beispielsweise' },
     { k: 'konn', t: 'Минимум 3 связки', s: 'außerdem, aber, trotzdem, einerseits…' },
     { k: 'schluss', t: 'Есть вывод', s: 'Deshalb finde ich… / Alles in allem… / Insgesamt…' },
-    { k: 'len', t: `Объём не меньше ${Math.round(target * 0.875)} слов`, s: `Меньше ${Math.round(target / 2)} = 0 баллов за всю часть` },
+    len,
   ],
   basic: [
     { k: 'hello', t: 'Есть обращение', s: 'Liebe Anna, / Lieber Tom, / Hallo, / Sehr geehrte …' },
     { k: 'bye', t: 'Есть прощание', s: 'Viele Grüße / Liebe Grüße / Mit freundlichen Grüßen' },
     { k: 'sents', t: 'Минимум 3 предложения', s: 'По одному на каждый пункт задания' },
-    { k: 'len', t: `Объём не меньше ${Math.round(target * 0.875)} слов`, s: `Меньше ${Math.round(target / 2)} = рискуешь баллами за содержание` },
+    len,
   ],
   formal: [
     { k: 'anredeF', t: 'Вежливое обращение', s: 'Sehr geehrte Frau … / Liebe Frau … / Guten Tag,' },
     { k: 'sie', t: 'Пишешь на «Sie»', s: 'Sie, Ihnen, Ihr…' },
-    { k: 'nodu', t: 'Ни одного «du»', s: 'du/dir/dein в письме начальнику = минус' },
+    { k: 'nodu', t: 'Ни одного «du»', s: 'du/dir/dein в официальном письме = минус' },
     { k: 'bitte', t: 'Извинение или просьба', s: 'Entschuldigen Sie… / Leider… / Könnten Sie…?' },
     { k: 'grussF', t: 'Вежливое прощание', s: 'Mit freundlichen Grüßen / Viele Grüße + имя' },
-    { k: 'len', t: `Объём не меньше ${Math.round(target * 0.875)} слов`, s: `Меньше ${Math.round(target / 2)} = 0 баллов за всю часть` },
+    len,
   ],
 };
 const checks = CHECKS[mode];
 ---
-<div class="ix trainer rv" data-trainer data-mode={mode} data-min={minutes} data-target={target} data-id={id}>
-  <div class="tr-top">
-    <div class="tr-time">
+<div class="x trainer" data-trainer data-mode={mode} data-min={minutes} data-target={target} data-id={id} data-goethe={goethe ? '1' : ''}>
+  <div class="timer">
+    <div class="timer-l">
       <output data-clock>{String(minutes).padStart(2, '0')}:00</output>
       <small>Старт сам, как начнёшь печатать</small>
     </div>
-    <div class="tr-btns">
-      <button class="btn" type="button" data-start><svg class="ic"><use href="#i-play" /></svg><span>Старт</span></button>
-      <button class="btn gray" type="button" data-reset aria-label="Сбросить"><svg class="ic"><use href="#i-rotate-ccw" /></svg></button>
+    <div class="timer-r">
+      <button class="btn knob" type="button" data-start><span class="knob-i"><svg class="ic"><use href="#i-play" /></svg></span><span>Старт</span></button>
+      <button class="btn dark icon" type="button" data-reset aria-label="Сбросить"><svg class="ic"><use href="#i-rotate-ccw" /></svg></button>
     </div>
   </div>
 
-  <label>
+  <label class="tr-field">
     <span class="sr">Твой текст</span>
     <textarea data-text lang="de" spellcheck="false" autocapitalize="sentences" placeholder={mode === 'formal' ? 'Sehr geehrte Frau …,' : mode === 'forum' ? 'Ich finde, …' : 'Liebe Anna, …'}></textarea>
   </label>
 
-  <div class="tr-meter">
-    <div class="lbl"><span>Слов: <b data-words>0</b> из ~{target}</span><span data-hint>Цель: около {target}</span></div>
-    <div class="tr" aria-hidden="true"><i data-fill></i></div>
+  <div class="words">
+    <div class="words-l"><span>Слов: <b data-words>0</b> из ~{target}</span><span data-hint>Цель: около {target}</span></div>
+    <div class="words-track" aria-hidden="true"><i data-fill></i></div>
   </div>
 
   <ul class="checks" aria-label="Автопроверка формы">
-    {checks.map((c) => (
-      <li data-chk={c.k}><span class="ck"><svg class="ic"><use href="#i-check" /></svg></span><div>{c.t}<small>{c.s}</small></div></li>
-    ))}
+    {checks.map((c) => <li data-chk={c.k}><span class="ck"><svg class="ic"><use href="#i-check" /></svg></span><div>{c.t}<small>{c.s}</small></div></li>)}
   </ul>
 
-  <div class="tr-pts" role="group" aria-label="Пункты задания">
-    <b>Пункты задания. Отметь сам: смысл машина не проверит</b>
-    {points.map((p) => <label><input type="checkbox" data-pt /> <span>{p}</span></label>)}
+  <div class="pts" role="group" aria-label="Пункты задания">
+    <b>Пункты задания. Отметь сама или сам: смысл машина не проверит</b>
+    {points.map((p) => <label><input type="checkbox" data-pt /><span>{p}</span></label>)}
   </div>
-  <p class="tr-out" data-out aria-live="polite"></p>
+  <p class="x-note" data-out aria-live="polite"></p>
 </div>
 
 <script>
-  import { $, $$, onReady, pop, spring } from '../../scripts/lib';
-
+  import { $, $$, icon, onReady, pop, spring } from '../../scripts/lib';
   // \b не видит умлауты, поэтому границы слова через \p{L}.
   const W = (alts: string) => new RegExp(`(?<!\\p{L})(${alts})(?!\\p{L})`, 'giu');
-  const CONN = W('weil|denn|deshalb|deswegen|darum|dann|danach|aber|sondern|obwohl|trotzdem|außerdem|ausserdem|zuerst|zum schluss|leider|übrigens|dass|wenn|als|einerseits|andererseits|zum beispiel|außerdem|allerdings|jedoch');
+  const CONN = W('weil|denn|deshalb|deswegen|darum|dann|danach|aber|sondern|obwohl|trotzdem|außerdem|ausserdem|zuerst|zum schluss|leider|übrigens|dass|wenn|als|einerseits|andererseits|zum beispiel|allerdings|jedoch');
+  const DU = W('du|dir|dich|dein|deine|deinen|deinem|deiner');
   const test = (re: RegExp, t: string) => { re.lastIndex = 0; return re.test(t); };
 
   onReady(() => {
@@ -95,62 +94,42 @@ const checks = CHECKS[mode];
       const wordsEl = $('[data-words]', root)!;
       const hint = $('[data-hint]', root)!;
       const out = $('[data-out]', root)!;
-      const mode = root.dataset.mode || 'informal';
+      const goethe = !!root.dataset.goethe;
       const total = Number(root.dataset.min) * 60;
       const target = Number(root.dataset.target);
       const key = `trainer:${root.dataset.id}`;
       let left = total, timer = 0, running = false;
 
       const fmtT = (s: number) => `${s < 0 ? '−' : ''}${String(Math.floor(Math.abs(s) / 60)).padStart(2, '0')}:${String(Math.abs(s) % 60).padStart(2, '0')}`;
-      const label = (on: boolean) => {
-        startBtn.innerHTML = `<svg class="ic"><use href="#i-${on ? 'pause' : 'play'}"/></svg><span>${on ? 'Пауза' : left < total ? 'Дальше' : 'Старт'}</span>`;
-      };
+      const label = (on: boolean) => { startBtn.innerHTML = `<span class="knob-i">${icon(on ? 'pause' : 'play')}</span><span>${on ? 'Пауза' : left < total ? 'Дальше' : 'Старт'}</span>`; };
       function tick() {
         left--;
         clock.value = fmtT(left);
         clock.classList.toggle('warn', left <= 180 && left > 0);
         clock.classList.toggle('over', left <= 0);
-        if (left === 0) out.textContent = 'Время вышло. На экзамене ты бы уже переходил к следующей части. Допиши и посмотри, сколько не успел.';
+        if (left === 0) out.textContent = 'Время вышло. На экзамене пора к следующей части. Допиши и посмотри, сколько не успела или не успел.';
       }
-      function setRun(on: boolean) {
-        running = on;
-        clearInterval(timer);
-        if (on) timer = window.setInterval(tick, 1000);
-        label(on);
-      }
+      function setRun(on: boolean) { running = on; clearInterval(timer); if (on) timer = window.setInterval(tick, 1000); label(on); }
       startBtn.addEventListener('click', () => setRun(!running));
-      $('[data-reset]', root)!.addEventListener('click', () => {
-        setRun(false);
-        left = total;
-        clock.value = fmtT(left);
-        clock.classList.remove('warn', 'over');
-        label(false);
-        out.textContent = '';
-      });
+      $('[data-reset]', root)!.addEventListener('click', () => { setRun(false); left = total; clock.value = fmtT(left); clock.classList.remove('warn', 'over'); label(false); out.textContent = ''; });
 
       function check() {
         const t = ta.value.trim();
         const n = t ? t.split(/\s+/).length : 0;
         wordsEl.textContent = String(n);
-        const w = Math.min(100, (n / (target * 1.5)) * 100);
-        spring(fill, 'w', w, (x) => (fill.style.width = `${x}%`), { response: 0.35 });
-        fill.style.background = n < target / 2 ? 'var(--red)' : n < target * 0.875 ? 'var(--sun)' : n <= target * 1.4 ? 'var(--lime)' : 'var(--sun)';
-        hint.textContent =
-          n === 0 ? `Цель: около ${target}` :
-          n < target / 2 ? 'Меньше половины. Это 0 баллов за часть' :
-          n < target * 0.875 ? 'Ещё немного' :
-          n <= target * 1.4 ? 'Объём в норме' : 'Многовато. Больше слов = больше ошибок';
+        spring(fill, 'w', Math.min(100, (n / (target * 1.5)) * 100), (x) => (fill.style.width = `${x}%`), { response: 0.35 });
+        fill.dataset.s = n < target / 2 ? 'low' : n < target * 0.875 ? 'mid' : n <= target * 1.4 ? 'ok' : 'mid';
+        hint.textContent = n === 0 ? `Цель: около ${target}` : n < target / 2 ? (goethe ? 'Меньше половины. Это 0 баллов за часть' : 'Слишком коротко') : n < target * 0.875 ? 'Ещё немного' : n <= target * 1.4 ? 'Объём в норме' : 'Многовато. Больше слов = больше ошибок';
         const lines = t.split('\n').map((x) => x.trim()).filter(Boolean);
         const first = (lines[0] || '').toLowerCase();
         const tail = lines.slice(-3).join(' ').toLowerCase();
         const low = t.toLowerCase();
-        const conn = (t.match(CONN) || []).length;
         const res: Record<string, boolean> = {
           anrede: /^(liebe|lieber|hallo|hi|servus|grüß dich)\b/.test(first),
           gruss: /(viele|liebe|herzliche|beste) grüße|bis bald|bis dann|dein[e]?\s+\S+$|lg\b/.test(tail),
-          du: test(W('du|dir|dich|dein|deine|deinen|deinem|deiner'), t),
+          du: test(DU, t),
           vorschlag: /(hast du (lust|zeit)|wollen wir|sollen wir|wie wäre es|wie wär's|wir könnten|lass uns|treffen wir uns|was hältst du|kommst du|können wir)/i.test(t),
-          konn: conn >= 3,
+          konn: (t.match(CONN) || []).length >= 3,
           len: n >= target * 0.875,
           meinung: /(meiner meinung nach|ich finde|ich bin der meinung|ich denke|ich glaube|meines erachtens|für mich ist)/.test(low),
           grund: test(W('weil|denn|deshalb|deswegen|darum'), t),
@@ -158,7 +137,7 @@ const checks = CHECKS[mode];
           schluss: /(deshalb finde ich|alles in allem|insgesamt|zusammenfassend|zum schluss|abschließend)/.test(low),
           anredeF: /^(sehr geehrte|sehr geehrter|liebe frau|lieber herr|guten tag|hallo frau|hallo herr)/.test(first),
           sie: /(?<!\p{L})(Sie|Ihnen|Ihr|Ihre|Ihren|Ihrem|Ihrer)(?!\p{L})/u.test(t.replace(/^[^\n]*\n?/, '')),
-          nodu: n > 5 && !test(W('du|dir|dich|dein|deine|deinen|deinem|deiner'), t),
+          nodu: n > 5 && !test(DU, t),
           bitte: /(entschuldig|tut mir (sehr )?leid|leider|könnten sie|würden sie|bitte)/.test(low),
           grussF: /(mit freundlichen grüßen|freundliche grüße|viele grüße|beste grüße)/.test(tail),
           hello: /^(liebe|lieber|hallo|hi|sehr geehrte|sehr geehrter|guten tag)/.test(first),
@@ -171,25 +150,15 @@ const checks = CHECKS[mode];
           li.classList.toggle('ok', ok);
           if (ok && !was) pop($('.ck', li), 0.5, 0.55);
         });
-        void mode;
         try { localStorage.setItem(key, ta.value); } catch { /* приватный режим */ }
       }
 
-      ta.addEventListener('input', () => {
-        if (!running && left === total && ta.value.trim()) setRun(true);
-        check();
-      });
-      try {
-        const saved = localStorage.getItem(key);
-        if (saved) { ta.value = saved; check(); }
-      } catch { /* ignore */ }
-
+      ta.addEventListener('input', () => { if (!running && left === total && ta.value.trim()) setRun(true); check(); });
+      try { const saved = localStorage.getItem(key); if (saved) { ta.value = saved; check(); } } catch { /* ignore */ }
       const pts = $$<HTMLInputElement>('[data-pt]', root);
-      pts.forEach((p) =>
-        p.addEventListener('change', () => {
-          out.textContent = pts.every((x) => x.checked) ? 'Все пункты закрыты. Это главное условие для Erfüllung. Остальное уже шлифовка.' : '';
-        }),
-      );
+      pts.forEach((p) => p.addEventListener('change', () => {
+        out.textContent = pts.every((x) => x.checked) ? 'Все пункты закрыты. Это главное условие для оценки за содержание.' : '';
+      }));
     });
   });
 </script>

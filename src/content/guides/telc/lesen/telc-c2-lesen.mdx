@@ -1,0 +1,189 @@
+---
+title: 'telc Deutsch C2 Leseverstehen: логика, детали, подтекст'
+hl: 'логика, детали, подтекст'
+seoTitle: 'telc Deutsch C2 Leseverstehen: формат, баллы, метод'
+description: 'Leseverstehen telc Deutsch C2: порядок абзацев, 10 заданий a/b/c, 10 утверждений к 13 абзацам. 80 минут, 40 баллов, как считают Teil 1 и где ловушки.'
+lede: 'Три текста на 3500 слов за 80 минут. Порядок абзацев, детали длинной статьи и подтекст эссе. И тексты потом пригодятся: из них ты будешь цитировать в эссе.'
+exam: telc
+section: lesen
+levels: [C2]
+published: 2026-10-30
+updated: 2026-10-30
+kurz:
+  - 'Teil 1: расставить <b>5 абзацев</b>. Teil 2: <b>10 заданий a/b/c</b> к длинной статье. Teil 3: <b>10 утверждений к 13 абзацам</b> или «x».'
+  - 'Баллы: 5 × 2, 10 × 1, 10 × 2. Всего <b>40</b>, это 25 % экзамена.'
+  - '<b>80 минут</b> на всё. Тексты вместе около 3500 слов.'
+  - 'Teil 1 считают по <b>правильным соседям</b>, а не по позициям.'
+  - 'Тексты чтения потом служат источниками для эссе.'
+faq:
+  - q: 'Сколько длится Leseverstehen telc C2?'
+    a: '80 минут на три части. В советах telc ориентир: Teil 1 около 10 минут, Teil 2 около 40, Teil 3 около 30. Ответы лучше переносить в бланк сразу после каждой части.'
+  - q: 'Как считают баллы за порядок абзацев?'
+    a: 'За каждый абзац, правильно связанный с соседним, 2 балла. Важна связка, а не позиция. Пример из советов telc: при эталоне a-b-e-d-c решение e-d-a-c-b даёт 2 балла, потому что пара e-d правильная.'
+  - q: 'Что такое x в Teil 3?'
+    a: 'Если утверждению не подходит ни один абзац, отмечаешь x. Одному абзацу могут подойти два утверждения, но каждое утверждение относится максимум к одному абзацу.'
+  - q: 'Сколько слов в текстах?'
+    a: 'По Handbuch telc: Teil 1 около 250–350 слов, Teil 2 около 1800–2000, Teil 3 около 1300. Вместе около 3500.'
+next:
+  - title: 'Разбор Übungstest telc C2'
+    text: 'Все 25 заданий с бланками и объяснениями.'
+    href: '/ru/telc/probniki/telc-c2-uebungstest-razbor/'
+  - title: 'Schreiben telc C2'
+    text: 'Как превратить прочитанное в эссе.'
+    href: '/ru/telc/schreiben/telc-c2-schreiben/'
+  - title: 'Формат telc C2'
+    text: '160 баллов и два порога.'
+    href: '/ru/telc/pruefung/telc-c2-format/'
+sources:
+  - title: 'telc Deutsch C2, Übungstest 1 (shop.telc.net, PDF)'
+    url: 'https://shop.telc.net/media/catalog/product/file/2/0/20210102_5002-b00-010101_jc_web.pdf'
+  - title: 'telc Deutsch C2: Tipps zur Prüfungsvorbereitung (telc.net, PDF)'
+    url: 'https://www.telc.net/fileadmin/user_upload/pdfs/Handbuch_und_Tipps_fuer_Pruefungsvorbereitung/Deutsch_c2_tipps_zur_pruefungsvorbereitung.pdf'
+  - title: 'telc Deutsch C2: Handbuch (telc.net, PDF)'
+    url: 'https://www.telc.net/fileadmin/user_upload/pdfs/Handbuch_und_Tipps_fuer_Pruefungsvorbereitung/Deutsch_c2_Handbuch.pdf'
+---
+import Callout from '../../../../components/mdx/Callout.astro';
+import Task from '../../../../components/mdx/Task.astro';
+import Score from '../../../../components/mdx/Score.astro';
+import Steps from '../../../../components/mdx/Steps.astro';
+import Step from '../../../../components/mdx/Step.astro';
+import Quiz from '../../../../components/mdx/Quiz.astro';
+
+Все говорят: на C2 читаешь как носитель, тут нечего готовить.
+
+Носитель тоже не прочитает 3500 слов научного немецкого за 80 минут и не ответит на 25 вопросов без системы.
+
+Система простая: в каждой части свой способ читать.
+
+## Что за модуль
+
+| Часть | Что делаешь | Текст | Заданий | Баллы |
+|---|---|---|---|---|
+| Teil 1 Textlogik | расставить абзацы a–e после данного z | 250–350 слов | 5 | 10 |
+| Teil 2 Detailverstehen | какое из трёх утверждений есть в тексте | 1800–2000 слов | 10 | 10 |
+| Teil 3 Detail / implizit | к 10 утверждениям найти абзац a–m или x | около 1300 слов | 10 | 20 |
+
+Длины из Handbuch telc. 80 минут общие, порядок частей любой.
+
+<Score items={[
+  { name: 'Teil 1', pts: 10, max: 10, note: '5 × 2, около 10 минут', color: 'var(--violet)' },
+  { name: 'Teil 2', pts: 10, max: 10, note: '10 × 1, около 40 минут', color: 'var(--teal)' },
+  { name: 'Teil 3', pts: 20, max: 20, note: '10 × 2, около 30 минут', color: 'var(--pink)' },
+]} />
+
+Посмотри на цифры. Teil 2 самый длинный и самый дешёвый: 40 минут за 10 баллов. Teil 3 вдвое дороже за меньшее время. В советах telc прямо предлагают подумать, не начать ли с заданий, которые стоят больше.
+
+<p class="punch">Самый длинный текст не самый важный.</p>
+
+## Teil 1: соседи, а не места
+
+Пять абзацев, и их нужно выстроить после примера z. Решают слова-мостики: в советах telc приводят «darüber hinaus», «im Anschluss an diese These», «nichtsdestoweniger», «ein weiterer Aspekt». И местоимения, которые смотрят на конец предыдущего абзаца.
+
+Главное про баллы: telc считает **правильные пары соседей**. Даже если вся цепочка съехала на одну позицию, правильные пары внутри неё дают баллы. Поэтому начинай с пар, в которых уверен, и только потом собирай целое.
+
+<Callout type="tip" title="Мостики в пробнике">
+  <p>«Diese unsichere Abgrenzung …» смотрит назад: абзац перед ним должен говорить о границе. «Für eine quantifizierende Bewertung solcher Differenzen» требует абзаца про различия. «Ein weiterer, eigenständiger Forschungsbereich» почти всегда в конце.</p>
+</Callout>
+
+## Teil 2: дьявол в детали
+
+Три утверждения про один и тот же факт. Отличаются одним словом: временем, количеством, степенью уверенности. Здесь нужен медленный, точный режим.
+
+Слова, которые чаще всего делают вариант ложным:
+
+- **абсолютные:** ausschließlich, stets, nie, erwiesenermaßen, keinerlei;
+- **сдвиг уверенности:** текст говорит «unklar», вариант говорит «bewiesen»;
+- **сдвиг субъекта:** в тексте это делает один человек, в варианте другой;
+- **сдвиг факта и вымысла:** в тексте сценарий «а что если», в варианте реальное событие.
+
+<Callout type="trap" title="Сценарий ≠ событие">
+  <p>Статья в пробнике начинается с истории учёной, которая вернула премию из-за «допинга для мозга». А дальше автор спрашивает: это чистая фантазия или скоро станет реальностью? Вариант «премию уже однажды отобрали» звучит как пересказ первого абзаца. Но первый абзац вымысел.</p>
+</Callout>
+
+## Teil 3: зачем автор это пишет
+
+13 абзацев, 10 утверждений. Утверждения часто про намерение автора: «автор сомневается», «автор критикует», «автор иронизирует». Бывают и про скрытый смысл: сарказм, игра слов, олицетворение. Если абзаца нет, ставишь x. Один абзац может получить два утверждения.
+
+Как читать:
+
+1. Сначала все 10 утверждений. Подчеркни глагол намерения: kritisiert, ironisch, personifiziert, zweifelt.
+2. Потом текст, абзац за абзацем. На полях одним словом: «ирония», «пример», «критика», «тезис».
+3. Сопоставь. Сомнения? Перечитай только два абзаца-кандидата.
+
+<Callout type="trap" title="Пример и тезис рядом">
+  <p>Часто один абзац формулирует мысль, а следующий даёт к ней примеры. Утверждение «автор критикует …» относится к абзацу с мыслью, а не к абзацу с ласточками и мухами.</p>
+</Callout>
+
+## План на 80 минут
+
+<Steps>
+  <Step title="10 минут. Teil 1">
+    <p>Сначала очевидные пары, потом цепочка. Ответы сразу в бланк.</p>
+  </Step>
+  <Step title="30 минут. Teil 3">
+    <p>Он стоит 20 баллов. Утверждения, пометки на полях, сопоставление.</p>
+  </Step>
+  <Step title="35 минут. Teil 2">
+    <p>Задания по порядку текста. В каждом варианте ищи слово-ловушку.</p>
+  </Step>
+  <Step title="5 минут. Бланк и пометки для эссе">
+    <p>Все 25 клеток заполнены. И отметь в текстах 2–3 мысли, которые пригодятся для эссе: тексты останутся у тебя.</p>
+  </Step>
+</Steps>
+
+## Практика: порядок абзацев
+
+Текст мой. Первый абзац дан.
+
+<Task title="Übung: Arbeiten von zu Hause" time="3 Minuten">
+  <p><b>z</b> Seit einigen Jahren bieten immer mehr Unternehmen ihren Beschäftigten an, einen Teil der Arbeitszeit zu Hause zu verbringen.</p>
+  <p><b>a</b> Diese Sorge teilen allerdings nicht alle Fachleute. Arbeitspsychologen verweisen darauf, dass Vertrauen auf Dauer produktiver sei als Kontrolle.</p>
+  <p><b>b</b> Was zunächst als Notlösung galt, ist inzwischen für viele zur Selbstverständlichkeit geworden. Gleichwohl befürchten manche Führungskräfte, die Kontrolle über ihre Teams zu verlieren.</p>
+  <p><b>c</b> Ob sich diese Sichtweise durchsetzt, wird nicht zuletzt davon abhängen, wie gut es gelingt, die Zusammenarbeit auf Distanz zu organisieren.</p>
+  <p class="ru">Работа из дома: компании предлагают её всё чаще. Руководители боятся потерять контроль, психологи считают доверие продуктивнее. Победит ли этот взгляд, зависит от организации работы на расстоянии.</p>
+</Task>
+
+<Quiz questions={[
+  { q: 'Какой абзац идёт сразу после z?', o: ['a', 'b', 'c'], c: 1, x: 'b подхватывает тему «работы из дома» и вводит опасение руководителей. a начинается с «Diese Sorge», а тревоге ещё неоткуда взяться.' },
+  { q: 'Что идёт после b?', o: ['a', 'c'], c: 0, x: '«**Diese Sorge**» в a смотрит на страх руководителей в конце b. Пара b-a.' },
+  { q: 'Какой абзац последний?', o: ['a', 'b', 'c'], c: 2, x: '«Ob sich **diese Sichtweise** durchsetzt» ссылается на мнение психологов из a и закрывает текст взглядом в будущее. Порядок: z-b-a-c.' },
+]} />
+
+## Практика: найди слово-ловушку
+
+<Quiz questions={[
+  { q: 'Текст: «Welche Nebenwirkungen auftreten, ist bislang völlig unklar.» Какой вариант верен?', o: ['Die Nebenwirkungen sind erwiesenermaßen gering.', 'Über die Nebenwirkungen weiß man bisher kaum etwas.', 'Es treten stets schwere Nebenwirkungen auf.'], c: 1, x: '«Unklar» = **мало известно**. erwiesenermaßen и stets утверждают то, чего текст не знает.' },
+  { q: 'Текст: «Einige Forscher halten den Effekt für überschätzt.» Вариант:', o: ['Die Forschung lehnt den Effekt ab.', 'Manche Wissenschaftler sind skeptisch.', 'Alle Forscher bestätigen den Effekt.'], c: 1, x: 'einige = **manche**. «Die Forschung» и «alle» обобщают на всех.' },
+  { q: 'Текст: «Das Medikament wurde ursprünglich gegen Depressionen entwickelt.» Вариант:', o: ['Es wird heute ausschließlich gegen Depressionen eingesetzt.', 'Es war zunächst für einen anderen Zweck gedacht.', 'Es wirkt nicht gegen Depressionen.'], c: 1, x: 'ursprünglich = **zunächst für einen anderen Zweck**. «ausschließlich» и «wirkt nicht» в тексте не сказаны.' },
+]} />
+
+## Ошибки, которые съедают баллы
+
+| Ошибка | Что проседает | Как чинить |
+|---|---|---|
+| Ставишь абзацы по смыслу «в целом» | Teil 1 | Ищи мостики и местоимения на стыках |
+| Начинаешь с Teil 2 и тонешь | Teil 3 | Teil 3 стоит вдвое больше, делай раньше |
+| Пропускаешь «ausschließlich», «stets» | Teil 2 | Обводи абсолютные слова в вариантах |
+| Принимаешь сценарий за факт | Teil 2 | «Was wäre, wenn …» это не событие |
+| Путаешь абзац с тезисом и абзац с примером | Teil 3 | Намерение формулируется в абзаце с тезисом |
+| Не используешь x | Teil 3 | Если ничего не подходит, это ответ |
+
+## Проверь себя
+
+<Quiz questions={[
+  { q: 'Сколько баллов за одно задание Teil 2?', o: ['1', '2', '3'], c: 0, x: 'Teil 2 по **1 баллу**, Teil 1 и Teil 3 по 2.' },
+  { q: 'Эталон a-b-c-d-e, твой ответ b-c-d-e-a. Сколько правильных пар?', o: ['0', '3', '5'], c: 1, x: 'b-c, c-d, d-e: **три пары**. Позиции все неверные, но связки засчитываются.' },
+  { q: 'Можно ли одному абзацу в Teil 3 дать два утверждения?', o: ['Нет', 'Да', 'Только в примере'], c: 1, x: '**Да.** В пробнике абзац l получил два утверждения.' },
+  { q: 'Что делать с текстами чтения после 80 минут?', o: ['Сдать', 'Оставить: они источники для эссе', 'Выбросить'], c: 1, x: 'Тексты чтения остаются у тебя и служат **источниками** для Schriftlicher Ausdruck.' },
+  { q: 'Какая часть стоит больше всего баллов?', o: ['Teil 1', 'Teil 2', 'Teil 3'], c: 2, x: '**Teil 3**: 20 баллов.' },
+]} />
+
+## Шпаргалка
+
+- 80 минут, 25 заданий, **40 баллов**.
+- Teil 1: мостики и местоимения, баллы за **пары соседей**.
+- Teil 2: абсолютные слова и сдвиги уверенности.
+- Teil 3: намерение автора, x бывает, абзацы можно повторять.
+- Пометь в текстах мысли для эссе.
+
+<p class="punch">Прочитать мало. Нужно понять, зачем это написано.</p>
