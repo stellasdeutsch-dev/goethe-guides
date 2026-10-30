@@ -1,9 +1,9 @@
 ---
 import { url } from '../data/site';
-import { EXAMS, EXAM_IDS } from '../data/exams';
+import { EXAMS, EXAM_IDS, type ExamId } from '../data/exams';
 import { getGuides } from '../lib/guides';
 // Пока гайды есть только по одному экзамену, выбор экзамена не нужен.
-const ready = [];
+const ready: ExamId[] = [];
 for (const e of EXAM_IDS) if ((await getGuides(e)).length) ready.push(e);
 const to = url(ready.length === 1 ? `${EXAMS[ready[0]].base}/` : '/ru/');
 ---

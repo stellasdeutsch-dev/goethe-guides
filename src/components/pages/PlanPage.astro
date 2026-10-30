@@ -37,7 +37,7 @@ const extras = {
   modNames: Object.fromEntries(EXM.sections.map((x) => [x.id, x.de === x.title ? x.title : `${x.de} · ${x.title.toLowerCase()}`])),
 };
 ---
-<Base title={`Мой план подготовки к ${EXM.name} | Stellas`} description={`Составь план подготовки к ${EXM.full}: уровень, дата экзамена и результаты пробников. План по неделям с упором на слабые части.`} active="all" tone="gray" exam={exam}>
+<Base title={`Мой план подготовки к ${EXM.name} | Stellas`} description={`Составь план подготовки к ${EXM.full}: уровень, дата экзамена и результаты пробников. План по неделям с упором на слабые части.`} tone="gray" exam={exam} trail={[{ label: EXM.name, href: url(`${EXM.base}/`) }, { label: 'Мой план' }]}>
   <section class="route-hero wrap">
     <ol class="crumbs">
       <li><a href={url(`${B}/`)}>Гайды {EXM.name}</a></li>

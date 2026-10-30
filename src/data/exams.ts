@@ -15,7 +15,23 @@ export interface Exam {
   blurb: string;
   sections: Section[];
   levelInfo: Record<Level, { title: string; text: string; color: string }>;
+  /** Что выбирает человек на втором экране: уровни, а у telc ещё DTZ и C1 Hochschule. */
+  tracks: Track[];
+  /** Гайд «какой уровень/экзамен мне нужен» для подсказки на экране выбора. */
+  helpSlug?: string;
 }
+
+export interface Track {
+  /** id в URL: a1…c2, dtz, c1-hochschule */
+  id: string;
+  label: string;
+  title: string;
+  text: string;
+  levels: Level[];
+}
+
+const levelTracks = (info: Exam['levelInfo']): Track[] =>
+  (Object.keys(info) as Level[]).map((l) => ({ id: l.toLowerCase(), label: l, title: info[l].title, text: info[l].text, levels: [l] }));
 
 const LVL_COLORS: Record<Level, string> = { A1: 'var(--lime)', A2: 'var(--teal)', B1: 'var(--deep)', B2: 'var(--violet)', C1: 'var(--pink)', C2: 'var(--sun)' };
 const generic = (texts: Record<Level, [string, string]>) =>
@@ -60,6 +76,8 @@ export const EXAMS: Record<ExamId, Exam> = {
       C1: { title: 'Свободно', text: 'Вуз, сложные тексты, доклад и дискуссия. Новый формат с 2024 года.', color: LVL_COLORS.C1 },
       C2: { title: 'Почти носитель', text: 'Высший уровень. Рецензия на книгу, дебаты с экзаменатором.', color: LVL_COLORS.C2 },
     },
+    tracks: [],
+    helpSlug: 'pruefung/goethe-zertifikat-urovni',
   },
   telc: {
     id: 'telc',
@@ -77,6 +95,8 @@ export const EXAMS: Record<ExamId, Exam> = {
       C1: ['Свободно', 'Академические и профессиональные тексты.'],
       C2: ['Почти носитель', 'Высший уровень владения языком.'],
     }),
+    tracks: [],
+    helpSlug: 'pruefung/telc-ekzameny-kakoj-vybrat',
   },
   oesd: {
     id: 'oesd',
@@ -94,8 +114,15 @@ export const EXAMS: Record<ExamId, Exam> = {
       C1: ['Свободно', 'Академические и профессиональные тексты.'],
       C2: ['Почти носитель', 'Высший уровень владения языком.'],
     }),
+    tracks: [],
+    helpSlug: 'pruefung/oesd-ekzameny-kakoj-vybrat',
   },
 };
+
+for (const e of Object.values(EXAMS)) e.tracks = levelTracks(e.levelInfo);
+// У telc два отдельных экзамена, которые не равны уровню.
+EXAMS.telc.tracks.splice(2, 0, { id: 'dtz', label: 'DTZ', title: 'Тест для мигрантов', text: 'Deutsch-Test für Zuwanderer: итог интеграционного курса, результат A2 или B1.', levels: ['A2', 'B1'] });
+EXAMS.telc.tracks.splice(EXAMS.telc.tracks.findIndex((t) => t.id === 'c1') + 1, 0, { id: 'c1-hochschule', label: 'C1 H', title: 'Для вуза', text: 'telc C1 Hochschule: поступление в немецкий университет.', levels: ['C1'] });
 
 export const EXAM_IDS: ExamId[] = ['goethe', 'telc', 'oesd'];
 export const sectionOf = (exam: ExamId, id: string) => EXAMS[exam].sections.find((s) => s.id === id);

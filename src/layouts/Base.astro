@@ -1,36 +1,30 @@
 ---
 import '../styles/global.css';
+import '../styles/flow.css';
 import sprite from '../assets/sprite.svg?raw';
-import { LEVELS, SITE, url } from '../data/site';
+import { SITE, url } from '../data/site';
 import { EXAMS, EXAM_IDS, type ExamId } from '../data/exams';
 import { getGuides } from '../lib/guides';
 
+export interface Crumb { label: string; href?: string }
 interface Props {
   title: string;
   description: string;
-  /** Активный раздел: id раздела или 'all'. */
-  active?: string;
   ogType?: 'website' | 'article';
   jsonld?: object[];
-  /** gray = серая подложка (хабы), white = статья. */
+  /** gray = серая подложка, white = статья. */
   tone?: 'gray' | 'white';
   noindex?: boolean;
-  /** Экзамен, к которому относится страница: меню и ссылки берутся из него. */
   exam?: ExamId;
+  /** Где человек сейчас: экзамен › уровень › модуль. Это и есть вся навигация. */
+  trail?: Crumb[];
 }
-const { title, description, active, ogType = 'website', jsonld = [], tone = 'white', noindex = false, exam = 'goethe' } = Astro.props;
-const EX = EXAMS[exam];
-// В меню только разделы, где уже есть гайды этого экзамена.
-const examGuides = await getGuides(exam);
+const { title, description, ogType = 'website', jsonld = [], tone = 'white', noindex = false, exam = 'goethe', trail = [] } = Astro.props;
 const readyExams: ExamId[] = [];
 for (const e of EXAM_IDS) if ((await getGuides(e)).length) readyExams.push(e);
-const withGuides = new Set(examGuides.map((g) => g.data.section));
-const examLevels = LEVELS.filter((l) => examGuides.some((g) => (g.data.levels as string[]).includes(l)));
-const SECTIONS = EX.sections.filter((s) => withGuides.has(s.id));
-const B = EX.base;
+const home = url(readyExams.length > 1 ? '/ru/' : `${EXAMS[exam].base}/`);
 const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const ogImage = new URL(url('/og.png'), Astro.site).href;
-const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: 'Пробники', grammatik: 'Грамматика', sprachbausteine: 'Sprachbausteine' } as Record<string, string>)[id] ?? (exam === 'goethe' ? SECTIONS.find((s) => s.id === id)!.de : SECTIONS.find((s) => s.id === id)!.title);
 ---
 <!doctype html>
 <html lang="ru">
@@ -64,69 +58,36 @@ const short = (id: string) => ({ pruefung: 'Об экзамене', probniki: '�
 
   <header class="gnav">
     <div class="wrap">
-      <a class="brand" href={url(`${B}/`)}>
+      <a class="brand" href={home} aria-label="Stellas: на главную">
         <img src={url('/favicon.svg')} alt="" width="30" height="30" />
-        Stellas <span>{EX.name}</span>
+        <span class="brand-t">Stellas</span>
       </a>
-      <nav aria-label="Разделы">
-        <a href={url(`${B}/#start`)}>С чего начать</a>
-        <a href={url(`${B}/plan/`)}>Мой план</a>
-        {SECTIONS.map((s) => (
-          <a href={url(`${B}/${s.id}/`)} aria-current={active === s.id ? 'page' : undefined}>{short(s.id)}</a>
-        ))}
-      </nav>
-      <div class="right">
-        <a class="btn sm" href={SITE.platform} rel="noopener" target="_blank">Платформа</a>
-        <button class="menu-btn" type="button" aria-label="Меню" aria-expanded="false" aria-controls="sheet"><svg class="ic"><use href="#i-menu" /></svg></button>
-      </div>
+      {trail.length > 0 && (
+        <nav class="trail" aria-label="Где ты сейчас">
+          <ol>
+            {trail.map((c, i) => (
+              <li>
+                {i > 0 && <svg class="ic" aria-hidden="true"><use href="#i-chevron-right" /></svg>}
+                {c.href ? <a href={c.href}>{c.label}</a> : <span aria-current="page">{c.label}</span>}
+              </li>
+            ))}
+          </ol>
+        </nav>
+      )}
     </div>
     <div class="prog" aria-hidden="true"></div>
   </header>
-  <div class="sheet" id="sheet" inert>
-    {readyExams.length > 1 && <p class="sheet-h">Экзамен</p>}
-    {readyExams.length > 1 && <div class="sheet-lv sheet-ex">{readyExams.map((e) => <a href={url(`${EXAMS[e].base}/`)} aria-current={e === exam ? 'page' : undefined}>{EXAMS[e].name}</a>)}</div>}
-    <a href={url(`${B}/plan/`)}><span class="tile" style="--c:var(--accent)"><svg class="ic"><use href="#i-calendar-check" /></svg></span>Мой план</a>
-    <p class="sheet-h">Маршрут по уровню</p>
-    <div class="sheet-lv">{examLevels.map((l) => <a href={url(`${B}/uroven/${l.toLowerCase()}/`)}>{l}</a>)}</div>
-    <p class="sheet-h">Разделы</p>
-    <a href={url(`${B}/`)}><span class="tile" style="--c:var(--text-3)"><svg class="ic"><use href="#i-book-open" /></svg></span>Все гайды</a>
-    {SECTIONS.map((s) => (
-      <a href={url(`${B}/${s.id}/`)}><span class="tile" style={`--c:${s.color}`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>{s.title}</a>
-    ))}
-    <a href={SITE.telegram} rel="noopener" target="_blank"><span class="tile" style="--c:var(--deep)"><svg class="ic"><use href="#i-send" /></svg></span>Telegram</a>
-  </div>
-  <div class="scrim" aria-hidden="true"></div>
 
   <main id="main">
     <slot />
   </main>
 
-  <footer class="foot">
+  <footer class="foot2">
     <div class="wrap">
-      <div class="grid">
-        <div>
-          <h3>Stellas · Goethe</h3>
-          <p>Бесплатные гайды по Goethe-Zertifikat. Пишу как человек, который сам учит немецкий. Без воды и без «уважаемых студентов».</p>
-        </div>
-        <div>
-          <h3>Разделы</h3>
-          <ul>{SECTIONS.map((s) => <li><a href={url(`${B}/${s.id}/`)}>{s.title}</a></li>)}</ul>
-          <h3 style="margin-top:16px">Экзамены</h3>
-          <ul>{readyExams.map((e) => <li><a href={url(`${EXAMS[e].base}/`)}>{EXAMS[e].full}</a></li>)}</ul>
-        </div>
-        <div>
-          <h3>Ещё</h3>
-          <ul>
-            <li><a href={SITE.telegram} rel="noopener" target="_blank">Telegram @stellasdeutsch</a></li>
-            <li><a href={SITE.platform} rel="noopener" target="_blank">Платформа Stellas A0–C1</a></li>
-            <li><a href={url('/ru/guides/rss.xml')}>RSS</a></li>
-          </ul>
-        </div>
-      </div>
-      <div class="fine">
-        <span>Сайт не связан с Goethe-Institut e.V. Goethe-Zertifikat — экзамен Goethe-Institut. Формат заданий сверяем с официальными материалами на goethe.de.</span>
-        <span>© {new Date().getFullYear()} Stellas</span>
-      </div>
+      <span>© {new Date().getFullYear()} Stellas</span>
+      <a href={SITE.telegram} rel="noopener" target="_blank">Telegram</a>
+      <a href={SITE.platform} rel="noopener" target="_blank">Платформа Stellas</a>
+      <small>Сайт не связан с Goethe-Institut, telc gGmbH и ÖSD. Формат заданий сверяем с официальными материалами.</small>
     </div>
   </footer>
 

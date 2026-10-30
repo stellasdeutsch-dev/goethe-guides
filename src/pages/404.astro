@@ -3,10 +3,10 @@ import Base from '../layouts/Base.astro';
 import { url } from '../data/site';
 ---
 <Base title="Страница не найдена | Stellas" description="Такой страницы нет." noindex tone="gray">
-  <section class="hub-hero wrap">
+  <section class="wrap screen">
     <p class="eyebrow">404</p>
     <h1 class="display">Seite <span class="grad">nicht gefunden.</span></h1>
     <p class="lede">Такой страницы нет. Зато есть гайды.</p>
-    <p style="margin-top:28px"><a class="btn" href={url('/ru/guides/')}>Все гайды</a></p>
+    <p style="margin-top:28px"><a class="btn" href={url("/")}>На главную</a></p>
   </section>
 </Base>

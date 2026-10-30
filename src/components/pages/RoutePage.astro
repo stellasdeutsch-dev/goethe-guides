@@ -1,112 +1,136 @@
 ---
+// Экран 3: уровень. Три шага, у каждого одно главное действие. Длинные списки живут на экране модуля.
 import Base from '../../layouts/Base.astro';
-import { LEVELS, SITE, url, type Level } from '../../data/site';
 import { EXAMS, sectionOf, type ExamId } from '../../data/exams';
-import { getGuides, guideHref, plural, readingTime, slugOf, type Guide } from '../../lib/guides';
-import { buildRoute, type RouteItem } from '../../lib/route';
+import { url } from '../../data/site';
+import { getGuides, plural, slugOf } from '../../lib/guides';
+import { REG, toItem, trackData, trackHref } from '../../lib/tracks';
 
-interface Props { exam: ExamId; level: Level }
-const { exam, level } = Astro.props;
+interface Props { exam: ExamId; track: string }
+const { exam, track: trackId } = Astro.props;
 const EX = EXAMS[exam];
 const B = EX.base;
-const info = EX.levelInfo[level];
-const all = await getGuides(exam);
-const levels = LEVELS.filter((l) => all.some((g) => (g.data.levels as string[]).includes(l)));
-const toItem = (g: Guide): RouteItem => ({ title: g.data.title, href: guideHref(g), section: g.data.section, minutes: readingTime(g.body), slug: slugOf(g) });
-const steps = buildRoute(all, level, toItem, exam);
-const items = steps.flatMap((s) => s.groups.flatMap((g) => g.items));
-const total = items.filter((i) => !i.external).length;
-const minutes = items.reduce((n, i) => n + (i.minutes ?? 0), 0);
-const tileOf = (section: string) => sectionOf(exam, section)!;
-const jsonld = [
-  {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: `Маршрут подготовки к ${EX.full} ${level}`,
-    itemListElement: items.filter((i) => !i.external).map((i, n) => ({ '@type': 'ListItem', position: n + 1, url: new URL(i.href, Astro.site).href, name: i.title })),
-  },
-];
----
-<Base title={`${EX.name} ${level}: маршрут подготовки по шагам | Stellas`} description={`Пошаговый план подготовки к ${EX.full} ${level}: формат, официальный пробник, части экзамена и запись. ${total} бесплатных гайдов.`} active="all" jsonld={jsonld} tone="gray" exam={exam}>
-  <section class="route-hero wrap">
-    <ol class="crumbs">
-      <li><a href={url(`${B}/`)}>Гайды {EX.name}</a></li>
-      <li><svg class="ic"><use href="#i-chevron-right" /></svg></li>
-      <li aria-current="page">Маршрут {level}</li>
-    </ol>
-    <div class="lvl-switch" role="navigation" aria-label="Другие уровни">
-      {levels.map((l) => <a href={url(`${B}/uroven/${l.toLowerCase()}/`)} aria-current={l === level ? 'page' : undefined}>{l}</a>)}
-    </div>
-    <p class="eyebrow" style={`color:${info.color}`}>Маршрут · {info.title}</p>
-    <h1 class="display">{EX.name} <span class="grad" style={`--g1:${info.color};--g2:var(--violet)`}>{level}</span>. По шагам.</h1>
-    <p class="lede">{info.text}</p>
-    <div class="route-meta">
-      <span class="cap blue">{steps.length} {plural(steps.length, 'шаг', 'шага', 'шагов')}</span>
-      <span class="cap">{total} {plural(total, 'гайд', 'гайда', 'гайдов')}</span>
-      <span class="cap">≈ {Math.round(minutes / 60 * 10) / 10} ч чтения</span>
-      <span class="cap" data-progress hidden></span>
-    </div>
-    <p class="route-how">Иди сверху вниз. Прочитанные гайды отмечаются галочкой сами, прогресс хранится в твоём браузере.</p>
-    <p class="route-how"><a href={url(`${B}/plan/`)}>Есть дата экзамена? Составь план по неделям →</a></p>
-  </section>
+const { track, guides, bySection, modules } = await trackData(exam, trackId);
+const reg = exam === 'goethe' ? (await getGuides(exam)).filter((g) => REG.includes(slugOf(g))) : [];
+const name = `${EX.name} ${track.label}`;
 
-  <div class="wrap">
-    <ol class="route">
-      {steps.map((s) => (
-        <li class="rstep rv" id={`step-${s.n}`}>
-          <div class="rstep-h">
-            <span class="rnum">{s.n}</span>
-            <div>
+const steps = [
+  { id: 'pruefung', n: 1, title: 'Пойми формат', text: 'Из чего состоит экзамен и как считают баллы.' },
+  { id: 'probniki', n: 2, title: 'Реши пробник', text: 'Официальный тест с нашим бланком. Узнаешь баллы и слабое место.' },
+].filter((s) => bySection[s.id]);
+const modN = steps.length + 1;
+const all = guides.map(toItem);
+const jsonld = [{
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: `Подготовка к ${EX.full} ${track.label}`,
+  itemListElement: all.map((i, n) => ({ '@type': 'ListItem', position: n + 1, url: new URL(i.href, Astro.site).href, name: i.title })),
+}];
+---
+<Base title={`${name}: подготовка по шагам | Stellas`} description={`Как подготовиться к ${EX.full} ${track.label}: формат, официальный пробник с разбором и гайды по каждой части. ${all.length} бесплатных гайдов.`} jsonld={jsonld} tone="gray" exam={exam} trail={[{ label: EX.name, href: url(`${B}/`) }, { label: track.label }]}>
+  <section class="wrap screen" data-track-home data-exam={exam} data-track={track.id} data-label={name} data-short={track.label} data-goethe={exam === 'goethe' ? track.label : undefined}>
+    <h1 class="display q-title">{EX.name} <span class="grad">{track.label}</span></h1>
+    <p class="q-sub">{track.text}</p>
+    <div class="meter" data-meter hidden><span><i data-meter-bar></i></span><small data-meter-t></small></div>
+
+    <ol class="steps3" role="list">
+      {steps.map((s) => {
+        const list = bySection[s.id].map(toItem);
+        const main = list[0];
+        return (
+          <li class="step3" data-step={s.id} data-hrefs={list.map((i) => i.href).join(' ')}>
+            <span class="step3-n" aria-hidden="true">{s.n}</span>
+            <div class="step3-b">
               <h2>{s.title}</h2>
               <p>{s.text}</p>
+              <a class={`go-main${s.id === 'probniki' ? ' primary' : ''}`} href={main.href}>
+                <span>{main.title}</span>
+                <small>{main.minutes} мин</small>
+              </a>
+              {list.length > 1 && <a class="more" href={trackHref(exam, track.id, s.id)}>Ещё {list.length - 1} {plural(list.length - 1, 'гайд', 'гайда', 'гайдов')} <svg class="ic"><use href="#i-chevron-right" /></svg></a>}
             </div>
-          </div>
-          {s.groups.map((g) => (
-            <div class="rgroup">
-              {g.label && (
-                <div class="rgroup-h">
-                  <span class="tile" style={`--c:${tileOf(g.section!).color};--ts:24px`}><svg class="ic"><use href={`#i-${tileOf(g.section!).icon}`} /></svg></span>
-                  {g.label} <small>· {tileOf(g.section!).title}</small>
-                </div>
-              )}
-              <ul class="list">
-                {g.items.map((i) => (
+          </li>
+        );
+      })}
+      {modules.length > 0 && (
+        <li class="step3" data-step="modules">
+          <span class="step3-n" aria-hidden="true">{modN}</span>
+          <div class="step3-b">
+            <h2>Тренируй части экзамена</h2>
+            <p>Начни с той, где в пробнике меньше всего баллов.</p>
+            <ul class="mods" role="list">
+              {modules.map((m) => {
+                const s = sectionOf(exam, m)!;
+                const n = bySection[m].length;
+                return (
                   <li>
-                    <a class="row" href={i.href} data-route-href={i.external ? undefined : i.href} {...(i.external ? { rel: 'noopener', target: '_blank' } : {})}>
-                      <span class="seen-ck" aria-hidden="true"><svg class="ic"><use href="#i-check" /></svg></span>
-                      <span class="t">{i.title}</span>
-                      {i.minutes ? <span class="cap">{i.minutes} мин</span> : <span class="cap">отдельный сайт</span>}
-                      <svg class="ic chev"><use href={i.external ? '#i-arrow-up-right' : '#i-chevron-right'} /></svg>
+                    <a class="mod" href={trackHref(exam, track.id, m)} data-mod={m} data-hrefs={bySection[m].map((g) => toItem(g).href).join(' ')}>
+                      <span class="tile" style={`--c:${s.color};--ts:36px`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
+                      <b>{s.de}</b>
+                      <small data-mod-meta>{n} {plural(n, 'гайд', 'гайда', 'гайдов')}</small>
                     </a>
                   </li>
-                ))}
-              </ul>
-            </div>
-          ))}
+                );
+              })}
+            </ul>
+          </div>
         </li>
-      ))}
+      )}
     </ol>
 
-    <div class="route-end rv">
-      <b>Прошёл маршрут?</b>
-      <p>Реши пробник ещё раз за 3–5 дней до экзамена. Сравни баллы с первым разом. Вопросы пиши в <a href={SITE.telegram} rel="noopener" target="_blank">Telegram @stellasdeutsch</a>.</p>
-    </div>
-  </div>
+    <ul class="quiet" role="list">
+      <li><a href={url(`${B}/plan/`)}>Есть дата экзамена? План по неделям <svg class="ic"><use href="#i-chevron-right" /></svg></a></li>
+      {bySection.grammatik && <li><a href={trackHref(exam, track.id, 'grammatik')}>Грамматика для {track.label} <svg class="ic"><use href="#i-chevron-right" /></svg></a></li>}
+      {reg.length > 0 && <li><a href={toItem(reg[0]).href}>Где сдавать и сколько стоит <svg class="ic"><use href="#i-chevron-right" /></svg></a></li>}
+    </ul>
+  </section>
 </Base>
 
 <script>
   import { $, $$, onReady } from '../../scripts/lib';
   onReady(() => {
+    const root = $<HTMLElement>('[data-track-home]');
+    if (!root) return;
+    const { exam = '', track = '', label = '', short = '', goethe } = root.dataset;
+    try { localStorage.setItem(`track:${exam}`, JSON.stringify({ id: track, short, href: location.pathname, label })); } catch { /* ignore */ }
+
     let seen: string[] = [];
-    try { seen = JSON.parse(localStorage.getItem('seen') || '[]'); } catch { /* ignore */ }
-    const rows = $$<HTMLAnchorElement>('[data-route-href]');
-    let done = 0;
-    rows.forEach((r) => {
-      const ok = seen.includes(r.dataset.routeHref || '');
-      r.classList.toggle('seen', ok);
-      if (ok) done++;
+    let res: Record<string, { level?: string; module?: string; points: number; max: number; at: number }> = {};
+    try {
+      seen = JSON.parse(localStorage.getItem('seen') || '[]');
+      res = JSON.parse(localStorage.getItem('abres') || '{}');
+    } catch { /* ignore */ }
+    const hrefsOf = (el: HTMLElement) => (el.dataset.hrefs || '').split(' ').filter(Boolean);
+
+    // Шаг готов, когда прочитан его главный гайд. Первый неготовый шаг подсвечиваем.
+    const steps = $$<HTMLElement>('[data-step]');
+    let now = false;
+    steps.forEach((s) => {
+      const hrefs = s.dataset.step === 'modules' ? $$<HTMLElement>('[data-mod]', s).flatMap(hrefsOf) : hrefsOf(s);
+      const done = s.dataset.step !== 'modules' && seen.includes(hrefs[0]);
+      s.classList.toggle('done', done);
+      if (!done && !now) { s.classList.add('now'); now = true; }
     });
-    const p = $('[data-progress]');
-    if (p && done) { p.hidden = false; p.textContent = `Прочитано ${done} из ${rows.length}`; }
+
+    // Прогресс по всем гайдам уровня.
+    const allHrefs = [...new Set(steps.flatMap((s) => s.dataset.step === 'modules' ? $$<HTMLElement>('[data-mod]', s).flatMap(hrefsOf) : hrefsOf(s)))];
+    const read = allHrefs.filter((h) => seen.includes(h)).length;
+    if (read) {
+      $('[data-meter]')!.hidden = false;
+      $<HTMLElement>('[data-meter-bar]')!.style.width = `${Math.round((read / allHrefs.length) * 100)}%`;
+      $('[data-meter-t]')!.textContent = `Прочитано ${read} из ${allHrefs.length}`;
+    }
+
+    // Последний результат пробника по модулю.
+    const mine = (k: string, r: { level?: string }) => goethe ? !/^(telc|oesd)-/.test(k) && r.level === goethe : k.startsWith(`${exam}-${track}-`);
+    $$<HTMLElement>('[data-mod]').forEach((m) => {
+      const last = Object.entries(res).filter(([k, r]) => mine(k, r) && r.module === m.dataset.mod).map(([, r]) => r).sort((a, b) => b.at - a.at)[0];
+      if (last) {
+        const p = Math.round((last.points / last.max) * 100);
+        const meta = $('[data-mod-meta]', m)!;
+        meta.textContent = `Пробник: ${p}%`;
+        m.classList.add(p >= 60 ? 'ok' : 'low');
+      }
+    });
   });
 </script>

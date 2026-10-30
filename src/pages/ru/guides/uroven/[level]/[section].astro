@@ -1,0 +1,15 @@
+---
+import TrackSectionPage from '../../../../../components/pages/TrackSectionPage.astro';
+import { readyTracks, trackData } from '../../../../../lib/tracks';
+
+export async function getStaticPaths() {
+  const out = [];
+  for (const t of await readyTracks('goethe')) {
+    const { bySection } = await trackData('goethe', t.id);
+    for (const section of Object.keys(bySection)) out.push({ params: { level: t.id, section }, props: { track: t.id, section } });
+  }
+  return out;
+}
+const { track, section } = Astro.props as { track: string; section: string };
+---
+<TrackSectionPage exam="goethe" track={track} section={section} />

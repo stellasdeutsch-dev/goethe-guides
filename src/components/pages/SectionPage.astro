@@ -24,7 +24,7 @@ const jsonld = [
   },
 ];
 ---
-<Base title={`${title} ${EX.full}: гайды | Stellas`} description={`${s.lede} Бесплатные гайды по ${EX.full} от Stellas.`} active={s.id} jsonld={jsonld} tone="gray" exam={exam}>
+<Base title={`${title} ${EX.full}: гайды | Stellas`} description={`${s.lede} Бесплатные гайды по ${EX.full} от Stellas.`} jsonld={jsonld} tone="gray" exam={exam} trail={[{ label: EX.name, href: url(`${B}/`) }, { label: title }]}>
   <section class="sec-hero">
     <div class="wrap">
       <ol class="crumbs">

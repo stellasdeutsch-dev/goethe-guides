@@ -1,12 +1,10 @@
 ---
 import RoutePage from '../../../../components/pages/RoutePage.astro';
-import { LEVELS, type Level } from '../../../../data/site';
-import { getGuides } from '../../../../lib/guides';
+import { readyTracks } from '../../../../lib/tracks';
 
 export async function getStaticPaths() {
-  const all = await getGuides('goethe');
-  return LEVELS.filter((l) => all.some((g) => (g.data.levels as string[]).includes(l))).map((l) => ({ params: { level: l.toLowerCase() }, props: { level: l } }));
+  return (await readyTracks('goethe')).map((t) => ({ params: { level: t.id }, props: { track: t.id } }));
 }
-const { level } = Astro.props as { level: Level };
+const { track } = Astro.props as { track: string };
 ---
-<RoutePage exam="goethe" level={level} />
+<RoutePage exam="goethe" track={track} />
