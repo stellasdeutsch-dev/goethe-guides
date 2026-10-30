@@ -5,6 +5,7 @@ import { EXAMS, type ExamId } from '../../data/exams';
 import { LEVELS, SITE, url } from '../../data/site';
 import { getGuides, guideHref, slugOf } from '../../lib/guides';
 import { generalGuides, readyTracks, trackHref } from '../../lib/tracks';
+import HeroArt from './HeroArt.astro';
 
 interface Props { exam: ExamId }
 const { exam } = Astro.props;
@@ -20,6 +21,7 @@ const bar = (levels: string[]) => LEVELS.map((l) => (levels.includes(l) ? 'on' :
 <App title={`Подготовка к ${EX.full} ${range} бесплатно | Stellas`} description={desc} exam={exam} trail={[{ label: EX.name }]}>
   <section class="screen" data-exam={exam}>
     <div class="hero">
+      <HeroArt kind="level" />
       <span class="tag"><i class="dot"></i>{EX.full}</span>
       <h1 class="ask">Какой у тебя <em>уровень?</em></h1>
       <p class="sub">Выбери уровень. Дальше покажем три шага подготовки.</p>

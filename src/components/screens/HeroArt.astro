@@ -1,0 +1,76 @@
+---
+/* Иллюстрация в шапке экрана: парящие стеклянные карточки в стиле промо-кадров.
+   Слои двигаются за курсором (data-depth), карточки плавают по очереди. */
+interface Props { kind: 'exam' | 'level' | 'home' | 'module' | 'plan'; label?: string; icon?: string }
+const { kind, label = 'B1', icon = 'book-open' } = Astro.props;
+const days = Array.from({ length: 28 }, (_, i) => i + 1);
+---
+<div class={`art art-${kind}`} aria-hidden="true" data-art>
+  <span class="art-blob lime" data-depth="10"></span>
+  <span class="art-blob sky" data-depth="18"></span>
+
+  {kind === 'exam' && (
+    <>
+      <div class="glass card c1" data-depth="26">
+        <span class="seal"><svg class="ic"><use href="#i-award" /></svg></span>
+        <small>Zertifikat</small>
+        <b>bestanden</b>
+        <span class="bars"><i style="--v:.9"></i><i style="--v:.7"></i><i style="--v:.8"></i><i style="--v:.65"></i></span>
+      </div>
+      <div class="glass pill-g c2" data-depth="40"><svg class="ic"><use href="#i-landmark" /></svg>Goethe</div>
+      <div class="glass pill-g c3" data-depth="34"><svg class="ic"><use href="#i-briefcase" /></svg>telc</div>
+      <div class="glass pill-g c4" data-depth="46"><svg class="ic"><use href="#i-globe" /></svg>ÖSD</div>
+      <div class="orb c5" data-depth="56"><svg class="ic"><use href="#i-graduation-cap" /></svg></div>
+    </>
+  )}
+
+  {kind === 'level' && (
+    <>
+      <div class="glass card c1" data-depth="24">
+        <small>Твой путь</small>
+        <span class="steps-art">{['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((l, i) => <i style={`--h:${22 + i * 14}%;--d:${i * 90}ms`}><em>{l}</em></i>)}</span>
+      </div>
+      <div class="glass pill-g c2" data-depth="42"><svg class="ic"><use href="#i-target" /></svg>Порог 60 %</div>
+      <div class="orb c5" data-depth="54"><svg class="ic"><use href="#i-arrow-up-right" /></svg></div>
+    </>
+  )}
+
+  {kind === 'home' && (
+    <>
+      <div class="glass card c1" data-depth="24">
+        <small>Пробник</small>
+        <span class="ring"><svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="18" /><circle class="val" cx="22" cy="22" r="18" pathLength="100" /></svg><b>70</b></span>
+        <small class="muted">из 100 · сдано</small>
+      </div>
+      <div class="glass card c2 list-art" data-depth="38">
+        <span><i class="ok"><svg class="ic"><use href="#i-check" /></svg></i>Формат</span>
+        <span><i class="ok"><svg class="ic"><use href="#i-check" /></svg></i>Пробник</span>
+        <span><i></i>Schreiben</span>
+      </div>
+      <div class="glass pill-g c3" data-depth="48"><svg class="ic"><use href="#i-zap" /></svg>{label}</div>
+    </>
+  )}
+
+  {kind === 'module' && (
+    <>
+      <div class="orb big c1" data-depth="30"><svg class="ic"><use href={`#i-${icon}`} /></svg></div>
+      <div class="glass card c2" data-depth="42">
+        <small>Прочитано</small>
+        <span class="mini-track"><i></i></span>
+        <b class="small-b">по порядку</b>
+      </div>
+      <div class="glass pill-g c3" data-depth="50"><svg class="ic"><use href="#i-clock" /></svg>{label}</div>
+    </>
+  )}
+
+  {kind === 'plan' && (
+    <>
+      <div class="glass card c1 cal" data-depth="24">
+        <small>Экзамен</small>
+        <span class="cal-grid">{days.map((d) => <i class={d === 24 ? 'on' : d < 10 ? 'past' : ''}>{d}</i>)}</span>
+      </div>
+      <div class="glass pill-g c2" data-depth="44"><svg class="ic"><use href="#i-calendar-check" /></svg>Неделя 2</div>
+      <div class="orb c5" data-depth="56"><svg class="ic"><use href="#i-repeat" /></svg></div>
+    </>
+  )}
+</div>

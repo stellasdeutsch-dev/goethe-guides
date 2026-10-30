@@ -34,9 +34,10 @@ const og = new URL(url('/og.png'), Astro.site).href;
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
   {noindex && <meta name="robots" content="noindex" />}
-  <meta name="theme-color" content="#0B0B0B" />
-  <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
-  <link rel="apple-touch-icon" href={url('/logo.webp')} />
+  <meta name="theme-color" content="#EFEFEF" />
+  <link rel="icon" href={url('/favicon-32.png')} sizes="32x32" type="image/png" />
+  <link rel="icon" href={url('/favicon-64.png')} sizes="64x64" type="image/png" />
+  <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" />
@@ -60,7 +61,7 @@ const og = new URL(url('/og.png'), Astro.site).href;
   <header class="bar">
     <div class="bar-in">
       <a class="logo" href={home} aria-label="Stellas: на главную">
-        <img src={url('/favicon.svg')} alt="" width="36" height="36" />
+        <img src={url('/logo-tile.png')} alt="" width="36" height="36" />
         <span>Stellas</span>
       </a>
       {trail.length > 0 && (

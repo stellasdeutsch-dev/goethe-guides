@@ -5,6 +5,7 @@ import { EXAMS, EXAM_IDS, type ExamId } from '../../data/exams';
 import { url } from '../../data/site';
 import { getGuides, plural } from '../../lib/guides';
 import { readyTracks } from '../../lib/tracks';
+import HeroArt from '../../components/screens/HeroArt.astro';
 
 const ready: { id: ExamId; n: number; range: string }[] = [];
 for (const e of EXAM_IDS) {
@@ -13,11 +14,13 @@ for (const e of EXAM_IDS) {
   const t = await readyTracks(e);
   ready.push({ id: e, n, range: t.length ? `${t[0].label}–${t[t.length - 1].label}` : '' });
 }
+const ICON: Record<ExamId, string> = { goethe: 'landmark', telc: 'briefcase', oesd: 'globe' };
 const SUB: Record<ExamId, string> = { goethe: 'Goethe-Zertifikat', telc: 'telc Deutsch и DTZ', oesd: 'ÖSD Zertifikat' };
 ---
 <App title="Подготовка к экзаменам по немецкому: Goethe, telc, ÖSD | Stellas" description="Бесплатная подготовка к экзаменам по немецкому: Goethe-Zertifikat, telc Deutsch, DTZ, ÖSD. Формат, официальные пробники с разбором и гайды по каждой части." plan={false}>
   <section class="screen">
     <div class="hero">
+      <HeroArt kind="exam" />
       <span class="tag"><i class="dot"></i>Бесплатно · A1–C2</span>
       <h1 class="ask">Какой экзамен <em>сдаёшь?</em></h1>
       <p class="sub">Выбери экзамен. Потом уровень. Дальше покажем, с чего начать.</p>
@@ -26,9 +29,9 @@ const SUB: Record<ExamId, string> = { goethe: 'Goethe-Zertifikat', telc: 'telc D
       {ready.map((e, i) => (
         <li style={`--i:${i}`}>
           <a class="pick" href={url(`${EXAMS[e.id].base}/`)}>
-            <span class="pick-top"><span class="tag">{e.range}</span><span class="go-dot" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right" /></svg></span></span>
+            <span class="pick-top"><span class="pick-ic"><svg class="ic"><use href={`#i-${ICON[e.id]}`} /></svg></span><span class="go-dot" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right" /></svg></span></span>
             <span class="pick-big">{EXAMS[e.id].name}</span>
-            <span class="pick-small">{SUB[e.id]} · {e.n} {plural(e.n, 'гайд', 'гайда', 'гайдов')}</span>
+            <span class="pick-small">{e.range} · {SUB[e.id]} · {e.n} {plural(e.n, 'гайд', 'гайда', 'гайдов')}</span>
           </a>
         </li>
       ))}

@@ -16,7 +16,7 @@ const s = sectionOf(d.exam, d.section)!;
 const minutes = readingTime(entry.body);
 const toc = headings.filter((h) => h.depth === 2);
 const href = new URL(guideHref(entry), Astro.site).href;
-const logo = new URL(url('/logo.webp'), Astro.site).href;
+const logo = new URL(url('/logo-tile.png'), Astro.site).href;
 const [before, after] = d.hl && d.title.includes(d.hl) ? d.title.split(d.hl) : [d.title, undefined];
 
 // Трек по умолчанию — первый подходящий. Скрипт ниже подменит его на тот, что человек выбрал сам.

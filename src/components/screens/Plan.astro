@@ -5,6 +5,7 @@ import { EXAMS, type ExamId } from '../../data/exams';
 import { url } from '../../data/site';
 import { getGuides, slugOf } from '../../lib/guides';
 import { MODULE_SKIP, REG, readyTracks, toItem, trackData } from '../../lib/tracks';
+import HeroArt from './HeroArt.astro';
 
 interface Props { exam: ExamId }
 const { exam } = Astro.props;
@@ -35,6 +36,7 @@ const extras = {
   <section class="screen split">
     <div class="side">
     <div class="hero">
+      <HeroArt kind="plan" />
       <span class="tag"><i class="dot"></i>Всё хранится только в твоём браузере</span>
       <h1 class="ask">План до <em>экзамена</em></h1>
       <p class="sub">Два вопроса, и у тебя план по неделям.</p>

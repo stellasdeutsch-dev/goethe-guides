@@ -5,6 +5,7 @@ import { EXAMS, sectionOf, type ExamId } from '../../data/exams';
 import { url } from '../../data/site';
 import { getGuides, plural, slugOf } from '../../lib/guides';
 import { REG, toItem, trackData, trackHref } from '../../lib/tracks';
+import HeroArt from './HeroArt.astro';
 
 interface Props { exam: ExamId; track: string }
 const { exam, track: trackId } = Astro.props;
@@ -15,8 +16,8 @@ const name = `${EX.name} ${track.label}`;
 const MOD_ICON: Record<string, string> = { lesen: 'book-open', hoeren: 'headphones', schreiben: 'pen-line', sprechen: 'mic', sprachbausteine: 'puzzle' };
 
 const steps = [
-  { id: 'pruefung', title: 'Пойми формат', text: 'Части экзамена и баллы.' },
-  { id: 'probniki', title: 'Реши пробник', text: 'Узнаешь баллы и слабое место.' },
+  { id: 'pruefung', title: 'Пойми формат', text: 'Части экзамена и баллы.', icon: 'graduation-cap' },
+  { id: 'probniki', title: 'Реши пробник', text: 'Узнаешь баллы и слабое место.', icon: 'file-text' },
 ].filter((s) => bySection[s.id]);
 const items = guides.map(toItem);
 const jsonld = [{
@@ -30,6 +31,7 @@ const jsonld = [{
   <section class="screen split" data-home data-exam={exam} data-track={track.id} data-short={name} data-label={track.label} data-goethe={exam === 'goethe' ? track.label : undefined}>
     <div class="side">
     <div class="hero">
+      <HeroArt kind="home" label={`${EX.name} ${track.label}`} />
       <span class="tag"><i class="dot"></i>{track.title}</span>
       <h1 class="ask">{EX.name} <em>{track.label}</em></h1>
       <p class="sub">{track.text}</p>
@@ -57,6 +59,7 @@ const jsonld = [{
         return (
           <li class="stage" style={`--i:${i + 2}`} data-step data-hrefs={list.map((x) => x.href).join(' ')}>
             <span class="stage-n" aria-hidden="true">{i + 1}</span>
+            <span class="stage-ic" aria-hidden="true"><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
             <div>
               <h2>{s.title}</h2>
               <p>{s.text}</p>
@@ -72,6 +75,7 @@ const jsonld = [{
       {modules.length > 0 && (
         <li class="stage" style={`--i:${steps.length + 2}`} data-step data-modules>
           <span class="stage-n" aria-hidden="true">{steps.length + 1}</span>
+          <span class="stage-ic" aria-hidden="true"><svg class="ic"><use href="#i-target" /></svg></span>
           <div>
             <h2>Тренируй части</h2>
             <p>Начни с самой слабой.</p>
@@ -105,7 +109,7 @@ const jsonld = [{
 </App>
 
 <script>
-  import { $, $$, onReady } from '../../scripts/lib';
+  import { $, $$, onReady, spring } from '../../scripts/lib';
   import { mockResults } from '../../scripts/results';
   onReady(() => {
     const root = $<HTMLElement>('[data-home]');
@@ -126,7 +130,8 @@ const jsonld = [{
 
     const all = [...new Set($$<HTMLElement>('[data-hrefs]').flatMap(hrefs))];
     const read = all.filter((h) => seen.includes(h)).length;
-    $('[data-read]')!.textContent = String(read);
+    const readEl = $('[data-read]')!;
+    spring(readEl, 'n', read, (x) => (readEl.textContent = String(Math.round(x))), { from: 0, response: 0.9, eps: 0.05 });
     requestAnimationFrame(() => requestAnimationFrame(() => {
       $<HTMLElement>('[data-bar]')!.style.width = `${all.length ? (read / all.length) * 100 : 0}%`;
     }));
@@ -136,7 +141,8 @@ const jsonld = [{
     const vals = Object.values(res);
     if (vals.length) {
       const avg = Math.round(vals.reduce((n, v) => n + v, 0) / vals.length);
-      $('[data-mock]')!.textContent = `${avg}%`;
+      const mockEl = $('[data-mock]')!;
+      spring(mockEl, 'n', avg, (x) => (mockEl.textContent = `${Math.round(x)}%`), { from: 0, response: 0.9, eps: 0.05 });
       requestAnimationFrame(() => requestAnimationFrame(() => { $<HTMLElement>('[data-mock-bar]')!.style.width = `${avg}%`; }));
     }
     $$<HTMLElement>('[data-mod]').forEach((m) => {

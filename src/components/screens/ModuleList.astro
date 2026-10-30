@@ -5,6 +5,8 @@ import { EXAMS, sectionOf, type ExamId } from '../../data/exams';
 import { url } from '../../data/site';
 import { plural } from '../../lib/guides';
 import { toItem, trackData, trackHref } from '../../lib/tracks';
+import HeroArt from './HeroArt.astro';
+const MOD_ICON: Record<string, string> = { lesen: 'book-open', hoeren: 'headphones', schreiben: 'pen-line', sprechen: 'mic', sprachbausteine: 'puzzle', pruefung: 'graduation-cap', probniki: 'file-text', grammatik: 'puzzle' };
 
 interface Props { exam: ExamId; track: string; section: string }
 const { exam, track: trackId, section } = Astro.props;
@@ -19,6 +21,7 @@ const minutes = items.reduce((n, i) => n + i.minutes, 0);
   <section class="screen split">
     <div class="side">
     <div class="hero">
+      <HeroArt kind="module" icon={MOD_ICON[section] ?? s.icon} label={`≈ ${minutes} мин`} />
       <span class="tag"><i class="dot"></i>{items.length} {plural(items.length, 'гайд', 'гайда', 'гайдов')} · ≈ {minutes} мин</span>
       <h1 class="ask">{name} <em>{track.label}</em></h1>
       <p class="sub">{s.lede}</p>
