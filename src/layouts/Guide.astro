@@ -90,7 +90,7 @@ if (d.faq.length) {
       <p class="g-meta">{minutes} мин · {levelLabels(d.levels).join(', ')} · {SITE.author.name} · обновлено {ruDate(d.updated)}</p>
       <aside class="kurz" aria-labelledby="kurz-h">
         <h2 id="kurz-h"><svg class="ic"><use href="#i-sparkles" /></svg>Коротко</h2>
-        <ul>{d.kurz.map((k) => <li set:html={k} />)}</ul>
+        <ul>{d.kurz.map((k, i) => <li style={`--i:${i}`} set:html={k} />)}</ul>
       </aside>
       {toc.length > 2 && (
         <details class="toc mob">

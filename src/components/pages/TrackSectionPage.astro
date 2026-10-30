@@ -20,11 +20,11 @@ const minutes = items.reduce((n, i) => n + i.minutes, 0);
     <span class="tile big" style={`--c:${s.color};--ts:52px`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
     <h1 class="display q-title">{name} <span class="grad">{track.label}</span></h1>
     <p class="q-sub">{s.lede}</p>
-    <p class="q-meta">{items.length} {plural(items.length, 'гайд', 'гайда', 'гайдов')} · ≈ {minutes} мин. Читай по порядку.</p>
+    <p class="q-meta">{items.length} {plural(items.length, 'гайд', 'гайда', 'гайдов')} · ≈ {minutes} мин · по порядку</p>
 
     <ol class="glist" role="list">
       {items.map((i, n) => (
-        <li>
+        <li style={`--i:${n}`}>
           <a class="gitem" href={i.href} data-href={i.href}>
             <span class="gitem-n" aria-hidden="true"><b>{n + 1}</b><svg class="ic"><use href="#i-check" /></svg></span>
             <span class="gitem-t">{i.title}</span>

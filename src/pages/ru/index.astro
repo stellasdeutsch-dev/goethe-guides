@@ -14,9 +14,10 @@ const SUB: Record<string, string> = { goethe: 'Goethe-Zertifikat', telc: 'telc D
     <p class="eyebrow">Экзамены по немецкому</p>
     <h1 class="display q-title">Какой экзамен <span class="grad">сдаёшь?</span></h1>
     <ul class="pick ex" role="list">
-      {ready.map((e) => (
-        <li>
-          <a class="pick-tile" href={url(`${EXAMS[e].base}/`)}>
+      {ready.map((e, i) => (
+        <li style={`--i:${i}`}>
+          <a class="pick-tile" href={url(`${EXAMS[e].base}/`)} style={`--c:${EXAMS[e].color}`}>
+            <span class="ex-dot" aria-hidden="true"></span>
             <span class="pick-l">{EXAMS[e].name}</span>
             <span class="pick-t">{SUB[e]}</span>
           </a>

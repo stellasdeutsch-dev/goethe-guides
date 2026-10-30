@@ -2,7 +2,7 @@
 // Экран 2: выбор уровня. Один вопрос, одна сетка, одна подсказка.
 import Base from '../../layouts/Base.astro';
 import { EXAMS, type ExamId } from '../../data/exams';
-import { SITE, url } from '../../data/site';
+import { LEVELS, SITE, url } from '../../data/site';
 import { getGuides, guideHref, slugOf } from '../../lib/guides';
 import { generalGuides, readyTracks, trackHref } from '../../lib/tracks';
 interface Props { exam: ExamId }
@@ -23,9 +23,10 @@ const desc = exam === 'goethe' ? SITE.description : `Бесплатная под
     <a class="resume" href="#" data-resume hidden><span>Продолжить</span> <b data-resume-l></b> <svg class="ic"><use href="#i-chevron-right" /></svg></a>
 
     <ul class="pick" role="list">
-      {tracks.map((t) => (
-        <li>
+      {tracks.map((t, i) => (
+        <li style={`--i:${i}`}>
           <a class="pick-tile" href={trackHref(exam, t.id)} data-track={t.id} data-label={t.label}>
+            <span class="stairs" aria-hidden="true">{LEVELS.map((l) => <i class={t.levels.includes(l) ? 'on' : LEVELS.indexOf(l) < LEVELS.indexOf(t.levels[0]) ? 'past' : ''} />)}</span>
             <span class="pick-l">{t.label}</span>
             <span class="pick-t">{t.title}</span>
           </a>

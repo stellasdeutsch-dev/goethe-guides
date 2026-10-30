@@ -15,8 +15,8 @@ const reg = exam === 'goethe' ? (await getGuides(exam)).filter((g) => REG.includ
 const name = `${EX.name} ${track.label}`;
 
 const steps = [
-  { id: 'pruefung', n: 1, title: 'Пойми формат', text: 'Из чего состоит экзамен и как считают баллы.' },
-  { id: 'probniki', n: 2, title: 'Реши пробник', text: 'Официальный тест с нашим бланком. Узнаешь баллы и слабое место.' },
+  { id: 'pruefung', n: 1, title: 'Пойми формат', text: 'Части экзамена и баллы.' },
+  { id: 'probniki', n: 2, title: 'Реши пробник', text: 'Узнаешь баллы и слабое место.' },
 ].filter((s) => bySection[s.id]);
 const modN = steps.length + 1;
 const all = guides.map(toItem);
@@ -34,11 +34,11 @@ const jsonld = [{
     <div class="meter" data-meter hidden><span><i data-meter-bar></i></span><small data-meter-t></small></div>
 
     <ol class="steps3" role="list">
-      {steps.map((s) => {
+      {steps.map((s, si) => {
         const list = bySection[s.id].map(toItem);
         const main = list[0];
         return (
-          <li class="step3" data-step={s.id} data-hrefs={list.map((i) => i.href).join(' ')}>
+          <li class="step3" style={`--i:${si}`} data-step={s.id} data-hrefs={list.map((i) => i.href).join(' ')}>
             <span class="step3-n" aria-hidden="true">{s.n}</span>
             <div class="step3-b">
               <h2>{s.title}</h2>
@@ -53,17 +53,17 @@ const jsonld = [{
         );
       })}
       {modules.length > 0 && (
-        <li class="step3" data-step="modules">
+        <li class="step3" style={`--i:${steps.length}`} data-step="modules">
           <span class="step3-n" aria-hidden="true">{modN}</span>
           <div class="step3-b">
-            <h2>Тренируй части экзамена</h2>
-            <p>Начни с той, где в пробнике меньше всего баллов.</p>
+            <h2>Тренируй части</h2>
+            <p>Начни с самой слабой.</p>
             <ul class="mods" role="list">
-              {modules.map((m) => {
+              {modules.map((m, mi) => {
                 const s = sectionOf(exam, m)!;
                 const n = bySection[m].length;
                 return (
-                  <li>
+                  <li style={`--j:${mi}`}>
                     <a class="mod" href={trackHref(exam, track.id, m)} data-mod={m} data-hrefs={bySection[m].map((g) => toItem(g).href).join(' ')}>
                       <span class="tile" style={`--c:${s.color};--ts:36px`}><svg class="ic"><use href={`#i-${s.icon}`} /></svg></span>
                       <b>{s.de}</b>
@@ -117,7 +117,8 @@ const jsonld = [{
     const read = allHrefs.filter((h) => seen.includes(h)).length;
     if (read) {
       $('[data-meter]')!.hidden = false;
-      $<HTMLElement>('[data-meter-bar]')!.style.width = `${Math.round((read / allHrefs.length) * 100)}%`;
+      const bar = $<HTMLElement>('[data-meter-bar]')!;
+      requestAnimationFrame(() => requestAnimationFrame(() => { bar.style.width = `${Math.round((read / allHrefs.length) * 100)}%`; }));
       $('[data-meter-t]')!.textContent = `Прочитано ${read} из ${allHrefs.length}`;
     }
 
