@@ -5,9 +5,9 @@ interface Props { kind: 'exam' | 'level' | 'home' | 'module' | 'plan'; label?: s
 const { kind, label = 'B1', icon = 'book-open' } = Astro.props;
 const days = Array.from({ length: 28 }, (_, i) => i + 1);
 ---
-<div class={`art art-${kind}`} aria-hidden="true" data-art>
-  <span class="art-blob lime" data-depth="10"></span>
-  <span class="art-blob sky" data-depth="18"></span>
+<div class={`hart hart-${kind}`} aria-hidden="true" data-art>
+  <span class="hart-blob lime" data-depth="10"></span>
+  <span class="hart-blob sky" data-depth="18"></span>
 
   {kind === 'exam' && (
     <>
