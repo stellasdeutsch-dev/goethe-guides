@@ -280,3 +280,17 @@ Quiz в разборе необязателен: главный интеракт
 - `AnswerSheet`: id с префиксом экзамена (`telc-b1-ut1-lesen`, `oesd-b1-ms-hoeren`) и всегда `level="B1"` и `module="lesen|hoeren|sprachbausteine"`. Баллы (`factor`, `maxPoints`, `pass`) только по официальным правилам этого экзамена.
 - Факты только из официальных источников telc (telc.net, Handbücher, Prüfungsordnung, Übungstests) и ÖSD (osd.at, Prüfungsbeschreibungen, Modellsätze). Цифры Goethe на telc и ÖSD не переносить.
 - Проверка: `node scripts/check-mdx.mjs src/content/guides/telc/<section>/<slug>.mdx`.
+
+## Аудио (mp3 вместо синтеза браузера)
+
+`<Listen>` и кнопки озвучки (`data-say`, Phrase, Anatomy, кубики) играют готовые mp3 из `public/audio/listen` и `public/audio/say`. Имя файла: первые 12 знаков sha1 от текста. Нет файла, значит звучит синтез браузера, а он молчит на многих устройствах. После новых или изменённых текстов:
+
+```
+npm run build
+python3 -m venv .venv-tts && .venv-tts/bin/pip install edge-tts
+.venv-tts/bin/python scripts/gen-listen-audio.py
+.venv-tts/bin/python scripts/gen-say-audio.py
+npm run build
+```
+
+В диалогах `<Listen>` пиши реплики как `Moderatorin: … Brandt: …`: скрипт даст им разные голоса и уберёт имена из звука.
