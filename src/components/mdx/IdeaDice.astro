@@ -1,69 +1,38 @@
 ---
-/* Кубики идей для письма: выбираешь тип пункта, бросаешь кубик, получаешь готовую деталь.
-   Ниже банк историй-заготовок, которые подходят почти к любому письму. */
-const DICE: Record<string, [string, string][]> = {
-  'Почему не можешь': [
-    ['Ich habe an dem Tag leider einen Arzttermin.', 'У меня в этот день запись к врачу.'],
-    ['Mein Sohn ist krank, ich muss bei ihm bleiben.', 'Сын болеет, мне нужно остаться с ним.'],
-    ['Ich muss an dem Wochenende arbeiten.', 'Мне нужно работать в эти выходные.'],
-    ['Meine Eltern kommen genau dann zu Besuch.', 'Как раз тогда приезжают родители.'],
-    ['Mein Auto ist gerade in der Werkstatt.', 'Моя машина сейчас в ремонте.'],
-  ],
-  'Как прошло': [
-    ['Das Wetter war schlecht, aber wir hatten viel Spaß.', 'Погода была плохая, но было весело.'],
-    ['Das Essen war super und die Leute waren sehr nett.', 'Еда была супер, люди очень милые.'],
-    ['Am Anfang war es schwer, aber dann hat es gut geklappt.', 'Сначала было трудно, потом всё получилось.'],
-    ['Am besten hat mir das Konzert am Abend gefallen.', 'Больше всего понравился вечерний концерт.'],
-    ['Wir haben viel gelacht und lange getanzt.', 'Мы много смеялись и долго танцевали.'],
-  ],
-  'Предложи': [
-    ['Wie wäre es mit nächstem Samstag?', 'Как насчёт следующей субботы?'],
-    ['Wir könnten uns im Café am Bahnhof treffen.', 'Можем встретиться в кафе у вокзала.'],
-    ['Hast du Lust, am Sonntag spazieren zu gehen?', 'Хочешь погулять в воскресенье?'],
-    ['Ich kann dir gern beim Umzug helfen.', 'Я с радостью помогу тебе с переездом.'],
-    ['Wollen wir zusammen kochen?', 'Давай приготовим что-нибудь вместе?'],
-  ],
-  'Опиши': [
-    ['Die Wohnung ist klein, aber sehr hell.', 'Квартира маленькая, но очень светлая.'],
-    ['Meine Kollegen sind freundlich und hilfsbereit.', 'Коллеги дружелюбные и всегда помогают.'],
-    ['Die Stadt ist ruhig, es gibt viele Parks.', 'Город тихий, много парков.'],
-    ['Der Kurs ist zweimal pro Woche am Abend.', 'Курс два раза в неделю вечером.'],
-    ['Das Geschenk war ein Buch über Berlin.', 'Подарком была книга о Берлине.'],
-  ],
-  'Чувство': [
-    ['Ich habe mich sehr über deine Einladung gefreut.', 'Я очень обрадовалась твоему приглашению.'],
-    ['Es tut mir wirklich leid.', 'Мне правда очень жаль.'],
-    ['Ich war total überrascht.', 'Я была очень удивлена.'],
-    ['Ich freue mich schon sehr darauf.', 'Я уже очень этого жду.'],
-    ['Das war ein toller Tag für mich.', 'Это был отличный день для меня.'],
-  ],
-};
-const BANK: [string, string[]][] = [
-  ['Заболел ребёнок', ['Mein Sohn war die ganze Woche krank.', 'Ich musste zu Hause bleiben.', 'Jetzt geht es ihm zum Glück besser.']],
-  ['Сломалась машина', ['Leider ist mein Auto kaputt gegangen.', 'Ich musste es in die Werkstatt bringen.', 'Deshalb fahre ich gerade mit dem Bus.']],
-  ['Приехали родители', ['Meine Eltern haben mich zwei Wochen besucht.', 'Wir haben zusammen die Stadt angeschaut.', 'Deshalb hatte ich kaum Zeit.']],
-  ['Новая работа', ['Ich habe vor einem Monat eine neue Stelle angefangen.', 'Die Arbeit ist interessant, aber anstrengend.', 'Am Wochenende bin ich oft müde.']],
-  ['Переезд', ['Wir sind letzten Monat umgezogen.', 'Es gab viel zu tun: Kisten packen, Möbel aufbauen.', 'Jetzt fühlen wir uns dort sehr wohl.']],
-  ['Курс и экзамен', ['Ich mache gerade einen Deutschkurs am Abend.', 'Bald habe ich die B1-Prüfung.', 'Deshalb lerne ich jeden Tag.']],
-];
-const keys = Object.keys(DICE);
+/* Кубики идей: выбираешь тип пункта, бросаешь кубик, получаешь готовую деталь.
+   «Собрать письмо целиком» складывает черновик из случайных деталей. Ниже банк заготовок.
+   set: brief — письмо другу (Teil 1), forum — пост в форуме (Teil 2), formell — письмо на Sie (Teil 3). */
+import { IDEAS } from '../../data/ideas';
+interface Props { set?: keyof typeof IDEAS }
+const { set = 'brief' } = Astro.props;
+const S = IDEAS[set];
+const keys = Object.keys(S.dice);
+const first = S.dice[keys[0]][0];
 ---
-<div class="x dice" data-dice={JSON.stringify(DICE)}>
-  <div class="x-h"><b><svg class="ic"><use href="#i-zap" /></svg>Кубики идей</b><span class="x-cap">нет фантазии? бросай</span></div>
+<div class="x dice" data-dice={JSON.stringify(S.dice)} data-build={JSON.stringify(S.build)}>
+  <div class="x-h"><b><svg class="ic"><use href="#i-zap" /></svg>{S.title}</b><span class="x-cap">{S.cap}</span></div>
   <p class="dice-q">Какой пункт в задании?</p>
   <div class="chips" role="group" aria-label="Тип пункта">
     {keys.map((k, i) => <button type="button" class="chip" data-k={k} aria-pressed={i === 0 ? 'true' : 'false'}>{k}</button>)}
   </div>
   <div class="dice-out" data-out aria-live="polite">
-    <button class="say" type="button" data-say={DICE[keys[0]][0][0]} aria-label="Озвучить"><svg><use href="#i-volume-2" /></svg></button>
-    <div><span class="de" lang="de" data-de>{DICE[keys[0]][0][0]}</span><span class="ru" data-ru>{DICE[keys[0]][0][1]}</span></div>
+    <button class="say" type="button" data-say={first[0]} aria-label="Озвучить"><svg><use href="#i-volume-2" /></svg></button>
+    <div><span class="de" lang="de" data-de>{first[0]}</span><span class="ru" data-ru>{first[1]}</span></div>
   </div>
-  <button type="button" class="btn dark" data-roll><svg class="ic"><use href="#i-repeat" /></svg>Бросить ещё</button>
-  <p class="x-note">Экзаменатор не проверяет, правда это или нет. Бери деталь и пиши дальше.</p>
+  <div class="dice-act">
+    <button type="button" class="btn dark" data-roll><svg class="ic"><use href="#i-repeat" /></svg>Бросить ещё</button>
+    <button type="button" class="btn" data-build-btn><svg class="ic"><use href="#i-zap" /></svg>Собрать письмо целиком</button>
+  </div>
+  <div class="dice-letter" data-letter hidden>
+    <pre lang="de" data-text></pre>
+    <div class="dice-meta"><span data-words></span><button type="button" class="btn sm" data-copy>Скопировать</button></div>
+    <p class="x-note">Это черновик. Поменяй одну-две детали под своё задание, и он твой.</p>
+  </div>
+  <p class="x-note">{S.note}</p>
 
   <details class="bank">
-    <summary>Банк историй: 6 заготовок на любое письмо</summary>
-    {BANK.map(([t, lines]) => (
+    <summary>{S.bankTitle}</summary>
+    {S.bank.map(([t, lines]) => (
       <div class="bank-it"><b>{t}</b>{lines.map((l) => <span class="de" lang="de">{l}</span>)}</div>
     ))}
   </details>
@@ -78,7 +47,11 @@ const keys = Object.keys(DICE);
   .dice-out div{display:flex;flex-direction:column;gap:4px}
   .dice-out .de{font-weight:700;font-size:17px}
   .dice-out .ru{color:var(--text-2);font-size:14px}
+  .dice-act{display:flex;flex-wrap:wrap;gap:8px}
   .dice [data-roll]{background:var(--ink);color:var(--lime);box-shadow:none}
+  .dice-letter{margin-top:14px;padding:16px;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px var(--ink-line)}
+  .dice-letter pre{margin:0;white-space:pre-wrap;font:16px/1.55 Georgia,serif;color:var(--ink)}
+  .dice-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:12px;font-size:14px;color:var(--text-2)}
   .bank{margin-top:16px}
   .bank summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
   .bank-it{display:flex;flex-direction:column;gap:2px;padding:10px 0;border-top:1px solid var(--ink-line)}
@@ -87,9 +60,12 @@ const keys = Object.keys(DICE);
 
 <script>
   import { $, $$, onReady, pop } from '../../scripts/lib';
+  type Build = { start: string[]; order: string[]; end: string[]; joinStart?: string };
   onReady(() => {
     $$('[data-dice]').forEach((root) => {
       const D: Record<string, [string, string][]> = JSON.parse(root.dataset.dice || '{}');
+      const B: Build = JSON.parse(root.dataset.build || '{}');
+      const any = (k: string) => D[k][Math.floor(Math.random() * D[k].length)][0];
       let k = Object.keys(D)[0];
       let last = 0;
       const show = (i: number) => {
@@ -113,6 +89,25 @@ const keys = Object.keys(DICE);
         roll();
       }));
       $('[data-roll]', root)!.onclick = roll;
+
+      // Сборка черновика: начало, по одной детали из каждого типа, конец.
+      const box = $('[data-letter]', root)!;
+      let text = '';
+      $('[data-build-btn]', root)!.onclick = () => {
+        const picks = B.order.map(any);
+        text = B.joinStart !== undefined
+          ? [...B.start, ...picks].join(B.joinStart)
+          : [B.start[0], [...B.start.slice(1), ...picks].join(' '), ...B.end].join('\n');
+        const words = text.split(/\s+/).filter((w) => /[A-Za-zÄÖÜäöüß]/.test(w)).length;
+        $('[data-text]', box)!.textContent = text;
+        $('[data-words]', box)!.textContent = `${words} слов`;
+        $('[data-copy]', box)!.textContent = 'Скопировать';
+        box.hidden = false;
+        pop(box);
+      };
+      $('[data-copy]', root)!.onclick = async () => {
+        try { await navigator.clipboard.writeText(text); $('[data-copy]', root)!.textContent = 'Скопировано'; } catch { /* буфер недоступен */ }
+      };
     });
   });
 </script>
