@@ -1,0 +1,59 @@
+---
+/* Видео с YouTube (src/data/videos.ts). Сначала только превью: плеер YouTube грузится по нажатию,
+   через youtube-nocookie. Если встраивать нельзя, превью ведёт на YouTube в новой вкладке. */
+import { VIDEOS, type VideoKey } from '../../data/videos';
+interface Props { v: VideoKey; title?: string }
+const { v, title = 'Так выглядит экзамен' } = Astro.props;
+const { id, title: name, channel, min, embed } = VIDEOS[v];
+---
+<figure class="x yt" data-yt={embed ? id : undefined}>
+  <div class="x-h"><b><svg class="ic"><use href="#i-play" /></svg>{title}</b><span class="x-cap">{min} · {channel}</span></div>
+  <a class="yt-frame" href={`https://www.youtube.com/watch?v=${id}`} target="_blank" rel="noopener" data-yt-open aria-label={`${embed ? 'Смотреть' : 'Смотреть на YouTube'}: ${name}`}>
+    <img src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`} alt="" width="480" height="360" loading="lazy" decoding="async" />
+    <span class="yt-btn" aria-hidden="true"><svg class="ic"><use href="#i-play" /></svg></span>
+    {!embed && <span class="yt-out"><svg class="ic"><use href="#i-arrow-up-right" /></svg>Откроется на YouTube</span>}
+  </a>
+  <figcaption>
+    <b lang="de">{name}</b>
+    <slot />
+  </figcaption>
+</figure>
+
+<style is:global>
+  .yt .yt-frame{position:relative;display:block;aspect-ratio:16/9;border-radius:18px;overflow:hidden;background:#111;text-decoration:none}
+  .yt .yt-frame img,.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .yt .yt-frame img{object-fit:cover;transition:transform .3s ease}
+  .yt .yt-frame:hover img{transform:scale(1.03)}
+  .yt-btn{position:absolute;left:50%;top:50%;display:grid;place-items:center;width:64px;height:64px;margin:-32px 0 0 -32px;border-radius:50%;background:var(--lime);color:var(--ink);box-shadow:0 8px 24px rgba(0,0,0,.3);transition:transform .2s ease}
+  .yt-btn .ic{width:26px;height:26px;margin-left:3px}
+  .yt .yt-frame:hover .yt-btn{transform:scale(1.08)}
+  .yt-out{position:absolute;left:10px;bottom:10px;display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;background:rgba(0,0,0,.72);color:#fff;font:600 12.5px/1.2 var(--f)}
+  .yt-out .ic{width:14px;height:14px}
+  .yt figcaption{margin-top:14px;font-size:15px;color:var(--text-2)}
+  .yt figcaption>b{display:block;margin-bottom:4px;color:var(--ink);font:600 15px/1.35 var(--f)}
+  .yt figcaption p{margin:6px 0 0}
+  @media (prefers-reduced-motion:reduce){.yt .yt-frame img,.yt-btn{transition:none}}
+</style>
+
+<script>
+  import { $$, hush, onReady } from '../../scripts/lib';
+  onReady(() => $$('[data-yt]').forEach((root) => {
+    const a = root.querySelector<HTMLAnchorElement>('[data-yt-open]')!;
+    a.addEventListener('click', (e) => {
+      if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+      e.preventDefault();
+      hush();
+      $$<HTMLAudioElement>('audio').forEach((o) => o.pause());
+      const f = document.createElement('iframe');
+      f.src = `https://www.youtube-nocookie.com/embed/${root.dataset.yt}?autoplay=1&rel=0&playsinline=1`;
+      f.title = a.getAttribute('aria-label') || 'YouTube';
+      f.allow = 'autoplay; encrypted-media; picture-in-picture; fullscreen';
+      f.allowFullscreen = true;
+      const box = document.createElement('div');
+      box.className = 'yt-frame';
+      box.append(f);
+      a.replaceWith(box);
+      f.focus();
+    });
+  }));
+</script>
