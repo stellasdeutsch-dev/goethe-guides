@@ -111,7 +111,7 @@ URL: https://www.goethe.de/pro/relaunch/prf/de/Pruefungsordnung.pdf (200 applica
 | A2 | https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_A2.pdf | «ohne Pausen insgesamt 90 Minuten»: LESEN 30, HÖREN ca. 30, SCHREIBEN 30 | пара 15, одиночно 10, без подготовки |
 | B1 | https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_B1.pdf | ca. 165: LESEN 65, HÖREN ca. 40, SCHREIBEN 60 | пара ca. 15, одиночно ca. 10, подготовка 15 |
 | B2 | https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_B2.pdf | ca. 180: LESEN 65, HÖREN ca. 40, SCHREIBEN 75 | пара ca. 15, одиночно ca. 10, подготовка 15 |
-| C1 | https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf | ca. 180: LESEN 65, HÖREN ca. 40, SCHREIBEN 75 | пара ca. 20, одиночно ca. 15, подготовка 20 |
+| C1 | https://www.goethe.de/pro/relaunch/prf/fr/Durchfuehrungsbestimmungen_C1.pdf | ca. 180: LESEN 65, HÖREN ca. 40, SCHREIBEN 75 | пара ca. 20, одиночно ca. 15, подготовка 20 |
 | C2 | https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C2_neu.pdf | ca. 195: LESEN 80, HÖREN ca. 35, SCHREIBEN 80 | только одиночно, ca. 15, подготовка 15 |
 
 Порядок и паузы:

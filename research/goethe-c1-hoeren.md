@@ -6,7 +6,7 @@
 ## Источники
 - [MS] Modellsatz C1 (modular), 2. Auflage Februar 2024, Stand April 2026: https://www.goethe.de/pro/relaunch/prf/materialien/C1_modular/c1-modular_modellsatz.pdf (HEAD 200, 2026-10-01)
 - [MP3] Аудио Modellsatz, 39:14 мин, ≈94 MB: https://goethemp4s.akamaized.net/resources/files/mp310/c1-modellsatz-2023_gesamt_v3.mp3 (HEAD 200)
-- [DB] Durchführungsbestimmungen C1, Stand 1.9.2025: https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf (200)
+- [DB] Durchführungsbestimmungen C1, Stand 1.9.2025: https://www.goethe.de/pro/relaunch/prf/fr/Durchfuehrungsbestimmungen_C1.pdf (200)
 - [BFU] https://bfu.goethe.de/c1mod/ (200)
 - [PAGE] https://www.goethe.de/ins/de/de/prf/prf/gzc1/u24.html (HEAD 200; длительность MP3 39:14 взята оттуда, см. research/c1-modellsatz-razbor.md)
 

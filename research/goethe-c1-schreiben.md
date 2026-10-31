@@ -8,7 +8,7 @@
 | Код | Что | URL |
 |---|---|---|
 | [MS] | Goethe-Zertifikat C1 (modular), Modellsatz, 2. Auflage Februar 2024, Stand April 2026, PDF (скачан curl, 200) | https://www.goethe.de/pro/relaunch/prf/materialien/C1_modular/c1-modular_modellsatz.pdf |
-| [DB] | Durchführungsbestimmungen Goethe-Zertifikat C1, Stand 1. September 2025, PDF | https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf |
+| [DB] | Durchführungsbestimmungen Goethe-Zertifikat C1, Stand 1. September 2025, PDF | https://www.goethe.de/pro/relaunch/prf/fr/Durchfuehrungsbestimmungen_C1.pdf |
 | [PO] | Prüfungsordnung der Goethe-Institut-Prüfungen, Stand 1. September 2025, PDF | https://www.goethe.de/pro/relaunch/prf/de/Pruefungsordnung.pdf |
 | [UMS] | Universität Münster, News 18.10.2024, пилотный проект Vier-Tage-Woche | https://www.uni-muenster.de/news/view.php?cmdid=14337 |
 | [C1R] | Уже проверенные факты C1 | `research/c1-modellsatz-razbor.md` |

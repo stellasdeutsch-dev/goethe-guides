@@ -8,7 +8,7 @@
 - [DB-A2] Durchführungsbestimmungen A2 (und A2 Fit in Deutsch), Stand 1.9.2025: https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_A2.pdf
 - [DB-B1] https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_B1.pdf (Stand 1.9.2025)
 - [DB-B2] https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_B2.pdf (Stand 1.9.2025)
-- [DB-C1] https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf (Stand 1.9.2025)
+- [DB-C1] https://www.goethe.de/pro/relaunch/prf/fr/Durchfuehrungsbestimmungen_C1.pdf (Stand 1.9.2025)
 - [DB-C2] https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C2_neu.pdf (Stand 1.9.2025)
 - [BAMF-EG] BAMF, «Nachweis einfacher Deutschkenntnisse beim Ehegattennachzug aus dem Ausland», Stand 03/2023: https://www.bamf.de/SharedDocs/Anlagen/DE/MigrationAufenthalt/Ehegattennachzug/ehegattennachzug.pdf?__blob=publicationFile&v=9
 - [BAMF-EB] BAMF, Einbürgerung: https://www.bamf.de/DE/Themen/Integration/ZugewanderteTeilnehmende/Einbuergerung/einbuergerung-node.html

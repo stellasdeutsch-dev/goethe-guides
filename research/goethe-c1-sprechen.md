@@ -8,7 +8,7 @@
 | Код | Что | URL |
 |---|---|---|
 | [MS] | Goethe-Zertifikat C1 (modular), Modellsatz, 2. Auflage Februar 2024, Stand April 2026, PDF | https://www.goethe.de/pro/relaunch/prf/materialien/C1_modular/c1-modular_modellsatz.pdf |
-| [DB] | Durchführungsbestimmungen Goethe-Zertifikat C1, Stand 1. September 2025, PDF | https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf |
+| [DB] | Durchführungsbestimmungen Goethe-Zertifikat C1, Stand 1. September 2025, PDF | https://www.goethe.de/pro/relaunch/prf/fr/Durchfuehrungsbestimmungen_C1.pdf |
 | [PO] | Prüfungsordnung, Stand 1. September 2025, PDF | https://www.goethe.de/pro/relaunch/prf/de/Pruefungsordnung.pdf |
 | [BBK] | Deutsche Bundesbank, Pressemitteilung «Zahlungsverhalten in Deutschland 2025», 17.06.2026 | https://www.bundesbank.de/de/presse/pressemitteilungen/zahlungsverhalten-in-deutschland-2025-964736 |
 | [KSP] | Kaspi.kz, 3Q & 9M 2025 Financial Results (PDF, IR) | https://ir.kaspi.kz/media/3Q_2025_Results_.pdf |

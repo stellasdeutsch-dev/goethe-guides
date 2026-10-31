@@ -5,7 +5,7 @@
 ## Источники
 - [DB-B1] https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_B1.pdf (Stand 1.9.2025)
 - [DB-B2] https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_B2.pdf (Stand 1.9.2025)
-- [DB-C1] https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf (Stand 1.9.2025)
+- [DB-C1] https://www.goethe.de/pro/relaunch/prf/fr/Durchfuehrungsbestimmungen_C1.pdf (Stand 1.9.2025)
 - [DB-C2] https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C2_neu.pdf (Stand 1.9.2025), только для сравнения
 - [PO] https://www.goethe.de/pro/relaunch/prf/de/Pruefungsordnung.pdf (Stand 1.9.2025)
 - [MS-B2] Modellsatz B2 Erwachsene, 2. Auflage August 2025: https://www.goethe.de/pro/relaunch/prf/materialien/B2/b2_modellsatz_erwachsene.pdf

@@ -19,7 +19,7 @@
 | [MP3] Аудио Hören, 94 193 370 байт (≈94 MB), 39:14 мин | https://goethemp4s.akamaized.net/resources/files/mp310/c1-modellsatz-2023_gesamt_v3.mp3 | 200, audio/mpeg |
 | [PAGE] Übungsmaterialien C1 (PDF, плеер Hören, видео Sprechen, ссылка на онлайн-версию) | https://www.goethe.de/ins/de/de/prf/prf/gzc1/u24.html | HEAD 200 (GET curl 403, в браузере открывается) |
 | [BFU] Онлайн-версия того же Modellsatz (barrierefrei) | https://bfu.goethe.de/c1mod/ | 200. Те же тексты: StadtTours, Familien im Fokus, Manager-Müdigkeit, Polarsturm, Grimm, Impfpflicht |
-| [DB] Durchführungsbestimmungen C1, Stand 1.9.2025 | https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf | 200 |
+| [DB] Durchführungsbestimmungen C1, Stand 1.9.2025 | https://www.goethe.de/pro/relaunch/prf/fr/Durchfuehrungsbestimmungen_C1.pdf | 200 |
 | [PO] Prüfungsordnung | https://www.goethe.de/pro/relaunch/prf/de/Pruefungsordnung.pdf | 200 |
 
 Ссылку на MP3 и «direkt anhören (39:14 Min.)», «herunterladen (MP3, 94 MB)» взял со страницы [PAGE], открытой в браузере.

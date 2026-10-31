@@ -5,7 +5,7 @@
 
 ## Источники
 - [MS] Goethe-Zertifikat C1 (modular), Modellsatz, 2. Auflage Februar 2024, Stand April 2026: https://www.goethe.de/pro/relaunch/prf/materialien/C1_modular/c1-modular_modellsatz.pdf (HEAD 200, 2026-10-01)
-- [DB] Durchführungsbestimmungen Goethe-Zertifikat C1, Stand 1.9.2025: https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_C1.pdf (200)
+- [DB] Durchführungsbestimmungen Goethe-Zertifikat C1, Stand 1.9.2025: https://www.goethe.de/pro/relaunch/prf/fr/Durchfuehrungsbestimmungen_C1.pdf (200)
 - [BFU] Онлайн-версия Modellsatz: https://bfu.goethe.de/c1mod/ (200)
 - [PAGE] Übungsmaterialien C1: https://www.goethe.de/ins/de/de/prf/prf/gzc1/u24.html (HEAD 200)
 
