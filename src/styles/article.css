@@ -374,3 +374,12 @@
 @keyframes artPulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.12);opacity:1}}
 .readbar{position:fixed;left:0;top:0;width:100%;height:4px;background:var(--lime);transform:scaleX(0);transform-origin:0 50%;z-index:70;pointer-events:none;box-shadow:0 0 12px rgba(206,253,75,.8)}
 @media (prefers-reduced-motion:reduce){.art-ico,.art-blob,.art-chip{animation:none}}
+
+/* Скрытые образцы ответов: сначала пишешь сам, потом открываешь */
+.prose details{margin:18px 0;border-radius:18px;background:#F6F6F3;box-shadow:inset 0 0 0 1px var(--ink-line);overflow:hidden}
+.prose details>summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:10px;min-height:48px;padding:12px 16px;font-weight:700}
+.prose details>summary::-webkit-details-marker{display:none}
+.prose details>summary::before{content:'';flex:none;width:28px;height:28px;border-radius:50%;background:var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23CEFD4B' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") center/14px no-repeat;transition:transform .3s var(--spring)}
+.prose details[open]>summary::before{transform:rotate(45deg)}
+.prose details>:not(summary){padding:0 16px}
+.prose details[open]{padding-bottom:12px}

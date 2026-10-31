@@ -20,6 +20,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
   </div>
   <div class="sp-act">
     <button type="button" class="btn dark" data-start><svg class="ic"><use href="#i-clock" /></svg>Старт</button>
+    <button type="button" class="btn" data-skip hidden><svg class="ic"><use href="#i-mic" /></svg>Сразу говорить</button>
     <button type="button" class="btn" data-next><svg class="ic"><use href="#i-repeat" /></svg>Другая тема</button>
   </div>
   <p class="x-note">Говори вслух, полными предложениями. Тапни пункт, когда его сказала. Не успела все пункты за время, значит на экзамене тоже не успеешь.</p>
@@ -39,6 +40,10 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
   .sp-bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .25s linear}
   .speak[data-state="talk"] .sp-bar i{background:#7DB31A}
   .sp-act{display:flex;flex-wrap:wrap;gap:8px}
+  .speak .sp-pts,.prose .speak .sp-pts{padding:0;margin:14px 0 0}
+  .speak .sp-pts li{padding:0;margin:0}
+  .speak .sp-pts li::before,.speak .sp-pts li::marker{content:none;display:none}
+  .speak [data-start]{background:var(--ink);color:var(--lime);box-shadow:none}
 </style>
 
 <script>
@@ -62,11 +67,12 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
         root.dataset.state = phase;
       };
       const stop = () => { clearInterval(timer); timer = 0; };
-      const reset = () => { stop(); phase = 'idle'; left = PREP; ph.textContent = 'Готова? Сначала подготовка'; start.lastChild!.textContent = 'Старт'; paint(); };
+      const skip = $<HTMLButtonElement>('[data-skip]', root)!;
+      const reset = () => { stop(); skip.hidden = true; phase = 'idle'; left = PREP; ph.textContent = 'Готова? Сначала подготовка'; start.lastChild!.textContent = 'Старт'; paint(); };
       const tick = () => {
         left--;
         if (left <= 0) {
-          if (phase === 'prep') { phase = 'talk'; left = TALK; ph.textContent = 'Говори!'; pop(clock); }
+          if (phase === 'prep') { phase = 'talk'; left = TALK; skip.hidden = true; ph.textContent = 'Говори!'; pop(clock); }
           else { stop(); phase = 'done'; left = 0; ph.textContent = 'Время вышло. Сколько пунктов успела?'; start.lastChild!.textContent = 'Ещё раз'; }
         }
         paint();
@@ -74,7 +80,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
       start.onclick = () => {
         if (phase === 'prep' || phase === 'talk') { reset(); return; }
         if (phase === 'done') reset();
-        phase = 'prep'; left = PREP; ph.textContent = 'Подготовка: набросай план'; start.lastChild!.textContent = 'Стоп';
+        phase = 'prep'; left = PREP; skip.hidden = false; ph.textContent = 'Подготовка: набросай план'; start.lastChild!.textContent = 'Стоп';
         paint(); timer = window.setInterval(tick, 1000);
       };
       $('[data-next]', root)!.onclick = () => {
@@ -86,6 +92,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
         $$<HTMLButtonElement>('[data-pts] button', root).forEach((b, i) => (b.textContent = it.points[i]));
         bindPts(); reset(); pop($('[data-card]', root));
       };
+      skip.onclick = () => { if (phase !== 'prep') return; phase = 'talk'; left = TALK; skip.hidden = true; ph.textContent = 'Говори!'; pop(clock); paint(); };
       bindPts(); paint();
     });
   });

@@ -6,7 +6,7 @@ import YAML from 'yaml';
 
 const SECTIONS = ['pruefung', 'probniki', 'sprachbausteine', 'lesen', 'hoeren', 'schreiben', 'sprechen', 'grammatik'];
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
-const COMPONENTS = ['Callout', 'Task', 'Score', 'Anatomy', 'Steps', 'Step', 'Phrases', 'Phrase', 'Trainer', 'Quiz', 'Dialog', 'PointsCalc', 'Listen', 'AnswerSheet', 'WriteCheck'];
+const COMPONENTS = ['Callout', 'Task', 'Score', 'Anatomy', 'Steps', 'Step', 'Phrases', 'Phrase', 'Trainer', 'Quiz', 'Dialog', 'PointsCalc', 'Listen', 'AnswerSheet', 'WriteCheck', 'IdeaDice', 'SpeakCards', 'Table'];
 
 let failed = 0;
 for (const file of process.argv.slice(2)) {
