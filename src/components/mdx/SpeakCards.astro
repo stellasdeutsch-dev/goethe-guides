@@ -1,0 +1,92 @@
+---
+/* Тренажёр устной части: случайная тема, таймер подготовки и таймер ответа, пункты-подсказки.
+   Без записи голоса: говоришь вслух сама, отмечаешь пункты, которые уже сказала. */
+interface Topic { t: string; ru?: string; points: string[] }
+interface Props { topics: Topic[]; prep?: number; talk?: number; title?: string }
+const { topics, prep = 60, talk = 180, title = 'Тренажёр Sprechen' } = Astro.props;
+const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+---
+<div class="x speak" data-speak={JSON.stringify(topics)} data-prep={prep} data-talk={talk}>
+  <div class="x-h"><b><svg class="ic"><use href="#i-mic" /></svg>{title}</b><span class="x-cap">{topics.length} тем · {fmt(prep)} + {fmt(talk)}</span></div>
+  <div class="sp-card" data-card aria-live="polite">
+    <p class="sp-t" lang="de" data-t>{topics[0].t}</p>
+    {topics[0].ru && <p class="sp-ru" data-ru>{topics[0].ru}</p>}
+    <ul class="sp-pts" data-pts>{topics[0].points.map((p) => <li><button type="button" lang="de">{p}</button></li>)}</ul>
+  </div>
+  <div class="sp-timer">
+    <span class="sp-phase" data-phase>Готова? Сначала подготовка</span>
+    <b class="sp-clock" data-clock>{fmt(prep)}</b>
+    <div class="sp-bar"><i data-bar></i></div>
+  </div>
+  <div class="sp-act">
+    <button type="button" class="btn dark" data-start><svg class="ic"><use href="#i-clock" /></svg>Старт</button>
+    <button type="button" class="btn" data-next><svg class="ic"><use href="#i-repeat" /></svg>Другая тема</button>
+  </div>
+  <p class="x-note">Говори вслух, полными предложениями. Тапни пункт, когда его сказала. Не успела все пункты за время, значит на экзамене тоже не успеешь.</p>
+</div>
+
+<style is:global>
+  .sp-card{padding:18px;border-radius:18px;background:#fff;box-shadow:inset 0 0 0 1px var(--ink-line)}
+  .sp-t{margin:0;font:700 19px/1.35 var(--f)}
+  .sp-ru{margin:6px 0 0;color:var(--text-2);font-size:14px}
+  .sp-pts{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+  .sp-pts button{width:100%;min-height:44px;text-align:left;padding:10px 14px;border-radius:14px;border:0;background:#F2F2EE;font:500 15px/1.35 var(--f);color:var(--ink);cursor:pointer}
+  .sp-pts button[aria-pressed="true"]{background:var(--ink);color:var(--lime);text-decoration:line-through}
+  .sp-timer{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:16px 0 10px}
+  .sp-phase{font-size:14px;color:var(--text-2)}
+  .sp-clock{font:800 34px/1 var(--f);font-variant-numeric:tabular-nums}
+  .sp-bar{flex-basis:100%;height:8px;border-radius:4px;background:#E6E6E0;overflow:hidden}
+  .sp-bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .25s linear}
+  .speak[data-state="talk"] .sp-bar i{background:#7DB31A}
+  .sp-act{display:flex;flex-wrap:wrap;gap:8px}
+</style>
+
+<script>
+  import { $, $$, onReady, pop } from '../../scripts/lib';
+  type Topic = { t: string; ru?: string; points: string[] };
+  const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
+  onReady(() => {
+    $$('[data-speak]').forEach((root) => {
+      const T: Topic[] = JSON.parse(root.dataset.speak || '[]');
+      const PREP = Number(root.dataset.prep), TALK = Number(root.dataset.talk);
+      let cur = 0, timer = 0, left = PREP, phase: 'idle' | 'prep' | 'talk' | 'done' = 'idle';
+      const clock = $('[data-clock]', root)!, bar = $<HTMLElement>('[data-bar]', root)!, ph = $('[data-phase]', root)!, start = $<HTMLButtonElement>('[data-start]', root)!;
+      const bindPts = () => $$<HTMLButtonElement>('[data-pts] button', root).forEach((b) => {
+        b.setAttribute('aria-pressed', 'false');
+        b.onclick = () => b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true'));
+      });
+      const paint = () => {
+        const total = phase === 'talk' ? TALK : PREP;
+        clock.textContent = fmt(left);
+        bar.style.width = `${phase === 'idle' ? 0 : ((total - left) / total) * 100}%`;
+        root.dataset.state = phase;
+      };
+      const stop = () => { clearInterval(timer); timer = 0; };
+      const reset = () => { stop(); phase = 'idle'; left = PREP; ph.textContent = 'Готова? Сначала подготовка'; start.lastChild!.textContent = 'Старт'; paint(); };
+      const tick = () => {
+        left--;
+        if (left <= 0) {
+          if (phase === 'prep') { phase = 'talk'; left = TALK; ph.textContent = 'Говори!'; pop(clock); }
+          else { stop(); phase = 'done'; left = 0; ph.textContent = 'Время вышло. Сколько пунктов успела?'; start.lastChild!.textContent = 'Ещё раз'; }
+        }
+        paint();
+      };
+      start.onclick = () => {
+        if (phase === 'prep' || phase === 'talk') { reset(); return; }
+        if (phase === 'done') reset();
+        phase = 'prep'; left = PREP; ph.textContent = 'Подготовка: набросай план'; start.lastChild!.textContent = 'Стоп';
+        paint(); timer = window.setInterval(tick, 1000);
+      };
+      $('[data-next]', root)!.onclick = () => {
+        cur = (cur + 1 + Math.floor(Math.random() * Math.max(1, T.length - 1))) % T.length;
+        const it = T[cur];
+        $('[data-t]', root)!.textContent = it.t;
+        const ru = $('[data-ru]', root); if (ru) ru.textContent = it.ru || '';
+        $('[data-pts]', root)!.innerHTML = it.points.map((p) => `<li><button type="button" lang="de"></button></li>`).join('');
+        $$<HTMLButtonElement>('[data-pts] button', root).forEach((b, i) => (b.textContent = it.points[i]));
+        bindPts(); reset(); pop($('[data-card]', root));
+      };
+      bindPts(); paint();
+    });
+  });
+</script>

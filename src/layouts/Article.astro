@@ -6,6 +6,7 @@ import { SITE, url } from '../data/site';
 import { guideHref, levelLabels, plural, readingTime, ruDate, slugOf, type Guide } from '../lib/guides';
 import { toItem, trackData, trackHref, trackIdsOf } from '../lib/tracks';
 import type { MarkdownHeading } from 'astro';
+import { artOf } from '../data/art';
 
 interface Props { entry: Guide; headings: MarkdownHeading[] }
 const { entry, headings } = Astro.props;
@@ -71,6 +72,11 @@ if (d.faq.length) jsonld.push({ '@context': 'https://schema.org', '@type': 'FAQP
 <App title={d.seoTitle} description={d.description} ogType="article" jsonld={jsonld} exam={d.exam} trail={trail}>
   <article class="art" data-article data-exam={d.exam} data-tracks={tracks.join(' ')} data-primary={primary?.track.id ?? ''}>
     <header class="art-head">
+      <div class="art-fig" aria-hidden="true">
+        <span class="art-blob" data-depth="14"></span>
+        <img class="art-ico" src={url(`/art/${artOf(s.id)}.png`)} alt="" width="320" height="320" data-depth="36" />
+        <span class="art-chip glass" data-depth="60">{levelLabels(d.levels).join(' · ')}</span>
+      </div>
       <div class="art-tags">
         <span class="tag"><i class="dot"></i>{s.de}</span>
         <span class="tag">{levelLabels(d.levels).join(', ')}</span>

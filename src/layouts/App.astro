@@ -26,7 +26,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href;
 const og = new URL(url('/og.png'), Astro.site).href;
 ---
 <!doctype html>
-<html lang="ru">
+<html lang="ru" data-base={url("/").replace(/\/$/, "")}>
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
@@ -86,6 +86,7 @@ const og = new URL(url('/og.png'), Astro.site).href;
       <div class="end-row">
         <a class="btn" href={SITE.telegram} rel="noopener" target="_blank"><svg class="ic"><use href="#i-send" /></svg>Telegram</a>
         <a class="btn dark" href={SITE.platform} rel="noopener" target="_blank">Платформа Stellas</a>
+        <a class="btn" href={url('/ru/oshibki/')}><svg class="ic"><use href="#i-bookmark" /></svg>Мои ошибки</a>
       </div>
     </div>
     <div class="fine">

@@ -13,6 +13,18 @@ const { questions, title = 'Проверь себя' } = Astro.props;
   import { $, $$, fmt, icon, onReady, pop, say } from '../../scripts/lib';
   type Q = { q: string; o: string[]; c: number; x: string; say?: string };
 
+  // Ошибки копятся в браузере для страницы «Мои ошибки»; верный ответ убирает вопрос из списка.
+  function remember(it: Q, chosen: number, ok: boolean) {
+    try {
+      const key = 'mistakes';
+      const all: any[] = JSON.parse(localStorage.getItem(key) || '[]');
+      const id = location.pathname + '|' + it.q;
+      const rest = all.filter((m) => m.id !== id);
+      if (!ok) rest.unshift({ id, q: it.q, o: it.o, c: it.c, x: it.x, chosen, page: location.pathname, title: document.title.split(':')[0], at: Date.now() });
+      localStorage.setItem(key, JSON.stringify(rest.slice(0, 300)));
+    } catch { /* хранилище недоступно */ }
+  }
+
   onReady(() => {
     $$('[data-quiz]').forEach((root) => {
       const Q: Q[] = JSON.parse(root.dataset.quiz || '[]');
@@ -37,6 +49,7 @@ const { questions, title = 'Проверь себя' } = Astro.props;
         const it = Q[qi];
         const ok = i === it.c;
         res[qi] = ok;
+        remember(it, i, ok);
         $$<HTMLButtonElement>('.qo button', stage).forEach((b) => {
           b.disabled = true;
           const k = Number(b.dataset.i);
@@ -64,7 +77,7 @@ const { questions, title = 'Проверь себя' } = Astro.props;
         const s = res.filter(Boolean).length;
         const n = Q.length;
         const msg = s === n ? `${n} из ${n}. На экзамене так же.` : s >= n - 2 ? 'Почти. Посмотри, где ошибки: на них обычно и теряют баллы.' : 'Нормально для первого раза. Пролистай шпаргалку и попробуй ещё.';
-        stage.innerHTML = dots() + `<div class="qres"><div class="big" data-big>${s}<small>/${n}</small></div><p>${msg}</p><button type="button" class="btn sm dark" data-again>${icon('rotate-ccw')} Ещё раз</button></div>`;
+        stage.innerHTML = dots() + `<div class="qres"><div class="big" data-big>${s}<small>/${n}</small></div><p>${msg}</p><button type="button" class="btn sm dark" data-again>${icon('rotate-ccw')} Ещё раз</button>${s < n ? ` <a class="btn sm" href="${document.documentElement.dataset.base || ''}/ru/oshibki/">${icon('bookmark')} Мои ошибки</a>` : ''}</div>`;
         $<HTMLButtonElement>('[data-again]', stage)!.onclick = () => { qi = 0; res = []; draw(true); };
         pop($('[data-big]', stage), 0.6, 0.65);
       }

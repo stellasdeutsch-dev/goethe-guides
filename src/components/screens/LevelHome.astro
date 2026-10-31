@@ -6,6 +6,7 @@ import { url } from '../../data/site';
 import { getGuides, plural, slugOf } from '../../lib/guides';
 import { REG, toItem, trackData, trackHref } from '../../lib/tracks';
 import HeroArt from './HeroArt.astro';
+import { artOf } from '../../data/art';
 
 interface Props { exam: ExamId; track: string }
 const { exam, track: trackId } = Astro.props;
@@ -86,7 +87,7 @@ const jsonld = [{
                 return (
                   <li style={`--i:${i}`}>
                     <a class="mod" href={trackHref(exam, track.id, m)} data-mod={m} data-hrefs={bySection[m].map((g) => toItem(g).href).join(' ')}>
-                      <span class="mod-ic"><svg class="ic"><use href={`#i-${MOD_ICON[m] ?? s.icon}`} /></svg></span>
+                      <span class="mod-ic mod-ic3"><img src={url(`/art/${artOf(m)}.png`)} alt="" width="72" height="72" loading="lazy" /></span>
                       <b>{s.de}</b>
                       <small data-mod-meta>{n} {plural(n, 'гайд', 'гайда', 'гайдов')}</small>
                     </a>

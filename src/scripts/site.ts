@@ -44,11 +44,27 @@ onReady(() => {
     new MutationObserver(() => $$<HTMLElement>(REV).forEach((el) => { if (!el.classList.contains('rv')) { el.classList.add('rv'); io.observe(el); } })).observe(document.body, { childList: true, subtree: true });
   }
 
+  // Полоса прогресса чтения вверху гайда.
+  const art = $<HTMLElement>('[data-article]');
+  if (art) {
+    const bar = document.createElement('div');
+    bar.className = 'readbar';
+    document.body.appendChild(bar);
+    const upd = () => {
+      const r = art.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight)));
+      bar.style.transform = `scaleX(${p})`;
+    };
+    addEventListener('scroll', upd, { passive: true });
+    addEventListener('resize', upd);
+    upd();
+  }
+
   const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
   if (!fine) return;
 
   // Параллакс иллюстрации в шапке: слои с разной глубиной смещаются за курсором.
-  $$<HTMLElement>('.hero').forEach((hero) => {
+  $$<HTMLElement>('.hero,.art-head').forEach((hero) => {
     const layers = $$<HTMLElement>('[data-depth]', hero);
     if (!layers.length) return;
     hero.addEventListener('pointermove', (e) => {

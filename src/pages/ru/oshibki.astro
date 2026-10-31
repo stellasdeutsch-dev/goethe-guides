@@ -1,0 +1,76 @@
+---
+/* «Мои ошибки»: все неверные ответы из квизов на всех гайдах. Хранятся только в браузере. */
+import App from '../../layouts/App.astro';
+import { url } from '../../data/site';
+import '../../styles/article.css';
+---
+<App title="Мои ошибки | Stellas" description="Все вопросы, где ты ошиблась в квизах гайдов. Повтори их перед экзаменом." noindex trail={[{ label: 'Мои ошибки' }]}>
+  <section class="screen">
+    <div class="hero">
+      <span class="tag"><i class="dot"></i>Повторение</span>
+      <h1 class="ask">Мои <em>ошибки</em></h1>
+      <p class="sub">Сюда попадает каждый вопрос из квизов, где ты ответила неверно. Ответила правильно при повторе, и вопрос уходит из списка.</p>
+    </div>
+    <div class="mist" data-mist>
+      <div class="mist-top"><b data-count>0</b><span>вопросов на повторение</span><button type="button" class="btn sm" data-clear hidden>Очистить всё</button></div>
+      <div data-list></div>
+      <div class="mist-empty" data-empty hidden>
+        <p>Ошибок нет. Либо ты ещё не решала квизы, либо всё уже повторила.</p>
+        <a class="btn knob" href={url('/ru/')}><span class="knob-i"><svg class="ic"><use href="#i-arrow-right" /></svg></span><span>К гайдам</span></a>
+      </div>
+    </div>
+  </section>
+</App>
+
+<style is:global>
+  .mist{max-width:760px;margin:24px auto 0;padding:0 16px}
+  .mist-top{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+  .mist-top b{font:800 34px/1 var(--f)}
+  .mist-top button{margin-left:auto}
+  .mist-it{margin:0 0 14px;padding:18px;border-radius:22px;background:#fff;box-shadow:inset 0 0 0 1px var(--ink-line)}
+  .mist-src{font-size:13px;color:var(--text-2)}
+  .mist-src a{color:inherit}
+  .mist-q{margin:8px 0 12px;font:700 17px/1.4 var(--f)}
+  .mist-o{display:flex;flex-direction:column;gap:8px}
+  .mist-o button{min-height:44px;text-align:left;padding:10px 14px;border-radius:14px;border:0;background:#F2F2EE;font:500 15px/1.35 var(--f);cursor:pointer;color:var(--ink)}
+  .mist-o button.ok{background:#E6F7C8}
+  .mist-o button.bad{background:#FDE2E1}
+  .mist-x{margin:12px 0 0;font-size:14px;color:var(--text-2)}
+  .mist-empty{padding:24px;border-radius:22px;background:#fff;text-align:center}
+</style>
+
+<script>
+  import { $, onReady, fmt } from '../../scripts/lib';
+  type M = { id: string; q: string; o: string[]; c: number; x: string; chosen: number; page: string; title: string };
+  onReady(() => {
+    const root = $('[data-mist]');
+    if (!root) return;
+    const read = (): M[] => { try { return JSON.parse(localStorage.getItem('mistakes') || '[]'); } catch { return []; } };
+    const write = (a: M[]) => { try { localStorage.setItem('mistakes', JSON.stringify(a)); } catch { /* нет хранилища */ } };
+    const list = $('[data-list]', root)!;
+    function draw() {
+      const all = read();
+      $('[data-count]', root)!.textContent = String(all.length);
+      $('[data-empty]', root)!.hidden = all.length > 0;
+      $('[data-clear]', root)!.hidden = all.length === 0;
+      list.innerHTML = all.map((m, k) => `<article class="mist-it" data-k="${k}">
+        <div class="mist-src">Из гайда: <a href="${m.page}">${fmt(m.title)}</a></div>
+        <p class="mist-q">${fmt(m.q)}</p>
+        <div class="mist-o">${m.o.map((o, i) => `<button type="button" data-i="${i}">${fmt(o)}</button>`).join('')}</div>
+        <p class="mist-x" hidden></p></article>`).join('');
+      list.querySelectorAll<HTMLElement>('.mist-it').forEach((card) => {
+        const m = all[Number(card.dataset.k)];
+        card.querySelectorAll<HTMLButtonElement>('button[data-i]').forEach((b) => (b.onclick = () => {
+          const i = Number(b.dataset.i), ok = i === m.c;
+          card.querySelectorAll<HTMLButtonElement>('button[data-i]').forEach((x) => { x.disabled = true; if (Number(x.dataset.i) === m.c) x.classList.add('ok'); else if (x === b) x.classList.add('bad'); });
+          const ex = card.querySelector<HTMLElement>('.mist-x')!;
+          ex.hidden = false;
+          ex.innerHTML = (ok ? '<b>Верно, вопрос убран из списка.</b> ' : '<b>Ещё раз мимо.</b> ') + fmt(m.x);
+          if (ok) { write(read().filter((z) => z.id !== m.id)); setTimeout(draw, 1600); }
+        }));
+      });
+    }
+    $('[data-clear]', root)!.onclick = () => { write([]); draw(); };
+    draw();
+  });
+</script>

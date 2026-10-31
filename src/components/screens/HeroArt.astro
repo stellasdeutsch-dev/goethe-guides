@@ -4,6 +4,9 @@
 interface Props { kind: 'exam' | 'level' | 'home' | 'module' | 'plan'; label?: string; icon?: string }
 const { kind, label = 'B1', icon = 'book-open' } = Astro.props;
 const days = Array.from({ length: 28 }, (_, i) => i + 1);
+const ART3D: Record<string, string> = { 'book-open': 'book', headphones: 'headphones', 'pen-line': 'pen', mic: 'mic', puzzle: 'puzzle', 'list-checks': 'checklist', clock: 'clock', 'file-text': 'checklist', 'graduation-cap': 'medal' };
+const art3d = ART3D[icon];
+import { url } from '../../data/site';
 ---
 <div class={`hart hart-${kind}`} aria-hidden="true" data-art>
   <span class="hart-blob lime" data-depth="10"></span>
@@ -53,7 +56,7 @@ const days = Array.from({ length: 28 }, (_, i) => i + 1);
 
   {kind === 'module' && (
     <>
-      <div class="orb big c1" data-depth="30"><svg class="ic"><use href={`#i-${icon}`} /></svg></div>
+      {art3d ? <img class="hart-3d c1" src={url(`/art/${art3d}.png`)} alt="" width="320" height="320" data-depth="30" /> : <div class="orb big c1" data-depth="30"><svg class="ic"><use href={`#i-${icon}`} /></svg></div>}
       <div class="glass card c2" data-depth="42">
         <small>Прочитано</small>
         <span class="mini-track"><i></i></span>
