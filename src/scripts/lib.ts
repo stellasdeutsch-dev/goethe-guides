@@ -116,13 +116,36 @@ if (hasTTS) {
   } catch {
     /* ignore */
   }
-} else if (typeof document !== 'undefined') {
-  document.documentElement.classList.add('no-tts');
 }
 export const canSpeak = () => hasTTS;
 
-export function say(text: string, btn?: HTMLElement | null, opts: { rate?: number; onend?: () => void } = {}) {
-  if (!hasTTS || !text) return;
+/** sha1 → первые 12 hex: так названы mp3 в /audio/say (scripts/gen-say-audio.py). Синхронно, чтобы play() остался в жесте пользователя. */
+function sha12(str: string): string {
+  const b = new TextEncoder().encode(str);
+  const len = b.length, words = ((len + 8) >> 6) + 1;
+  const w = new Uint32Array(words * 16);
+  for (let i = 0; i < len; i++) w[i >> 2] |= b[i] << (24 - (i % 4) * 8);
+  w[len >> 2] |= 0x80 << (24 - (len % 4) * 8);
+  w[words * 16 - 1] = len * 8;
+  let h0 = 0x67452301, h1 = 0xefcdab89, h2 = 0x98badcfe, h3 = 0x10325476, h4 = 0xc3d2e1f0;
+  const x = new Uint32Array(80);
+  for (let o = 0; o < w.length; o += 16) {
+    for (let t = 0; t < 80; t++) x[t] = t < 16 ? w[o + t] : ((v) => (v << 1) | (v >>> 31))(x[t - 3] ^ x[t - 8] ^ x[t - 14] ^ x[t - 16]);
+    let a = h0, b2 = h1, c = h2, d = h3, e = h4;
+    for (let t = 0; t < 80; t++) {
+      const f = t < 20 ? (b2 & c) | (~b2 & d) : t < 40 ? b2 ^ c ^ d : t < 60 ? (b2 & c) | (b2 & d) | (c & d) : b2 ^ c ^ d;
+      const k = t < 20 ? 0x5a827999 : t < 40 ? 0x6ed9eba1 : t < 60 ? 0x8f1bbcdc : 0xca62c1d6;
+      const tmp = (((a << 5) | (a >>> 27)) + f + e + k + x[t]) >>> 0;
+      e = d; d = c; c = (b2 << 30) | (b2 >>> 2); b2 = a; a = tmp;
+    }
+    h0 = (h0 + a) >>> 0; h1 = (h1 + b2) >>> 0; h2 = (h2 + c) >>> 0; h3 = (h3 + d) >>> 0; h4 = (h4 + e) >>> 0;
+  }
+  return [h0, h1].map((v) => v.toString(16).padStart(8, '0')).join('').slice(0, 12);
+}
+
+let clip: HTMLAudioElement | null = null;
+function speak(text: string, btn: HTMLElement | null | undefined, opts: { rate?: number; onend?: () => void }) {
+  if (!hasTTS) { btn?.classList.remove('on'); opts.onend?.(); return; }
   try {
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
@@ -139,8 +162,25 @@ export function say(text: string, btn?: HTMLElement | null, opts: { rate?: numbe
     /* ignore */
   }
 }
+
+/** Сначала готовый mp3, если его нет, синтез речи браузера. */
+export function say(text: string, btn?: HTMLElement | null, opts: { rate?: number; onend?: () => void } = {}) {
+  if (!text) return;
+  hush();
+  const base = document.documentElement.dataset.base ?? '';
+  const a = new Audio(`${base}/audio/say/${sha12(text)}.mp3`);
+  clip = a;
+  let done = false;
+  const end = () => { if (done) return; done = true; btn?.classList.remove('on'); opts.onend?.(); };
+  const fallback = () => { if (done || clip !== a) return; done = true; clip = null; speak(text, btn, opts); };
+  btn?.classList.add('on');
+  a.addEventListener('ended', end);
+  a.addEventListener('error', fallback);
+  a.play().catch((e) => (e?.name === 'NotAllowedError' ? end() : fallback()));
+}
 export function hush() {
   try {
+    if (clip) { clip.pause(); clip.dispatchEvent(new Event('ended')); clip = null; }
     if (hasTTS) speechSynthesis.cancel();
   } catch {
     /* ignore */

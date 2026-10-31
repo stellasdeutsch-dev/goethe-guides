@@ -1,52 +1,140 @@
 ---
-/* Аудирование через синтез речи: лимит прослушиваний как на экзамене, текст спрятан. */
+/* Аудирование: готовый mp3 (scripts/gen-listen-audio.py) с плеером: пауза, ±5 с, перемотка, скорость.
+   Счётчик прослушиваний как на экзамене. Если mp3 ещё нет, звучит синтез речи браузера. */
+import { createHash } from 'node:crypto';
+import { existsSync } from 'node:fs';
+import { join } from 'node:path';
+import { url } from '../../data/site';
 interface Props { title: string; text: string; ru?: string; plays?: number; rate?: number }
 const { title, text, ru, plays = 2, rate = 0.92 } = Astro.props;
+const id = createHash('sha1').update(text).digest('hex').slice(0, 12);
+const src = existsSync(join(process.cwd(), 'public/audio/listen', `${id}.mp3`)) ? url(`/audio/listen/${id}.mp3`) : '';
 ---
-<div class="x listen" data-listen data-plays={plays} data-rate={rate} data-text={text}>
-  <div class="listen-main" data-tts-only>
+<div class="x listen" data-listen data-plays={plays} data-rate={rate} data-text={text} data-src={src || undefined}>
+  <div class="listen-main" data-tts-only={src ? undefined : ''}>
     <button class="listen-play" type="button" data-play aria-label="Слушать"><svg class="ic"><use href="#i-play" /></svg></button>
     <div class="listen-info">
       <b>{title}</b>
-      <small data-left>{plays === 1 ? 'Звучит один раз' : `Звучит ${plays} раза`}</small>
-      <div class="wave" aria-hidden="true">{Array.from({ length: 32 }).map(() => <i></i>)}</div>
+      <small data-left>{plays === 1 ? 'На экзамене звучит один раз' : `На экзамене звучит ${plays} раза`}</small>
+      {!src && <div class="wave" aria-hidden="true">{Array.from({ length: 32 }).map(() => <i></i>)}</div>}
     </div>
   </div>
+  {src && (
+    <div class="lp">
+      <input class="lp-seek" type="range" min="0" max="1000" value="0" step="1" data-seek aria-label="Перемотка" />
+      <div class="lp-row">
+        <span class="lp-t" data-cur>0:00</span>
+        <div class="lp-btns">
+          <button type="button" data-skip="-5" aria-label="Назад на 5 секунд"><svg class="ic"><use href="#i-rotate-ccw" /></svg>5</button>
+          <button type="button" data-skip="5" aria-label="Вперёд на 5 секунд">5<svg class="ic flip"><use href="#i-rotate-ccw" /></svg></button>
+          <button type="button" data-speed aria-label="Скорость">1×</button>
+        </div>
+        <span class="lp-t" data-dur>–:––</span>
+      </div>
+      <audio preload="metadata" src={src}></audio>
+    </div>
+  )}
   <details class="listen-tx">
     <summary>Показать текст</summary>
     <p lang="de">{text}</p>
     {ru && <p class="ru">{ru}</p>}
-    <button class="btn sm dark" type="button" data-again data-tts-only><svg class="ic"><use href="#i-rotate-ccw" /></svg>Слушать ещё (тренировка)</button>
+    {!src && <button class="btn sm dark" type="button" data-again data-tts-only><svg class="ic"><use href="#i-rotate-ccw" /></svg>Слушать ещё (тренировка)</button>}
   </details>
 </div>
 
+<style is:global>
+  .lp{margin-top:14px}
+  .lp-seek{width:100%;height:28px;margin:0;accent-color:var(--ink);cursor:pointer}
+  .lp-row{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .lp-t{font-size:13px;color:var(--text-3);font-variant-numeric:tabular-nums;min-width:36px}
+  .lp-t[data-dur]{text-align:right}
+  .lp-btns{display:flex;gap:6px}
+  .lp-btns button{display:inline-flex;align-items:center;gap:3px;min-width:44px;min-height:44px;justify-content:center;padding:0 10px;border:0;border-radius:14px;background:#F2F2EE;color:var(--ink);font:600 14px/1 var(--f);cursor:pointer}
+  .lp-btns button:active{transform:scale(.94)}
+  .lp-btns .ic{width:16px;height:16px}
+  .lp-btns .flip{transform:scaleX(-1)}
+  .listen.over [data-left]{color:#B4541A}
+</style>
+
 <script>
   import { $, $$, hush, onReady, say } from '../../scripts/lib';
-  onReady(() => {
-    $$('[data-listen]').forEach((root) => {
-      const btn = $<HTMLButtonElement>('[data-play]', root)!;
-      const left = $('[data-left]', root)!;
-      const text = root.dataset.text || '';
-      const rate = Number(root.dataset.rate || 0.92);
-      let rest = Number(root.dataset.plays || 2);
-      let playing = false;
-      const word = (n: number) => (n >= 2 && n <= 4 ? 'раза' : 'раз');
-      const ui = () => {
-        btn.innerHTML = `<svg class="ic"><use href="#i-${playing ? 'pause' : 'play'}"/></svg>`;
-        btn.disabled = !playing && rest <= 0;
-        root.classList.toggle('playing', playing);
-        left.textContent = playing ? 'Слушай…' : rest > 0 ? `Осталось: ${rest} ${word(rest)}` : 'Прослушивания закончились. Отвечай на вопросы.';
-      };
-      function play(count = true) {
-        if (playing) { hush(); playing = false; ui(); return; }
-        if (count) { if (rest <= 0) return; rest--; }
-        playing = true;
-        ui();
-        say(text, null, { rate, onend: () => { playing = false; ui(); } });
-      }
-      btn.addEventListener('click', () => play(true));
-      $('[data-again]', root)?.addEventListener('click', () => play(false));
-      ui();
+  const word = (n: number) => (n % 10 >= 2 && n % 10 <= 4 && (n < 10 || n > 20) ? 'раза' : 'раз');
+  const mmss = (s: number) => (isFinite(s) ? `${Math.floor(s / 60)}:${String(Math.floor(s % 60)).padStart(2, '0')}` : '–:––');
+  const icon = (n: string) => `<svg class="ic"><use href="#i-${n}"/></svg>`;
+
+  function withAudio(root: HTMLElement) {
+    const btn = $<HTMLButtonElement>('[data-play]', root)!;
+    const left = $('[data-left]', root)!;
+    const a = $<HTMLAudioElement>('audio', root)!;
+    const seek = $<HTMLInputElement>('[data-seek]', root)!;
+    const cur = $('[data-cur]', root)!, dur = $('[data-dur]', root)!;
+    const speed = $<HTMLButtonElement>('[data-speed]', root)!;
+    const limit = Number(root.dataset.plays || 2);
+    const RATES = [1, 0.85, 0.75, 1.15];
+    let used = 0, r = 0, dragging = false;
+    const status = () => {
+      root.classList.toggle('playing', !a.paused);
+      root.classList.toggle('over', used > limit);
+      btn.innerHTML = icon(a.paused ? 'play' : 'pause');
+      btn.setAttribute('aria-label', a.paused ? 'Слушать' : 'Пауза');
+      if (used === 0) left.textContent = limit === 1 ? 'На экзамене звучит один раз' : `На экзамене звучит ${limit} ${word(limit)}`;
+      else if (used <= limit) left.textContent = `Прослушивание ${used} из ${limit}`;
+      else left.textContent = `Прослушивание ${used}: на экзамене было бы только ${limit}`;
+    };
+    const time = () => {
+      cur.textContent = mmss(a.currentTime);
+      dur.textContent = mmss(a.duration);
+      if (!dragging && a.duration) seek.value = String(Math.round((a.currentTime / a.duration) * 1000));
+    };
+    btn.addEventListener('click', () => {
+      if (a.paused) {
+        // Новое прослушивание засчитывается, когда запись запускают с начала.
+        if (a.currentTime < 0.5 || a.ended) { if (a.ended) a.currentTime = 0; used++; }
+        $$<HTMLAudioElement>('audio').forEach((o) => o !== a && o.pause());
+        hush();
+        a.play().catch(() => {});
+      } else a.pause();
     });
-  });
+    $$<HTMLButtonElement>('[data-skip]', root).forEach((b) => b.addEventListener('click', () => {
+      if (!a.duration) return;
+      a.currentTime = Math.min(a.duration, Math.max(0, a.currentTime + Number(b.dataset.skip)));
+      time();
+    }));
+    speed.addEventListener('click', () => { r = (r + 1) % RATES.length; a.playbackRate = RATES[r]; speed.textContent = `${RATES[r]}×`.replace('.', ','); });
+    seek.addEventListener('input', () => { dragging = true; if (a.duration) cur.textContent = mmss((Number(seek.value) / 1000) * a.duration); });
+    seek.addEventListener('change', () => { if (a.duration) a.currentTime = (Number(seek.value) / 1000) * a.duration; dragging = false; time(); });
+    a.addEventListener('timeupdate', time);
+    a.addEventListener('loadedmetadata', time);
+    a.addEventListener('play', status);
+    a.addEventListener('pause', status);
+    a.addEventListener('ended', () => { status(); seek.value = '1000'; });
+    status();
+  }
+
+  function withTTS(root: HTMLElement) {
+    const btn = $<HTMLButtonElement>('[data-play]', root)!;
+    const left = $('[data-left]', root)!;
+    const text = root.dataset.text || '';
+    const rate = Number(root.dataset.rate || 0.92);
+    let rest = Number(root.dataset.plays || 2);
+    let playing = false;
+    const ui = () => {
+      btn.innerHTML = icon(playing ? 'pause' : 'play');
+      btn.disabled = !playing && rest <= 0;
+      root.classList.toggle('playing', playing);
+      left.textContent = playing ? 'Слушай…' : rest > 0 ? `Осталось: ${rest} ${word(rest)}` : 'Прослушивания закончились. Отвечай на вопросы.';
+    };
+    function play(count = true) {
+      if (playing) { hush(); playing = false; ui(); return; }
+      if (count) { if (rest <= 0) return; rest--; }
+      playing = true;
+      ui();
+      say(text, null, { rate, onend: () => { playing = false; ui(); } });
+    }
+    btn.addEventListener('click', () => play(true));
+    $('[data-again]', root)?.addEventListener('click', () => play(false));
+    ui();
+  }
+
+  onReady(() => $$('[data-listen]').forEach((root) => (root.dataset.src ? withAudio(root) : withTTS(root))));
 </script>
