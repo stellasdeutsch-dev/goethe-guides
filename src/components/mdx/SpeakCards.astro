@@ -38,12 +38,12 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
   .sp-clock{font:800 34px/1 var(--f);font-variant-numeric:tabular-nums}
   .sp-bar{flex-basis:100%;height:8px;border-radius:4px;background:#E6E6E0;overflow:hidden}
   .sp-bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .25s linear}
-  .speak[data-state="talk"] .sp-bar i{background:#7DB31A}
+  .speak[data-state="talk"] .sp-bar i{background:#E08A55}
   .sp-act{display:flex;flex-wrap:wrap;gap:8px}
   .speak .sp-pts,.prose .speak .sp-pts{padding:0;margin:14px 0 0}
   .speak .sp-pts li{padding:0;margin:0}
   .speak .sp-pts li::before,.speak .sp-pts li::marker{content:none;display:none}
-  .x.speak .btn[data-start]{background:#121212;color:#CEFD4B;box-shadow:none}
+  .x.speak .btn[data-start]{background:#121212;color:#FFBE98;box-shadow:none}
 </style>
 
 <script>
