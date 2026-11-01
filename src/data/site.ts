@@ -2,7 +2,7 @@ export const SITE = {
   name: 'Stellas · Goethe',
   title: 'Гайды по Goethe-Zertifikat',
   description:
-    'Бесплатные гайды по Goethe-Zertifikat A1–C2: Lesen, Hören, Schreiben, Sprechen. Формат заданий, ловушки, шаблоны и тренажёры.',
+    'Гайды по Goethe-Zertifikat A1–C2: Lesen, Hören, Schreiben, Sprechen. Формат заданий, ловушки, шаблоны и тренажёры.',
   /** Автор на сайте — бренд, без личного имени. */
   author: {
     name: 'Команда Stellas',

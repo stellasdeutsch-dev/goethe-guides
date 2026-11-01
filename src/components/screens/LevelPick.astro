@@ -15,10 +15,10 @@ const tracks = await readyTracks(exam);
 const help = all.find((g) => `${g.data.section}/${slugOf(g)}` === EX.helpSlug);
 const extra = generalGuides(all).filter((g) => g !== help).slice(0, 2);
 const range = tracks.length ? `${tracks[0].label}–${tracks[tracks.length - 1].label}` : '';
-const desc = exam === 'goethe' ? SITE.description : `Бесплатная подготовка к ${EX.full}: формат, официальные пробники с разбором и гайды по каждой части экзамена.`;
+const desc = exam === 'goethe' ? SITE.description : `Подготовка к ${EX.full}: формат, официальные пробники с разбором и гайды по каждой части экзамена.`;
 const bar = (levels: string[]) => LEVELS.map((l) => (levels.includes(l) ? 'on' : LEVELS.indexOf(l) < LEVELS.indexOf(levels[0] as never) ? 'past' : ''));
 ---
-<App title={`Подготовка к ${EX.full} ${range} бесплатно | Stellas`} description={desc} exam={exam} trail={[{ label: EX.name }]}>
+<App title={`Подготовка к ${EX.full} ${range} | Stellas`} description={desc} exam={exam} trail={[{ label: EX.name }]}>
   <section class="screen" data-exam={exam}>
     <div class="hero">
       <HeroArt kind="level" />
