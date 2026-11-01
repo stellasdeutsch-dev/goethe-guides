@@ -1,6 +1,6 @@
 ---
 /* Тренажёр устной части: случайная тема, таймер подготовки и таймер ответа, пункты-подсказки.
-   Без записи голоса: говоришь вслух сама, отмечаешь пункты, которые уже сказала. */
+   Без записи голоса: говоришь вслух и отмечаешь пункты, которые уже прозвучали. */
 interface Topic { t: string; ru?: string; points: string[] }
 interface Props { topics: Topic[]; prep?: number; talk?: number; title?: string }
 const { topics, prep = 60, talk = 180, title = 'Тренажёр Sprechen' } = Astro.props;
@@ -14,7 +14,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
     <ul class="sp-pts" data-pts>{topics[0].points.map((p) => <li><button type="button" lang="de">{p}</button></li>)}</ul>
   </div>
   <div class="sp-timer">
-    <span class="sp-phase" data-phase>Готова? Сначала подготовка</span>
+    <span class="sp-phase" data-phase>Сначала подготовка</span>
     <b class="sp-clock" data-clock>{fmt(prep)}</b>
     <div class="sp-bar"><i data-bar></i></div>
   </div>
@@ -23,7 +23,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
     <button type="button" class="btn" data-skip hidden><svg class="ic"><use href="#i-mic" /></svg>Сразу говорить</button>
     <button type="button" class="btn" data-next><svg class="ic"><use href="#i-repeat" /></svg>Другая тема</button>
   </div>
-  <p class="x-note">Говори вслух, полными предложениями. Тапни пункт, когда его сказала. Не успела все пункты за время, значит на экзамене тоже не успеешь.</p>
+  <p class="x-note">Говори вслух, полными предложениями. Тапни пункт, когда он прозвучал. Если пункты не уместились во время, на экзамене они тоже не уместятся.</p>
 </div>
 
 <style is:global>
@@ -31,19 +31,19 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
   .sp-t{margin:0;font:700 19px/1.35 var(--f)}
   .sp-ru{margin:6px 0 0;color:var(--text-2);font-size:14px}
   .sp-pts{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
-  .sp-pts button{width:100%;min-height:44px;text-align:left;padding:10px 14px;border-radius:14px;border:0;background:#F2F2EE;font:500 15px/1.35 var(--f);color:var(--ink);cursor:pointer}
+  .sp-pts button{width:100%;min-height:44px;text-align:left;padding:10px 14px;border-radius:14px;border:0;background:#EAF0F8;font:500 15px/1.35 var(--f);color:var(--ink);cursor:pointer}
   .sp-pts button[aria-pressed="true"]{background:var(--ink);color:var(--lime);text-decoration:line-through}
   .sp-timer{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 14px;margin:16px 0 10px}
   .sp-phase{font-size:14px;color:var(--text-2)}
   .sp-clock{font:800 34px/1 var(--f);font-variant-numeric:tabular-nums}
-  .sp-bar{flex-basis:100%;height:8px;border-radius:4px;background:#E6E6E0;overflow:hidden}
+  .sp-bar{flex-basis:100%;height:8px;border-radius:4px;background:#DFE7F3;overflow:hidden}
   .sp-bar i{display:block;height:100%;width:0;background:var(--ink);transition:width .25s linear}
-  .speak[data-state="talk"] .sp-bar i{background:#E08A55}
+  .speak[data-state="talk"] .sp-bar i{background:#2B6BEA}
   .sp-act{display:flex;flex-wrap:wrap;gap:8px}
   .speak .sp-pts,.prose .speak .sp-pts{padding:0;margin:14px 0 0}
   .speak .sp-pts li{padding:0;margin:0}
   .speak .sp-pts li::before,.speak .sp-pts li::marker{content:none;display:none}
-  .x.speak .btn[data-start]{background:#121212;color:#FFBE98;box-shadow:none}
+  .x.speak .btn[data-start]{background:#14294F;color:#F8D27F;box-shadow:none}
 </style>
 
 <script>
@@ -68,12 +68,12 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
       };
       const stop = () => { clearInterval(timer); timer = 0; };
       const skip = $<HTMLButtonElement>('[data-skip]', root)!;
-      const reset = () => { stop(); skip.hidden = true; phase = 'idle'; left = PREP; ph.textContent = 'Готова? Сначала подготовка'; start.lastChild!.textContent = 'Старт'; paint(); };
+      const reset = () => { stop(); skip.hidden = true; phase = 'idle'; left = PREP; ph.textContent = 'Сначала подготовка'; start.lastChild!.textContent = 'Старт'; paint(); };
       const tick = () => {
         left--;
         if (left <= 0) {
           if (phase === 'prep') { phase = 'talk'; left = TALK; skip.hidden = true; ph.textContent = 'Говори!'; pop(clock); }
-          else { stop(); phase = 'done'; left = 0; ph.textContent = 'Время вышло. Сколько пунктов успела?'; start.lastChild!.textContent = 'Ещё раз'; }
+          else { stop(); phase = 'done'; left = 0; ph.textContent = 'Время вышло. Сколько пунктов закрыто?'; start.lastChild!.textContent = 'Ещё раз'; }
         }
         paint();
       };
