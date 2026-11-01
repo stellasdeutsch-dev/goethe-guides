@@ -1,0 +1,63 @@
+---
+/* Список пробников из интернета по уровням. Данные: src/data/mocks/<экзамен>.json, ссылки проверены, дата в поле checked. */
+import goethe from '../../data/mocks/goethe.json';
+import telc from '../../data/mocks/telc.json';
+import oesd from '../../data/mocks/oesd.json';
+interface Mock { exam: string; level: string; track?: string; title: string; publisher: string; sourceType: string; url: string; audioUrl?: string | null; answersUrl?: string | null; parts: string[]; hasAnswers?: boolean | null; format: string; year?: number | null; old?: boolean; free: boolean; note?: string; checked?: string }
+interface Props { exam: 'goethe' | 'telc' | 'oesd' }
+const all = ({ goethe, telc, oesd }[Astro.props.exam] as Mock[]);
+const ORDER = ['A1', 'A2', 'A2-B1', 'B1', 'B2', 'C1', 'C2'];
+const SRC: Record<string, string> = { official: 'Официальный', publisher: 'Издательство', school: 'Школа', university: 'Университет' };
+const levels = ORDER.filter((l) => all.some((m) => m.level === l)).map((l) => {
+  const rank = (m: Mock) => (m.sourceType === 'official' ? 0 : 1) + (m.old ? 2 : 0);
+  const ofLevel = all.filter((m) => m.level === l).sort((a, b) => rank(a) - rank(b));
+  return { l, free: ofLevel.filter((m) => m.free), paid: ofLevel.filter((m) => !m.free) };
+});
+const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' })[c]!);
+const note = (s = '') => esc(s).replace(/https?:\/\/[^\s,;)]+/g, (u) => `<a href="${u}" rel="noopener" target="_blank">ссылка</a>`);
+const lab = (l: string) => l.replace('-', '·');
+---
+<div class="mocks">
+  {levels.map(({ l, free, paid }, i) => (
+    <details class="mock-lv" open={i === 0}>
+      <summary><b>{lab(l)}</b><span>{free.length} бесплатно{paid.length ? ` · ${paid.length} платно` : ''}</span></summary>
+      <div class="mock-list">
+        {[...free, ...paid].map((m) => (
+          <article class="mock">
+            <div class="mock-tags"><span class:list={['mock-tag', m.sourceType]}>{SRC[m.sourceType] ?? m.sourceType}</span>{!m.free && <span class="mock-tag paid">Платно</span>}{m.old && <span class="mock-tag old">Старый формат</span>}{m.year && <span class="mock-year">{m.year}</span>}</div>
+            <h4 lang="de">{m.title}</h4>
+            <p class="mock-pub">{m.publisher}{m.parts?.length ? ` · ${m.parts.join(', ')}` : ''}</p>
+            {m.note && <p class="mock-note" set:html={note(m.note)} />}
+            <div class="mock-go">
+              <a class="btn sm" href={m.url} rel="noopener" target="_blank">{m.free ? 'Открыть' : 'В магазин'}</a>
+              {m.audioUrl && <a class="btn sm dark" href={m.audioUrl} rel="noopener" target="_blank">Аудио</a>}
+              {m.answersUrl && <a class="btn sm dark" href={m.answersUrl} rel="noopener" target="_blank">Ключи</a>}
+            </div>
+          </article>
+        ))}
+      </div>
+    </details>
+  ))}
+</div>
+
+<style is:global>
+  .prose .mocks details.mock-lv>summary{justify-content:flex-start;padding:16px 18px;font-size:17px}
+  .mock-lv>summary b{font:800 20px/1 var(--f)}
+  .mock-lv>summary span{margin-left:auto;font-weight:500;font-size:14px;color:var(--ink-2)}
+  .prose .mocks details>.mock-list{padding:0 12px 4px}
+  .mock{margin:0 0 10px;padding:16px;border-radius:16px;background:#fff;box-shadow:inset 0 0 0 1px var(--ink-line)}
+  .mock-tags{display:flex;flex-wrap:wrap;align-items:center;gap:6px}
+  .mock-tag{padding:4px 10px;border-radius:999px;background:#F2F2EE;font:600 12.5px/1.2 var(--f)}
+  .mock-tag.official{background:var(--sky);color:#fff}
+  .mock-tag.paid{background:#121212;color:#fff}
+  .mock-tag.old{background:#FDE2E1}
+  .mock-year{font-size:13px;color:var(--ink-2)}
+  .prose .mock h4{margin:10px 0 4px;font:700 16.5px/1.35 var(--f)}
+  .prose .mock p{margin:0 0 6px;font-size:14.5px;line-height:1.45}
+  .mock-pub{color:var(--ink-2)}
+  .mock-go{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .prose .mock-go a{text-decoration:none}
+  .prose .mock-go a:hover{background:none}
+  .prose .mock-go .btn.sm:not(.dark){background:var(--lime)}
+  .prose .mock-go .btn.dark{background:#fff;color:#111;box-shadow:inset 0 0 0 1px rgba(17,17,17,.14)}
+</style>

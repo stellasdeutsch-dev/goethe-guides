@@ -16,6 +16,7 @@ export function belongs(id: string, r: Result, o: { exam: string; track: string;
 export function mockResults(o: { exam: string; track: string; goethe?: string }): Record<string, number> {
   const sum: Record<string, [number, number]> = {};
   for (const [id, r] of Object.entries(readResults())) {
+    if (/-tren\d/.test(id)) continue; // тренировочные наборы не считаются пробником
     if (!r.module || !r.max || !belongs(id, r, o)) continue;
     const s = (sum[r.module] ??= [0, 0]);
     s[0] += r.points;

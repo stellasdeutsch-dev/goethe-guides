@@ -7,15 +7,15 @@ const { topics, prep = 60, talk = 180, title = 'Тренажёр Sprechen' } = A
 const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '0')}`;
 ---
 <div class="x speak" data-speak={JSON.stringify(topics)} data-prep={prep} data-talk={talk}>
-  <div class="x-h"><b><svg class="ic"><use href="#i-mic" /></svg>{title}</b><span class="x-cap">{topics.length} тем · {fmt(prep)} + {fmt(talk)}</span></div>
+  <div class="x-h"><b><svg class="ic"><use href="#i-mic" /></svg>{title}</b><span class="x-cap">{topics.length} тем · {prep ? `${fmt(prep)} + ` : ''}{fmt(talk)}</span></div>
   <div class="sp-card" data-card aria-live="polite">
     <p class="sp-t" lang="de" data-t>{topics[0].t}</p>
     {topics[0].ru && <p class="sp-ru" data-ru>{topics[0].ru}</p>}
     <ul class="sp-pts" data-pts>{topics[0].points.map((p) => <li><button type="button" lang="de">{p}</button></li>)}</ul>
   </div>
   <div class="sp-timer">
-    <span class="sp-phase" data-phase>Сначала подготовка</span>
-    <b class="sp-clock" data-clock>{fmt(prep)}</b>
+    <span class="sp-phase" data-phase>{prep ? 'Сначала подготовка' : 'Отвечай сразу'}</span>
+    <b class="sp-clock" data-clock>{fmt(prep || talk)}</b>
     <div class="sp-bar"><i data-bar></i></div>
   </div>
   <div class="sp-act">
@@ -54,7 +54,7 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
     $$('[data-speak]').forEach((root) => {
       const T: Topic[] = JSON.parse(root.dataset.speak || '[]');
       const PREP = Number(root.dataset.prep), TALK = Number(root.dataset.talk);
-      let cur = 0, timer = 0, left = PREP, phase: 'idle' | 'prep' | 'talk' | 'done' = 'idle';
+      let cur = 0, timer = 0, left = PREP || TALK, phase: 'idle' | 'prep' | 'talk' | 'done' = 'idle';
       const clock = $('[data-clock]', root)!, bar = $<HTMLElement>('[data-bar]', root)!, ph = $('[data-phase]', root)!, start = $<HTMLButtonElement>('[data-start]', root)!;
       const bindPts = () => $$<HTMLButtonElement>('[data-pts] button', root).forEach((b) => {
         b.setAttribute('aria-pressed', 'false');
@@ -63,12 +63,12 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
       const paint = () => {
         const total = phase === 'talk' ? TALK : PREP;
         clock.textContent = fmt(left);
-        bar.style.width = `${phase === 'idle' ? 0 : ((total - left) / total) * 100}%`;
+        bar.style.width = `${phase === 'idle' || !total ? 0 : ((total - left) / total) * 100}%`;
         root.dataset.state = phase;
       };
       const stop = () => { clearInterval(timer); timer = 0; };
       const skip = $<HTMLButtonElement>('[data-skip]', root)!;
-      const reset = () => { stop(); skip.hidden = true; phase = 'idle'; left = PREP; ph.textContent = 'Сначала подготовка'; start.lastChild!.textContent = 'Старт'; paint(); };
+      const reset = () => { stop(); skip.hidden = true; phase = 'idle'; left = PREP || TALK; ph.textContent = PREP ? 'Сначала подготовка' : 'Отвечай сразу'; start.lastChild!.textContent = 'Старт'; paint(); };
       const tick = () => {
         left--;
         if (left <= 0) {
@@ -80,7 +80,9 @@ const fmt = (s: number) => `${Math.floor(s / 60)}:${String(s % 60).padStart(2, '
       start.onclick = () => {
         if (phase === 'prep' || phase === 'talk') { reset(); return; }
         if (phase === 'done') reset();
-        phase = 'prep'; left = PREP; skip.hidden = false; ph.textContent = 'Подготовка: набросай план'; start.lastChild!.textContent = 'Стоп';
+        start.lastChild!.textContent = 'Стоп';
+        if (PREP <= 0) { phase = 'talk'; left = TALK; ph.textContent = 'Говори!'; pop(clock); }
+        else { phase = 'prep'; left = PREP; skip.hidden = false; ph.textContent = 'Подготовка: набросай план'; }
         paint(); timer = window.setInterval(tick, 1000);
       };
       $('[data-next]', root)!.onclick = () => {

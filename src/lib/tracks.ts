@@ -24,7 +24,7 @@ export const generalGuides = (all: Guide[]) => all.filter((g) => trackIdsOf(g).l
 function rank(g: Guide): number {
   const s = slugOf(g);
   if (g.data.section === 'probniki') {
-    if (s.startsWith('stellas-')) return 5 + Number(s.slice(-1) || 0) / 10;
+    if (s.startsWith('stellas-') || s.includes('probnik-stellas')) return 5 + Number(s.slice(-1) || 0) / 10;
     if (s.includes('uebungssatz')) return 2;
     return 0;
   }
@@ -34,6 +34,7 @@ function rank(g: Guide): number {
     return 2;
   }
   if (/^(goethe|telc|oesd)-[a-z0-9-]+-(lesen|hoeren|schreiben|sprechen|sprachbausteine)$/.test(s) || s.startsWith('sovety')) return 0;
+  if (s.includes('trenirovka')) return 1;
   if (s.startsWith('redemittel')) return 4;
   if (s.startsWith('kriterii')) return 5;
   if (s.startsWith('bally')) return 6;

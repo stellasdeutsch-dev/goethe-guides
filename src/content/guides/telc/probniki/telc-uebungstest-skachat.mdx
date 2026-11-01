@@ -52,6 +52,7 @@ import Callout from '../../../../components/mdx/Callout.astro';
 import Steps from '../../../../components/mdx/Steps.astro';
 import Step from '../../../../components/mdx/Step.astro';
 import Quiz from '../../../../components/mdx/Quiz.astro';
+import MockCatalog from '../../../../components/mdx/MockCatalog.astro';
 
 Все ищут «реальные тесты telc» в чатах.
 
@@ -106,6 +107,8 @@ import Quiz from '../../../../components/mdx/Quiz.astro';
 
 У DTZ нет ZIP на telc.net. Бесплатная Version 1 только в telc Shop: в PDF 44 страницы, ключ и транскрипт на месте.
 
+Ещё два свежих набора лежат у g.a.s.t., организации на сертификате DTZ: [Übungssatz 1](https://www.gast.de/fileadmin/gast.de/GAST/5_DTZ/PDF/gast_DTZ_UEbungssatz_1.pdf) с [MP3](https://www.gast.de/fileadmin/gast.de/GAST/5_DTZ/Audio/gast_Deutsch-Test_fuer_Zuwanderer_UEbungssatz_1.mp3) и [Übungssatz 2](https://www.gast.de/fileadmin/gast.de/GAST/5_DTZ/PDF/gast_DTZ_UEbungssatz_2.pdf) с [MP3](https://www.gast.de/fileadmin/gast.de/GAST/5_DTZ/Audio/gast_Deutsch-Test_fuer_Zuwanderer_UEbungssatz_2.mp3).
+
 ## Для работы: Beruf и DTB
 
 | Экзамен | Скачать бесплатно | Платные версии |
@@ -151,12 +154,18 @@ DTB (Deutsch-Tests für den Beruf) это экзамены государств�
 
 telc Verlag выкладывает тесты из своих учебников:
 
-- **DTZ** и **telc A2·B1** из «Auf jeden Fall! B1.2»: [PDF DTZ](https://www.telc.net/fileadmin/user_upload/Downloads_Verlag/Auf_jeden_Fall/Uebungstests/Auf_jeden_Fall_B1.2_UEbungstest_DTZ.pdf), [PDF A2·B1](https://www.telc.net/fileadmin/user_upload/Downloads_Verlag/Auf_jeden_Fall/Uebungstests/Auf_jeden_Fall_B1.2_UEbungstest_telc_Deutsch_A2-B1.pdf). Аудио бесплатно. **Ключа в PDF нет**, только бланк.
+- **DTZ** и **telc A2·B1** из «Auf jeden Fall! B1.2»: [PDF DTZ](https://www.telc.net/fileadmin/user_upload/Downloads_Verlag/Auf_jeden_Fall/Uebungstests/Auf_jeden_Fall_B1.2_UEbungstest_DTZ.pdf), [PDF A2·B1](https://www.telc.net/fileadmin/user_upload/Downloads_Verlag/Auf_jeden_Fall/Uebungstests/Auf_jeden_Fall_B1.2_UEbungstest_telc_Deutsch_A2-B1.pdf). Аудио бесплатно. В самих PDF только бланк, а ключ и транскрипт лежат отдельными файлами на telc.net. Ссылки в списке ниже.
 - **DTB B2** из «Einfach besser! 400» и «500»: PDF, аудио, ключ и транскрипт отдельными файлами на [странице бесплатных материалов telc](https://www.telc.net/en/teaching-materials/free-downloads/).
 
 Leseprobe у платных Version 2+ (файлы с BiB в названии) это 6–9 страниц для ознакомления. Не полный тест.
 
 Чего мы не нашли в открытом доступе: PDF тестов Fachsprache (Einzelhandel, Logistik и другие). Бесплатно лежат только их аудио.
+
+## Все пробники из интернета <span class="hl">по уровням</span>
+
+Искали по сайтам экзаменационных центров, издательств и школ. Перезаливы и чужие сканы не брали. Каждую ссылку открыли и проверили 1 ноября 2026 года. Если у уровня мало бесплатных пробников, значит, легально столько и есть. Наши пробники и разборы с бланком лежат в этом же разделе.
+
+<MockCatalog exam="telc" />
 
 ## Как работать с пробником
 
@@ -185,7 +194,7 @@ Leseprobe у платных Version 2+ (файлы с BiB в названии) �
   { q: 'Где взять бесплатный пробник DTZ?', o: ['ZIP на telc.net', 'telc Shop, Kostenloser Download', 'Только у BAMF'], c: 1, x: 'У DTZ нет ZIP на telc.net. Version 1 в telc Shop: PDF и MP3.' },
   { q: 'Leseprobe это…', o: ['полный тест', 'фрагмент на 6–9 страниц', 'ключ ответов'], c: 1, x: 'Фрагмент платной версии для ознакомления.' },
   { q: 'Аудио telc B1 называется …_uebungstest_4.mp3. Это…', o: ['ошибка, нужен другой файл', 'аудио к Übungstest 1', 'аудио к Version 4'], c: 1, x: 'Проверено распознаванием речи: в начале диктор называет Übungstest 1, тексты совпадают с транскриптом.' },
-  { q: 'В тестах из учебника «Auf jeden Fall! B1.2» есть ключ?', o: ['Да', 'Нет, только бланк'], c: 1, x: 'В бесплатных PDF этих тестов ключа нет.' },
+  { q: 'Где ключ к тестам из учебника «Auf jeden Fall! B1.2»?', o: ['В том же PDF', 'Отдельным файлом на telc.net'], c: 1, x: 'В самих PDF только бланк. Ключ и транскрипт лежат отдельными файлами.' },
 ]} />
 
 ## Шпаргалка
