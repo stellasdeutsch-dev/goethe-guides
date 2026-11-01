@@ -28,7 +28,7 @@ const jsonld = [{
   itemListElement: items.map((i, n) => ({ '@type': 'ListItem', position: n + 1, url: new URL(i.href, Astro.site).href, name: i.title })),
 }];
 ---
-<App title={`${name}: подготовка по шагам | Stellas`} description={`Как подготовиться к ${EX.full} ${track.label}: формат, официальный пробник с разбором и гайды по каждой части. ${items.length} бесплатных гайдов.`} jsonld={jsonld} exam={exam} trail={[{ label: EX.name, href: url(`${EX.base}/`) }, { label: track.label }]}>
+<App title={`${name}: подготовка по шагам | Stellas`} description={`Как подготовиться к ${EX.full} ${track.label}: формат, официальный пробник с разбором и гайды по каждой части. ${items.length} гайдов.`} jsonld={jsonld} exam={exam} trail={[{ label: EX.name, href: url(`${EX.base}/`) }, { label: track.label }]}>
   <section class="screen split" data-home data-exam={exam} data-track={track.id} data-short={name} data-label={track.label} data-goethe={exam === 'goethe' ? track.label : undefined}>
     <div class="side">
     <div class="hero">
