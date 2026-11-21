@@ -66,6 +66,30 @@ def gender(label: str, text: str):
     return KNOWN.get(label.split()[-1])
 
 
+SELF = re.compile(r'\b(?:hier (?:ist|spricht)|ich bin|ich heiße|mein Name ist)\s+(?:(die|der|deine|dein|eure|euer|Ihre|Ihr)\s+)?([A-ZÄÖÜ][\wäöüß-]+)')
+SELF_F = set('mama mami nicole simone sevgi saskia bettina martina andrea mira lina dana mara'.split())
+SELF_M = set('papa papi ole malte arman trainer'.split())
+
+
+def self_gender(text: str):
+    """Geschlecht des einzigen Sprechers, wenn er sich vorstellt: «hier ist Petra», «ich bin Historikerin».
+    Firmen («hier ist die Praxis») bleiben ohne Geschlecht."""
+    m = SELF.search(text[:200])
+    if not m:
+        return None
+    art, w = m.group(1), m.group(2).lower()
+    if w in FEMALE or w in SELF_F:
+        return 'f'
+    if w in MALE or w in SELF_M:
+        return 'm'
+    person = art in (None, 'Ihre', 'Ihr', 'deine', 'dein', 'eure', 'euer')
+    if person and w.endswith('in') and len(w) > 5:  # Geophysikerin, Ihre Ärztin
+        return 'f'
+    if person and w.endswith(('er', 'loge', 'graf')):  # Historiker, Ihr Busfahrer
+        return 'm'
+    return 'f' if art is None and w.endswith('a') and len(w) > 2 else None
+
+
 def voices(parts, text, austrian, seed):
     F, M = (F_AT, M_AT) if austrian else (F_DE, M_DE)
     fi = mi = 0
@@ -73,7 +97,7 @@ def voices(parts, text, austrian, seed):
     for spk, _ in parts:
         if spk in cast:
             continue
-        g = gender(spk, text) if spk else ('f' if seed % 2 else 'm')
+        g = gender(spk, text) if spk else (self_gender(text) if len(parts) == 1 else None) or ('f' if seed % 2 else 'm')
         if g is None:
             g = 'm' if fi > mi else 'f'
         if g == 'f':

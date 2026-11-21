@@ -1,0 +1,68 @@
+# Пробник Stellas ÖSD B1 №4: ключ и источники
+
+Статья: `src/content/guides/oesd/probniki/oesd-b1-probnik-stellas-4.mdx`. Создано 2026-11-21.
+Все тексты, аудиоскрипты и задания написаны командой Stellas. Из официальных материалов взяты только формат и короткие стандартные инструкции.
+Бланки: `oesd-b1-stellas-4-lesen`, `oesd-b1-stellas-4-hoeren`; тренажёры `oesd-b1-stellas-4-schreiben-1…3`.
+
+## Формат и баллы (из research/oesd-b1.md, раздел ZB1)
+- Lesen 65 мин, 5 частей, 30 заданий (6/6/7/7/4), рекомендуемое время 10/20/10/15/10; перенос ответов 5 мин внутри 65. [DB 1.4, 2.3]
+- Hören ca. 40 мин, 4 части, 30 заданий (10/5/7/8). Teil 1 и 4 два раза, Teil 2 и 3 один раз; 5 мин на перенос внутри времени. [MS стр. 11–15], [DB 2.3]
+- Lesen/Hören: 1 верный = 3,33 балла, таблица на Antwortbogen: 18 верных = 60 = порог модуля, 17 = 57. [DB 4–6], [MS стр. 22–23]
+- Lesen Teil 3: одна ситуация без объявления, ответ 0. [MS стр. 6]
+- Hören Teil 4: a Moderator/-in, b и c гости. [MS стр. 15]
+- Schreiben 60 мин: 20/25/15 мин, ~80/~80/~40 слов, 40 + 40 + 20 баллов; E по Erfüllung (меньше 50 % слов или мимо темы) = 0 за часть. [MS стр. 16–17], [KS]
+- Sprechen: 15 мин подготовки, ca. 15 мин в паре; 28 + 40 + 16 + 16 (Aussprache); модуль сдан от 60. [DB 1.4, 3, 5], [KSp]
+- Вопрос к слушателям перед благодарностью засчитывается как Abschluss; в Teil 3 полный балл возможен и без Rückmeldung при хороших вопросах. [KSp стр. 1]
+
+## Ключ: Lesen
+| № | Часть | Ответ | № | Часть | Ответ | № | Часть | Ответ |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Teil 1 | Falsch | 11 | Teil 2 | b | 21 | Teil 4 | Nein |
+| 2 | Teil 1 | Falsch | 12 | Teil 2 | c | 22 | Teil 4 | Nein |
+| 3 | Teil 1 | Richtig | 13 | Teil 3 | c | 23 | Teil 4 | Ja |
+| 4 | Teil 1 | Richtig | 14 | Teil 3 | b | 24 | Teil 4 | Ja |
+| 5 | Teil 1 | Falsch | 15 | Teil 3 | f | 25 | Teil 4 | Nein |
+| 6 | Teil 1 | Richtig | 16 | Teil 3 | e | 26 | Teil 4 | Ja |
+| 7 | Teil 2 | b | 17 | Teil 3 | 0 | 27 | Teil 5 | a |
+| 8 | Teil 2 | c | 18 | Teil 3 | h | 28 | Teil 5 | c |
+| 9 | Teil 2 | a | 19 | Teil 3 | j | 29 | Teil 5 | b |
+| 10 | Teil 2 | a | 20 | Teil 4 | Ja | 30 | Teil 5 | a |
+
+Распределение ответов (без Lesen Teil 3): Falsch 3, Ja 4, Nein 3, Richtig 3, a 4, b 3, c 3. Серий из 4+ одинаковых ответов подряд нет.
+Lesen Teil 3: неиспользованные объявления (дистракторы) a, d, g, i.
+
+## Ключ: Hören
+| № | Часть | Ответ | № | Часть | Ответ | № | Часть | Ответ |
+|---|---|---|---|---|---|---|---|---|
+| 1 | Teil 1 | Falsch | 11 | Teil 2 | c | 21 | Teil 3 | Falsch |
+| 2 | Teil 1 | c | 12 | Teil 2 | a | 22 | Teil 3 | Richtig |
+| 3 | Teil 1 | Falsch | 13 | Teil 2 | b | 23 | Teil 4 | a |
+| 4 | Teil 1 | b | 14 | Teil 2 | a | 24 | Teil 4 | c |
+| 5 | Teil 1 | Falsch | 15 | Teil 2 | b | 25 | Teil 4 | b |
+| 6 | Teil 1 | c | 16 | Teil 3 | Richtig | 26 | Teil 4 | a |
+| 7 | Teil 1 | Richtig | 17 | Teil 3 | Falsch | 27 | Teil 4 | c |
+| 8 | Teil 1 | a | 18 | Teil 3 | Falsch | 28 | Teil 4 | b |
+| 9 | Teil 1 | Richtig | 19 | Teil 3 | Richtig | 29 | Teil 4 | c |
+| 10 | Teil 1 | a | 20 | Teil 3 | Richtig | 30 | Teil 4 | b |
+
+Распределение ответов (без Lesen Teil 3): Falsch 6, Richtig 6, a 6, b 6, c 6. Серий из 4+ одинаковых ответов подряд нет.
+
+## Темы
+- Lesen Teil 1: блог «Mein Jahr als Au-pair in Wien» (Нино из Тбилиси).
+- Lesen Teil 2: «Junge Stimmen im Gemeinderat» (молодёжный совет общины в Бургенланде); «Frische Milch rund um die Uhr» (молочный автомат на ферме под Маттерсбургом).
+- Lesen Teil 3: помощь с техникой и медиа в Вене (ответ 0 = курс видеомонтажа для 15-летнего).
+- Lesen Teil 4: налог на сладкие напитки и сладости.
+- Lesen Teil 5: правила пляжа Strandbad Seespitz на Вёртерзе.
+- Hören Teil 1: голосовое о совместной поездке на работу; мебельный магазин; дорожные новости (A2, Reichsbrücke, A10); звонок из детского сада; рождественский рынок на Rathausplatz.
+- Hören Teil 2: пробный курс на скалодроме.
+- Hören Teil 3: знакомые в приёмной врача, Маркус сломал запястье на катке.
+- Hören Teil 4: «Wohnung kaufen oder mieten?» (Moderatorin, Elisabeth Fuchs, Martin Kogler).
+- Schreiben: 1) сад на балконе, письмо подруге Юлии; 2) гостевая книга «Postkarten und Briefe: Braucht man das noch?»; 3) посылка соседки Frau Huber, которую не удалось принять.
+- Sprechen: Teil 1 велопоездка вокруг Нойзидлер-Зе; Teil 2 A «Sollen Familien jeden Abend gemeinsam essen?», B «Mit weniger Dingen leben: Ist das eine gute Idee?».
+
+## Проверка (2026-11-21)
+- `node scripts/check-mdx.mjs` → ✓; `python3 scripts/answers.py` → Lesen 30, Hören 30 (6/6/7/7/4 и 10/5/7/8).
+- Повторное решение: Lesen и Hören заново решены по файлу без AnswerSheet (решал сам автор; независимого решателя запустить не удалось). Расхождений с ключом нет; спорные формулировки переписаны до сдачи.
+- Каждая немецкая цитата в «…» из `why` найдена дословно в тексте или скрипте на странице (скрипт-проверка).
+- Пересечения тем проверены по всем пробникам B1 (Goethe B1 №1–6, telc B1 №1–4, DTZ №1–4, ÖSD B1 №1) на 2026-11-21, включая написанные параллельно. Совпавшие темы заменены. Оставлены как допустимые: лёгкое сходство Sprechen Teil 1 (велопоездка) с голосовым про велопрогулку в Goethe B1 №5 (Hören Teil 1) и травма на катке против письма о падении с велосипеда в telc B1 №4 (Sprachbausteine).
+- Тексты всех 8 записей Listen разные. Двойных кавычек внутри `text` нет. Озвучка не запускалась.

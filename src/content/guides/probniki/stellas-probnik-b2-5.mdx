@@ -1,0 +1,530 @@
+---
+title: 'Пробник Stellas B2 №5: все модули с аудио и разбором'
+hl: 'все модули с аудио и разбором'
+seoTitle: 'Пробник Goethe B2 онлайн №5: все 4 модуля с ответами'
+description: 'Пятый пробник в формате Goethe-Zertifikat B2: 30 заданий Lesen, 30 Hören с аудио, Schreiben с тренажёром и Sprechen. Новые темы, баллы по формуле Goethe.'
+lede: 'Пятый прогон перед экзаменом. Новые тексты и новые голоса. Ответы отмечаешь в бланке и сразу видишь баллы и разбор. Формат как у Goethe B2.'
+section: probniki
+levels: [B2]
+published: 2026-11-21
+updated: 2026-11-21
+kurz:
+  - 'Пятый пробник B2 от <b>Команды Stellas</b>. Тексты и аудио свои, формат как в официальном Modellsatz. Это тренировка, а не настоящий экзамен.'
+  - 'Lesen: <b>5 частей, 30 заданий, 65 минут</b>. Hören: <b>4 части, 30 заданий, около 40 минут</b>.'
+  - 'Каждый верный ответ ×3,33. Порог <b>60 из 100</b>, то есть <b>18 верных из 30</b>.'
+  - 'Schreiben: форум около 150 слов и сообщение около 100 слов. Тренажёр с таймером на 50 и 25 минут.'
+  - 'Sprechen: темы для доклада около 4 минут и образец дискуссии около 5 минут.'
+faq:
+  - q: 'Это официальный тест Goethe-Institut?'
+    a: 'Нет. Все тексты, аудио и задания написала Команда Stellas. Формат, число заданий, время и подсчёт баллов сверены с официальным Modellsatz B2. Официальный пробник мы разобрали отдельно.'
+  - q: 'Чем он отличается от других пробников Stellas B2?'
+    a: 'Формат тот же, содержание другое. Темы, ситуации и герои не повторяются. Решать можно в любом порядке, ответы друг другу не мешают.'
+  - q: 'Сколько правильных ответов нужно, чтобы сдать Lesen или Hören B2?'
+    a: '18 из 30. По официальной таблице Goethe 18 верных дают 60 баллов, а 60 это порог модуля. 17 верных дают 57, это уже не сдано.'
+  - q: 'Как устроено аудио в этом пробнике?'
+    a: 'В диалогах и дискуссиях у каждого человека свой голос. Лимит как на экзамене: Teil 1 и Teil 3 один раз, Teil 2 и Teil 4 два раза. Плеер считает прослушивания и показывает, когда лимит кончился.'
+  - q: 'Как проверить Schreiben, если его не проверяет компьютер?'
+    a: 'Тренажёр проверяет форму: объём, обращение, связки, мнение. Содержание и язык оцени самостоятельно по критериям Goethe на странице «Проверь своё письмо».'
+  - q: 'Можно решать пробник по частям?'
+    a: 'Да. Ответы в бланках сохраняются в этом браузере. Закрой вкладку, вернись завтра, продолжай. Но один полный прогон на таймере всё равно сделай: так проверяется выносливость.'
+next:
+  - title: 'Пробник Stellas B2 №4'
+    text: 'Предыдущий пробник. Сравни баллы.'
+    href: '/ru/guides/probniki/stellas-probnik-b2-4/'
+  - title: 'Пробник Stellas B2 №1'
+    text: 'Самый первый прогон. Если ещё не решал, начни с него.'
+    href: '/ru/guides/probniki/stellas-probnik-b2-1/'
+  - title: 'Разбор официального Modellsatz B2'
+    text: 'PDF и аудио Goethe, бланк и объяснения к 60 заданиям.'
+    href: '/ru/guides/probniki/b2-modellsatz-razbor/'
+  - title: 'Проверь своё письмо'
+    text: 'Задания Schreiben с таймером и самооценкой по критериям Goethe.'
+    href: '/ru/guides/schreiben/proverka-pisma/'
+sources:
+  - title: 'Goethe-Zertifikat B2, Modellsatz Erwachsene, Vs1.5 (goethe.de, PDF): формат, время, число заданий'
+    url: 'https://www.goethe.de/pro/relaunch/prf/materialien/B2/b2_modellsatz_erwachsene.pdf'
+  - title: 'Durchführungsbestimmungen Goethe-Zertifikat B2, Stand 1.9.2025 (goethe.de, PDF): пересчёт ×3,33, порог 60'
+    url: 'https://www.goethe.de/pro/relaunch/prf/de/Durchfuehrungsbestimmungen_B2.pdf'
+---
+import AnswerSheet from '../../../components/mdx/AnswerSheet.astro';
+import Callout from '../../../components/mdx/Callout.astro';
+import Task from '../../../components/mdx/Task.astro';
+import Listen from '../../../components/mdx/Listen.astro';
+import Trainer from '../../../components/mdx/Trainer.astro';
+import Dialog from '../../../components/mdx/Dialog.astro';
+
+Пятый пробник. Ловушки ты уже знаешь в лицо.
+
+Теперь вопрос не «пойму ли я». Вопрос «успею ли я».
+
+Поставь таймер. Без пауз. Как на экзамене.
+
+Это генеральная репетиция.
+
+## Что внутри
+
+Тренировочный пробник в формате Goethe-Zertifikat B2. Это не настоящий экзамен и не материал Goethe-Institut. Тексты, аудио и темы написала Команда Stellas с нуля. Ни одного предложения из материалов Goethe.
+
+| Модуль | Время | Что делать | Баллы |
+|---|---|---|---|
+| Lesen | 65 минут | 5 частей, 30 заданий | верные × 3,33 |
+| Hören | около 40 минут | 4 части, 30 заданий | верные × 3,33 |
+| Schreiben | 75 минут | форум и сообщение | 60 + 40 |
+| Sprechen | около 15 минут на пару + 15 минут подготовки | доклад и дискуссия | 100 |
+
+Порог в каждом модуле 60 из 100. B2 модульный: каждый модуль считается отдельно.
+
+### Как работать со страницей
+
+1. Жми «Старт» в бланке Lesen. Таймер пошёл.
+2. Читай тексты в карточках. Ответы отмечай в бланке под ними.
+3. В Hören сначала читай задания, потом жми «слушать». Счётчик покажет лимит экзамена. Держись его.
+4. Жми «Проверить». Баллы по формуле Goethe и объяснение под каждым заданием.
+
+<Callout type="info" title="Про аудио">
+  <p>В диалогах у каждого свой голос. В плеере есть пауза и перемотка. В генеральной репетиции не трогай их. (Даже если очень хочется)</p>
+  <p>Транскрипт спрятан под каждым аудио. Открывай только после бланка.</p>
+</Callout>
+
+## Lesen: <span class="hl">30 заданий</span> за 65 минут
+
+Пять частей. Начинать можно с любой. Время в карточках это рекомендация из официального Modellsatz: 18, 12, 12, 12 и 6 минут. Плюс около 5 минут на перенос ответов в бланк.
+
+<p class="punch">«Ich hätte mir gewünscht» и «Ich habe gegründet» это разные люди.</p>
+
+### Teil 1: форум
+
+<Task title="Lesen Teil 1" time="18 Minuten">
+  <p>Sie lesen in einem Forum, wie Menschen ihre Rückkehr nach Deutschland nach vielen Jahren im Ausland erleben. Auf welche der vier Personen treffen die Aussagen zu? Die Personen können mehrmals gewählt werden.</p>
+  <p><b>a Daniela</b> Zehn Jahre habe ich in Valencia als Deutschlehrerin gearbeitet. Zurückgekommen bin ich vor einem Jahr, weil meine Mutter nach einem Schlaganfall Pflege braucht und mein Bruder das nicht allein schaffen konnte. Dass ich mich hier mit Formularen herumschlagen muss, hatte ich erwartet, das gehört zu Deutschland einfach dazu. Schwieriger ist es für meinen Mann. Er ist Spanier und gelernter Physiotherapeut, aber sein Abschluss wird hier bisher nicht anerkannt. Bis die Unterlagen geprüft sind, jobbt er in einem Lager. Unser Sohn spricht beide Sprachen fließend und hat in der Schule vom ersten Tag an mitgehalten. Was mir am meisten fehlt, ist nicht das Wetter, sondern die Gelassenheit. In Spanien regt sich niemand auf, wenn der Bus zehn Minuten zu spät kommt. Hier wird sofort geschimpft.</p>
+  <p><b>b Florian</b> Sechs Jahre war ich als Ingenieur in Kanada. Eigentlich wollten wir bleiben, aber dann bekam ich das Angebot, in meiner alten Firma eine Abteilung zu leiten. So eine Chance kommt nicht oft. Was mich wirklich kalt erwischt hat, war die Bürokratie. Ich dachte, als Deutscher melde ich mich einfach wieder an. Stattdessen brauchte ich Wochen und unzählige Termine für Anmeldung, Krankenversicherung und Steuern, und für manches musste ich persönlich erscheinen. Fremd habe ich mich trotzdem nie gefühlt, ich hatte ja immer Kontakt zu meinen Leuten gehalten. Und ehrlich gesagt schätze ich manches jetzt mehr als früher, zum Beispiel einen unbefristeten Vertrag und einen Arbeitgeber, der nicht bei der ersten Krise Leute entlässt.</p>
+  <p><b>c Mehmet</b> Ich bin in Duisburg geboren und habe acht Jahre für meine Firma in Istanbul gearbeitet. Unsere Kinder sind dort zur Schule gegangen, zu Hause haben wir Türkisch und Deutsch gemischt. Als wir zurückkamen, war das Deutsch meiner Tochter für den Unterricht viel zu schwach. Im ersten Halbjahr hat sie fast jeden Nachmittag geweint. Heute gehört sie zu den Besten ihrer Klasse, aber das hat Kraft gekostet. Meine Frau hatte dagegen Glück und hat als Ärztin schnell eine Stelle gefunden. Weil ich gemerkt habe, wie viele Familien vor denselben Fragen stehen, habe ich mit zwei Freunden einen Stammtisch für Rückkehrer gegründet. Wir treffen uns einmal im Monat und tauschen Tipps aus, von der Schulanmeldung bis zur Steuererklärung. Meine Freunde aus der Schulzeit sind übrigens die alten geblieben. Mit ihnen sitze ich am Wochenende wieder im Stadion, als wäre ich nie weg gewesen.</p>
+  <p><b>d Annika</b> Nach fünfzehn Jahren in Australien bin ich vor zwei Jahren nach Hamburg zurückgegangen, ohne Job und ohne Wohnung, einfach weil ich Heimweh hatte. Das war naiv. Ich hatte erwartet, nach Hause zu kommen, und habe mich in den ersten Monaten fremder gefühlt als damals in Sydney. Meine Freundinnen von früher haben inzwischen Kinder, Häuser und volle Terminkalender. Wir mögen uns noch, aber die alte Vertrautheit ist weg. Was mir fehlt, ist vor allem das Meer vor der Haustür. Heute würde ich es anders machen: Wer zurückwill, sollte das genauso sorgfältig planen wie damals die Auswanderung. Also vorher eine Stelle suchen, Kontakte auffrischen und sich klarmachen, dass sich auch die Heimat verändert hat. Ich hätte mir außerdem gewünscht, dass es irgendwo eine Anlaufstelle für Leute wie mich gibt.</p>
+  <ul>
+    <li><i>0</i><span>Wer ist zurückgekommen, um sich um Angehörige zu kümmern? Lösung: a</span></li>
+    <li><i>1</i><span>Wer fühlte sich nach der Rückkehr im eigenen Land zunächst fremd?</span></li>
+    <li><i>2</i><span>Wen hat der Aufwand mit den Ämtern nach der Rückkehr überrascht?</span></li>
+    <li><i>3</i><span>Wer hat ein Angebot für andere Rückkehrer ins Leben gerufen?</span></li>
+    <li><i>4</i><span>Wessen Partner kann noch nicht im erlernten Beruf arbeiten?</span></li>
+    <li><i>5</i><span>Wer stellt fest, dass sich alte Freundschaften verändert haben?</span></li>
+    <li><i>6</i><span>Wessen Kind hatte anfangs sprachliche Schwierigkeiten im Unterricht?</span></li>
+    <li><i>7</i><span>Wer ist wegen eines beruflichen Angebots zurückgekehrt?</span></li>
+    <li><i>8</i><span>Wer vermisst die entspannte Haltung der Menschen im früheren Gastland?</span></li>
+    <li><i>9</i><span>Wer empfiehlt, die Rückkehr gründlich vorzubereiten?</span></li>
+  </ul>
+  <p class="ru">Форум о возвращении в Германию после многих лет за границей. Даниэла вернулась из Испании ухаживать за мамой. Флориан из Канады ради работы. Мехмет из Стамбула с семьёй. Анника из Австралии из-за тоски по дому.</p>
+</Task>
+
+### Teil 2: статья с пропусками
+
+<Task title="Lesen Teil 2" time="12 Minuten">
+  <p>Sie lesen in einer Zeitschrift einen Artikel über Lärm. Welche Sätze passen in die Lücken? Zwei Sätze passen nicht.</p>
+  <p><b>Die Sehnsucht nach Stille</b></p>
+  <p>Ein Presslufthammer auf der Baustelle gegenüber, der Lieferwagen in zweiter Reihe, die Nachbarn mit der neuen Musikanlage: Wer in der Stadt wohnt, kennt das. <b>[0]</b> Viele Menschen haben sich so sehr daran gewöhnt, dass sie es kaum noch bemerken.</p>
+  <p>Doch auch wenn man den Lärm nicht mehr bewusst wahrnimmt, reagiert der Körper darauf. <b>[10]</b> Auf Dauer kann das zu Bluthochdruck und Schlafstörungen führen.</p>
+  <p>Wie störend ein Geräusch empfunden wird, hängt allerdings nicht nur von seiner Lautstärke ab. <b>[11]</b> Das Rauschen eines Wasserfalls kann genauso laut sein wie eine Straße, und trotzdem empfinden es die meisten als angenehm.</p>
+  <p>Besonders belastend ist Lärm, den man nicht selbst beeinflussen kann. <b>[12]</b> Den eigenen Staubsauger dagegen nehmen wir kaum wahr, obwohl er viel lauter ist.</p>
+  <p>Die Städte versuchen gegenzusteuern, etwa mit Tempolimits, leiserem Asphalt und Lärmschutzwänden. <b>[13]</b> Auch die Planung von Gebäuden spielt eine Rolle: Wohnungen, deren Schlafzimmer zum ruhigen Hinterhof zeigen, sind deutlich weniger belastet.</p>
+  <p>Manche Menschen suchen die Stille inzwischen ganz gezielt. <b>[14]</b> Einige Klöster bieten sogar Wochenenden an, an denen die Gäste kein einziges Wort sprechen, und die Plätze sind oft schnell vergeben.</p>
+  <p>Ganz ohne Geräusche geht es allerdings auch nicht. <b>[15]</b> In einem schalldichten Raum hören Menschen nach kurzer Zeit ihren eigenen Herzschlag, und vielen wird das schnell unheimlich.</p>
+  <p><b>0</b> Richtig still ist es dort fast nie, weder am Tag noch in der Nacht. (Beispiel)</p>
+  <p><b>a</b> Sie verbringen ihren Urlaub zum Beispiel an Orten ohne Autos und ohne Handyempfang.</p>
+  <p><b>b</b> Kinder gewöhnen sich übrigens besonders schnell an neue Geräusche.</p>
+  <p><b>c</b> Völlige Stille empfinden die meisten nämlich nicht als Erholung, sondern als bedrückend.</p>
+  <p><b>d</b> Solche Maßnahmen sind allerdings teuer und helfen oft nur an einzelnen Straßen.</p>
+  <p><b>e</b> Deshalb ziehen viele Familien inzwischen lieber aufs Land.</p>
+  <p><b>f</b> Er schüttet Stresshormone aus, sogar im Schlaf.</p>
+  <p><b>g</b> Schon leise Musik aus der Nachbarwohnung kann deshalb um Mitternacht zur Qual werden.</p>
+  <p><b>h</b> Entscheidend ist auch, ob wir es mit etwas Positivem verbinden.</p>
+  <p class="ru">Статья о шуме: как он действует на тело, почему одни звуки мешают больше других, что делают города, где ищут тишину и почему полная тишина тоже не отдых.</p>
+</Task>
+
+### Teil 3: газетная статья
+
+<Task title="Lesen Teil 3" time="12 Minuten">
+  <p>Sie lesen in einer Zeitung einen Artikel über einen Bauernhof. Wählen Sie bei jeder Aufgabe die richtige Lösung.</p>
+  <p><b>Die Ernte gehört allen</b></p>
+  <p>Jeden Donnerstagnachmittag stapeln sich in der Scheune des Hofes Kesselbach Kisten mit Kartoffeln, Lauch, Kürbissen und Salat. Nach und nach kommen Leute mit Körben und Stofftaschen und nehmen sich, was auf einer Tafel steht: zwei Kilo Kartoffeln, eine Stange Lauch, ein Kopf Salat pro Anteil. Eine Kasse gibt es nicht. Die rund 120 Haushalte, die hier ihr Gemüse holen, haben schon im Voraus bezahlt, und zwar für ein ganzes Jahr.</p>
+  <p>Das Prinzip heißt Solidarische Landwirtschaft. Statt ihre Ernte auf dem Markt oder an den Großhandel zu verkaufen, verteilen die Landwirte Jana und Marco Hübner die Kosten des Hofes auf ihre Mitglieder. Diese bezahlen gemeinsam Saatgut, Maschinen und Löhne und bekommen dafür einen Teil der Ernte. „Früher hat uns ein einziger Hagelsturm im Juni die ganze Jahresplanung zerstört“, erzählt Jana Hübner. „Heute tragen wir dieses Risiko nicht mehr allein.“</p>
+  <p>Wie viel jemand zahlt, entscheidet er zum Teil selbst. Einmal im Jahr stellen die Hübners in einer Versammlung vor, was der Hof im kommenden Jahr kosten wird. Danach schreibt jedes Mitglied anonym auf einen Zettel, welchen Monatsbeitrag es zahlen kann. Kommt die nötige Summe nicht zusammen, gibt es eine zweite Runde. „Wer mehr verdient, gibt mehr, und eine Studentin kann trotzdem dabei sein“, sagt Marco Hübner. Bisher hat fast immer schon die erste Runde gereicht.</p>
+  <p>Mitglied zu sein bedeutet allerdings mehr, als Gemüse abzuholen. Mehrmals im Jahr gibt es Aktionstage, an denen die Mitglieder beim Kartoffelsetzen oder bei der Kürbisernte mithelfen. Pflicht ist das nicht, trotzdem kommen viele gern, oft mit ihren Kindern. „Für manche Stadtkinder ist es das erste Mal, dass sie sehen, wie eine Möhre aus der Erde kommt“, sagt Jana Hübner.</p>
+  <p>Nicht jeder kommt mit dem Modell zurecht. Im Winter gibt es wochenlang vor allem Kohl, Rüben und Kartoffeln, Tomaten sucht man vergeblich. Einige Mitglieder sind deshalb nach dem ersten Jahr wieder ausgestiegen. Die Hübners nehmen das gelassen. „Wir sind kein Supermarkt“, sagt Marco Hübner. „Wer bei uns mitmacht, isst, was gerade wächst. Das muss man wollen.“</p>
+  <p>Für die Zukunft haben die beiden einen klaren Plan: Sie wollen nicht wachsen. Zwar stehen inzwischen über fünfzig Haushalte auf der Warteliste, doch mehr Mitglieder würden mehr Fläche, mehr Maschinen und mehr Personal bedeuten. „Dann wären wir wieder ein Betrieb wie jeder andere“, sagt Jana Hübner. Stattdessen beraten die Hübners Landwirte aus der Umgebung, die selbst eine solche Gemeinschaft gründen möchten.</p>
+  <ul>
+    <li><i>16</i><span>Wer im Hof Kesselbach Gemüse abholt, … <b>a</b> hat vorher einen Beitrag für das ganze Jahr gezahlt. <b>b</b> bezahlt das Gemüse nach Gewicht an einer kleinen Kasse. <b>c</b> darf sich so viel nehmen, wie er möchte.</span></li>
+    <li><i>17</i><span>Für die Hübners ist das Modell vor allem wichtig, weil … <b>a</b> sie so höhere Preise als auf dem Markt verlangen können. <b>b</b> sie dadurch im Sommer weniger arbeiten müssen. <b>c</b> sie Ernteausfälle nicht mehr allein verkraften müssen.</span></li>
+    <li><i>18</i><span>Die Beiträge der Mitglieder … <b>a</b> sind für alle Haushalte genau gleich hoch. <b>b</b> richten sich nach den eigenen Möglichkeiten. <b>c</b> werden jedes Jahr von den Hübners festgelegt.</span></li>
+    <li><i>19</i><span>An den Aktionstagen … <b>a</b> müssen alle Mitglieder auf dem Feld mitarbeiten. <b>b</b> können Mitglieder freiwillig auf dem Feld helfen. <b>c</b> verkaufen die Hübners Gemüse an Besucher aus der Stadt.</span></li>
+    <li><i>20</i><span>Manche Mitglieder haben den Hof verlassen, weil … <b>a</b> ihnen das Angebot im Winter zu einseitig war. <b>b</b> die Beiträge nach dem ersten Jahr zu stark gestiegen sind. <b>c</b> sie zu weit vom Hof entfernt wohnen.</span></li>
+    <li><i>21</i><span>Die Hübners möchten in Zukunft … <b>a</b> möglichst bald die Haushalte von der Warteliste aufnehmen. <b>b</b> ihre Anbaufläche und ihren Maschinenpark vergrößern. <b>c</b> anderen Höfen beim Aufbau ähnlicher Projekte helfen.</span></li>
+  </ul>
+  <p class="ru">Статья о солидарном фермерском хозяйстве: как работает оплата вперёд, зачем это фермерам, как решают размер взноса, что за дни работы на поле, кому модель не подошла и почему хозяйство не хочет расти.</p>
+</Task>
+
+### Teil 4: мнения читателей
+
+<Task title="Lesen Teil 4" time="12 Minuten">
+  <p>Sie lesen in einer Zeitschrift Meinungen zum Thema „Sollten Museen keinen Eintritt mehr kosten?“. Welche Äußerung passt zu welcher Überschrift? Eine Äußerung passt nicht. Die Äußerung a ist das Beispiel und kann nicht noch einmal verwendet werden.</p>
+  <p><b>a Jannik</b> Ich studiere Kunstgeschichte und würde am liebsten jede Woche ins Museum gehen. Aber bei zwölf oder fünfzehn Euro pro Besuch ist das mit meinem Budget einfach nicht drin.</p>
+  <p><b>b Gisela</b> Ich arbeite ehrenamtlich in unserem Stadtmuseum. Schon jetzt reicht das Geld kaum für Restaurierungen und neue Ausstellungen. Wenn auch noch die Eintrittsgelder wegfallen, wird an genau diesen Dingen gespart.</p>
+  <p><b>c Kerem</b> Mit zwei kleinen Kindern schaffe ich es höchstens eine Stunde durch ein Museum. Wenn ich dafür vierzig Euro für die Familie bezahle, ärgere ich mich. Ohne Eintritt würde ich öfter einfach mal kurz vorbeischauen.</p>
+  <p><b>d Helmut</b> Ich habe lange in einem Museum gearbeitet, das einige Jahre lang keinen Eintritt verlangt hat. Es kamen zwar mehr Besucher, aber fast nur die, die sowieso schon kamen, nur eben öfter. Neue Gruppen haben wir damit kaum erreicht.</p>
+  <p><b>e Sophie</b> Ich finde, die Menschen, die hier wohnen und mit ihren Steuern die Museen bezahlen, sollten kostenlos hineindürfen. Touristen dagegen können ruhig den vollen Preis zahlen. Das ist in anderen Ländern auch üblich.</p>
+  <p><b>f Frank</b> Ehrlich gesagt gehe ich nicht ins Museum, weil es mich langweilt, nicht wegen des Preises. Lange Texte an der Wand, nichts zum Anfassen, überall Aufseher. Daran müsste sich etwas ändern, dann käme ich auch.</p>
+  <p><b>g Lina</b> In London kostet der Eintritt in viele große Museen nichts. Dafür stehen am Eingang Spendenboxen, und ich habe dort oft mehr hineingeworfen, als bei uns ein Ticket kostet. Freiwillig gibt man irgendwie lieber.</p>
+  <p><b>h Uwe</b> Ganz kostenlos muss es nicht sein. Unser Kunstmuseum hat jeden ersten Sonntag im Monat freien Eintritt, und an diesen Tagen ist es richtig voll. So kann jeder hin, und das Museum hat trotzdem seine Einnahmen.</p>
+  <ul>
+    <li><i>0</i><span>Für Studierende oft zu teuer. Lösung: a</span></li>
+    <li><i>22</i><span>Es ändert sich weniger, als man hofft</span></li>
+    <li><i>23</i><span>Gratis, aber nicht an jedem Tag</span></li>
+    <li><i>24</i><span>Gäste von außerhalb sollen zahlen</span></li>
+    <li><i>25</i><span>Das Problem liegt in den Ausstellungen selbst</span></li>
+    <li><i>26</i><span>Kurze Besuche würden sich lohnen</span></li>
+    <li><i>27</i><span>Geld, das am Ende fehlt</span></li>
+  </ul>
+  <p class="ru">Восемь мнений о бесплатном входе в музеи. Каждому заголовку подбери автора. Мнение a это пример, одно мнение лишнее.</p>
+</Task>
+
+### Teil 5: правила
+
+<Task title="Lesen Teil 5" time="6 Minuten">
+  <p>Sie informieren sich über die Mietbedingungen eines Wohnmobilverleihs. Welche Überschrift passt zu welchem Paragrafen? Vier Überschriften werden nicht gebraucht.</p>
+  <p><b>a</b> Mindestalter und Führerschein · <b>b</b> Kaution · <b>c</b> Abholzeiten · <b>d</b> Haustiere · <b>e</b> Rücktritt von der Buchung · <b>f</b> Schäden und Unfälle · <b>g</b> Fahrten ins Ausland · <b>h</b> Reinigung</p>
+  <p><b>§ 0 (Beispiel, Lösung: a)</b> Mieterinnen und Mieter müssen mindestens 23 Jahre alt sein und seit mindestens drei Jahren eine gültige Fahrerlaubnis der Klasse B besitzen.</p>
+  <p><b>§ 28</b> Wird die Reise bis 60 Tage vor Mietbeginn abgesagt, berechnen wir 20 Prozent des Mietpreises. Bei einer späteren Absage steigt dieser Anteil auf 50 Prozent, ab sieben Tagen vor Mietbeginn ist der volle Preis zu zahlen. Wir empfehlen den Abschluss einer Reiserücktrittsversicherung.</p>
+  <p><b>§ 29</b> Das Fahrzeug ist innen besenrein zurückzugeben. Der Abwassertank und die Toilettenkassette müssen geleert sein. Ist dies nicht der Fall, stellen wir pauschal 150 Euro in Rechnung.</p>
+  <p><b>§ 30</b> Fahrten in die Länder der Europäischen Union sowie in die Schweiz und nach Norwegen sind ohne weitere Genehmigung erlaubt. Für alle anderen Länder ist vor Reisebeginn die schriftliche Zustimmung des Vermieters einzuholen.</p>
+  <p class="ru">Условия проката автодомов. Подбери заголовок к § 28, § 29 и § 30.</p>
+</Task>
+
+<AnswerSheet
+  id="stellas-b2-5-lesen"
+  title="Lesen · Пробник Stellas B2 №5"
+  minutes={65}
+  factor={3.33} maxPoints={100} pass={60}
+  level="B2" module="lesen"
+  hint="Читай тексты выше и отмечай ответы здесь. Объяснения откроются после проверки."
+  items={[
+    { n: 1, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 3, q: 'Кто сначала чувствовал себя чужим дома', why: 'Анника в первые месяцы чувствовала себя «fremder … als damals in Sydney». **Ловушка:** Флориан пишет обратное: «Fremd habe ich mich trotzdem nie gefühlt».' },
+    { n: 2, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 1, q: 'Кого удивила возня с ведомствами', why: 'Флориана бюрократия «kalt erwischt»: недели и множество приёмов. **Ловушка:** Даниэла про бумаги «hatte ich erwartet». Ожидала, значит, не удивилась.' },
+    { n: 3, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Кто создал что-то для других вернувшихся', why: 'Мехмет с друзьями «einen Stammtisch für Rückkehrer gegründet». **Ловушка:** Анника о таком месте только мечтает: «Ich hätte mir außerdem gewünscht».' },
+    { n: 4, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 0, q: 'Чей партнёр пока не работает по профессии', why: 'Диплом мужа Даниэлы «wird hier bisher nicht anerkannt», пока он работает на складе. **Ловушка:** жена Мехмета как врач «schnell eine Stelle gefunden».' },
+    { n: 5, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 3, q: 'Кто замечает, что старая дружба изменилась', why: 'У подруг Анники дети и плотный график, «die alte Vertrautheit ist weg». **Ловушка:** у Мехмета школьные друзья «die alten geblieben».' },
+    { n: 6, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Чьему ребёнку сначала не хватало языка в школе', why: 'Немецкий дочери Мехмета был «für den Unterricht viel zu schwach». **Ловушка:** сын Даниэлы справлялся «vom ersten Tag an».' },
+    { n: 7, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 1, q: 'Кто вернулся ради предложения о работе', why: 'Флориану предложили руководить отделом, «So eine Chance kommt nicht oft». **Ловушка:** Анника вернулась как раз «ohne Job».' },
+    { n: 8, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 0, q: 'Кто скучает по спокойствию людей в прежней стране', why: 'Даниэле не хватает «die Gelassenheit»: в Испании никто не злится на опоздание автобуса. **Ловушка:** Анника скучает по морю, а не по людям.' },
+    { n: 9, part: 'Teil 1', o: ['a', 'b', 'c', 'd'], a: 3, q: 'Кто советует тщательно готовить возвращение', why: 'Анника: возвращение надо планировать «genauso sorgfältig … wie damals die Auswanderung».' },
+    { n: 10, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 5, q: 'Пропуск после «тело всё равно реагирует»', why: 'f «Er» = der Körper, выделяет гормоны стресса. Дальше «das» на это ссылается: давление и плохой сон.' },
+    { n: 11, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 7, q: 'Пропуск после «не только громкость»', why: '«nicht nur von seiner Lautstärke» требует второго фактора: «Entscheidend ist auch». Пример с водопадом это подтверждает.' },
+    { n: 12, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 6, q: 'Пропуск про шум, на который не влияешь', why: 'g «deshalb»: музыка соседа мучает, потому что её не выключишь. Дальше «dagegen» про свой пылесос. **Ловушка:** e тоже с «Deshalb», но про переезд за город, и стык с «dagegen» ломается.' },
+    { n: 13, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 3, q: 'Пропуск после мер городов', why: 'd «Solche Maßnahmen» = ограничения скорости и стены. Дальше «Auch» добавляет ещё один способ: планировку.' },
+    { n: 14, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 0, q: 'Пропуск про тех, кто ищет тишину', why: 'a «Sie» = эти люди, отпуск без машин и связи. Дальше «sogar» усиливает: монастыри с молчанием.' },
+    { n: 15, part: 'Teil 2', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 2, q: 'Пропуск после «совсем без звуков нельзя»', why: 'c «nämlich» объясняет: полная тишина давит. Дальше пример с собственным сердцебиением. Лишние: b и e.' },
+    { n: 16, part: 'Teil 3', o: ['a', 'b', 'c'], a: 0, q: 'Что известно о тех, кто забирает овощи', why: 'Они «schon im Voraus bezahlt, und zwar für ein ganzes Jahr». **Ловушка:** b. «Eine Kasse gibt es nicht». c: на доске указано, сколько «pro Anteil».' },
+    { n: 17, part: 'Teil 3', o: ['a', 'b', 'c'], a: 2, q: 'Почему модель важна фермерам', why: 'Раньше один град рушил весь план, а теперь «tragen wir dieses Risiko nicht mehr allein». **Ловушка:** a и b. О ценах и меньшей работе ни слова.' },
+    { n: 18, part: 'Teil 3', o: ['a', 'b', 'c'], a: 1, q: 'Как определяется взнос', why: 'Каждый пишет, «welchen Monatsbeitrag es zahlen kann». **Ловушка:** c. Хюбнеры называют только общую сумму, а не взнос каждого.' },
+    { n: 19, part: 'Teil 3', o: ['a', 'b', 'c'], a: 1, q: 'Что происходит в дни работы на поле', why: 'Члены помогают сажать и убирать, «Pflicht ist das nicht». **Ловушка:** a. Как раз не обязательно.' },
+    { n: 20, part: 'Teil 3', o: ['a', 'b', 'c'], a: 0, q: 'Почему некоторые ушли', why: 'Зимой неделями капуста, репа и картошка, поэтому «Einige Mitglieder sind deshalb … wieder ausgestiegen». **Ловушка:** b. О росте взносов ни слова.' },
+    { n: 21, part: 'Teil 3', o: ['a', 'b', 'c'], a: 2, q: 'Планы Хюбнеров', why: 'Расти не хотят, «Stattdessen beraten die Hübners Landwirte», которые хотят так же. **Ловушка:** a. Очередь есть, но «Sie wollen nicht wachsen».' },
+    { n: 22, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 3, q: 'Меняется меньше, чем надеешься', why: 'Хельмут: бесплатный вход привёл тех же людей, «Neue Gruppen haben wir damit kaum erreicht».' },
+    { n: 23, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 7, q: 'Бесплатно, но не каждый день', why: 'Уве: «Ganz kostenlos muss es nicht sein», бесплатен первый воскресный день месяца. **Ловушка:** g. В Лондоне вход бесплатный всегда, Лина говорит о пожертвованиях.' },
+    { n: 24, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 4, q: 'Приезжие должны платить', why: 'Софи: местным бесплатно, «Touristen dagegen können ruhig den vollen Preis zahlen».' },
+    { n: 25, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 5, q: 'Проблема в самих выставках', why: 'Франку скучно «nicht wegen des Preises»: длинные тексты, ничего нельзя трогать.' },
+    { n: 26, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 2, q: 'Короткие визиты стали бы выгодны', why: 'Керем с детьми выдерживает час, за сорок евро злится, а бесплатно заходил бы «einfach mal kurz». **Ловушка:** g. Лина говорит о пожертвованиях, а не о длине визита.' },
+    { n: 27, part: 'Teil 4', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 1, q: 'Деньги, которых в итоге не хватит', why: 'Гизела: денег и так мало, без билетов сэкономят на реставрации и выставках. Лишнее мнение: g.' },
+    { n: 28, part: 'Teil 5', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 4, q: '§ 28: отмена поездки и проценты', why: 'Сколько платишь, если поездку «abgesagt». Absage = Rücktritt, e.' },
+    { n: 29, part: 'Teil 5', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 7, q: '§ 29: «besenrein» и пустые баки', why: 'Вернуть чистым и с пустыми баками, иначе 150 евро. Это уборка, h. **Ловушка:** c. Время выдачи и возврата тут не названо, только состояние машины.' },
+    { n: 30, part: 'Teil 5', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 6, q: '§ 30: ЕС, Швейцария и Норвегия', why: 'В какие страны можно ехать без разрешения. Это поездки за границу, g. Лишние: b, c, d, f.' },
+  ]}
+/>
+
+## Hören: <span class="hl pink">слушай как на экзамене</span>
+
+Четыре части. Перед каждой частью на экзамене есть время прочитать задания: в Teil 2 и Teil 4 по 90 секунд, в Teil 3 60 секунд. Тут запись сама не ждёт, так что дай себе это время. Потом жми «слушать».
+
+| Часть | Что звучит | Заданий | Сколько раз |
+|---|---|---|---|
+| Teil 1 | 5 коротких текстов, к каждому Richtig/Falsch и a/b/c | 10 | 1 раз |
+| Teil 2 | Интервью с учёным | 6 | 2 раза |
+| Teil 3 | Разговор ведущего и двух гостей: кто что сказал | 6 | 1 раз |
+| Teil 4 | Доклад | 8 | 2 раза |
+
+<Callout type="trap" title="Teil 1: «sonst» и «nächstes Jahr»">
+  <p>Запасной вариант и планы на потом это не ответ на «что надо сделать сейчас» или «чего она добилась». Слушай, что решено и что уже есть.</p>
+</Callout>
+
+### Teil 1: пять коротких текстов
+
+<Task title="Hören Teil 1 · Text 1">
+  <p>Sie hören fünf Gespräche und Äußerungen. Sie hören jeden Text einmal. Zu jedem Text lösen Sie zwei Aufgaben.</p>
+  <ul>
+    <li><i>1</i><span>Die Frau erzählt von einer Reise mit dem Fahrrad. Richtig / Falsch</span></li>
+    <li><i>2</i><span>Was fand die Frau anstrengend? <b>a</b> den Gegenwind <b>b</b> das Gepäck <b>c</b> die vielen Steigungen</span></li>
+  </ul>
+</Task>
+
+<Listen title="Text 1: Gespräch unter Freunden" plays={1} text="Mann: Und, wie war eure Radtour an der Elbe? Frau: Wunderbar. Zehn Tage, jeden Tag ungefähr sechzig Kilometer. Mann: Klingt anstrengend. Frau: Die Strecke selbst war eigentlich kein Problem, an der Elbe ist es ja fast überall flach. Und das Gepäck haben wir uns jeden Tag ins nächste Hotel bringen lassen. Anstrengend war nur der Wind. An drei Tagen kam er die ganze Zeit von vorn. Da haben wir für dreißig Kilometer fast vier Stunden gebraucht. Mann: Und würdet ihr so etwas wieder machen? Frau: Sofort. Nächstes Jahr fahren wir an der Donau entlang." ru="Кратко: десять дней на велосипеде вдоль Эльбы. Дорога ровная, багаж везли в следующий отель. Тяжело было только из-за встречного ветра." />
+
+<Task title="Hören Teil 1 · Text 2">
+  <ul>
+    <li><i>3</i><span>Die Feier von Frau Schuster muss verschoben werden. Richtig / Falsch</span></li>
+    <li><i>4</i><span>Was soll Frau Schuster tun? <b>a</b> einen neuen Termin für die Feier vorschlagen <b>b</b> einen Aufpreis für den größeren Raum bezahlen <b>c</b> mitteilen, ob ihr der andere Raum recht ist</span></li>
+  </ul>
+</Task>
+
+<Listen title="Text 2: Nachricht auf der Mailbox" plays={1} text="Guten Tag, Frau Schuster, hier ist das Landhotel Birkenhain, die Rezeption. Es geht um die Feier zum siebzigsten Geburtstag Ihres Vaters am zwölften Oktober. Leider ist uns ein Fehler passiert: Unser Kaminzimmer wurde für denselben Abend zweimal vergeben. Wir können Ihnen stattdessen den Wintergarten anbieten. Er ist etwas größer und hat einen schönen Blick auf den See. Für Sie entstehen dadurch natürlich keine zusätzlichen Kosten, und als kleine Entschuldigung laden wir Ihre Gäste zu einem Glas Sekt ein. Bitte rufen Sie uns kurz zurück, damit wir wissen, ob Sie damit einverstanden sind. Sonst suchen wir gern gemeinsam nach einem anderen Termin." ru="Кратко: зал с камином на этот вечер продали дважды. Отель предлагает зимний сад без доплаты и шампанское гостям. Надо перезвонить и сказать, согласна ли. Иначе поищут другую дату." />
+
+<Task title="Hören Teil 1 · Text 3">
+  <ul>
+    <li><i>5</i><span>Der Mann berichtet, dass er einen Kurs an der Volkshochschule besucht. Richtig / Falsch</span></li>
+    <li><i>6</i><span>Was fällt dem Mann am schwersten? <b>a</b> sich die Maschen zu merken <b>b</b> geduldig zu bleiben <b>c</b> Zeit für das Hobby zu finden</span></li>
+  </ul>
+</Task>
+
+<Listen title="Text 3: Umfrage im Radio" plays={1} text="Reporterin: Was haben Sie zuletzt Neues gelernt? Mann: Stricken. Meine Großmutter hat es mir im letzten Winter beigebracht, als ich sie jeden Sonntag besucht habe. Ich dachte immer, das ist nur etwas für ältere Damen. Aber im Zug zur Arbeit sehe ich inzwischen erstaunlich viele junge Leute mit Nadeln und Wolle, und ich bin jetzt einer von ihnen. Die Maschen kann ich mir gut merken, das geht inzwischen fast automatisch. Schwer finde ich etwas ganz anderes, nämlich die Geduld. Ein Pullover dauert Wochen, und wenn man einen Fehler macht, muss man manchmal zehn Reihen wieder auftrennen. Aber das Schönste ist: Meine Großmutter trägt jetzt den Schal, den ich für sie gestrickt habe." ru="Кратко: мужчина научился вязать у бабушки по воскресеньям и вяжет в поезде. Петли запоминает легко, труднее всего терпение. Бабушка носит связанный им шарф." />
+
+<Task title="Hören Teil 1 · Text 4">
+  <ul>
+    <li><i>7</i><span>Die Frau erzählt von einem Gespräch mit ihrem Vorgesetzten. Richtig / Falsch</span></li>
+    <li><i>8</i><span>Was hat die Frau erreicht? <b>a</b> einen kürzeren Arbeitstag am Freitag <b>b</b> mehr Gehalt ab dem nächsten Jahr <b>c</b> eine einmalige Prämie</span></li>
+  </ul>
+</Task>
+
+<Listen title="Text 4: Gespräch unter Freunden" plays={1} text="Mann: Und, wie war dein Gespräch mit dem Chef? Du wolltest doch mehr Geld. Frau: Ja. Mehr Geld gibt es dieses Jahr leider nicht, die Firma muss sparen. Mann: Mist. Frau: Warte. Ich habe ihm dann vorgeschlagen, dass ich stattdessen freitags früher gehen darf. Und dem hat er sofort zugestimmt. Ab nächstem Monat ist freitags um ein Uhr Schluss. Mann: Und das Gehalt bleibt gleich? Frau: Genau. Ehrlich gesagt ist mir das fast lieber als hundert Euro mehr. Mann: Und nächstes Jahr? Frau: Da versuche ich es natürlich wieder mit dem Gehalt." ru="Кратко: прибавки не дали, фирма экономит. Зато начальник согласился, что по пятницам она будет уходить в час дня при той же зарплате. О деньгах она снова спросит в следующем году." />
+
+<Task title="Hören Teil 1 · Text 5">
+  <ul>
+    <li><i>9</i><span>Die Kollegen sprechen über eine Feier, die ausfällt. Richtig / Falsch</span></li>
+    <li><i>10</i><span>Was schlägt der Mann vor? <b>a</b> sich bei der Geschäftsleitung zu beschweren <b>b</b> selbst Geld für das Kinderheim zu sammeln <b>c</b> im Januar selbst ein Treffen zu organisieren</span></li>
+  </ul>
+</Task>
+
+<Listen title="Text 5: Gespräch im Büro" plays={1} text="Frau: Hast du schon gehört? Dieses Jahr gibt es keine Weihnachtsfeier. Die Geschäftsleitung will das Geld lieber einem Kinderheim spenden. Mann: Ehrlich? Finde ich gut. Die Feier im Hotel war letztes Jahr sowieso langweilig. Frau: Na ja, für mich war das die einzige Gelegenheit, die Kollegen aus den anderen Standorten zu treffen. Mann: Stimmt auch wieder. Weißt du was? Wir könnten im Januar einfach selbst etwas organisieren. Jeder bringt etwas zu essen mit, ganz einfach im Besprechungsraum. Frau: Gute Idee, aber die Kollegen aus München kommen dafür bestimmt nicht extra her. Mann: Dann machen wir es an dem Tag, an dem sowieso alle zur Jahresplanung hier sind." ru="Кратко: корпоратива не будет, деньги пойдут детскому дому. Коллега это одобряет и предлагает в январе устроить встречу самим, в день годового планирования, когда приедут все." />
+
+### Teil 2: интервью
+
+<Task title="Hören Teil 2" time="90 Sekunden zum Lesen">
+  <p>Sie hören im Radio ein Interview mit einem Wildtierbiologen. Sie hören den Text zweimal. Wählen Sie bei jeder Aufgabe die richtige Lösung.</p>
+  <ul>
+    <li><i>11</i><span>Herr Petersen kam zur Wolfsforschung, weil … <b>a</b> er schon im Studium Wölfe beobachten wollte. <b>b</b> er sich bei einem Projekt geirrt hatte. <b>c</b> ihn ein Professor dazu überredet hat.</span></li>
+    <li><i>12</i><span>Die Wölfe in Deutschland … <b>a</b> sind von selbst eingewandert. <b>b</b> wurden von Naturschützern ausgesetzt. <b>c</b> stammen aus Wildparks.</span></li>
+    <li><i>13</i><span>Das größte Problem mit Wölfen sind nach Herrn Petersen … <b>a</b> Begegnungen mit Spaziergängern. <b>b</b> Unfälle auf Landstraßen. <b>c</b> Angriffe auf Weidetiere.</span></li>
+    <li><i>14</i><span>Viele Schäfer sind nach Herrn Petersen frustriert, weil … <b>a</b> ihr zusätzlicher Aufwand nicht bezahlt wird. <b>b</b> sie für Elektrozäune keine Unterstützung bekommen. <b>c</b> Herdenschutzhunde für kleine Betriebe zu teuer sind.</span></li>
+    <li><i>15</i><span>Zum Abschuss von Wölfen meint Herr Petersen, … <b>a</b> dass er grundsätzlich verboten bleiben sollte. <b>b</b> dass er nur bei bestimmten Tieren sinnvoll ist. <b>c</b> dass er die Probleme mit Schafen löst.</span></li>
+    <li><i>16</i><span>Für die Zukunft wünscht sich Herr Petersen vor allem, … <b>a</b> dass die Medien mehr über Wölfe berichten. <b>b</b> dass die Zahl der Wölfe begrenzt wird. <b>c</b> dass die betroffenen Gruppen zusammenarbeiten.</span></li>
+  </ul>
+</Task>
+
+<Listen title="Interview: Der Wolf ist zurück" plays={2} text="Moderatorin: Willkommen bei „Wissen kompakt“. Mein Gast ist heute der Wildtierbiologe Doktor Jan Petersen. Herr Petersen, Sie beschäftigen sich seit vielen Jahren mit Wölfen. Wie kam es dazu? Petersen: Ganz ehrlich, durch einen Irrtum. Ich habe Biologie studiert, weil ich mit Meerestieren arbeiten wollte. Für meine Abschlussarbeit habe ich mich dann bei einem Projekt in Brandenburg beworben, weil ich dachte, dort geht es um Fischotter. Erst vor Ort habe ich erfahren, dass das Projekt Wölfe untersucht. Ich bin trotzdem geblieben, und das ist jetzt zwanzig Jahre her. Moderatorin: Lange gab es in Deutschland gar keine Wölfe mehr. Wie sind sie zurückgekommen? Petersen: Ganz von allein. Niemand hat sie ausgesetzt, auch wenn das viele bis heute glauben. Junge Wölfe verlassen ihr Rudel und legen manchmal Hunderte Kilometer zurück, um ein eigenes Revier zu finden. So sind sie aus Polen zu uns gekommen. Moderatorin: Viele Menschen auf dem Land haben Angst vor dem Wolf. Ist die berechtigt? Petersen: Für Menschen ist der Wolf kaum gefährlich. Er ist scheu und geht uns meistens aus dem Weg. Wer einem Wolf begegnet, sollte stehen bleiben, laut sprechen und langsam zurückgehen. Das eigentliche Problem sind Schafe und Ziegen. Für einen Wolf ist eine Weide ohne Schutz wie ein gedeckter Tisch. Moderatorin: Was können die Schäfer tun? Petersen: Am besten helfen hohe Elektrozäune und Herdenschutzhunde. Das Material wird in vielen Bundesländern zu einem großen Teil vom Staat bezahlt. Das Problem ist die Arbeit. Ein Zaun muss jeden Tag kontrolliert werden, und ein Hund braucht Ausbildung und Pflege. Diese Mehrarbeit bezahlt niemand, und genau deshalb sind viele Schäfer zu Recht frustriert. Moderatorin: Manche fordern, Wölfe zum Abschuss freizugeben. Petersen: Ich bin nicht dagegen, einzelne Tiere zu schießen, die immer wieder gelernt haben, Zäune zu überwinden. Das kann sinnvoll sein. Aber zu glauben, man könne das Problem lösen, indem man einfach viele Wölfe tötet, ist falsch. Dann zerfallen die Rudel, und junge, unerfahrene Tiere greifen eher leichte Beute an, also wieder die Schafe. Moderatorin: Was wünschen Sie sich für die Zukunft? Petersen: Weniger Aufregung. In den Medien ist der Wolf entweder ein Monster oder ein Kuscheltier, und beides stimmt nicht. Ich wünsche mir, dass Schäfer, Jäger und Naturschützer an einem Tisch sitzen und gemeinsam nach Lösungen suchen, statt sich gegenseitig Vorwürfe zu machen. Der Wolf wird bleiben, und wir müssen lernen, mit ihm zu leben. Moderatorin: Herr Petersen, vielen Dank für das Gespräch." ru="Кратко: биолог попал в проект о волках по ошибке, думал, что там выдры. Волки пришли сами из Польши. Людям они почти не опасны, главная беда для овец. Материал для заборов во многих землях оплачивает государство, а лишнюю работу никто. Отстрел имеет смысл только для отдельных зверей. Он хочет, чтобы пастухи, охотники и защитники природы искали решения вместе." />
+
+### Teil 3: кто что сказал
+
+<Task title="Hören Teil 3" time="60 Sekunden zum Lesen">
+  <p>Sie hören eine Diskussion im Radio. Sie hören den Text einmal. Wählen Sie bei jeder Aufgabe: Wer sagt das? <b>a</b> der Moderator · <b>b</b> Sandra Brix, Tischlermeisterin · <b>c</b> Felix Hagen, Student</p>
+  <ul>
+    <li><i>17</i><span>In meiner Familie war ein Studium nach dem Abitur selbstverständlich.</span></li>
+    <li><i>18</i><span>Das Studium hat mir Zeit gegeben, mich zu orientieren.</span></li>
+    <li><i>19</i><span>Es ist schwer geworden, Nachwuchs für den eigenen Betrieb zu finden.</span></li>
+    <li><i>20</i><span>Eine Ausbildung kann der erste Schritt zum eigenen Unternehmen sein.</span></li>
+    <li><i>21</i><span>Manchmal denke ich, ein Handwerk hätte besser zu mir gepasst.</span></li>
+    <li><i>22</i><span>Etwas Praxiserfahrung vorher hätte meine Entscheidung vielleicht verändert.</span></li>
+  </ul>
+</Task>
+
+<Listen title="Diskussion: Studium oder Ausbildung?" plays={1} text="Moderator: Guten Abend und willkommen bei „Campus und Karriere“. Nach dem Abitur stehen viele junge Menschen vor der Frage: Studium oder Ausbildung? Darüber spreche ich heute mit Sandra Brix, Tischlermeisterin mit eigenem Betrieb, und mit Felix Hagen, der im dritten Semester Betriebswirtschaft studiert. Ich gebe zu, das Thema ist für mich ein bisschen persönlich. Bei uns zu Hause hieß es immer, wer Abitur hat, der studiert. Alles andere wäre für meine Eltern eine Enttäuschung gewesen. Herr Hagen, warum haben Sie sich für ein Studium entschieden? Hagen: Bei mir hatten die Eltern damit eigentlich nichts zu tun. Ich hatte nach der Schule einfach keine Ahnung, was ich machen will. Betriebswirtschaft klang so, als könnte man danach alles werden. Das Studium hat mir also vor allem Zeit verschafft, mich zu entscheiden. Moderator: Frau Brix, wie sieht es in Ihrem Betrieb aus? Brix: Aufträge haben wir für ein ganzes Jahr, aber mir fehlen die Leute. Für meine zwei Ausbildungsplätze habe ich dieses Jahr genau eine Bewerbung bekommen. Vor fünfzehn Jahren waren es noch zwanzig. Moderator: Woran liegt das? Brix: Viele denken, im Handwerk verdient man wenig und hat keine Aufstiegschancen. Das stimmt so nicht. Ich habe nach der Lehre den Meister gemacht und mit dreißig meinen eigenen Betrieb gegründet. Heute habe ich acht Angestellte. Eine Ausbildung ist kein Ende, sondern ein Anfang. Moderator: Ehrlich gesagt beneide ich Menschen wie Sie manchmal. Ich sitze seit zwanzig Jahren am Schreibtisch und kann zu Hause nicht einmal ein Regal richtig aufhängen. Manchmal denke ich, eine Lehre wäre für mich das Richtige gewesen. Hagen: Bei mir ist es eher so, dass ich in den Vorlesungen mit fünfhundert Leuten sitze und mich frage, wozu ich das alles lerne. Was mir gefehlt hat, war ein Einblick in die Praxis. Hätte ich vor dem Studium ein paar Wochen in einer Firma gearbeitet, hätte ich mich vielleicht anders entschieden. Brix: Genau deshalb biete ich jeden Sommer Schnupperwochen an. Leider kommen meistens nur Schüler, deren Eltern selbst im Handwerk arbeiten. Moderator: Herr Hagen, werden Sie Ihr Studium abbrechen? Hagen: Nein, ich mache es zu Ende. Aber danach schaue ich mir die Praxis genauer an, bevor ich mich wieder festlege. Moderator: Frau Brix, Herr Hagen, vielen Dank für das Gespräch." ru="Кратко: ведущий, столяр-мастер Сандра Брикс и студент Феликс Хаген. У ведущего дома учёба была обязательной. Хагену учёба дала время определиться. У Брикс почти нет учеников, хотя ремесло ведёт к своему делу. Ведущий иногда жалеет, что не пошёл в ремесло. Хагену не хватило практики до учёбы." />
+
+### Teil 4: доклад
+
+<Task title="Hören Teil 4" time="90 Sekunden zum Lesen">
+  <p>Sie hören einen Vortrag von Dr. Falkner zum Thema „Der erste Eindruck“. Sie hören den Text zweimal. Wählen Sie bei jeder Aufgabe die richtige Lösung.</p>
+  <ul>
+    <li><i>23</i><span>Dass wir andere so schnell beurteilen, erklärt Dr. Falkner damit, dass … <b>a</b> es früher für das Überleben wichtig war. <b>b</b> wir heute zu wenig Zeit haben. <b>c</b> wir im Alltag zu vielen Fremden begegnen.</span></li>
+    <li><i>24</i><span>Beim ersten Eindruck ist nach Dr. Falkner besonders wichtig, … <b>a</b> was man in den ersten Sätzen sagt. <b>b</b> welche Kleidung man trägt. <b>c</b> wie man auftritt und spricht.</span></li>
+    <li><i>25</i><span>Ein erster Eindruck ist schwer zu ändern, weil … <b>a</b> die meisten Menschen nachtragend sind. <b>b</b> wir vor allem nach Bestätigung für unser Urteil suchen. <b>c</b> wir uns an spätere Begegnungen schlechter erinnern.</span></li>
+    <li><i>26</i><span>Was erkennen wir auf den ersten Blick recht zuverlässig? <b>a</b> ob jemand ehrlich ist <b>b</b> wie intelligent jemand ist <b>c</b> die Stimmung eines Menschen</span></li>
+    <li><i>27</i><span>Feste Fragen in Vorstellungsgesprächen sollen … <b>a</b> zu gerechteren Entscheidungen führen. <b>b</b> das Gespräch verkürzen. <b>c</b> den Bewerbern die Vorbereitung erleichtern.</span></li>
+    <li><i>28</i><span>Einen guten ersten Eindruck macht man vor allem, wenn man … <b>a</b> sich besonders selbstbewusst und locker gibt. <b>b</b> sich wirklich für das Gegenüber interessiert. <b>c</b> vorher gut einstudierte Sätze verwendet.</span></li>
+    <li><i>29</i><span>Ein misslungener erster Eindruck lässt sich am ehesten korrigieren durch … <b>a</b> mehrere weitere Begegnungen. <b>b</b> eine offene Entschuldigung. <b>c</b> ein klärendes Gespräch.</span></li>
+    <li><i>30</i><span>Dr. Falkner bittet das Publikum, … <b>a</b> weniger über andere zu sprechen. <b>b</b> auf den Eindruck zu achten, den man selbst macht. <b>c</b> die eigenen schnellen Urteile zu hinterfragen.</span></li>
+  </ul>
+</Task>
+
+<Listen title="Vortrag: Der erste Eindruck" plays={2} text="Guten Tag, meine Damen und Herren. In den wenigen Sekunden, in denen ich hier vorne stehe, haben Sie sich bereits ein Bild von mir gemacht. Ob ich sympathisch wirke, kompetent oder vielleicht ein bisschen nervös. Das geht schneller, als Sie denken. Oft reicht ein kurzer Blick auf ein Gesicht, und wir haben ein Urteil gefällt. Darüber möchte ich heute sprechen. Warum urteilen wir so schnell? Aus Sicht der Evolution war das überlebenswichtig. Unsere Vorfahren mussten in kürzester Zeit entscheiden, ob ein Fremder freundlich oder gefährlich ist. Für langes Nachdenken war keine Zeit. Dieses Programm tragen wir bis heute in uns, auch wenn uns im Supermarkt selten ein Säbelzahntiger begegnet. Worauf achten wir dabei? Weniger auf das, was jemand sagt, als darauf, wie er es sagt. Haltung, Stimme und Blickkontakt wirken stärker als der Inhalt der ersten Sätze. Interessant ist, dass die Kleidung eine geringere Rolle spielt, als viele glauben. Ein teurer Anzug hilft wenig, wenn jemand dabei unsicher auf den Boden schaut. Das Problem ist, dass erste Eindrücke hartnäckig sind. Haben wir jemanden einmal als unfreundlich eingeordnet, suchen wir unbewusst nach Hinweisen, die das bestätigen. Was nicht ins Bild passt, übersehen wir. So kann ein schlechter erster Tag im neuen Job einen Menschen noch Monate später verfolgen. Liegen wir mit unserem schnellen Urteil denn wenigstens richtig? Manchmal schon. Ob jemand gerade gut oder schlecht gelaunt ist, erkennen wir oft erstaunlich genau. Bei Eigenschaften wie Ehrlichkeit oder Intelligenz dagegen täuschen wir uns häufig. Wer glaubt, Lügner am Blick zu erkennen, überschätzt sich in aller Regel. Besonders folgenreich ist das bei Vorstellungsgesprächen. Viele Personalverantwortliche treffen ihre Entscheidung schon in den ersten Minuten und verbringen den Rest des Gesprächs damit, sie zu begründen. Manche Unternehmen arbeiten deshalb mit festen Fragen, die allen Bewerberinnen und Bewerbern in derselben Reihenfolge gestellt werden. Das macht das Urteil fairer. Kann man den ersten Eindruck beeinflussen? Ja, aber nicht durch Tricks. Wer sich verstellt und eine Rolle spielt, wirkt meist künstlich, und das merkt das Gegenüber. Viel wirksamer ist echtes Interesse. Wer zuhört, nachfragt und sich den Namen des anderen merkt, wird fast immer positiv wahrgenommen. Und wenn der erste Eindruck misslungen ist? Dann hilft vor allem Zeit. Eine einzige Begegnung kann ein schlechtes Bild selten korrigieren. Erst wenn man sich mehrmals und in verschiedenen Situationen erlebt, entsteht ein genaueres Urteil. Deshalb lohnt es sich, nach einem schlechten Start nicht aufzugeben. Zum Schluss eine Bitte an Sie. Achten Sie in den nächsten Tagen einmal darauf, wie schnell Sie selbst über andere urteilen, über die neue Kollegin, den Kellner oder den Nachbarn. Und fragen Sie sich dann, worauf sich Ihr Urteil eigentlich stützt. Sie werden überrascht sein, wie wenig es oft ist. Vielen Dank." ru="Кратко: быстрые суждения достались нам от предков, им это помогало выжить. Важнее, как человек держится и говорит, а не одежда. Первое впечатление держится, потому что мы ищем подтверждения. Настроение угадываем точно, честность и ум плохо. Единые вопросы на собеседовании делают решение честнее. Помогает настоящий интерес к собеседнику. Исправить впечатление можно только несколькими встречами. Просьба: замечать и проверять свои быстрые суждения." />
+
+<AnswerSheet
+  id="stellas-b2-5-hoeren"
+  title="Hören · Пробник Stellas B2 №5"
+  minutes={40}
+  factor={3.33} maxPoints={100} pass={60}
+  level="B2" module="hoeren"
+  hint="Слушай аудио выше и отмечай ответы здесь. Объяснения откроются после проверки."
+  items={[
+    { n: 1, part: 'Teil 1', o: ['Richtig', 'Falsch'], a: 0, q: 'Текст 1: поездка на велосипеде', why: '«wie war eure Radtour an der Elbe?», дальше весь разговор о ней. Richtig.' },
+    { n: 2, part: 'Teil 1', o: ['a', 'b', 'c'], a: 0, q: 'Что было тяжело', why: '«Anstrengend war nur der Wind», он дул «von vorn». **Ловушка:** b. Багаж везли в отель. c: там «fast überall flach».' },
+    { n: 3, part: 'Teil 1', o: ['Richtig', 'Falsch'], a: 1, q: 'Текст 2: праздник надо перенести', why: 'Отель предлагает другой зал в тот же вечер. Другая дата только «Sonst», если не согласится. Falsch.' },
+    { n: 4, part: 'Teil 1', o: ['a', 'b', 'c'], a: 2, q: 'Что должна сделать фрау Шустер', why: '«Bitte rufen Sie uns kurz zurück, damit wir wissen, ob Sie damit einverstanden sind». **Ловушка:** b. «keine zusätzlichen Kosten». a: только запасной вариант.' },
+    { n: 5, part: 'Teil 1', o: ['Richtig', 'Falsch'], a: 1, q: 'Текст 3: курс в народном университете', why: 'Вязать его научила бабушка, «als ich sie jeden Sonntag besucht habe». Никакой VHS. Falsch.' },
+    { n: 6, part: 'Teil 1', o: ['a', 'b', 'c'], a: 1, q: 'Что ему труднее всего', why: '«Schwer finde ich etwas ganz anderes, nämlich die Geduld». **Ловушка:** a. Петли «kann ich mir gut merken».' },
+    { n: 7, part: 'Teil 1', o: ['Richtig', 'Falsch'], a: 0, q: 'Текст 4: разговор с начальником', why: 'Друг спрашивает, «wie war dein Gespräch mit dem Chef», и она рассказывает именно о нём. Richtig.' },
+    { n: 8, part: 'Teil 1', o: ['a', 'b', 'c'], a: 0, q: 'Чего она добилась', why: '«Ab nächstem Monat ist freitags um ein Uhr Schluss». **Ловушка:** b. О деньгах «Da versuche ich es natürlich wieder mit dem Gehalt», то есть только в следующем году.' },
+    { n: 9, part: 'Teil 1', o: ['Richtig', 'Falsch'], a: 0, q: 'Текст 5: праздник отменяется', why: '«Dieses Jahr gibt es keine Weihnachtsfeier». Об этом весь разговор. Richtig.' },
+    { n: 10, part: 'Teil 1', o: ['a', 'b', 'c'], a: 2, q: 'Что предлагает мужчина', why: '«Wir könnten im Januar einfach selbst etwas organisieren». **Ловушка:** b. Жертвует руководство, и он это только одобряет. a: жаловаться никто не собирается.' },
+    { n: 11, part: 'Teil 2', o: ['a', 'b', 'c'], a: 1, q: 'Как он пришёл к волкам', why: '«durch einen Irrtum»: думал, проект о выдрах. **Ловушка:** a. Учиться он шёл ради морских животных.' },
+    { n: 12, part: 'Teil 2', o: ['a', 'b', 'c'], a: 0, q: 'Откуда в Германии волки', why: '«Ganz von allein. Niemand hat sie ausgesetzt». **Ловушка:** b. Это то, что «viele bis heute glauben».' },
+    { n: 13, part: 'Teil 2', o: ['a', 'b', 'c'], a: 2, q: 'Главная проблема с волками', why: '«Das eigentliche Problem sind Schafe und Ziegen». **Ловушка:** a. Людям волк «kaum gefährlich».' },
+    { n: 14, part: 'Teil 2', o: ['a', 'b', 'c'], a: 0, q: 'Почему пастухи недовольны', why: '«Diese Mehrarbeit bezahlt niemand». **Ловушка:** b. Материал для заборов «zu einem großen Teil vom Staat bezahlt».' },
+    { n: 15, part: 'Teil 2', o: ['a', 'b', 'c'], a: 1, q: 'Его мнение об отстреле', why: 'Отдельных зверей, которые научились перелезать заборы, стрелять «kann sinnvoll sein». **Ловушка:** c. Массовый отстрел «ist falsch», нападут молодые волки.' },
+    { n: 16, part: 'Teil 2', o: ['a', 'b', 'c'], a: 2, q: 'Чего он хочет в будущем', why: 'Пастухи, охотники и защитники природы «an einem Tisch». **Ловушка:** a. СМИ он как раз критикует: там волк «entweder ein Monster oder ein Kuscheltier».' },
+    { n: 17, part: 'Teil 3', o: ['a Moderator', 'b Brix', 'c Hagen'], a: 0, q: 'Дома учёба после школы была само собой', why: 'Ведущий: «wer Abitur hat, der studiert». **Ловушка:** Хаген прямо говорит: «Bei mir hatten die Eltern damit eigentlich nichts zu tun».' },
+    { n: 18, part: 'Teil 3', o: ['a Moderator', 'b Brix', 'c Hagen'], a: 2, q: 'Учёба дала время определиться', why: 'Хаген: «Das Studium hat mir also vor allem Zeit verschafft, mich zu entscheiden».' },
+    { n: 19, part: 'Teil 3', o: ['a Moderator', 'b Brix', 'c Hagen'], a: 1, q: 'Трудно найти учеников в своё дело', why: 'Брикс: на два места ученика «genau eine Bewerbung».' },
+    { n: 20, part: 'Teil 3', o: ['a Moderator', 'b Brix', 'c Hagen'], a: 1, q: 'Профобучение как путь к своей фирме', why: 'Брикс после учёбы стала мастером и открыла свою мастерскую: «Eine Ausbildung ist kein Ende, sondern ein Anfang».' },
+    { n: 21, part: 'Teil 3', o: ['a Moderator', 'b Brix', 'c Hagen'], a: 0, q: 'Ремесло подошло бы мне больше', why: 'Ведущий: «eine Lehre wäre für mich das Richtige gewesen». **Ловушка:** Хаген тоже сомневается, но в смысле учёбы, о ремесле не говорит.' },
+    { n: 22, part: 'Teil 3', o: ['a Moderator', 'b Brix', 'c Hagen'], a: 2, q: 'Практика заранее могла изменить решение', why: 'Хаген: поработал бы в фирме, «hätte ich mich vielleicht anders entschieden». **Ловушка:** Брикс откликается своими «Schnupperwochen», но это её предложение, а не её опыт.' },
+    { n: 23, part: 'Teil 4', o: ['a', 'b', 'c'], a: 0, q: 'Почему мы судим так быстро', why: '«Aus Sicht der Evolution war das überlebenswichtig». **Ловушка:** b. Нехватка времени была у предков, а не «heute».' },
+    { n: 24, part: 'Teil 4', o: ['a', 'b', 'c'], a: 2, q: 'Что особенно важно в первом впечатлении', why: '«Haltung, Stimme und Blickkontakt wirken stärker als der Inhalt der ersten Sätze». **Ловушка:** b. Одежда играет «eine geringere Rolle».' },
+    { n: 25, part: 'Teil 4', o: ['a', 'b', 'c'], a: 1, q: 'Почему впечатление трудно изменить', why: '«suchen wir unbewusst nach Hinweisen, die das bestätigen».' },
+    { n: 26, part: 'Teil 4', o: ['a', 'b', 'c'], a: 2, q: 'Что мы угадываем довольно точно', why: 'Хорошее или плохое настроение «erkennen wir oft erstaunlich genau». **Ловушка:** a и b. В честности и уме «täuschen wir uns häufig».' },
+    { n: 27, part: 'Teil 4', o: ['a', 'b', 'c'], a: 0, q: 'Зачем единые вопросы на собеседовании', why: '«Das macht das Urteil fairer». Fair = gerecht.' },
+    { n: 28, part: 'Teil 4', o: ['a', 'b', 'c'], a: 1, q: 'Как произвести хорошее впечатление', why: '«Viel wirksamer ist echtes Interesse»: слушать, спрашивать, запомнить имя. **Ловушка:** a и c. Роль и трюки «wirkt meist künstlich».' },
+    { n: 29, part: 'Teil 4', o: ['a', 'b', 'c'], a: 0, q: 'Как исправить неудачное впечатление', why: 'Одна встреча редко помогает, нужно встречаться «mehrmals und in verschiedenen Situationen».' },
+    { n: 30, part: 'Teil 4', o: ['a', 'b', 'c'], a: 2, q: 'О чём просят публику в конце', why: 'Замечать, как быстро «Sie selbst über andere urteilen», и спросить себя, на чём суждение держится. **Ловушка:** b. Речь о том, как ты судишь других, а не как тебя видят.' },
+  ]}
+/>
+
+<p class="punch">Ответ живёт в том, что решено. Не в том, что «может быть потом».</p>
+
+## Schreiben: <span class="hl lime">два текста</span> за 75 минут
+
+Два задания, порядок любой. Форум стоит 60 баллов, сообщение 40. Рекомендованное время 50 и 25 минут, тренажёры ниже стоят ровно на них.
+
+Проверяют четыре вещи: выполнение задания, связность, словарь, грамматика. Пункт пропущен, уже минус по первому критерию. Мимо темы или меньше половины слов, и за всю часть 0. Подробно: [критерии Schreiben](../../schreiben/kriterii-schreiben-goethe/).
+
+### Teil 1: форум
+
+<Task title="Schreiben Teil 1" time="50 Minuten" words="circa 150 Wörter">
+  <p>Sie schreiben im Online-Forum einer Zeitschrift einen Beitrag zum Thema „Schenken: Dinge oder Erlebnisse?“.</p>
+  <ul>
+    <li><i>1</i><span>Äußern Sie Ihre Meinung zum Thema Geschenke.</span></li>
+    <li><i>2</i><span>Nennen Sie Gründe, warum viele Menschen lieber Erlebnisse verschenken.</span></li>
+    <li><i>3</i><span>Erläutern Sie Vor- und Nachteile von Geldgeschenken.</span></li>
+    <li><i>4</i><span>Machen Sie einen Vorschlag, wie man Geschenke nachhaltiger gestalten kann.</span></li>
+  </ul>
+  <p>Denken Sie an eine Einleitung und einen Schluss.</p>
+  <p class="ru">Пост в онлайн-форум журнала на тему «Дарить: вещи или впечатления?». Твоё мнение о подарках. Почему многие предпочитают дарить впечатления. Плюсы и минусы подарков деньгами. Предложение, как сделать подарки экологичнее. Плюс вступление и вывод.</p>
+</Task>
+
+<Trainer id="stellas-b2-5-forum" mode="forum" minutes={50} target={150} points={['1. Мнение о подарках', '2. Почему многие дарят впечатления', '3. Плюсы и минусы подарков деньгами', '4. Предложение: как дарить экологичнее']} />
+
+### Teil 2: сообщение начальнице
+
+<Task title="Schreiben Teil 2" time="25 Minuten" words="circa 100 Wörter">
+  <p>Ihre Firma hat Ihnen eine dreitägige Fortbildung zum Thema Kundenkommunikation bezahlt. Gestern ist die Fortbildung zu Ende gegangen. Schreiben Sie Ihrer Vorgesetzten, Frau Haas, eine Nachricht.</p>
+  <ul>
+    <li><i>1</i><span>Bedanken Sie sich für die Möglichkeit, an der Fortbildung teilzunehmen.</span></li>
+    <li><i>2</i><span>Berichten Sie, was Sie gelernt haben.</span></li>
+    <li><i>3</i><span>Erklären Sie, was Ihnen an der Fortbildung weniger gefallen hat.</span></li>
+    <li><i>4</i><span>Machen Sie einen Vorschlag, wie das Team von Ihren neuen Kenntnissen profitieren kann.</span></li>
+  </ul>
+  <p>Überlegen Sie sich eine passende Reihenfolge für die Inhaltspunkte. Vergessen Sie nicht Anrede und Gruß.</p>
+  <p class="ru">Фирма оплатила тебе трёхдневный курс по общению с клиентами. Вчера он закончился. Напиши начальнице, фрау Хаас. Поблагодари за возможность, расскажи, чему научился, объясни, что понравилось меньше, и предложи, как команда может воспользоваться новыми знаниями.</p>
+</Task>
+
+<Trainer id="stellas-b2-5-formal" mode="formal" minutes={25} target={100} points={['1. Благодарность за обучение', '2. Чему научился', '3. Что понравилось меньше', '4. Предложение: как команде использовать знания']} />
+
+<Callout type="trap" title="Тренажёр видит форму, а не смысл">
+  <p>Зелёные галочки значат: объём есть, связки есть, обращение на месте. Но раскрыты ли все четыре пункта и нет ли ошибок, решать тебе. Оцени текст по критериям Goethe на странице <a href="../../schreiben/proverka-pisma/">Проверь своё письмо</a>.</p>
+</Callout>
+
+<p class="punch">Критика начальнице тоже пункт задания. Вежливо, но пиши.</p>
+
+## Sprechen: <span class="hl">доклад и дискуссия</span>
+
+Перед экзаменом 15 минут подготовки. Тезисы можно держать перед собой. Читать с листа нельзя, говорить надо свободно.
+
+- **Teil 1.** Доклад около 4 минут на одну тему из двух. Потом вопросы от партнёра и экзаменатора. За доклад до 32 баллов, за ответы на вопросы ещё 12.
+- **Teil 2.** Дискуссия с партнёром около 5 минут. До 40 баллов.
+- **Произношение** за обе части вместе, до 16 баллов.
+
+Все строчки бланка оценки: [критерии Sprechen](../../sprechen/kriterii-sprechen-goethe/).
+
+### Teil 1: доклад
+
+<Task title="Sprechen Teil 1 · Vortrag" time="circa 4 Minuten">
+  <p>Wählen Sie ein Thema (1 oder 2) und halten Sie einen kurzen Vortrag.</p>
+  <p><b>Thema 1: Kinder fürs Lesen begeistern</b></p>
+  <p><b>Thema 2: Gut im Team zusammenarbeiten</b></p>
+  <ul>
+    <li><i>1</i><span>Stellen Sie mehrere Möglichkeiten vor.</span></li>
+    <li><i>2</i><span>Gehen Sie auf eine Möglichkeit genauer ein.</span></li>
+    <li><i>3</i><span>Nennen Sie Vor- und Nachteile und bewerten Sie diese.</span></li>
+  </ul>
+  <p>Strukturieren Sie Ihren Vortrag mit einer Einleitung, einem Hauptteil und einem Schluss. Sprechen Sie circa 4 Minuten.</p>
+  <p class="ru">Выбери тему: «Как увлечь детей чтением» или «Как хорошо работать в команде». Назови несколько вариантов, один разбери подробнее, плюсы и минусы с оценкой. Вступление, основная часть, вывод. Около 4 минут.</p>
+</Task>
+
+Каркас на 4 минуты для темы 1:
+
+- **Вступление, 30 секунд.** Тема и план: «In meinem Vortrag möchte ich zuerst einige Möglichkeiten vorstellen und dann auf eine davon genauer eingehen.»
+- **Варианты, 1 минута.** Читать вслух перед сном, ходить в библиотеку, давать выбирать книги самим, комиксы и аудиокниги. По одной фразе на каждый.
+- **Один подробно, 1 минута.** Например, чтение вслух: с какого возраста, сколько минут, что делать, если ребёнок перебивает.
+- **Плюсы и минусы, 1 минута.** Близость и новые слова. Но вечером у родителей часто нет сил, и чтение заменяет мультик.
+- **Вывод, 30 секунд.** Своя оценка и мостик: «Ich freue mich auf Ihre Fragen.»
+
+После доклада тебя спросят. Готовься к вопросам вроде «Was hast du als Kind gern gelesen?» или «Sind Hörbücher genauso gut wie Bücher?». Отвечай полным ответом и с причиной. Это 12 баллов.
+
+### Teil 2: дискуссия
+
+<Task title="Sprechen Teil 2 · Diskussion" time="circa 5 Minuten">
+  <p><b>Sollen Zoos abgeschafft werden?</b></p>
+  <p>Tauschen Sie Ihre Argumente aus, reagieren Sie auf die Argumente Ihrer Partnerin / Ihres Partners und fassen Sie am Ende Ihren Standpunkt zusammen.</p>
+  <p>Mögliche Aspekte: Artenschutz · Wohl der Tiere · Bildung · Alternativen</p>
+  <p class="ru">Нужно ли закрыть зоопарки? Обменяйтесь аргументами, реагируйте на доводы партнёра, в конце подведите свою позицию. Опоры: защита видов, благополучие животных, образование, альтернативы.</p>
+</Task>
+
+Образец ниже. Смотри не на аргументы, а на связки между репликами: частично согласиться, возразить, предложить компромисс, подвести итог. За это и дают баллы по Interaktion.
+
+<Dialog title="Teil 2: Sollen Zoos abgeschafft werden?" lines={[
+  { who: 'A', name: 'Du', de: 'Soll ich anfangen? Ich halte Zoos für überholt. Ein Elefant oder ein Eisbär legt in freier Natur jeden Tag viele Kilometer zurück. In einem Gehege kann das kein Zoo der Welt bieten.', ru: 'Начну? Я считаю зоопарки пережитком. Слон или белый медведь на воле проходят каждый день много километров. В вольере ни один зоопарк мира этого не даст.' },
+  { who: 'B', name: 'Partnerin', de: 'Bei großen Tieren gebe ich dir recht. Aber Zoos tun auch viel für den Artenschutz. Manche Tierarten gibt es in der Natur kaum noch. Durch Zuchtprogramme in Zoos können sie überleben und zum Teil sogar wieder ausgewildert werden.', ru: 'Насчёт крупных животных ты прав. Но зоопарки многое делают для защиты видов. Некоторых видов в природе почти не осталось. Благодаря программам разведения они выживают, а часть даже возвращают в дикую природу.' },
+  { who: 'A', name: 'Du', de: 'Das ist ein gutes Argument, das stimmt. Aber müsste man dann nicht eher die Lebensräume der Tiere schützen? Das Geld für neue Gehege könnte man doch in Naturschutzgebiete stecken.', ru: 'Хороший аргумент, это правда. Но тогда не лучше ли защищать места, где эти животные живут? Деньги на новые вольеры можно было бы вложить в заповедники.' },
+  { who: 'B', name: 'Partnerin', de: 'Das eine schließt das andere nicht aus. Und denk an die Kinder. Viele sehen im Zoo zum ersten Mal ein echtes Tier und nicht nur ein Bild auf dem Bildschirm. Ich glaube, das weckt Interesse am Naturschutz.', ru: 'Одно не исключает другого. И подумай о детях. Многие впервые видят в зоопарке живое животное, а не картинку на экране. Мне кажется, это пробуждает интерес к защите природы.' },
+  { who: 'A', name: 'Du', de: 'Da ist etwas dran. Wie wäre es mit einem Kompromiss? Zoos halten nur noch Tiere, denen sie wirklich gerecht werden können, und verzichten auf Elefanten oder Eisbären.', ru: 'В этом что-то есть. А если компромисс? Зоопарки держат только тех животных, которым правда могут обеспечить нормальные условия, и отказываются от слонов и белых медведей.' },
+  { who: 'B', name: 'Partnerin', de: 'Damit könnte ich gut leben. Viele Zoos gehen ja schon in diese Richtung und bauen größere, naturnahe Anlagen.', ru: 'С этим я вполне могла бы жить. Многие зоопарки уже идут в эту сторону и строят большие вольеры, похожие на природу. (И таблички там теперь длиннее, чем раньше)' },
+  { who: 'A', name: 'Du', de: 'Wenn ich kurz zusammenfassen darf: Wir sind uns einig, dass große Tiere nicht in kleine Gehege gehören. Ich bin aber weiterhin skeptisch, ob Zoos auf Dauer der richtige Weg sind.', ru: 'Если коротко подвести итог: мы согласны, что крупным животным не место в маленьких вольерах. Но я по-прежнему сомневаюсь, что зоопарки в долгосрочной перспективе правильный путь.' },
+  { who: 'B', name: 'Partnerin', de: 'Und ich finde, dass gute Zoos für den Artenschutz und für Kinder unverzichtbar bleiben. Abschaffen würde ich sie nicht, aber verändern schon.', ru: 'А я считаю, что хорошие зоопарки остаются незаменимыми для защиты видов и для детей. Закрывать бы не стала, а вот менять да.' },
+]} />
+
+Заметь: «Das eine schließt das andere nicht aus» это возражение без спора. Ты не отрицаешь довод партнёра, а ставишь свой рядом. Это уровень B2.
+
+<p class="punch">Возразить можно и без «нет». Скажи «и ещё».</p>
+
+## Где ушли баллы
+
+Бланки проверены? Найди слабое место в таблице.
+
+| Где минус | Что делать | Наш гайд |
+|---|---|---|
+| Lesen Teil 1 и 4: путаешь авторов | Отличай «ожидал» от «удивился»: Даниэла бумаги ожидала, Флориана они застали врасплох | [Goethe B2 Lesen](../../lesen/goethe-b2-lesen/) |
+| Lesen Teil 2: пропуски | Местоимение в варианте (Er, Sie, Solche) должно указывать на слово перед пропуском | [Коннекторы](../../grammatik/konnektoren-goethe-b1/) |
+| Lesen Teil 3, Hören Teil 2 и 4 | Ищи синоним, а не совпадение. «zurückzugeben» в тексте не делает ответом «Rückgabe» | [Не сказано или неправильно](../../lesen/richtig-falsch-goethe-lesen/) |
+| Hören Teil 1: запасной вариант | «Sonst …» и «nächstes Jahr …» не ответ на «что сейчас» | [Goethe B2 Hören](../../hoeren/goethe-b2-hoeren/) |
+| Hören Teil 3: кто что сказал | Ведущий тоже рассказывает о себе. Отклик гостя на его слова ещё не согласие | [Кто что сказал](../../hoeren/wer-sagt-was-hoeren-teil-4/) |
+| Не хватило времени на Lesen | Держи время по частям: 18, 12, 12, 12, 6 минут. Плюс 5 на бланк | [Goethe B2 Lesen](../../lesen/goethe-b2-lesen/) |
+| Schreiben: пропущен пункт или мало слов | Четыре пункта = четыре абзаца. Перед сдачей проверь каждый | [Проверь своё письмо](../../schreiben/proverka-pisma/) |
+| Schreiben: простые фразы, мало связок | Добавь придаточные, пассив, Konjunktiv II в предложении | [Грамматика B2](../../grammatik/grammatika-b2-goethe/) |
+| Sprechen: доклад без плана, дискуссия без реакции | Вступление с планом. В дискуссии сначала ответ на довод партнёра, потом свой | [Критерии Sprechen](../../sprechen/kriterii-sprechen-goethe/) |
+
+Все пять пробников Stellas позади? Последний прогон сделай по [официальному Modellsatz B2 с разбором](../b2-modellsatz-razbor/). Его формат ты теперь знаешь лучше, чем свой подъезд.
+
+## Шпаргалка
+
+- **Lesen** → 30 заданий, 65 минут, время по частям 18 / 12 / 12 / 12 / 6
+- **Hören** → 30 заданий, около 40 минут, Teil 1 и 3 один раз, Teil 2 и 4 два раза
+- **Порог** → 60 из 100 в каждом модуле. В Lesen и Hören это 18 верных
+- **Ловушка** → «hätte mir gewünscht» и «hatte erwartet» это не то же, что «сделал» и «удивился»
+- **Hören Teil 1** → «sonst» это запасной план, а не задание
+- **Schreiben** → форум около 150 слов (60 баллов), сообщение около 100 (40 баллов), 4 пункта = 4 абзаца
+- **Sprechen** → доклад около 4 минут с планом, вопросы стоят 12, дискуссия около 5 минут
+
+<p class="punch">Пять пробников это не гарантия. Это привычка. А привычка на экзамене спокойнее нервов.</p>
