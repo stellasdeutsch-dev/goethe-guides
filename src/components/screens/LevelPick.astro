@@ -14,7 +14,7 @@ const all = await getGuides(exam);
 const tracks = await readyTracks(exam);
 const help = all.find((g) => `${g.data.section}/${slugOf(g)}` === EX.helpSlug);
 const extra = generalGuides(all).filter((g) => g !== help).slice(0, 2);
-const range = tracks.length ? `${tracks[0].label}–${tracks[tracks.length - 1].label}` : '';
+const range = tracks.length > 1 ? `${tracks[0].label}–${tracks[tracks.length - 1].label}` : '';
 const desc = exam === 'goethe' ? SITE.description : `Подготовка к ${EX.full}: формат, официальные пробники с разбором и гайды по каждой части экзамена.`;
 const bar = (levels: string[]) => LEVELS.map((l) => (levels.includes(l) ? 'on' : LEVELS.indexOf(l) < LEVELS.indexOf(levels[0] as never) ? 'past' : ''));
 ---
@@ -23,8 +23,9 @@ const bar = (levels: string[]) => LEVELS.map((l) => (levels.includes(l) ? 'on' :
     <div class="hero">
       <HeroArt kind="level" />
       <span class="tag"><i class="dot"></i>{EX.full}</span>
-      <h1 class="ask">Какой у тебя <em>уровень?</em></h1>
-      <p class="sub">Выбери уровень. Дальше покажем три шага подготовки.</p>
+      {tracks.length === 1
+        ? <><h1 class="ask">Готовишься к <em>{EX.name}?</em></h1><p class="sub">{EX.blurb} Дальше покажем три шага подготовки.</p></>
+        : <><h1 class="ask">Какой у тебя <em>уровень?</em></h1><p class="sub">Выбери уровень. Дальше покажем три шага подготовки.</p></>}
       <div class="hero-row" data-resume hidden>
         <a class="btn knob" href="#" data-resume-a><span class="knob-i"><svg class="ic"><use href="#i-arrow-right" /></svg></span><span>Продолжить <b data-resume-l></b></span></a>
       </div>

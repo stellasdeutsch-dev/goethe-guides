@@ -13,7 +13,9 @@ const { exam, track: trackId } = Astro.props;
 const EX = EXAMS[exam];
 const { track, guides, bySection, modules } = await trackData(exam, trackId);
 const reg = exam === 'goethe' ? (await getGuides(exam)).filter((g) => REG.includes(slugOf(g))) : [];
-const name = `${EX.name} ${track.label}`;
+// У TestDaF трек называется так же, как экзамен: не повторяем название дважды.
+const solo = track.label === EX.name;
+const name = solo ? EX.name : `${EX.name} ${track.label}`;
 const MOD_ICON: Record<string, string> = { lesen: 'book-open', hoeren: 'headphones', schreiben: 'pen-line', sprechen: 'mic', sprachbausteine: 'puzzle' };
 
 const steps = [
@@ -24,17 +26,17 @@ const items = guides.map(toItem);
 const jsonld = [{
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: `Подготовка к ${EX.full} ${track.label}`,
+  name: `Подготовка к ${solo ? EX.full : `${EX.full} ${track.label}`}`,
   itemListElement: items.map((i, n) => ({ '@type': 'ListItem', position: n + 1, url: new URL(i.href, Astro.site).href, name: i.title })),
 }];
 ---
-<App title={`${name}: подготовка по шагам | Stellas`} description={`Как подготовиться к ${EX.full} ${track.label}: формат, официальный пробник с разбором и гайды по каждой части. ${items.length} гайдов.`} jsonld={jsonld} exam={exam} trail={[{ label: EX.name, href: url(`${EX.base}/`) }, { label: track.label }]}>
+<App title={`${name}: подготовка по шагам | Stellas`} description={`Как подготовиться к ${solo ? EX.full : `${EX.full} ${track.label}`}: формат, официальный пробник с разбором и гайды по каждой части. ${items.length} гайдов.`} jsonld={jsonld} exam={exam} trail={[{ label: EX.name, href: url(`${EX.base}/`) }, { label: solo ? 'Шаги подготовки' : track.label }]}>
   <section class="screen split" data-home data-exam={exam} data-track={track.id} data-short={name} data-label={track.label} data-goethe={exam === 'goethe' ? track.label : undefined}>
     <div class="side">
     <div class="hero">
-      <HeroArt kind="home" label={`${EX.name} ${track.label}`} />
+      <HeroArt kind="home" label={name} />
       <span class="tag"><i class="dot"></i>{track.title}</span>
-      <h1 class="ask">{EX.name} <em>{track.label}</em></h1>
+      <h1 class="ask">{solo ? <>Подготовка к <em>{EX.name}</em></> : <>{EX.name} <em>{track.label}</em></>}</h1>
       <p class="sub">{track.text}</p>
     </div>
 

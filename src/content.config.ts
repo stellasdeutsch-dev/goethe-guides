@@ -11,8 +11,8 @@ const guides = defineCollection({
     seoTitle: z.string().max(60),
     description: z.string().max(160),
     lede: z.string().optional(),
-    /** Экзамен: goethe (по умолчанию), telc или oesd. Файлы telc/ÖSD лежат в guides/<exam>/<section>/. */
-    exam: z.enum(['goethe', 'telc', 'oesd']).default('goethe'),
+    /** Экзамен: goethe (по умолчанию), telc, oesd или testdaf. Файлы telc/ÖSD/TestDaF лежат в guides/<exam>/<section>/. */
+    exam: z.enum(['goethe', 'telc', 'oesd', 'testdaf']).default('goethe'),
     section: z.enum(['pruefung', 'probniki', 'sprachbausteine', 'lesen', 'hoeren', 'schreiben', 'sprechen', 'grammatik']),
     levels: z.array(z.enum(['A1', 'A2', 'B1', 'B2', 'C1', 'C2'])).min(1),
     kurz: z.array(z.string()).min(2),

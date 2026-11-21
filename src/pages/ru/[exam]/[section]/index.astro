@@ -1,10 +1,10 @@
 ---
 import SectionPick from '../../../../components/screens/SectionPick.astro';
 import { sectionsWithTracks } from '../../../../lib/tracks';
-import type { ExamId } from '../../../../data/exams';
+import { OTHER_EXAMS, type ExamId } from '../../../../data/exams';
 export async function getStaticPaths() {
   const out = [];
-  for (const exam of ['telc', 'oesd'] as ExamId[]) for (const section of await sectionsWithTracks(exam)) out.push({ params: { exam, section }, props: { exam, section } });
+  for (const exam of OTHER_EXAMS) for (const section of await sectionsWithTracks(exam)) out.push({ params: { exam, section }, props: { exam, section } });
   return out;
 }
 const { exam, section } = Astro.props as { exam: ExamId; section: string };

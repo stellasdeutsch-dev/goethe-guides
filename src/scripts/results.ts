@@ -6,9 +6,11 @@ export function readResults(): Record<string, Result> {
   try { return JSON.parse(localStorage.getItem('abres') || '{}'); } catch { return {}; }
 }
 
-/** Чей это результат: Goethe по уровню, telc/ÖSD по префиксу id (telc-b1-…). */
+/** Чей это результат: Goethe по уровню, telc/ÖSD по префиксу id (telc-b1-…).
+    У TestDaF один трек с тем же именем, что экзамен: подходит любой id testdaf-…, кроме тренировок testdaf-tr-…. */
 export function belongs(id: string, r: Result, o: { exam: string; track: string; goethe?: string }) {
-  if (o.goethe) return !/^(telc|oesd)-/.test(id) && r.level === o.goethe;
+  if (o.goethe) return !/^(telc|oesd|testdaf)-/.test(id) && r.level === o.goethe;
+  if (o.exam === o.track) return id.startsWith(`${o.exam}-`) && !id.startsWith(`${o.exam}-tr-`);
   return id.startsWith(`${o.exam}-${o.track}-`);
 }
 

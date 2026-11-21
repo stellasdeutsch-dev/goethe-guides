@@ -1,0 +1,83 @@
+---
+/* Калькулятор TestDaF: баллы 0–20 по каждой из четырёх частей → TDN по официальной шкале
+   (0–4 unter TDN 3, 5–9 TDN 3, 10–15 TDN 4, 16–20 TDN 5), сумма 0–80 и проверка «4 × TDN 4». */
+const PARTS = ['Lesen', 'Hören', 'Schreiben', 'Sprechen'];
+const START = 12;
+---
+<div class="x tdn" data-tdn>
+  <div class="x-h"><b><svg class="ic"><use href="#i-calculator" /></svg>Калькулятор TDN</b><span class="x-cap">0–20 баллов за часть</span></div>
+  {PARTS.map((p, i) => (
+    <div class="tdn-row">
+      <label for={`tdn-${i}`}><span lang="de">{p}</span><b><output data-v>{START}</output> из 20</b></label>
+      <div class="tdn-line">
+        <input id={`tdn-${i}`} type="range" min="0" max="20" step="1" value={START} />
+        <span class="tdn-badge" data-b>TDN 4</span>
+      </div>
+    </div>
+  ))}
+  <div class="tdn-scale" aria-hidden="true">
+    <span style="--w:25%">unter 3</span><span style="--w:25%">TDN 3</span><span style="--w:30%">TDN 4</span><span style="--w:20%">TDN 5</span>
+  </div>
+  <div class="total">
+    <div class="big"><span data-total>48</span><small> / 80</small></div>
+    <span class="verdict" data-verdict>—</span>
+  </div>
+  <p class="x-note" data-note></p>
+</div>
+
+<style is:global>
+  .tdn-row{margin:0 0 14px}
+  .tdn-row label{display:flex;justify-content:space-between;gap:12px;margin-bottom:6px;font-size:15px}
+  .tdn-line{display:flex;align-items:center;gap:12px}
+  .tdn-line input{flex:1;min-width:0}
+  .tdn-badge{flex:none;min-width:84px;padding:5px 10px;border-radius:999px;text-align:center;font:700 13px/1.2 var(--f);background:var(--surface-2);box-shadow:inset 0 0 0 1px var(--stroke);transition:background .25s,color .25s,transform .25s var(--out)}
+  .tdn-badge[data-l="0"]{background:#fde8e6;color:#9b2c22}
+  .tdn-badge[data-l="3"]{background:#fff4d6;color:#7a5600}
+  .tdn-badge[data-l="4"]{background:var(--lime);color:var(--lime-ink)}
+  .tdn-badge[data-l="5"]{background:var(--ink);color:#fff}
+  .tdn-badge.bump{transform:scale(1.08)}
+  .tdn-scale{display:flex;gap:3px;margin:6px 0 16px;font:600 11.5px/1 var(--f);color:var(--text-2)}
+  .tdn-scale span{flex:0 0 calc(var(--w) - 3px);padding-top:8px;border-top:4px solid var(--stroke);text-align:center}
+  .tdn-scale span:nth-child(3){border-color:var(--lime)}.tdn-scale span:nth-child(4){border-color:var(--ink)}
+  @media (prefers-reduced-motion:reduce){.tdn-badge{transition:none}.tdn-badge.bump{transform:none}}
+</style>
+
+<script>
+  import { $, $$, onReady } from '../../scripts/lib';
+  const level = (p: number) => (p >= 16 ? 5 : p >= 10 ? 4 : p >= 5 ? 3 : 0);
+  const label = (l: number) => (l ? `TDN ${l}` : 'unter TDN 3');
+  onReady(() => {
+    $$('[data-tdn]').forEach((root) => {
+      const inputs = $$<HTMLInputElement>('input[type=range]', root);
+      function upd(changed?: HTMLInputElement) {
+        let sum = 0;
+        const levels: number[] = [];
+        inputs.forEach((inp) => {
+          const v = Number(inp.value);
+          const row = inp.closest('.tdn-row')!;
+          row.querySelector('[data-v]')!.textContent = String(v);
+          inp.style.setProperty('--p', `${(v / 20) * 100}%`);
+          const b = row.querySelector<HTMLElement>('[data-b]')!;
+          const l = level(v);
+          if (b.dataset.l !== String(l) && inp === changed) { b.classList.add('bump'); setTimeout(() => b.classList.remove('bump'), 220); }
+          b.dataset.l = String(l);
+          b.textContent = label(l);
+          levels.push(l);
+          sum += v;
+        });
+        $('[data-total]', root)!.textContent = String(sum);
+        const all4 = levels.every((l) => l >= 4);
+        const v = $('[data-verdict]', root)!;
+        v.textContent = all4 ? '4 × TDN 4 есть' : '4 × TDN 4 нет';
+        v.className = 'verdict ' + (all4 ? 'ok' : 'bad');
+        const low = levels.map((l, i) => (l < 4 ? (inputs[i].closest('.tdn-row')!.querySelector('span')!.textContent ?? '') : '')).filter(Boolean);
+        $('[data-note]', root)!.textContent = all4
+          ? `Подходит для большинства программ. TDN 5: ${levels.filter((l) => l === 5).length} из 4 частей.`
+          : `Ниже TDN 4: ${low.join(', ')}. Некоторые вузы принимают такой профиль, проверь требования своей программы.`;
+        root.classList.toggle('pass', all4);
+      }
+      inputs.forEach((i) => i.addEventListener('input', () => upd(i)));
+      upd();
+    });
+  });
+</script>

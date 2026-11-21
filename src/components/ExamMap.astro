@@ -1,0 +1,90 @@
+---
+/* Карта экзамена над пробником: модули, минуты, задания, записи.
+   Всё считается из самой статьи: заголовки ## модулей, бланки AnswerSheet, Listen и тренажёры внутри каждого модуля. */
+import type { MarkdownHeading } from 'astro';
+import { EXAMS, type ExamId } from '../data/exams';
+import { plural } from '../lib/guides';
+
+interface Props { body: string; headings: MarkdownHeading[]; exam: ExamId }
+const { body, headings, exam } = Astro.props;
+
+const KIND: [RegExp, string, string][] = [
+  [/^(Lesen|Leseverstehen)/i, 'lesen', 'book-open'],
+  [/^(Hören|Hörverstehen)/i, 'hoeren', 'headphones'],
+  [/^Sprachbausteine/i, 'sprachbausteine', 'puzzle'],
+  [/^(Schreiben|Schriftlicher Ausdruck)/i, 'schreiben', 'pen-line'],
+  [/^(Sprechen|Mündlicher Ausdruck|Mündliche Prüfung)/i, 'sprechen', 'mic'],
+];
+const sections = EXAMS[exam].sections;
+const chunks = body.split(/\n(?=## )/).slice(1);
+const h2 = headings.filter((h) => h.depth === 2);
+
+interface Mod { name: string; slug: string; kind: string; icon: string; color: string; ink: string; minutes: number; items: number; audio: number; tasks: number }
+const mods: Mod[] = [];
+for (const chunk of chunks) {
+  const title = chunk.slice(3, chunk.indexOf('\n')).replace(/<[^>]+>/g, '').trim();
+  const k = KIND.find(([re]) => re.test(title));
+  if (!k) continue;
+  const name = title.split(/[:·]/)[0].trim();
+  const sheets = chunk.match(/<AnswerSheet[\s\S]*?\n\s*\/>/g) ?? [];
+  const items = sheets.reduce((n, s) => n + (s.match(/\ba: \d+/g)?.length ?? 0), 0);
+  let minutes = [...chunk.matchAll(/<(?:AnswerSheet|Trainer|WriteCheck)\b[^>]*?minutes=\{(\d+)\}/g)].reduce((n, m) => n + Number(m[1]), 0);
+  if (!minutes) minutes = [...chunk.matchAll(/<Task\b[^>]*?time="(\d+) Minuten"/g)].reduce((n, m) => n + Number(m[1]), 0);
+  const tasks = (chunk.match(/<Task\b/g) ?? []).length;
+  const sec = sections.find((s) => s.id === k[1]);
+  const slug = h2.find((h) => h.text.replace(/\s+/g, ' ').startsWith(title.slice(0, 12)))?.slug ?? '';
+  // Один и тот же модуль иногда разбит на два заголовка (Hörverstehen und Schreiben): складываем.
+  const prev = mods.find((m) => m.kind === k[1]);
+  if (prev) { prev.minutes += minutes; prev.items += items; prev.audio += (chunk.match(/<Listen\b/g) ?? []).length; prev.tasks += tasks; continue; }
+  mods.push({ name, slug, kind: k[1], icon: k[2], color: sec?.color ?? 'var(--sky)', ink: sec?.ink ?? '#fff', minutes, items, audio: (chunk.match(/<Listen\b/g) ?? []).length, tasks });
+}
+const total = { minutes: mods.reduce((n, m) => n + m.minutes, 0), items: mods.reduce((n, m) => n + m.items, 0), audio: mods.reduce((n, m) => n + m.audio, 0) };
+const weight = (m: Mod) => m.minutes || Math.max(m.items, 10);
+const all = mods.reduce((n, m) => n + weight(m), 0);
+---
+{mods.length >= 2 && (
+  <div class="x emap" data-emap>
+    <div class="x-h">
+      <b><svg class="ic"><use href="#i-route" /></svg>Карта экзамена</b>
+      <span class="x-cap">{mods.length} {plural(mods.length, 'модуль', 'модуля', 'модулей')}{total.minutes > 0 && mods.every((m) => m.minutes > 0) && <> · {total.minutes} мин</>}{total.items > 0 && <> · {total.items} {plural(total.items, 'задание', 'задания', 'заданий')}</>}</span>
+    </div>
+    <div class="emap-bar" aria-hidden="true">
+      {mods.map((m, i) => <i style={`--w:${(weight(m) / all) * 100}%;--c:${m.color};--d:${i * 120}ms`}></i>)}
+    </div>
+    <ol class="emap-mods" role="list">
+      {mods.map((m, i) => (
+        <li style={`--c:${m.color};--k:${m.ink};--d:${i * 90}ms`}>
+          <a href={m.slug ? `#${m.slug}` : undefined}>
+            <span class="emap-ic"><svg class="ic"><use href={`#i-${m.icon}`} /></svg></span>
+            <span class="emap-n" lang="de">{m.name}</span>
+            <span class="emap-facts">
+              {m.minutes > 0 && <span><svg class="ic"><use href="#i-clock" /></svg>{m.minutes} мин</span>}
+              {m.items > 0 && <span><svg class="ic"><use href="#i-list-checks" /></svg>{m.items} {plural(m.items, 'задание', 'задания', 'заданий')}</span>}
+              {m.audio > 0 && <span><svg class="ic"><use href="#i-audio-lines" /></svg>{m.audio} {plural(m.audio, 'запись', 'записи', 'записей')}</span>}
+              {!m.items && m.tasks > 0 && <span><svg class="ic"><use href="#i-file-text" /></svg>{m.tasks} {plural(m.tasks, 'задание', 'задания', 'заданий')}</span>}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
+)}
+
+<style is:global>
+  .emap-bar{display:flex;gap:4px;height:14px;margin:4px 0 18px}
+  .emap-bar i{flex:0 0 calc(var(--w) - 4px);border-radius:999px;background:var(--c);transform-origin:left;transform:scaleX(var(--s,1));transition:transform .9s var(--out) var(--d)}
+  .js .emap:not(.in) .emap-bar i{--s:0}
+  .prose .emap-mods{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+  .emap-mods a{min-width:0;display:flex;flex-direction:column;gap:10px;height:100%;padding:14px;border-radius:var(--r-m);background:#fff;box-shadow:inset 0 0 0 1px var(--ink-line);color:var(--ink);text-decoration:none;transition:transform .25s var(--out),box-shadow .25s}
+  .emap-mods a:hover{transform:translateY(-3px);box-shadow:inset 0 0 0 2px var(--c)}
+  .emap-ic{display:grid;place-items:center;width:38px;height:38px;border-radius:12px;background:var(--c);color:var(--k)}
+  .emap-ic .ic{width:20px;height:20px}
+  .emap-n{font:700 16px/1.25 var(--f);hyphens:auto;overflow-wrap:break-word}
+  .emap-facts{display:flex;flex-direction:column;gap:4px;color:var(--text-2);font-size:13.5px;line-height:1.3}
+  .emap-facts span{display:flex;align-items:center;gap:6px}
+  .emap-facts .ic{flex:none;width:14px;height:14px}
+  .js .emap:not(.in) .emap-mods li{opacity:0;transform:translateY(10px)}
+  .prose .emap-mods li{margin:0;padding:0;transition:opacity .6s var(--out) var(--d),transform .6s var(--out) var(--d)}
+  @media (max-width:420px){.prose .emap-mods{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (prefers-reduced-motion:reduce){.emap-bar i,.emap-mods li{transition:none}.js .emap:not(.in) .emap-bar i{--s:1}.js .emap:not(.in) .emap-mods li{opacity:1;transform:none}}
+</style>

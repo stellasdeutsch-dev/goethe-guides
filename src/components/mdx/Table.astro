@@ -1,1 +1,11 @@
-<div class="table" tabindex="0"><table><slot /></table></div>
+---
+/* Таблица из markdown. Каждой ячейке подпись её столбца (data-label): на телефоне строка становится карточкой без бокового скролла. */
+const html = await Astro.slots.render('default');
+const strip = (s: string) => s.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim().replace(/"/g, '&quot;');
+const head = html.match(/<thead[\s\S]*?<\/thead>/)?.[0] ?? '';
+const labels = [...head.matchAll(/<th\b[^>]*>([\s\S]*?)<\/th>/g)].map((m) => strip(m[1]));
+const body = labels.length
+  ? html.replace(/<tbody[\s\S]*?<\/tbody>/, (tb) => tb.replace(/<tr\b[^>]*>[\s\S]*?<\/tr>/g, (tr) => { let i = 0; return tr.replace(/<td\b/g, () => `<td data-label="${labels[i++] ?? ''}"`); }))
+  : html;
+---
+<div class={labels.length ? 'table cards' : 'table'} tabindex="0"><table set:html={body} /></div>

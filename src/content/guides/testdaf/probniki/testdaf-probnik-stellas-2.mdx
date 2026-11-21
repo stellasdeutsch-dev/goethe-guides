@@ -1,0 +1,834 @@
+---
+title: 'Пробник Stellas TestDaF №2: второй прогон цифрового экзамена'
+hl: 'второй прогон цифрового экзамена'
+seoTitle: 'Пробник TestDaF онлайн №2: Lesen, Hören, Schreiben'
+description: 'Пробник Stellas №2 в формате цифрового TestDaF: 34 задания Lesen и 30 Hören с бланками, два текста Schreiben с тренажёром, 7 заданий Sprechen с таймером.'
+lede: 'Второй полный прогон: все 23 типа заданий, новые темы, точное время. Ответы в бланках с объяснениями, письмо в тренажёре, устную часть по таймеру.'
+exam: testdaf
+section: probniki
+levels: [B2, C1]
+published: 2026-11-21
+updated: 2026-11-21
+kurz:
+  - 'Пробник №2 от <b>Команды Stellas</b> в формате цифрового TestDaF. Тексты, аудио и задания свои, ни одной темы из №1. Это не материал TestDaF-Institut.'
+  - 'Lesen: <b>7 типов, 34 задания, около 55 минут</b>. Hören: <b>7 типов, 30 заданий, около 40 минут</b>, всё звучит один раз.'
+  - 'Schreiben: аргументация <b>от 200 слов</b> и сводка текста с графиком <b>100–150 слов</b>. Sprechen: 7 заданий с подготовкой и ответом по таймеру.'
+  - 'Бланк считает <b>верные из 34 и из 30</b>. Как их переводят в баллы 0–20 и TDN, TestDaF не публикует.'
+faq:
+  - q: 'Это официальный тест TestDaF?'
+    a: 'Нет. Тексты, аудио и задания написала Команда Stellas. Из официальных материалов взяты формат, число заданий, время и правила оценки с testdaf.de.'
+  - q: 'Чем №2 отличается от №1?'
+    a: 'Формат и время те же, темы и задания новые. Можно решать в любом порядке, но каждый пробник один раз и по таймеру, иначе сравнивать нечего.'
+  - q: 'Сколько верных нужно для TDN 4?'
+    a: 'Официальной таблицы нет. TestDaF пересчитывает верные ответы в баллы от 0 до 20 и не публикует, как именно. TDN 4 это 10–15 баллов в части. Поэтому мы показываем только число верных.'
+  - q: 'Почему в Hören часть ответов выбирается из трёх вариантов?'
+    a: 'На экзамене в трёх заданиях Hören ответ печатают с клавиатуры. Здесь ты пишешь его на бумаге, а в бланке выбираешь вариант, который совпадает с твоим по смыслу.'
+  - q: 'Где видео для Hören 4 и 5?'
+    a: 'На экзамене это видео дискуссии и лекции. У нас записи с разными голосами. Смотреть на экзамене всё равно особо не на что: люди сидят и говорят.'
+next:
+  - title: 'Пробник Stellas TestDaF №1'
+    text: 'Ложные воспоминания, горячая вода, Вегенер и статистика.'
+    href: '/ru/testdaf/probniki/testdaf-probnik-stellas-1/'
+  - title: 'Разбор официальной Demo-Version'
+    text: 'Все 23 типа заданий от TestDaF-Institut с бланком по официальному ключу.'
+    href: '/ru/testdaf/probniki/testdaf-demo-razbor/'
+  - title: 'Баллы и TDN'
+    text: 'Шкала 0–20, TDN 3–5, требования вузов и комбинированный сертификат.'
+    href: '/ru/testdaf/pruefung/testdaf-bally-tdn/'
+  - title: 'Тренировка Lesen'
+    text: 'По одному своему заданию на каждый из 7 типов.'
+    href: '/ru/testdaf/lesen/testdaf-lesen-trenirovka/'
+sources:
+  - title: 'Aufbau des digitalen TestDaF (testdaf.de): части, типы заданий, Items, время'
+    url: 'https://www.testdaf.de/de/teilnehmende/der-digitale-testdaf/aufbau-des-digitalen-testdaf/'
+  - title: 'Auswertung des digitalen TestDaF (testdaf.de): баллы 0–20 и TDN'
+    url: 'https://www.testdaf.de/de/teilnehmende/der-digitale-testdaf/auswertung-des-digitalen-testdaf/'
+  - title: 'Beispielaufgaben aus der Demo-Version des digitalen TestDaF (PDF): время каждого задания'
+    url: 'https://www.testdaf.de/fileadmin/testdaf/downloads/Demo_Version_digitaler_TestDaF/Beispielaufgaben_Demo-Version_digitaler_TestDaF.pdf'
+  - title: 'FAQ Prüfungsdurchführung (testdaf.de): пробные задания, заметки, словари'
+    url: 'https://www.testdaf.de/de/teilnehmende/mein-testdaf/faq/faq-durchfuehrung/'
+---
+import AnswerSheet from '../../../../components/mdx/AnswerSheet.astro';
+import Callout from '../../../../components/mdx/Callout.astro';
+import Task from '../../../../components/mdx/Task.astro';
+import Listen from '../../../../components/mdx/Listen.astro';
+import Trainer from '../../../../components/mdx/Trainer.astro';
+import Anatomy from '../../../../components/mdx/Anatomy.astro';
+import Dialog from '../../../../components/mdx/Dialog.astro';
+import SpeakCards from '../../../../components/mdx/SpeakCards.astro';
+
+Первый пробник решён. Теперь ты знаешь формат.
+
+Формат знать мало. Надо, чтобы он перестал удивлять.
+
+Второй прогон, новые тексты. Животные, которые не умирают от засухи. Тепло из-под земли. Деньги из бумаги. Луна, которая двигает моря.
+
+Формат цифрового TestDaF. Тексты наши.
+
+## Что внутри
+
+Пробник Stellas №2 в формате **цифрового TestDaF**: все 23 типа заданий по одному разу, в порядке экзамена. Темы не повторяют №1. Число заданий и время с testdaf.de и из официальной Demo-Version.
+
+| Часть | Типов заданий | Заданий (Items) | Время | Как отвечаешь на экзамене |
+|---|---|---|---|---|
+| Lesen | 7 | 34 | около 55 минут | клик, перетаскивание |
+| Hören | 7 | 30 | около 40 минут | клик и короткие ответы с клавиатуры |
+| Schreiben | 2 | 2 текста | около 60 минут | текст на компьютере |
+| Sprechen | 7 | 7 ответов | около 35 минут | ответ в микрофон, запись |
+
+На экзамене после Lesen пауза 10 минут, после Hören 30, после Schreiben 10. Сам экзамен на 30 минут длиннее: в него вставлены пробные задания, которые в результат не идут. Здесь их нет.
+
+<Callout type="info" title="Люди, вузы и цифры придуманы">
+  <p>Университет Moorbrügge, город Kaltenhagen, учёные, студенты, опросы и цифры в графиках вымышлены. Научные сведения упрощены. Это тренировка, а не источник фактов.</p>
+</Callout>
+
+## Как работать с пробником
+
+1. **Lesen по порядку.** У каждого задания своё время из Demo-Version, оно стоит в карточке. Ставь таймер на каждое. Общий таймер бланка 55 минут.
+2. **Ответы в бланк** под седьмым заданием, потом «Проверить».
+3. **Hören с листком.** Читай задание, жми «слушать», пиши на бумаге. Каждая запись звучит один раз. В бланк переносишь в конце.
+4. **Schreiben в тренажёре** по 30 минут на текст, потом сравни с образцом.
+5. **Sprechen вслух и на диктофон**, по таймеру в каждой карточке.
+
+<Callout type="trap" title="Назад нельзя">
+  <p>На экзамене время задания кончилось, и система сама переходит к следующему. Вернуться нельзя. Здесь можно, но тогда прогон перестаёт быть честным.</p>
+</Callout>
+
+<Callout type="tip" title="Короткие ответы">
+  <p>В Hören 1, 2 и 5 на экзамене ответ печатаешь сам. Здесь пиши его на листке во время записи, а в бланке выбери вариант, который совпадает с твоим по смыслу. Эксперты TestDaF тоже засчитывают понятный ответ с тем же смыслом.</p>
+</Callout>
+
+## Как считаются <span class="hl">баллы</span>
+
+Каждую часть цифрового TestDaF переводят в баллы **от 0 до 20**. В Lesen и Hören основа это число верных ответов, но как именно оно превращается в баллы, TestDaF-Institut не публикует.
+
+| Баллы в части | Результат |
+|---|---|
+| 0–4 | unter TDN 3 |
+| 5–9 | TDN 3 |
+| 10–15 | TDN 4 |
+| 16–20 | TDN 5 |
+
+Поэтому бланк здесь показывает **верные из 34** и **верные из 30**, без TDN. Schreiben и Sprechen оценивают эксперты, подробной шкалы нет, есть список аспектов. Он стоит в каждой части. Для большинства программ вузы ждут **TDN 4 во всех четырёх частях**: [баллы и TDN](../../pruefung/testdaf-bally-tdn/).
+
+<p class="punch">Число верных не уровень. Это линейка, чтобы мерить себя от прогона к прогону.</p>
+
+## Lesen
+
+Семь заданий, 34 Items, около 55 минут. Метод по каждому типу: [Lesen TestDaF](../../lesen/testdaf-lesen/).
+
+### Aufgabe 1: пропуски в тексте
+
+<Task title="Lesen · Aufgabe 1 (Lückentext ergänzen)" time="4 Minuten">
+  <p>Lesen Sie den Lückentext. Entscheiden Sie, welches Wort in die Lücken 1 bis 5 passt. Für jede Lücke gibt es genau eine richtige Lösung.</p>
+  <p><b>Die Überlebenskünstler</b></p>
+  <p>Sie sind kaum einen Millimeter groß, haben acht Beinchen und erinnern mit ihrem tapsigen Gang an winzige Bären. Daher kommt ihr Name: Bärtierchen. Unter Biologinnen und Biologen gelten die winzigen Tiere als echte <b>[1]</b> ______ ihres Fachs. Bärtierchen leben fast überall: im Moos auf Hausdächern, in der Tiefsee und im Eis der Antarktis. Ihre erstaunlichste Fähigkeit zeigt sich, wenn ihre Umgebung austrocknet. Dann ziehen sie die Beine ein, geben fast ihr gesamtes Körperwasser ab und fallen in eine Art Scheintod. In diesem Zustand ist ihr Stoffwechsel so stark <b>[2]</b> ______, dass er kaum noch messbar ist. So überstehen sie Jahre, unter Umständen sogar Jahrzehnte.</p>
+  <p>In Experimenten haben Bärtierchen Temperaturen nahe dem absoluten Nullpunkt, extremen Druck und sogar einen Aufenthalt im Weltall <b>[3]</b> ______. Für die Forschung sind die Tiere deshalb ein beliebtes <b>[4]</b> ______. Man hofft etwa, von ihnen zu lernen, wie sich Medikamente ohne Kühlung haltbar machen lassen. Unverwundbar sind Bärtierchen allerdings nicht: Im aktiven Zustand sind sie <b>[5]</b> ______ empfindlich wie viele andere kleine Tiere.</p>
+  <ul>
+    <li><i>1</i><span><b>a</b> Laien <b>b</b> Stars <b>c</b> Opfer <b>d</b> Rivalen</span></li>
+    <li><i>2</i><span><b>a</b> erhöht <b>b</b> beschleunigt <b>c</b> reduziert <b>d</b> verbreitet</span></li>
+    <li><i>3</i><span><b>a</b> überstanden <b>b</b> unternommen <b>c</b> verhindert <b>d</b> beantragt</span></li>
+    <li><i>4</i><span><b>a</b> Haustier <b>b</b> Hindernis <b>c</b> Werkzeug <b>d</b> Untersuchungsobjekt</span></li>
+    <li><i>5</i><span><b>a</b> genauso <b>b</b> weniger <b>c</b> mehr <b>d</b> besonders</span></li>
+  </ul>
+  <p class="ru">Научно-популярный текст о тихоходках. В каждый пропуск подходит одно слово из четырёх. Проверяй смысл и грамматику соседних слов.</p>
+</Task>
+
+### Aufgabe 2: порядок абзацев
+
+<Task title="Lesen · Aufgabe 2 (Textabschnitte ordnen)" time="5 Minuten">
+  <p>Bringen Sie die Textabschnitte in die richtige Reihenfolge. Es gibt genau eine richtige Reihenfolge.</p>
+  <p><b>A</b> In den beiden folgenden Phasen wächst die Zahl der Teilnehmenden auf mehrere Hundert und schließlich auf viele Tausend Menschen. Nun geht es vor allem darum, ob der Impfstoff tatsächlich vor der Krankheit schützt.</p>
+  <p><b>B</b> Die erste dieser Stufen ist die Arbeit im Labor. Hier wird untersucht, ob ein Wirkstoff überhaupt eine Immunantwort auslöst, zunächst an Zellkulturen, dann an Tieren.</p>
+  <p><b>C</b> Liegen alle Ergebnisse vor, prüft eine Behörde die Daten. Doch auch nach der Zulassung endet die Beobachtung nicht: Seltene Nebenwirkungen zeigen sich manchmal erst, wenn sehr viele Menschen geimpft worden sind.</p>
+  <p><b>D</b> Bis ein neuer Impfstoff zugelassen wird, vergehen in der Regel viele Jahre. Das liegt vor allem daran, dass er mehrere Prüfungsstufen durchlaufen muss, bevor er Millionen Menschen verabreicht werden darf.</p>
+  <p><b>E</b> Erst wenn diese vorklinischen Tests erfolgreich waren, beginnt die erste Phase der klinischen Prüfung. Daran nehmen nur wenige Dutzend gesunde Freiwillige teil. Im Mittelpunkt steht die Frage, ob der Impfstoff gut verträglich ist.</p>
+  <p class="ru">Пять абзацев о том, как создают вакцину. Найди начало, потом ищи слова, которые отсылают к предыдущему абзацу. В бланке отметь, какой абзац стоит на местах 2, 3, 4 и 5.</p>
+</Task>
+
+### Aufgabe 3: длинный текст, 7 вопросов
+
+<Task title="Lesen · Aufgabe 3 (Multiple-Choice)" time="15 Minuten">
+  <p>Lesen Sie den Text. Beantworten Sie die Fragen 10 bis 16. Für jede Frage gibt es genau eine richtige Lösung.</p>
+  <p><b>Wärme aus der Tiefe</b></p>
+  <p><b>(1)</b> Je tiefer man in die Erde bohrt, desto wärmer wird es. In Mitteleuropa steigt die Temperatur im Durchschnitt um etwa drei Grad pro hundert Meter. In einigen Kilometern Tiefe ist das Gestein heiß genug, um Wasser auf über hundert Grad zu erhitzen. Diese Wärme lässt sich nutzen, um Gebäude zu heizen oder sogar Strom zu erzeugen. Anders als Sonne und Wind steht sie rund um die Uhr zur Verfügung, unabhängig von Wetter und Jahreszeit.</p>
+  <p><b>(2)</b> Trotzdem spielt die sogenannte Tiefengeothermie in Deutschland bisher nur eine geringe Rolle. Der Hauptgrund sind die Kosten. Eine einzige Bohrung in mehrere Kilometer Tiefe kann zweistellige Millionenbeträge kosten, und ob man in der Tiefe tatsächlich genug heißes Wasser findet, weiß man erst nach der Bohrung. Bleibt die Bohrung trocken, ist das Geld verloren. Viele Stadtwerke scheuen dieses Risiko. Fachleute fordern deshalb staatliche Versicherungen, die einen Teil der Verluste übernehmen.</p>
+  <p><b>(3)</b> Hinzu kommen Bedenken in der Bevölkerung. In einigen Orten kam es nach Bohrungen zu leichten Erdbeben, und in einer Kleinstadt hob sich nach einer missglückten Bohrung der Boden unter der Altstadt um mehrere Zentimeter, sodass Risse in den Häusern entstanden. Solche Fälle sind selten, prägen aber das Bild der Technik. Geologinnen und Geologen betonen, dass sich die Risiken durch sorgfältige Voruntersuchungen und eine ständige Überwachung der Bohrungen deutlich verringern lassen. Ganz ausschließen lassen sie sich allerdings nicht.</p>
+  <p><b>(4)</b> Dass es auch anders gehen kann, zeigt das Beispiel der Stadt Kaltenhagen. Dort versorgt eine Geothermieanlage seit zwölf Jahren rund ein Drittel der Haushalte mit Wärme. Die Stadtwerke haben die Bevölkerung von Anfang an einbezogen: Es gab Informationsabende, Messdaten wurden im Internet veröffentlicht, und Bürgerinnen und Bürger konnten sich finanziell an der Anlage beteiligen. „Die Leute wollten nicht überzeugt, sondern ernst genommen werden“, sagt der Leiter der Stadtwerke. Heute ist die Anlage im Ort kaum noch umstritten.</p>
+  <p><b>(5)</b> Nicht jede Region eignet sich gleichermaßen für Tiefengeothermie. Besonders günstig sind Gebiete, in denen heißes Wasser in vergleichsweise geringer Tiefe vorkommt, etwa im Oberrheingraben, im Süden Bayerns oder im Norddeutschen Becken. Anderswo müsste man tiefer bohren, was die Kosten weiter erhöht. Für einzelne Häuser kommt dagegen fast überall die oberflächennahe Geothermie infrage. Dabei nutzen Wärmepumpen die Wärme aus den obersten hundert Metern des Bodens. Diese Technik ist inzwischen weit verbreitet.</p>
+  <p><b>(6)</b> Ob die Erdwärme in Zukunft eine größere Rolle spielt, hängt deshalb weniger von der Technik ab, die als ausgereift gilt, als von politischen Entscheidungen. Neben der Absicherung des Bohrrisikos geht es um schnellere Genehmigungsverfahren, die heute oft mehrere Jahre dauern. Und es geht um Vertrauen. Wie Kaltenhagen zeigt, lässt es sich nicht verordnen, sondern muss Schritt für Schritt erarbeitet werden.</p>
+  <ul>
+    <li><i>10</i><span>Welche Aussage fasst den Inhalt von Absatz 1 am besten zusammen? <b>a</b> Erdwärme ist nur in wenigen Regionen der Welt vorhanden. <b>b</b> Erdwärme ist eine Energiequelle, die ständig verfügbar ist. <b>c</b> Erdwärme eignet sich besser zur Stromerzeugung als zum Heizen. <b>d</b> Erdwärme ist in Mitteleuropa besonders hoch.</span></li>
+    <li><i>11</i><span>Laut Absatz 2 zögern viele Stadtwerke, weil … <b>a</b> der Erfolg einer Bohrung vorher nicht sicher ist. <b>b</b> der Staat Bohrungen verboten hat. <b>c</b> sich heißes Wasser nur schwer über weite Strecken transportieren lässt. <b>d</b> Versicherungen zu teuer sind.</span></li>
+    <li><i>12</i><span>In Absatz 3 wird gesagt, dass … <b>a</b> Erdbeben nach Bohrungen häufig vorkommen. <b>b</b> Bohrungen in Altstädten verboten wurden. <b>c</b> die Bevölkerung die Technik inzwischen überwiegend unterstützt. <b>d</b> sich Risiken senken, aber nicht ausschließen lassen.</span></li>
+    <li><i>13</i><span>Laut Absatz 4 ist die Anlage in Kaltenhagen akzeptiert, weil … <b>a</b> sie inzwischen den gesamten Ort mit Wärme versorgt. <b>b</b> es dort noch nie Erdbeben gegeben hat. <b>c</b> die Menschen früh informiert und beteiligt wurden. <b>d</b> die Stadtwerke die Wärme verschenken.</span></li>
+    <li><i>14</i><span>Welche Überschrift passt inhaltlich am besten zu Absatz 5? <b>a</b> Wo sich Erdwärme besonders lohnt <b>b</b> Wärmepumpen verdrängen tiefe Bohrungen <b>c</b> Geothermie nur noch in Bayern <b>d</b> Warum tiefe Bohrungen immer günstiger werden</span></li>
+    <li><i>15</i><span>Laut Absatz 6 hängt die Zukunft der Geothermie vor allem ab von … <b>a</b> technischen Durchbrüchen bei der Bohrtechnik in sehr großer Tiefe. <b>b</b> der Zahl der verfügbaren Fachkräfte. <b>c</b> dem Preis von Wärmepumpen. <b>d</b> dem politischen Willen und dem Rückhalt in der Bevölkerung.</span></li>
+    <li><i>16</i><span>Hauptanliegen des Textes ist es, … <b>a</b> vor den Gefahren tiefer Bohrungen zu warnen. <b>b</b> die Funktionsweise von Wärmepumpen im Einzelnen zu erklären. <b>c</b> Chancen und Hindernisse der Geothermie darzustellen. <b>d</b> für eine staatliche Versicherung zu werben.</span></li>
+  </ul>
+  <p class="ru">Статья о геотермии: тепло из глубины земли, почему его мало используют, чего боятся жители и что помогает. Вопросы 10–15 по абзацам, 16 про весь текст.</p>
+</Task>
+
+### Aufgabe 4: что делает автор
+
+<Task title="Lesen · Aufgabe 4 (Sprachhandlungen zuordnen)" time="6 Minuten">
+  <p>Lesen Sie den Text. Ordnen Sie die Textstellen 17 bis 20 den Aussagen a bis h zu. Die Zahlen beziehen sich immer auf den nachfolgenden Satz. Für jede Textstelle gibt es genau eine richtige Lösung.</p>
+  <p><b>Kommentar: Wenn alle eine Eins haben</b></p>
+  <p>Es gibt Entwicklungen, die auf den ersten Blick nur Gewinner kennen. <b>[17]</b> In den vergangenen zwanzig Jahren sind die Abschlussnoten an deutschen Hochschulen immer besser geworden. In manchen Fächern schließt inzwischen mehr als die Hälfte der Studierenden mit „sehr gut“ ab. Kritiker sprechen von Noteninflation und werfen den Lehrenden vor, aus Bequemlichkeit zu milde zu bewerten. <b>[18]</b> Diesen Vorwurf halte ich für ungerecht, denn wer täglich mit Studierenden arbeitet, weiß, wie viel Mühe sich die meisten geben. Ein Teil der Entwicklung lässt sich zudem gut erklären. <b>[19]</b> Weil Studiengänge heute stärker strukturiert sind und Prüfungen häufiger stattfinden, bereiten sich viele gezielter vor als frühere Generationen. Trotzdem bleibt ein Problem: Wenn fast alle eine Eins bekommen, verliert die Note ihre Aussagekraft. <b>[20]</b> Es ist ein wenig wie bei einer Währung, von der zu viel gedruckt wird: Je mehr Scheine im Umlauf sind, desto weniger ist der einzelne wert. Ich plädiere deshalb dafür, jedem Zeugnis künftig eine Angabe beizufügen, wie die Note im Vergleich zum Jahrgang einzuordnen ist.</p>
+  <ul>
+    <li><i>a</i><span>Der Autor bedauert etwas.</span></li>
+    <li><i>b</i><span>Der Autor beschreibt eine Entwicklung.</span></li>
+    <li><i>c</i><span>Der Autor nennt eine Ursache.</span></li>
+    <li><i>d</i><span>Der Autor schlägt etwas vor.</span></li>
+    <li><i>e</i><span>Der Autor gibt die Meinung anderer wieder.</span></li>
+    <li><i>f</i><span>Der Autor weist einen Vorwurf zurück.</span></li>
+    <li><i>g</i><span>Der Autor zieht einen Vergleich.</span></li>
+    <li><i>h</i><span>Der Autor zweifelt an etwas.</span></li>
+  </ul>
+  <p class="ru">Комментарий об «инфляции оценок» в вузах. Номер стоит перед предложением и относится только к нему. Соседние предложения тоже что-то делают, и это ловушки.</p>
+</Task>
+
+### Aufgabe 5: к чему относится утверждение
+
+<Task title="Lesen · Aufgabe 5 (Aussagen Kategorien zuordnen)" time="9 Minuten">
+  <p>Lesen Sie den Text. Ordnen Sie die Aussagen 21 bis 27 zu: Entscheiden Sie für jede Aussage, ob sie zur Universität, zur Fachhochschule, zu beiden oder gar nicht passt. Für jede Aussage gibt es genau eine richtige Lösung. Die Aussagen folgen nicht dem Textverlauf.</p>
+  <p><b>Universität oder Fachhochschule?</b></p>
+  <p>Wer in Deutschland studieren möchte, steht früh vor der Wahl zwischen einer Universität und einer Fachhochschule, die sich heute meist Hochschule für angewandte Wissenschaften nennt. Beide verleihen Bachelor- und Masterabschlüsse, die rechtlich gleichwertig sind. Dennoch unterscheiden sie sich in ihrem Selbstverständnis.</p>
+  <p>Universitäten verstehen sich traditionell als Orte der Forschung. Das Studium ist stärker theoretisch ausgerichtet, und die Studierenden sollen vor allem lernen, wissenschaftliche Fragen selbstständig zu bearbeiten. Das Fächerangebot ist breit: Medizin, Jura oder Theologie kann man nur hier studieren. Auch die Promotion war lange allein den Universitäten vorbehalten.</p>
+  <p>Fachhochschulen setzen dagegen auf die Verbindung von Theorie und Praxis. Ein Praxissemester in einem Unternehmen gehört in vielen Studiengängen fest dazu, und wer dort lehren möchte, muss vor der Berufung mehrere Jahre außerhalb der Hochschule gearbeitet haben. Die Lerngruppen sind meist kleiner, der Stundenplan ist stärker vorgegeben. Wer gern eigenständig plant, empfindet das manchmal als Einschränkung.</p>
+  <p>Gemeinsam ist beiden, dass sie in den letzten Jahren internationaler geworden sind. An Universitäten wie an Fachhochschulen gibt es inzwischen zahlreiche englischsprachige Studiengänge. Auch bei den Kosten gibt es keinen Unterschied: Staatliche Hochschulen beider Art erheben in den meisten Bundesländern keine Studiengebühren.</p>
+  <p>Auch bei den Berufsaussichten gibt es kaum Unterschiede. Ob jemand nach dem Abschluss eine Stelle findet, hängt eher vom Fach und von den eigenen Erfahrungen ab als von der Art der Hochschule.</p>
+  <ul>
+    <li><i>21</i><span>Hier kann man auch Medizin studieren.</span></li>
+    <li><i>22</i><span>Wer hier lehrt, braucht Berufserfahrung außerhalb der Hochschule.</span></li>
+    <li><i>23</i><span>Es gibt auch Studiengänge auf Englisch.</span></li>
+    <li><i>24</i><span>Mit diesem Abschluss findet man deutlich leichter eine Stelle.</span></li>
+    <li><i>25</i><span>Zum Studium gehört oft eine längere Zeit in einem Betrieb.</span></li>
+    <li><i>26</i><span>Man soll vor allem lernen, eigenständig zu forschen.</span></li>
+    <li><i>27</i><span>An staatlichen Einrichtungen fallen meist keine Studiengebühren an.</span></li>
+  </ul>
+  <p class="ru">Университет против вуза прикладных наук. Для каждого утверждения выбери: только университет, только Fachhochschule, оба или ни один. «Passt nicht» значит: текст этого не говорит или опровергает для обоих.</p>
+</Task>
+
+### Aufgabe 6: два столбца, четыре верных
+
+<Task title="Lesen · Aufgabe 6 (Aussagen einem Begriffspaar zuordnen)" time="7 Minuten">
+  <p>Lesen Sie den Text. Entscheiden Sie, welche Aussagen A bis H stimmen. Ordnen Sie die richtigen Aussagen der passenden Spalte zu: Maßnahmen oder Schwierigkeiten. Es müssen vier Aussagen zugeordnet werden.</p>
+  <p><b>Der klimaneutrale Campus</b></p>
+  <p>Immer mehr Hochschulen haben sich das Ziel gesetzt, klimaneutral zu werden. Die Universität Moorbrügge etwa will ihren Ausstoß an Treibhausgasen bis 2035 auf null senken. Ein erster Schritt war die Umstellung auf Ökostrom. Außerdem wurden auf den Dächern mehrerer Institutsgebäude Solaranlagen installiert, und in der Mensa werden Essensreste inzwischen in einer eigenen Biogasanlage verwertet.</p>
+  <p>Der größte Teil der Emissionen entsteht allerdings nicht durch Strom, sondern durch das Heizen der oft jahrzehntealten Gebäude. Viele davon stehen unter Denkmalschutz, sodass eine Dämmung oder neue Fenster nur mit Genehmigung und zu hohen Kosten möglich sind. Auch Labore sind wahre Energiefresser: Kühlschränke für Proben, Lüftungsanlagen und Hochleistungsrechner laufen rund um die Uhr.</p>
+  <p>Ein weiteres Thema sind Dienstreisen. Forschende fliegen zu Konferenzen und Projekttreffen in aller Welt, und gerade für junge Wissenschaftlerinnen und Wissenschaftler sind solche Kontakte wichtig für die Karriere. Die Universität erstattet deshalb Bahnfahrten innerhalb Europas inzwischen auch dann, wenn sie teurer sind als ein Flug. Ein Flugverbot lehnt die Hochschulleitung ab.</p>
+  <p>Schließlich hängt vieles am Verhalten der Menschen auf dem Campus. Ein Wettbewerb zwischen den Instituten, wer am meisten Energie spart, brachte im ersten Jahr beachtliche Erfolge. Im zweiten Jahr ließ das Interesse jedoch deutlich nach.</p>
+  <ul>
+    <li><i>A</i><span>Auf Institutsdächern wird Strom aus Sonnenenergie gewonnen.</span></li>
+    <li><i>B</i><span>Alte Gebäude lassen sich wegen des Denkmalschutzes nur schwer modernisieren.</span></li>
+    <li><i>C</i><span>Flugreisen von Forschenden wurden verboten.</span></li>
+    <li><i>D</i><span>Die Mensa verzichtet vollständig auf Fleisch.</span></li>
+    <li><i>E</i><span>Bahnreisen werden auch bei höheren Kosten bezahlt.</span></li>
+    <li><i>F</i><span>Der Strom verursacht den größten Teil der Emissionen.</span></li>
+    <li><i>G</i><span>Das Engagement beim Energiesparen hat mit der Zeit abgenommen.</span></li>
+    <li><i>H</i><span>Die Universität ist bereits klimaneutral.</span></li>
+  </ul>
+  <p><b>Tabelle:</b> Klimaneutraler Campus · Spalte 1: Maßnahmen · Spalte 2: Schwierigkeiten</p>
+  <p class="ru">Как университет пытается стать климатически нейтральным. Верны ровно четыре утверждения: два про меры, два про трудности. Остальные противоречат тексту или в нём не упоминаются. В бланке пиши буквы по алфавиту: в каждом столбце сначала более раннюю.</p>
+</Task>
+
+### Aufgabe 7: три ошибки в резюме
+
+<Task title="Lesen · Aufgabe 7 (Fehler in Zusammenfassung erkennen)" time="7 Minuten">
+  <p>Lesen Sie den Text. Beachten Sie auch die Informationen aus der Grafik. Unten sehen Sie eine Zusammenfassung. Die Zusammenfassung folgt nicht dem Textverlauf. Markieren Sie die Sätze, die inhaltlich falsch sind. Es gibt genau drei inhaltlich falsche Sätze.</p>
+  <p><b>Bildschirm am Abend, Schlaf in der Nacht</b></p>
+  <p>Smartphone, Laptop, Tablet: Für viele Studierende endet der Tag vor einem Bildschirm. Ob das dem Schlaf schadet, hat ein Team der Universität Moorbrügge untersucht. 600 Studierende trugen zwei Wochen lang ein Armband, das ihre Schlafdauer aufzeichnete, und notierten, wie lange sie in der letzten Stunde vor dem Einschlafen Bildschirme nutzten.</p>
+  <p>Das Ergebnis fiel deutlich aus: Je länger die Bildschirmzeit am Abend, desto kürzer der Schlaf. Allerdings war der Unterschied zwischen den Gruppen nicht überall gleich groß. Wer höchstens eine Viertelstunde auf einen Bildschirm schaute, schlief kaum länger als jemand mit einer halben Stunde. Erst bei längerer Nutzung nahm die Schlafdauer spürbar ab.</p>
+  <p>Als Ursache vermuten die Forschenden weniger das blaue Licht der Geräte, über das häufig berichtet wird, als die Inhalte. Wer Nachrichten liest, Videos schaut oder chattet, bleibt geistig aktiv und schiebt das Einschlafen hinaus. In einer zweiten Untersuchung schliefen Studierende, die abends ein E-Book ohne Internetverbindung lasen, fast genauso gut wie die Teilnehmenden ohne Bildschirm.</p>
+  <p>Die Forschenden empfehlen deshalb nicht, auf Geräte ganz zu verzichten. Sinnvoller sei es, in der letzten Stunde vor dem Schlafen auf anregende Inhalte zu verzichten und das Handy aus dem Schlafzimmer zu verbannen.</p>
+  <p class="ru">Исследование: экраны перед сном и продолжительность сна. Под текстом график, на экзамене он стоит рядом.</p>
+</Task>
+
+**Grafik: Durchschnittliche Schlafdauer nach Bildschirmzeit in der Stunde vor dem Einschlafen** (Studie, Universität Moorbrügge)
+
+| Bildschirmzeit | Schlafdauer |
+|---|---|
+| keine | 7 Std. 40 Min. |
+| bis 15 Minuten | 7 Std. 35 Min. |
+| 16 bis 30 Minuten | 7 Std. 30 Min. |
+| 31 bis 60 Minuten | 6 Std. 50 Min. |
+
+<Task title="Lesen · Aufgabe 7: Zusammenfassung">
+  <p>Markieren Sie die drei Sätze, die inhaltlich falsch sind.</p>
+  <ul>
+    <li><i>1</i><span>Eine Studie hat untersucht, wie sich die Bildschirmnutzung vor dem Einschlafen auf den Schlaf von Studierenden auswirkt.</span></li>
+    <li><i>2</i><span>Insgesamt schliefen Studierende mit längerer Bildschirmzeit kürzer.</span></li>
+    <li><i>3</i><span>Als Hauptursache sehen die Forschenden das blaue Licht der Bildschirme.</span></li>
+    <li><i>4</i><span>Wer mehr als eine halbe Stunde vor dem Bildschirm verbrachte, schlief im Schnitt 50 Minuten kürzer als Studierende ohne Bildschirm.</span></li>
+    <li><i>5</i><span>Ein völliger Verzicht auf elektronische Geräte wird nicht empfohlen.</span></li>
+    <li><i>6</i><span>Zwischen einer Viertelstunde und einer halben Stunde Bildschirmzeit zeigte sich ein großer Unterschied in der Schlafdauer.</span></li>
+    <li><i>7</i><span>Wer abends ein E-Book ohne Internet las, schlief kaum schlechter als Teilnehmende ohne Bildschirm.</span></li>
+    <li><i>8</i><span>Die Schlafdauer wurde am Ende der Studie mit einem Fragebogen ermittelt.</span></li>
+    <li><i>9</i><span>Die Forschenden raten, vor dem Schlafen auf anregende Inhalte zu verzichten.</span></li>
+  </ul>
+  <p class="ru">Сверяй каждое предложение и с текстом, и с таблицей. Неверных ровно три. В бланке отметь их номера по порядку, сначала самый маленький.</p>
+</Task>
+
+<AnswerSheet
+  id="testdaf-stellas-2-lesen"
+  title="Lesen · Пробник Stellas TestDaF №2"
+  module="lesen"
+  minutes={55}
+  factor={1} maxPoints={34}
+  hint="Читай тексты выше и отмечай ответы здесь. Бланк считает верные из 34. Объяснения откроются после проверки."
+  items={[
+    { n: 1, part: 'Aufgabe 1 · Lückentext', o: ['Laien', 'Stars', 'Opfer', 'Rivalen'], a: 1, q: 'Пропуск 1', why: 'Дальше идут их рекорды выживания: тихоходки знамениты в биологии, то есть «звёзды» своей науки. **Ловушка:** Laien значит «дилетанты», это про людей, а не про объект изучения.' },
+    { n: 2, part: 'Aufgabe 1 · Lückentext', o: ['erhöht', 'beschleunigt', 'reduziert', 'verbreitet'], a: 2, q: 'Пропуск 2', why: 'Обмен веществ такой, «dass er kaum noch messbar ist». Значит, он снижен. **Ловушка:** erhöht и beschleunigt дают обратный смысл.' },
+    { n: 3, part: 'Aufgabe 1 · Lückentext', o: ['überstanden', 'unternommen', 'verhindert', 'beantragt'], a: 0, q: 'Пропуск 3', why: 'Глагол должен подходить ко всем трём дополнениям: холод, давление и полёт в космос. Пережить можно всё это: überstanden. **Ловушка:** unternommen подходит только к «Aufenthalt», но не к «Temperaturen».' },
+    { n: 4, part: 'Aufgabe 1 · Lückentext', o: ['Haustier', 'Hindernis', 'Werkzeug', 'Untersuchungsobjekt'], a: 3, q: 'Пропуск 4', why: 'Следующее предложение: «Man hofft etwa, von ihnen zu lernen». Их изучают, значит Untersuchungsobjekt. **Ловушка:** Werkzeug, инструмент, это то, чем изучают, а не что.' },
+    { n: 5, part: 'Aufgabe 1 · Lückentext', o: ['genauso', 'weniger', 'mehr', 'besonders'], a: 0, q: 'Пропуск 5', why: 'После пропуска стоит «wie viele andere kleine Tiere». С wie сравнение строится через so или genauso. **Ловушка:** weniger и mehr требуют als, а не wie.' },
+    { n: 6, part: 'Aufgabe 2 · Reihenfolge', o: ['A', 'B', 'C', 'D', 'E'], a: 1, q: 'Какой абзац на месте 2', why: 'Первый D: общий вводный тезис про «mehrere Prüfungsstufen». За ним B: «Die erste dieser Stufen» отсылает к ступеням из D.' },
+    { n: 7, part: 'Aufgabe 2 · Reihenfolge', o: ['A', 'B', 'C', 'D', 'E'], a: 4, q: 'Какой абзац на месте 3', why: '«Erst wenn diese vorklinischen Tests erfolgreich waren» в E отсылает к лаборатории и животным из B. **Ловушка:** A начинается с «In den beiden folgenden Phasen», но первая фаза ещё не названа.' },
+    { n: 8, part: 'Aufgabe 2 · Reihenfolge', o: ['A', 'B', 'C', 'D', 'E'], a: 0, q: 'Какой абзац на месте 4', why: '«In den beiden folgenden Phasen» в A продолжает «die erste Phase» из E: сотни, потом тысячи участников.' },
+    { n: 9, part: 'Aufgabe 2 · Reihenfolge', o: ['A', 'B', 'C', 'D', 'E'], a: 2, q: 'Какой абзац на месте 5', why: '«Liegen alle Ergebnisse vor» в C подводит итог всем фазам, дальше допуск и наблюдение после него. Это конец текста.' },
+    { n: 10, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 1, q: 'Суть абзаца 1', why: 'Главная мысль в конце абзаца: тепло «steht ... rund um die Uhr zur Verfügung, unabhängig von Wetter und Jahreszeit». **Ловушка:** d. Три градуса на сто метров это средняя величина, а не особенность Европы.' },
+    { n: 11, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 0, q: 'Почему медлят Stadtwerke', why: 'Есть ли горячая вода, «weiß man erst nach der Bohrung», отсюда риск, которого «Viele Stadtwerke scheuen». **Ловушка:** d. Страховок ещё нет, их только «fordern», и про цену ничего не сказано.' },
+    { n: 12, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 3, q: 'Что сказано в абзаце 3', why: 'Риски можно «deutlich verringern», но «Ganz ausschließen lassen sie sich allerdings nicht». **Ловушка:** a. Землетрясения были, но «Solche Fälle sind selten».' },
+    { n: 13, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Почему проект принят', why: 'Жителей включили «von Anfang an»: вечера, данные в интернете, участие деньгами. **Ловушка:** a. Станция греет «rund ein Drittel der Haushalte», а не весь город.' },
+    { n: 14, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 0, q: 'Заголовок к абзацу 5', why: 'Абзац о том, где геотермия выгодна: «Besonders günstig sind Gebiete», а где дороже. **Ловушка:** b. Тепловые насосы нужны отдельным домам, но не вытесняют глубокое бурение.' },
+    { n: 15, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 3, q: 'От чего зависит будущее', why: 'Зависит «weniger von der Technik ab, die als ausgereift gilt, als von politischen Entscheidungen», и ещё от доверия. **Ловушка:** a. Техника названа зрелой, прорывы не нужны.' },
+    { n: 16, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Главная цель текста', why: 'Текст показывает плюс (тепло всегда), препятствия (деньги, страх, регионы) и путь (Kaltenhagen, политика). Это шансы и препятствия. **Ловушка:** a. Об опасностях один абзац, и он заканчивается тем, что риски можно снизить.' },
+    { n: 17, part: 'Aufgabe 4 · Sprachhandlungen', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 1, q: 'Отметка 17', why: 'Оценки «immer besser geworden» за двадцать лет. Это описание развития, b. **Ловушка:** e. Мнение критиков стоит через предложение, без номера.' },
+    { n: 18, part: 'Aufgabe 4 · Sprachhandlungen', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 5, q: 'Отметка 18', why: '«Diesen Vorwurf halte ich für ungerecht»: автор отклоняет упрёк критиков, f. **Ловушка:** h. Он не сомневается, он прямо говорит «ungerecht».' },
+    { n: 19, part: 'Aufgabe 4 · Sprachhandlungen', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 2, q: 'Отметка 19', why: 'Предложение начинается с «Weil»: структурированная учёба и частые экзамены объясняют хорошие оценки. Это причина, c.' },
+    { n: 20, part: 'Aufgabe 4 · Sprachhandlungen', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 6, q: 'Отметка 20', why: '«Es ist ein wenig wie bei einer Währung»: сравнение оценок с деньгами, g. **Ловушка:** d. Предложение «Ich plädiere deshalb dafür» идёт следом и номера не имеет.' },
+    { n: 21, part: 'Aufgabe 5 · Kategorien', o: ['Universität', 'Fachhochschule', 'beide', 'passt nicht'], a: 0, q: 'Можно изучать медицину', why: '«Medizin, Jura oder Theologie kann man nur hier studieren», где «hier» это университет.' },
+    { n: 22, part: 'Aufgabe 5 · Kategorien', o: ['Universität', 'Fachhochschule', 'beide', 'passt nicht'], a: 1, q: 'Преподавателю нужен опыт вне вуза', why: 'Про Fachhochschule: «wer dort lehren möchte, muss vor der Berufung mehrere Jahre außerhalb der Hochschule gearbeitet haben». Про университеты такого нет.' },
+    { n: 23, part: 'Aufgabe 5 · Kategorien', o: ['Universität', 'Fachhochschule', 'beide', 'passt nicht'], a: 2, q: 'Программы на английском', why: '«An Universitäten wie an Fachhochschulen gibt es inzwischen zahlreiche englischsprachige Studiengänge». Оба.' },
+    { n: 24, part: 'Aufgabe 5 · Kategorien', o: ['Universität', 'Fachhochschule', 'beide', 'passt nicht'], a: 3, q: 'Диплом сильно облегчает поиск работы', why: 'Текст: «Auch bei den Berufsaussichten gibt es kaum Unterschiede», всё решают предмет и опыт. Ни одна форма не даёт заметного преимущества, значит passt nicht.' },
+    { n: 25, part: 'Aufgabe 5 · Kategorien', o: ['Universität', 'Fachhochschule', 'beide', 'passt nicht'], a: 1, q: 'Длительное время на предприятии', why: '«Ein Praxissemester in einem Unternehmen gehört in vielen Studiengängen fest dazu». Это Fachhochschule.' },
+    { n: 26, part: 'Aufgabe 5 · Kategorien', o: ['Universität', 'Fachhochschule', 'beide', 'passt nicht'], a: 0, q: 'Главное: учиться исследовать', why: 'В университете студенты «sollen vor allem lernen, wissenschaftliche Fragen selbstständig zu bearbeiten». **Ловушка:** Fachhochschule связывает теорию с практикой, а не делает упор на исследование.' },
+    { n: 27, part: 'Aufgabe 5 · Kategorien', o: ['Universität', 'Fachhochschule', 'beide', 'passt nicht'], a: 2, q: 'Обычно без платы за обучение', why: '«Staatliche Hochschulen beider Art erheben in den meisten Bundesländern keine Studiengebühren». beider Art значит оба.' },
+    { n: 28, part: 'Aufgabe 6 · Maßnahmen und Schwierigkeiten', o: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], a: 0, q: 'Maßnahmen: первая буква', why: 'Мера A: «auf den Dächern mehrerer Institutsgebäude Solaranlagen installiert». **Ловушка:** D. В мензе перерабатывают остатки еды в биогаз, а про отказ от мяса ни слова.' },
+    { n: 29, part: 'Aufgabe 6 · Maßnahmen und Schwierigkeiten', o: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], a: 4, q: 'Maßnahmen: вторая буква', why: 'Мера E: поезд оплачивают, «wenn sie teurer sind als ein Flug». **Ловушка:** C. Запрет полётов руководство как раз «lehnt ... ab».' },
+    { n: 30, part: 'Aufgabe 6 · Maßnahmen und Schwierigkeiten', o: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], a: 1, q: 'Schwierigkeiten: первая буква', why: 'Трудность B: здания «stehen unter Denkmalschutz», утеплить их можно только с разрешением и дорого. **Ловушка:** F. Главный источник выбросов отопление, а не электричество.' },
+    { n: 31, part: 'Aufgabe 6 · Maßnahmen und Schwierigkeiten', o: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], a: 6, q: 'Schwierigkeiten: вторая буква', why: 'Трудность G: «Im zweiten Jahr ließ das Interesse jedoch deutlich nach». **Ловушка:** H. Нейтральность только цель «bis 2035».' },
+    { n: 32, part: 'Aufgabe 7 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], a: 2, q: 'Первое неверное предложение', why: 'Неверно 3. Исследователи винят «weniger das blaue Licht der Geräte ... als die Inhalte». **Ловушка:** 2 верно: чем дольше экран, тем короче сон.' },
+    { n: 33, part: 'Aufgabe 7 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], a: 5, q: 'Второе неверное предложение', why: 'Неверно 6. По таблице 7:35 против 7:30, это пять минут, а в тексте: «schlief kaum länger». **Ловушка:** 4 верно: 7:40 минус 6:50 это ровно 50 минут.' },
+    { n: 34, part: 'Aufgabe 7 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], a: 7, q: 'Третье неверное предложение', why: 'Неверно 8. Сон записывал браслет: «trugen zwei Wochen lang ein Armband, das ihre Schlafdauer aufzeichnete». **Ловушка:** 7 верно, «fast genauso gut» и есть «kaum schlechter».' },
+  ]}
+/>
+
+<details class="after">
+<summary>После проверки: Aufgabe 2 и 6 целиком</summary>
+
+Порядок абзацев: **D → B → E → A → C**. Первый абзац D бланк не спрашивает: на месте 1 может стоять только он.
+
+Таблица Aufgabe 6: Maßnahmen **A, E**, Schwierigkeiten **B, G**. C, F и H противоречат тексту, D в тексте нет.
+
+</details>
+
+<p class="punch">Номер в Aufgabe 4 смотрит только вперёд. Соседнее предложение молчит.</p>
+
+## Hören
+
+Семь заданий, 30 Items, около 40 минут. **Каждый текст звучит один раз.** Метод: [Hören TestDaF](../../hoeren/testdaf-hoeren/).
+
+| Aufgabe | Тип | Формат | Items | Время по Demo-Version |
+|---|---|---|---|---|
+| 1 | Kurzantwort: Übersicht ergänzen | аудио | 5 | 15 секунд на таблицу, 20 секунд после |
+| 2 | Kurzantwort: Textstellen zu Begriffspaar notieren | аудио | 4 | 3 минуты после |
+| 3 | Fehler in Zusammenfassung erkennen | аудио | 2 | 2 минуты 30 секунд после |
+| 4 | Aussagen Personen zuordnen | видео | 6 | 45 секунд на чтение, 45 после |
+| 5 | Kurzantwort: Gliederungspunkte ergänzen | видео | 4 | 10 секунд на план, 3 минуты после |
+| 6 | Multiple-Choice | аудио | 5 | 1 минута 30 секунд на вопросы, 1:30 после |
+| 7 | Laut- und Schriftbild abgleichen | аудио | 4 | 20 секунд после |
+
+### Aufgabe 1: заполни таблицу
+
+<Task title="Hören · Aufgabe 1 (Kurzantwort: Übersicht ergänzen)" time="15 Sekunden für die Tabelle, nach dem Hören 20 Sekunden">
+  <p>Sie hören ein Gespräch zwischen zwei Studierenden über eine Exkursion im Fach Geographie. Sie hören das Gespräch einmal. Ergänzen Sie beim Hören die fünf leeren Felder in der Tabelle. Schreiben Sie pro Feld maximal 2 Wörter. Die Items folgen nicht dem Textverlauf.</p>
+  <p class="ru">Двое студентов обсуждают выезд семинара по географии. Пять пустых полей, в каждом до двух слов. Порядок полей не совпадает с разговором.</p>
+</Task>
+
+**Exkursion Regionalgeographie** · Kosten pro Person: **[1]** ______
+
+| | Montag | Dienstag | Mittwoch | Donnerstag |
+|---|---|---|---|---|
+| Programm | Anreise, Stadtrundgang | Wanderung zum Stausee | **[5]** ______ | Auswertung, Rückfahrt |
+| Treffpunkt | **[2]** ______ · Abfahrt **[3]** ______ | Jugendherberge, 8 Uhr | Marktplatz | Seminarraum der Jugendherberge |
+| Bitte mitbringen | Studierendenausweis | **[4]** ______ | Notizblock | Laptop |
+
+<Listen title="Gespräch: Die Exkursion" plays={1} text="Ludwig: Hallo Greta, hast du die Infos zur Exkursion schon bekommen? Ich habe die Mail vom Institut ehrlich gesagt nicht ganz verstanden. Greta: Hallo Ludwig. Ja, ich habe sie gerade vor mir. Wir fahren am Montag los, Treffpunkt ist der Bahnhof. Ludwig: Am Haupteingang? Greta: Nein, so stand es zuerst in der Mail, aber dort ist morgens zu viel los. Wir treffen uns direkt am Gleis sieben. Ludwig: Okay. Und wann fährt der Zug? Greta: Ursprünglich um sieben Uhr fünfzehn. Aber die Bahn hat den Fahrplan geändert, jetzt fahren wir erst um sieben Uhr fünfundvierzig. Wir sollen aber schon eine Viertelstunde vorher da sein, also um halb acht. Ludwig: Alles klar. Am Dienstag ist die Wanderung zum Stausee, oder? Was muss man da mitbringen? Greta: Feste Wanderschuhe, das ist Pflicht, weil der Weg ziemlich steil ist. Eine wasserdichte Regenjacke schadet natürlich auch nicht, aber die steht nicht auf der Liste. Und Badesachen braucht man nicht, im Stausee darf man nämlich nicht schwimmen. Ludwig: Gut. Und am Mittwoch sollten wir doch ins Rathaus und mit dem Bürgermeister sprechen. Greta: Das war der Plan. Aber der Bürgermeister hat leider abgesagt. Stattdessen befragen wir Landwirte aus der Umgebung, wie sich ihre Arbeit durch die trockenen Sommer verändert hat. Einen Notizblock sollen wir dafür mitbringen. Ludwig: Das finde ich sogar spannender. Am Donnerstag sind dann die Auswertung in der Jugendherberge und die Rückfahrt. Greta: Genau. Dafür brauchen wir unsere Laptops. Ludwig: Und was kostet das Ganze? Ich habe irgendwas von hundertzwanzig Euro gehört. Greta: So war es zuerst geplant. Aber das Institut übernimmt fünfunddreißig Euro pro Person, also zahlen wir nur noch fünfundachtzig Euro. Das Geld müssen wir bis Freitag überweisen. Ludwig: Super, dann melde ich mich heute noch an." ru="Кратко: встречаются не у главного входа, а прямо у седьмого пути. Поезд перенесли с 7:15 на 7:45, прийти надо к 7:30. Во вторник обязательно треккинговые ботинки, куртка по желанию. В среду вместо ратуши опрос фермеров. Стоимость не 120, а 85 евро: 35 евро платит институт." />
+
+### Aufgabe 2: требование и аргумент
+
+<Task title="Hören · Aufgabe 2 (Kurzantwort: Textstellen zu Begriffspaar notieren)" time="nach dem Hören 3 Minuten">
+  <p>Sie hören eine Podiumsdiskussion zum Thema „Studieren ohne Abitur“. Sie hören das Gespräch einmal. Notieren Sie für jede Person, was die Person fordert, und ein dazugehöriges Argument in Stichpunkten.</p>
+  <ul>
+    <li><i>6</i><span>Frau Ruhnke · Forderung: …</span></li>
+    <li><i>7</i><span>Frau Ruhnke · Argument: …</span></li>
+    <li><i>8</i><span>Herr Brockhaus · Forderung: …</span></li>
+    <li><i>9</i><span>Herr Brockhaus · Argument: …</span></li>
+  </ul>
+  <p class="ru">Дискуссия: учиться в вузе без аттестата зрелости, после профессии и работы. Для каждого участника запиши требование и довод. Только его собственные, не то, что он отвергает.</p>
+</Task>
+
+<Listen title="Podiumsdiskussion: Studieren ohne Abitur" plays={1} text="Moderator: Guten Abend und herzlich willkommen. In Deutschland kann man unter bestimmten Bedingungen auch ohne Abitur studieren, zum Beispiel mit einem Meisterabschluss oder nach einer Ausbildung und einigen Jahren im Beruf. Wie weit dieser Zugang gehen sollte, darüber diskutieren heute Frau Ruhnke vom Landesverband für berufliche Bildung und Herr Brockhaus, Rektor einer Fachhochschule. Frau Ruhnke, was fordern Sie? Frau Ruhnke: Wir fordern, dass alle, die eine Berufsausbildung abgeschlossen und mindestens drei Jahre gearbeitet haben, ohne zusätzliche Eignungsprüfung studieren dürfen, und zwar in jedem Fach. Heute müssen viele noch eine Prüfung ablegen oder dürfen nur ein Fach wählen, das zu ihrem Beruf passt. Moderator: Wäre nicht ein Teilzeitstudium die wichtigere Forderung? Viele dieser Menschen haben ja Familie und Job. Frau Ruhnke: Das ist eine eigene Frage, über die wir gern später sprechen können. Heute geht es mir um den Zugang. Und da möchte ich klarstellen, dass es mir nicht in erster Linie darum geht, dass die Wirtschaft mehr Akademiker braucht. Entscheidend ist etwas anderes. Wer einige Jahre im Beruf gestanden hat, bringt etwas mit, das vielen Abiturienten fehlt. Nämlich Disziplin, Erfahrung mit echten Problemen und eine sehr klare Vorstellung davon, warum er studieren will. Moderator: Herr Brockhaus, an Ihrer Hochschule studieren viele Menschen ohne Abitur. Herr Brockhaus: Ja, und ich kann bestätigen, dass sie oft besonders motiviert sind. Ich bin auch dafür, den Zugang ohne Eignungsprüfung zu öffnen. Ich möchte ihn aber an eine Bedingung knüpfen. Wer ohne Abitur kommt, sollte vor Studienbeginn verpflichtend einen Vorbereitungskurs besuchen, vor allem in Mathematik und im wissenschaftlichen Schreiben. Moderator: Ist das nicht doch wieder eine Hürde, um Leute fernzuhalten? Herr Brockhaus: Nein, im Gegenteil. Es geht nicht darum, jemanden fernzuhalten, und Geld verdienen wir an den Kursen auch nicht, sie sind kostenlos. Unsere Erfahrung ist aber, dass viele, denen die Grundlagen fehlen, schon im ersten Semester scheitern. Nicht weil sie es nicht können, sondern weil ihnen das Handwerkszeug fehlt. Und dieser frühe Misserfolg ist so frustrierend, dass viele dann ganz aufgeben. Mit einem Kurs vorher geben wir ihnen eine echte Chance. Frau Ruhnke: Wenn die Kurse kostenlos sind und abends stattfinden, könnte ich damit leben. Moderator: Dann sind wir einem Kompromiss schon recht nahe." ru="Кратко: Рунке требует, чтобы после профессии и трёх лет работы можно было поступать без дополнительного экзамена на любую специальность. Заочное обучение и нужды экономики для неё другая тема. Довод: опытные люди приносят дисциплину, практику и ясную цель. Брокхаус за доступ без экзамена, но с обязательным бесплатным подготовительным курсом. Довод: без основ многие проваливаются в первом семестре и бросают." />
+
+### Aufgabe 3: две ошибки в резюме лекции
+
+<Task title="Hören · Aufgabe 3 (Fehler in Zusammenfassung erkennen)" time="nach dem Hören 2 Minuten 30 Sekunden">
+  <p>Sie hören einen Ausschnitt aus einer Vorlesung im Fach Wirtschaftsgeschichte zum Thema „Die Erfindung des Papiergelds“. Sie hören den Text einmal. Machen Sie sich beim Hören Notizen. Nach dem Hörtext sehen Sie eine schriftliche Zusammenfassung. Markieren Sie die zwei Sätze, die falsche Informationen enthalten.</p>
+  <p class="ru">Фрагмент лекции о том, как появились бумажные деньги. Резюме открывай только после записи.</p>
+</Task>
+
+<Listen title="Vorlesung: Die Erfindung des Papiergelds" plays={1} text="Guten Morgen, meine Damen und Herren, ich bin Historiker und unterrichte hier Wirtschaftsgeschichte. Heute geht es um eine Erfindung, die wir täglich benutzen, ohne darüber nachzudenken, nämlich das Papiergeld. Bevor es Papiergeld gab, bezahlte man mit Münzen aus Metall. Für kleine Einkäufe war das praktisch. Wer aber größere Geschäfte machte, musste ganze Säcke voller Münzen transportieren, und das war schwer, langsam und gefährlich. Die ersten Geldscheine entstanden vor etwa tausend Jahren in China. Dort hinterlegten Kaufleute ihre schweren Eisenmünzen bei Händlern und erhielten dafür eine Quittung aus Papier. Diese Quittungen konnte man weitergeben und damit bezahlen. Am Anfang war das also eine private Lösung von Kaufleuten. Erst als es dabei immer wieder zu Betrug kam, übernahm der Staat die Ausgabe der Scheine. Für den Staat hatte das einen verlockenden Vorteil. Er konnte neues Geld einfach drucken, zum Beispiel, um Kriege zu bezahlen. Genau das geschah immer wieder. Je mehr Scheine im Umlauf waren, desto weniger waren sie wert, und die Preise stiegen. Man könnte sagen, die Inflation ist fast so alt wie das Papiergeld selbst. In Europa staunte man über die chinesischen Scheine. Marco Polo berichtete Ende des dreizehnten Jahrhunderts voller Verwunderung darüber, dass man in China mit Papier bezahlte. Es dauerte aber noch Jahrhunderte, bis Europa selbst Papiergeld einführte. Die ersten europäischen Banknoten gab eine Bank in Stockholm im Jahr sechzehnhunderteinundsechzig aus. Der Grund war ganz praktisch. Schweden bezahlte damals mit Kupfermünzen, und weil Kupfer weniger wert war als Silber, waren diese Münzen riesig und unglaublich schwer. Manche wogen mehrere Kilogramm. Auch diese Bank gab übrigens bald zu viele Scheine aus und brach nach wenigen Jahren zusammen. Was lernen wir daraus? Ein Geldschein ist ein Stück Papier. Er hat nur deshalb einen Wert, weil wir darauf vertrauen, dass andere ihn ebenfalls annehmen. Dieses Vertrauen ist zerbrechlich, und wer zu viel druckt, zerstört es. Darüber sprechen wir nächste Woche, wenn es um moderne Zentralbanken geht." ru="Кратко: монеты для крупных сделок были тяжёлыми. Первые бумажные деньги появились в Китае около тысячи лет назад: купцы оставляли монеты и получали квитанции. Сначала это было частное решение, государство взяло выпуск на себя позже, из-за мошенничества. Государство печатало слишком много, деньги обесценивались. Марко Поло удивлялся бумажным деньгам, но Европа ввела их только через века, в Стокгольме в 1661 году, потому что медные монеты были огромными. Ценность денег держится на доверии." />
+
+<details>
+<summary><b>Zusammenfassung: открыть после записи</b></summary>
+
+1. Vor dem Papiergeld war das Bezahlen größerer Summen mit Münzen mühsam.
+2. Die ersten Geldscheine in China wurden zunächst vom Staat ausgegeben.
+3. Papiergeld gab es in China schon vor etwa tausend Jahren.
+4. Weil zu viele Scheine gedruckt wurden, verlor das Geld an Wert.
+5. Ein europäischer Reisender berichtete voller Staunen über das chinesische Papiergeld.
+6. Kurz nach diesem Bericht wurde auch in Europa Papiergeld eingeführt.
+7. In Schweden waren die Kupfermünzen besonders groß und schwer.
+8. Nach Ansicht des Dozenten beruht der Wert von Papiergeld auf Vertrauen.
+
+</details>
+
+### Aufgabe 4: кто что говорит (на экзамене видео)
+
+<Task title="Hören · Aufgabe 4 (Aussagen Personen zuordnen) · Video" time="45 Sekunden zum Lesen, nach dem Video 45 Sekunden">
+  <p>Sie sehen eine Podiumsdiskussion zum Thema „Windräder im Wald?“. Sie sehen das Video einmal. Entscheiden Sie, zu wem die Aussagen 12 bis 17 passen: zu Herrn Rehwinkel, zu Frau Velten, zu beiden oder zu keinem. Für jede Aussage gibt es genau eine richtige Lösung.</p>
+  <ul>
+    <li><i>12</i><span>Eingriffe in den Wald erhöhen dessen Anfälligkeit für Wetterextreme.</span></li>
+    <li><i>13</i><span>Flächen außerhalb des Waldes reichen für den Ausbau der Windkraft nicht aus.</span></li>
+    <li><i>14</i><span>Windkraftanlagen gehören ausschließlich aufs Meer.</span></li>
+    <li><i>15</i><span>In besonders wertvollen Wäldern sollte man keine Anlagen errichten.</span></li>
+    <li><i>16</i><span>Für die Menschen in der Umgebung sind Anlagen im Wald weniger belastend.</span></li>
+    <li><i>17</i><span>Ersatzpflanzungen gleichen den Verlust erst nach langer Zeit aus.</span></li>
+  </ul>
+  <p class="ru">На экзамене это видео: модератор, лесовед Керстин Фельтен и проектировщик ветропарков Олаф Рехвинкель. Для каждого утверждения: Рехвинкель, Фельтен, оба или никто.</p>
+</Task>
+
+<Listen title="Video: Windräder im Wald?" plays={1} text="Moderatorin: Willkommen zu unserer Reihe Streitfrage Umwelt. Deutschland will die Windkraft an Land stark ausbauen, und immer häufiger werden neue Anlagen im Wald geplant. Darüber diskutieren heute Frau Doktor Kerstin Velten, Forstwissenschaftlerin, und Herr Olaf Rehwinkel, der für einen regionalen Energieversorger Windparks plant. Herr Rehwinkel, warum ausgerechnet der Wald? Herr Rehwinkel: Ganz einfach, weil uns sonst die Flächen fehlen. Zu Wohngebieten müssen Windräder einen großen Abstand halten, und viele andere Flächen sind schon belegt. Ohne Waldflächen werden wir die Ausbauziele kaum erreichen. Und es gibt einen Vorteil, der oft übersehen wird. Im Wald stören die Anlagen die Anwohner viel weniger als am Ortsrand, weil sie weiter von den Häusern entfernt stehen. Moderatorin: Frau Velten, Sie sehen das kritisch. Frau Velten: Ja, wobei ich ausdrücklich nicht gegen Windkraft an Land bin. Ich halte es auch für falsch, Windräder nur noch auf dem Meer bauen zu wollen. Aber der Wald ist kein beliebiger Bauplatz. In alten Laubwäldern und Schutzgebieten haben Windräder für mich nichts zu suchen. Und viele Wälder sind durch die trockenen Sommer der letzten Jahre bereits stark geschwächt. Jede Rodung und jeder neue Weg für die schweren Lastwagen öffnet den Wald und macht ihn noch anfälliger für Sturm und Hitze. Dass wir ohne den Wald die Ziele nicht erreichen, bezweifle ich übrigens. Es gibt noch viele ungenutzte Flächen an Autobahnen und in Gewerbegebieten. Herr Rehwinkel: Für jede Fläche, die wir roden, pflanzen wir an anderer Stelle mindestens genauso viel Wald neu an. Das schreibt das Gesetz vor. Frau Velten: Das ist richtig. Aber ein junger Wald, der gerade gepflanzt wurde, ist kein Ersatz für einen Wald, der hundert Jahre alt ist. Bis er dieselben Aufgaben erfüllt, vergehen Jahrzehnte. Moderatorin: Gibt es Wälder, bei denen Sie beide sagen würden, hier auf keinen Fall? Herr Rehwinkel: Natürlich. Alte Laubwälder und Schutzgebiete sollten tabu sein, da gebe ich Frau Velten völlig recht. Wir planen vor allem auf Flächen, auf denen früher Fichten standen, die durch Trockenheit und Schädlinge abgestorben sind. Frau Velten: Wenn es dabei bleibt, wäre schon viel gewonnen. Moderatorin: Wir sprechen gleich weiter, zuerst aber eine Frage aus dem Publikum." ru="Кратко: Рехвинкель: без леса не хватит площадей, жителям в лесу ветряки мешают меньше, вырубку компенсируют посадками. Фельтен не против ветра на суше и против идеи строить только в море. Лес и так ослаблен засухой, каждая вырубка делает его уязвимее, молодой лес не заменит столетний, свободные площади есть у автобанов. Старые лиственные леса и заповедники оба считают запретной зоной." />
+
+### Aufgabe 5: дополни план доклада (на экзамене видео)
+
+<Task title="Hören · Aufgabe 5 (Kurzantwort: Gliederungspunkte zu Vortrag ergänzen) · Video" time="10 Sekunden für die Gliederung, nach dem Video 3 Minuten">
+  <p>Sie sehen einen Ausschnitt aus einer Vorlesung im Fach Physik zum Thema „Wie der Mond die Gezeiten macht“. Sie sehen das Video einmal. Ergänzen Sie beim Hören die Gliederungspunkte in Stichpunkten.</p>
+  <ul>
+    <li><i>18</i><span>Eigentliche Ursache der Gezeiten: …</span></li>
+    <li><i>19</i><span>Grund für den zweiten Flutberg: …</span></li>
+    <li><i>20</i><span>Springflut entsteht, wenn: …</span></li>
+    <li><i>21</i><span>Langfristige Folge für die Erde: …</span></li>
+  </ul>
+  <p class="ru">На экзамене это видео лекции о приливах. Дополни четыре пункта плана ключевыми словами.</p>
+</Task>
+
+<Listen title="Video: Wie der Mond die Gezeiten macht" plays={1} text="Guten Tag, ich bin Physikerin und beschäftige mich hier am Institut mit Meeresströmungen. Wer schon einmal an der Nordsee war, kennt das Schauspiel. Zweimal am Tag steigt das Wasser, und zweimal am Tag zieht es sich wieder zurück. Heute möchte ich erklären, wie diese Gezeiten entstehen. Viele meinen, Ebbe und Flut hätten mit dem Wind oder mit der Drehung der Erde zu tun. Der eigentliche Grund ist aber die Anziehungskraft des Mondes. Der Mond zieht an der Erde und an allem, was sich auf ihr befindet, auch am Wasser der Ozeane. Auf der Seite der Erde, die dem Mond zugewandt ist, wird das Wasser zu einem sogenannten Flutberg angehoben. Nun gibt es aber eine Schwierigkeit. Es gibt nicht nur einen Flutberg, sondern zwei, und der zweite liegt genau auf der gegenüberliegenden Seite der Erde, also dort, wo der Mond gar nicht ist. Wie kann das sein? Die Erklärung ist, dass die Anziehungskraft mit der Entfernung abnimmt. Auf der dem Mond abgewandten Seite ist sie schwächer als im Mittelpunkt der Erde. Das Wasser dort wird also weniger stark angezogen als die Erde selbst und bleibt gewissermaßen zurück. So entsteht der zweite Flutberg. Weil sich die Erde unter diesen beiden Flutbergen hindurchdreht, haben wir zweimal am Tag Flut. Auch die Sonne erzeugt Gezeiten, allerdings nur etwa halb so starke wie der Mond. Spannend wird es, wenn Sonne, Mond und Erde in einer Linie stehen, also bei Neumond und bei Vollmond. Dann addieren sich ihre Kräfte, und es kommt zur sogenannten Springflut mit besonders hohem Wasserstand. Mit einem besonders nahen Mond, wie man oft liest, hat das übrigens nur am Rande zu tun. Zum Schluss noch eine Folge, die man nicht sieht. Die Gezeiten wirken wie eine Bremse auf die Drehung der Erde. Die Tage werden dadurch ganz allmählich länger, etwa um zwei Tausendstelsekunden pro Jahrhundert. Gleichzeitig entfernt sich der Mond jedes Jahr um knapp vier Zentimeter von der Erde." ru="Кратко: причина приливов не ветер и не вращение Земли, а притяжение Луны. Второй горб воды на обратной стороне потому, что там притяжение слабее, чем в центре Земли, и вода «отстаёт». Сизигийный прилив, когда Солнце, Луна и Земля на одной линии, в новолуние и полнолуние; близость Луны почти ни при чём. Приливы тормозят вращение Земли: сутки удлиняются, Луна удаляется почти на 4 сантиметра в год." />
+
+### Aufgabe 6: доклад, пять вопросов
+
+<Task title="Hören · Aufgabe 6 (Multiple-Choice)" time="1 Minute 30 Sekunden zum Lesen, nach dem Hören 1 Minute 30 Sekunden">
+  <p>Sie hören einen Ausschnitt aus einem Vortrag zum Thema „Resilienz“. Sie hören den Text einmal. Beantworten Sie die Fragen 22 bis 26. Für jede Frage gibt es genau eine richtige Lösung.</p>
+  <ul>
+    <li><i>22</i><span>Laut der Sprecherin bedeutet Resilienz, dass man … <b>a</b> Krisen gar nicht als belastend empfindet. <b>b</b> sich nach schweren Belastungen wieder erholt. <b>c</b> eine seltene angeborene Begabung besitzt. <b>d</b> drohende Krisen meist schon frühzeitig vorhersehen kann.</span></li>
+    <li><i>23</i><span>Die Langzeitstudie auf der Insel zeigte, dass … <b>a</b> fast alle Kinder aus schwierigen Verhältnissen scheiterten. <b>b</b> die Kinder auf der Insel besonders glücklich waren. <b>c</b> Armut keinen Einfluss auf die Entwicklung hatte. <b>d</b> sich ein Teil der belasteten Kinder gut entwickelte.</span></li>
+    <li><i>24</i><span>Als wichtigsten Schutzfaktor nennt die Sprecherin … <b>a</b> eine stabile Beziehung zu einem Erwachsenen. <b>b</b> eine deutlich überdurchschnittliche Intelligenz der Kinder. <b>c</b> finanzielle Sicherheit in der Familie. <b>d</b> frühe Selbstständigkeit im Alltag.</span></li>
+    <li><i>25</i><span>Zu Trainingsprogrammen sagt die Sprecherin, dass … <b>a</b> sie die Resilienz zuverlässig verdoppeln. <b>b</b> sie überhaupt keine Wirkung zeigen. <b>c</b> ihre Wirkung eher bescheiden ist. <b>d</b> sie nur für Kinder geeignet sind.</span></li>
+    <li><i>26</i><span>Am Ende warnt die Sprecherin davor, … <b>a</b> Resilienz für angeboren zu halten. <b>b</b> die Verantwortung allein dem Einzelnen zuzuschieben. <b>c</b> Kinder vor allen Schwierigkeiten und Krisen des Lebens zu schützen. <b>d</b> psychologische Hilfe in Anspruch zu nehmen.</span></li>
+  </ul>
+  <p class="ru">Доклад о психологической устойчивости. Вопросы идут по порядку доклада.</p>
+</Task>
+
+<Listen title="Vortrag: Resilienz" plays={1} text="Guten Abend, ich bin Psychologin hier an der Universität Moorbrügge und freue mich, dass Sie so zahlreich gekommen sind. Heute spreche ich über einen Begriff, der in den letzten Jahren sehr populär geworden ist, nämlich Resilienz. Gemeint ist die Fähigkeit, Krisen und schwere Belastungen zu bewältigen und sich danach wieder zu erholen. Wichtig ist mir gleich am Anfang eine Klarstellung. Resiliente Menschen leiden genauso wie andere. Sie sind nicht unverwundbar. Der Unterschied ist, dass sie wieder auf die Beine kommen. Lange glaubte man, Resilienz sei eine angeborene Eigenschaft, die nur wenige besitzen. Diese Vorstellung hat vor allem eine berühmte Langzeitstudie infrage gestellt. Auf einer Insel im Pazifik begleiteten Forschende alle Kinder eines Jahrgangs über Jahrzehnte. Viele dieser Kinder wuchsen unter schwierigen Bedingungen auf, in Armut, mit kranken oder streitenden Eltern. Man erwartete, dass sie im Leben scheitern würden. Doch etwa ein Drittel dieser Kinder entwickelte sich zu zufriedenen Erwachsenen, die ihr Leben gut meisterten. Was hatten diese Kinder gemeinsam? Nicht unbedingt eine besondere Intelligenz und auch nicht mehr Geld. Der wichtigste Faktor war eine stabile Beziehung zu mindestens einem Erwachsenen, der ihnen Halt gab. Das musste nicht die Mutter oder der Vater sein. Oft war es eine Großmutter, ein Lehrer oder eine Nachbarin. Hinzu kam die Überzeugung, selbst etwas bewirken zu können. Heute gibt es viele Programme, die Resilienz trainieren sollen, in Schulen, aber auch in Unternehmen. Kann man Resilienz also lernen? Zum Teil ja. Die Programme zeigen durchaus Wirkung, allerdings ist sie meist bescheidener, als die Werbung verspricht. Wunder sollte man nicht erwarten. Zum Schluss möchte ich vor einem Missverständnis warnen. Wenn wir Resilienz nur als Aufgabe des Einzelnen betrachten, machen wir es uns zu leicht. Dann heißt es schnell, wer an einer Krise zerbricht, sei eben nicht resilient genug. Ob Menschen Krisen bewältigen, hängt aber auch von ihrer Umgebung ab, von guten Schulen, von Unterstützung und von Menschen, die zuhören. Resilienz ist keine Privatsache." ru="Кратко: резильентность это способность пережить кризис и восстановиться; такие люди тоже страдают. Раньше считали её врождённой редкостью, но долгое исследование на острове показало: около трети детей из трудных условий выросли благополучными. Главное у них общее: устойчивая связь хотя бы с одним взрослым. Тренинги работают, но скромнее, чем обещает реклама. Предупреждение: нельзя делать устойчивость только задачей самого человека." />
+
+### Aufgabe 7: четыре слова звучат иначе
+
+<Task title="Hören · Aufgabe 7 (Laut- und Schriftbild abgleichen)" time="nach dem Hören 20 Sekunden">
+  <p>Sie hören einen Text zum Thema „Das Ende der Dinosaurier“, den Sie gleichzeitig mitlesen. Hörtext und schriftlicher Text sind nicht identisch. Vier Wörter sind unterschiedlich. Sie hören den Text einmal. Markieren Sie beim Hören die vier Wörter, die nicht dem Hörtext entsprechen.</p>
+  <p><b>(27)</b> Vor etwa 66 Millionen Jahren endete das Zeitalter der Dinosaurier plötzlich. Heute gilt als sicher, dass damals ein riesiger Asteroid auf die Erde stürzte.</p>
+  <p><b>(28)</b> Der Einschlag schleuderte gewaltige Mengen Staub in die Atmosphäre, die das Sonnenlicht über Monate abschirmten.</p>
+  <p><b>(29)</b> Pflanzen starben ab, und mit ihnen verloren viele Tiere ihre Lebensgrundlage.</p>
+  <p><b>(30)</b> Doch nicht alle Dinosaurier verschwanden. Ihre Nachfahren leben bis heute neben uns, denn die Vögel stammen von kleinen, gefiederten Dinosauriern ab.</p>
+  <p class="ru">Читай и слушай одновременно. Для бланка текст разбит на четыре отрывка, в каждом ровно одно слово звучит иначе. На экзамене отличия могут стоять где угодно.</p>
+</Task>
+
+<Listen title="Text: Das Ende der Dinosaurier" plays={1} text="Vor etwa sechsundsechzig Millionen Jahren endete das Zeitalter der Dinosaurier abrupt. Heute gilt als sicher, dass damals ein riesiger Asteroid auf die Erde stürzte. Der Einschlag schleuderte gewaltige Mengen Staub in die Atmosphäre, die das Sonnenlicht über Jahre abschirmten. Pflanzen starben ab, und mit ihnen verloren viele Tiere ihre Nahrung. Doch nicht alle Dinosaurier verschwanden. Ihre Nachfahren leben bis heute unter uns, denn die Vögel stammen von kleinen, gefiederten Dinosauriern ab." ru="Около 66 миллионов лет назад эпоха динозавров резко закончилась. Сегодня считается доказанным, что на Землю упал огромный астероид. Удар выбросил в атмосферу столько пыли, что она годами заслоняла солнце. Растения погибли, и многие животные лишились пищи. Но исчезли не все динозавры: их потомки живут среди нас, ведь птицы произошли от маленьких пернатых динозавров." />
+
+<AnswerSheet
+  id="testdaf-stellas-2-hoeren"
+  title="Hören · Пробник Stellas TestDaF №2"
+  module="hoeren"
+  factor={1} maxPoints={30}
+  hint="Переноси ответы со своего листка. В коротких ответах выбери вариант, который совпадает с твоей записью по смыслу. Объяснения откроются после проверки."
+  items={[
+    { n: 1, part: 'Aufgabe 1 · Übersicht', o: ['120 Euro', '85 Euro', '35 Euro'], a: 1, q: 'Kosten pro Person', why: '«also zahlen wir nur noch fünfundachtzig Euro». **Ловушка:** 120 было в первом плане, 35 доплачивает институт.' },
+    { n: 2, part: 'Aufgabe 1 · Übersicht', o: ['Gleis 7', 'Haupteingang', 'Marktplatz'], a: 0, q: 'Montag, Treffpunkt', why: '«Wir treffen uns direkt am Gleis sieben». **Ловушка:** главный вход стоял в письме сначала, но «dort ist morgens zu viel los».' },
+    { n: 3, part: 'Aufgabe 1 · Übersicht', o: ['7.15 Uhr', '7.30 Uhr', '7.45 Uhr'], a: 2, q: 'Montag, Abfahrt', why: '«jetzt fahren wir erst um sieben Uhr fünfundvierzig». **Ловушка:** 7:15 старое время, а «um halb acht» надо прийти, но поезд уходит позже.' },
+    { n: 4, part: 'Aufgabe 1 · Übersicht', o: ['Wanderschuhe', 'wasserdichte Regenjacke', 'Badesachen'], a: 0, q: 'Dienstag, mitbringen', why: '«Feste Wanderschuhe, das ist Pflicht». **Ловушка:** куртка «steht nicht auf der Liste», а купальные вещи не нужны: «im Stausee darf man nämlich nicht schwimmen».' },
+    { n: 5, part: 'Aufgabe 1 · Übersicht', o: ['Rathaus besuchen', 'Landwirte befragen', 'Stausee besichtigen'], a: 1, q: 'Mittwoch, Programm', why: '«Stattdessen befragen wir Landwirte aus der Umgebung». **Ловушка:** ратуша отпала, бургомистр «hat leider abgesagt».' },
+    { n: 6, part: 'Aufgabe 2 · Forderung und Argument', o: ['mehr Studiengänge in Teilzeit für Berufstätige anbieten', 'Studium ohne Eignungsprüfung in jedem Fach', 'mehr Akademiker für die Wirtschaft'], a: 1, q: 'Frau Ruhnke, Forderung', why: 'Без экзамена и «und zwar in jedem Fach». **Ловушка:** заочное предлагает модератор, а она отвечает: «Das ist eine eigene Frage».' },
+    { n: 7, part: 'Aufgabe 2 · Forderung und Argument', o: ['Berufserfahrung bringt Disziplin und klare Ziele', 'die Wirtschaft braucht dringend mehr Akademikerinnen und Akademiker', 'Abiturnoten sind oft ungerecht'], a: 0, q: 'Frau Ruhnke, Argument', why: 'Опытные люди приносят «Disziplin, Erfahrung mit echten Problemen und eine sehr klare Vorstellung davon, warum er studieren will». **Ловушка:** про экономику она говорит «nicht in erster Linie».' },
+    { n: 8, part: 'Aufgabe 2 · Forderung und Argument', o: ['Zugang mit verpflichtendem Vorbereitungskurs', 'Eignungsprüfung für alle Bewerber beibehalten', 'Zugang nur noch für Bewerber mit Meisterabschluss'], a: 0, q: 'Herr Brockhaus, Forderung', why: 'Он за доступ без экзамена, но «vor Studienbeginn verpflichtend einen Vorbereitungskurs». **Ловушка:** экзамен он как раз хочет отменить.' },
+    { n: 9, part: 'Aufgabe 2 · Forderung und Argument', o: ['an den Kursen verdient die Hochschule Geld', 'Studierende ohne Abitur sind meist weniger motiviert als andere', 'ohne Grundlagen scheitern viele früh und geben auf'], a: 2, q: 'Herr Brockhaus, Argument', why: 'Многие «schon im ersten Semester scheitern», и после этого «viele dann ganz aufgeben». **Ловушка:** курсы «sind kostenlos», а мотивацию он хвалит.' },
+    { n: 10, part: 'Aufgabe 3 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8'], a: 1, q: 'Первое неверное предложение', why: 'Неверно 2. Сначала это была «eine private Lösung von Kaufleuten», государство пришло позже. **Ловушка:** 3 верно: «vor etwa tausend Jahren in China».' },
+    { n: 11, part: 'Aufgabe 3 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8'], a: 5, q: 'Второе неверное предложение', why: 'Неверно 6. «Es dauerte aber noch Jahrhunderte, bis Europa selbst Papiergeld einführte». **Ловушка:** 5 верно: Марко Поло рассказывал «voller Verwunderung».' },
+    { n: 12, part: 'Aufgabe 4 · Personen', o: ['Herr Rehwinkel', 'Frau Velten', 'beide', 'keiner'], a: 1, q: 'Вырубка делает лес уязвимее', why: 'Фельтен: каждая вырубка «macht ihn noch anfälliger für Sturm und Hitze». Рехвинкель говорит о засохших елях, но не о вреде вырубки.' },
+    { n: 13, part: 'Aufgabe 4 · Personen', o: ['Herr Rehwinkel', 'Frau Velten', 'beide', 'keiner'], a: 0, q: 'Без леса цели не достичь', why: 'Рехвинкель: «Ohne Waldflächen werden wir die Ausbauziele kaum erreichen». **Ловушка:** beide. Фельтен как раз «bezweifle ich».' },
+    { n: 14, part: 'Aufgabe 4 · Personen', o: ['Herr Rehwinkel', 'Frau Velten', 'beide', 'keiner'], a: 3, q: 'Строить только в море', why: 'Даже критик против: «Ich halte es auch für falsch, Windräder nur noch auf dem Meer bauen zu wollen». Рехвинкель планирует парки на суше. Значит, keiner.' },
+    { n: 15, part: 'Aufgabe 4 · Personen', o: ['Herr Rehwinkel', 'Frau Velten', 'beide', 'keiner'], a: 2, q: 'Старые леса и заповедники без ветряков', why: 'Фельтен: там ветрякам «nichts zu suchen». Рехвинкель: «sollten tabu sein, da gebe ich Frau Velten völlig recht». Оба.' },
+    { n: 16, part: 'Aufgabe 4 · Personen', o: ['Herr Rehwinkel', 'Frau Velten', 'beide', 'keiner'], a: 0, q: 'Жителям в лесу мешают меньше', why: 'Рехвинкель: «Im Wald stören die Anlagen die Anwohner viel weniger als am Ortsrand». Фельтен этот довод не обсуждает.' },
+    { n: 17, part: 'Aufgabe 4 · Personen', o: ['Herr Rehwinkel', 'Frau Velten', 'beide', 'keiner'], a: 1, q: 'Молодой лес не замена старому', why: 'Фельтен: «ein junger Wald ... ist kein Ersatz für einen Wald, der hundert Jahre alt ist». **Ловушка:** Рехвинкель говорит о посадках, но считает их достаточной заменой.' },
+    { n: 18, part: 'Aufgabe 5 · Gliederung', o: ['Wind über den Ozeanen', 'Anziehungskraft des Mondes', 'Drehung der Erde'], a: 1, q: 'Eigentliche Ursache der Gezeiten', why: '«Der eigentliche Grund ist aber die Anziehungskraft des Mondes». **Ловушка:** ветер и вращение Земли называют те, кто «meinen», то есть ошибаются.' },
+    { n: 19, part: 'Aufgabe 5 · Gliederung', o: ['dort zieht die Sonne stärker als der Mond', 'dort gibt es tiefere Ozeane', 'Anziehung des Mondes dort schwächer'], a: 2, q: 'Grund für den zweiten Flutberg', why: 'На обратной стороне сила «schwächer als im Mittelpunkt der Erde», и вода «bleibt gewissermaßen zurück». **Ловушка:** Солнце появляется только в следующем пункте.' },
+    { n: 20, part: 'Aufgabe 5 · Gliederung', o: ['Sonne, Mond und Erde in einer Linie stehen', 'der Mond der Erde besonders nah ist', 'ein starker Sturm das Wasser zusätzlich gegen die Küste drückt'], a: 0, q: 'Springflut entsteht, wenn', why: '«wenn Sonne, Mond und Erde in einer Linie stehen». **Ловушка:** близкая Луна «hat das übrigens nur am Rande zu tun».' },
+    { n: 21, part: 'Aufgabe 5 · Gliederung', o: ['der Mond kommt der Erde näher', 'die Tage werden länger', 'der Meeresspiegel steigt langsam an'], a: 1, q: 'Langfristige Folge für die Erde', why: 'Приливы тормозят вращение: «Die Tage werden dadurch ganz allmählich länger». **Ловушка:** Луна не приближается, а «entfernt sich».' },
+    { n: 22, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 1, q: 'Что такое резильентность', why: '«Krisen und schwere Belastungen zu bewältigen und sich danach wieder zu erholen». **Ловушка:** a. Она прямо говорит: «Resiliente Menschen leiden genauso wie andere».' },
+    { n: 23, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 3, q: 'Итог исследования на острове', why: '«etwa ein Drittel dieser Kinder entwickelte sich zu zufriedenen Erwachsenen». **Ловушка:** a. Провала ждали, но он случился не у всех.' },
+    { n: 24, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 0, q: 'Главный защитный фактор', why: '«Der wichtigste Faktor war eine stabile Beziehung zu mindestens einem Erwachsenen». **Ловушка:** b и c она отвергает: «Nicht unbedingt eine besondere Intelligenz und auch nicht mehr Geld».' },
+    { n: 25, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Тренинги', why: '«Die Programme zeigen durchaus Wirkung, allerdings ist sie meist bescheidener, als die Werbung verspricht». **Ловушка:** b. Эффект есть, просто небольшой.' },
+    { n: 26, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 1, q: 'Предупреждение в конце', why: '«Wenn wir Resilienz nur als Aufgabe des Einzelnen betrachten, machen wir es uns zu leicht». **Ловушка:** a. Про врождённость она говорит в начале, и это старое представление, а не предупреждение.' },
+    { n: 27, part: 'Aufgabe 7 · Laut und Schrift', o: ['Asteroid', 'Erde', 'plötzlich', 'riesiger', 'Zeitalter'], a: 2, q: 'Отрывок 27', why: 'В тексте plötzlich, а звучит «endete das Zeitalter der Dinosaurier abrupt». Синоним, поэтому на слух легко пропустить.' },
+    { n: 28, part: 'Aufgabe 7 · Laut und Schrift', o: ['Atmosphäre', 'Einschlag', 'gewaltige', 'Monate', 'Sonnenlicht'], a: 3, q: 'Отрывок 28', why: 'В тексте Monate, а звучит «über Jahre».' },
+    { n: 29, part: 'Aufgabe 7 · Laut und Schrift', o: ['Lebensgrundlage', 'Pflanzen', 'starben', 'Tiere', 'verloren'], a: 0, q: 'Отрывок 29', why: 'В тексте Lebensgrundlage, а звучит «ihre Nahrung».' },
+    { n: 30, part: 'Aufgabe 7 · Laut und Schrift', o: ['Dinosaurier', 'gefiederten', 'Nachfahren', 'neben', 'Vögel'], a: 3, q: 'Отрывок 30', why: 'В тексте neben, а звучит «unter uns». Короткий предлог, его проще всего прослушать.' },
+  ]}
+/>
+
+<Callout type="trap" title="Сначала план, потом поправка">
+  <p>Haupteingang, 7:15, 120 Euro, Rathaus: в Aufgabe 1 всё это звучит первым. И всё это потом меняют. В TestDaF первое названное часто старый план. Пиши то, что осталось после «aber».</p>
+</Callout>
+
+<p class="punch">«Viele meinen» в лекции почти всегда значит: сейчас будет неверный вариант.</p>
+
+## Schreiben
+
+Две задачи по 30 минут, всего около 60. Порядок фиксированный, к первому тексту после второго не вернуться. Метод: [Schreiben TestDaF](../../schreiben/testdaf-schreiben/).
+
+| Aufgabe | Что пишешь | Объём | Время |
+|---|---|---|---|
+| 1 | аргументативный пост на учебной платформе | минимум 200 слов | 30 минут |
+| 2 | сводка текста и графика для курсовой | около 100–150 слов | 30 минут |
+
+### Aufgabe 1: пост с аргументами
+
+<Task title="Schreiben · Aufgabe 1 (Argumentativen Text schreiben)" time="30 Minuten" words="mindestens 200 Wörter">
+  <p>Auf einer Lernplattform diskutieren Sie mit Ihrer Dozentin und anderen Seminarteilnehmenden über das Thema „Studium in der Heimatstadt“. Schreiben Sie einen kurzen Beitrag.</p>
+  <p>Erläutern und begründen Sie, welche positiven und negativen Aspekte es haben kann, für das Studium in der Heimatstadt zu bleiben, statt in eine andere Stadt zu ziehen.</p>
+  <p>Schreiben Sie mindestens 200 Wörter.</p>
+  <p class="ru">Пост на учебной платформе: остаться учиться в родном городе или уехать в другой. Объясни и обоснуй плюсы и минусы. Минимум 200 слов.</p>
+</Task>
+
+<Trainer id="testdaf-stellas-2-schreiben-1" mode="forum" minutes={30} target={200} points={['Тема и о чём пост, в начале', 'Плюсы, если остаться дома', 'Минусы, если остаться дома', 'Вывод: твоя позиция с причиной']} />
+
+Образец на 225 слов.
+
+<Anatomy
+  window="Lernplattform · Seminar"
+  subject="Studium in der Heimatstadt"
+  parts={[
+    { id: 'einl', label: 'Вход в тему', color: 'var(--violet)', text: 'Liebe Frau Quandt, liebe Kommilitoninnen und Kommilitonen,\nviele von uns standen vor ein paar Jahren vor derselben Frage: Sollte man für das Studium in der Heimatstadt bleiben oder in eine andere Stadt ziehen? Ich möchte hier die Vor- und Nachteile abwägen.', note: 'Тема через вопрос, который знаком всем читателям поста.' },
+    { id: 'pro', label: 'За то, чтобы остаться', color: 'var(--teal)', text: 'Wer in seiner Heimatstadt bleibt, spart vor allem Geld. Man kann oft weiter bei den Eltern wohnen und muss keine teure Miete bezahlen. Außerdem bleiben Freunde und Familie in der Nähe, was gerade in den ersten Semestern, wenn vieles neu und anstrengend ist, eine große Stütze sein kann. Wer schon einen Nebenjob hat, muss ihn nicht aufgeben.', note: 'Три довода, у каждого своя связка: vor allem, Außerdem, и отдельная фраза про работу.' },
+    { id: 'contra', label: 'Против', color: 'var(--pink)', text: 'Andererseits verpasst man so eine wichtige Erfahrung. Wer zu Hause bleibt, lernt seltener, selbstständig zu leben, einen eigenen Haushalt zu führen und sich in einer fremden Umgebung zurechtzufinden. Hinzu kommt, dass die Hochschule am Heimatort vielleicht nicht das beste Angebot für das gewünschte Fach hat. Manche bleiben außerdem in alten Gewohnheiten stecken und knüpfen kaum neue Kontakte.', note: 'Andererseits открывает вторую сторону. Минусы конкретные, а не «es ist nicht so gut».' },
+    { id: 'weg', label: 'Если уехать', color: 'var(--sun)', ink: 'var(--ink)', text: 'Ein Umzug in eine andere Stadt eröffnet dagegen neue Möglichkeiten. Man lernt Menschen aus ganz unterschiedlichen Regionen kennen und kann den Studienort nach dem Fach auswählen. Viele berichten, dass sie in dieser Zeit besonders viel über sich selbst gelernt haben. Allerdings ist ein solcher Schritt teurer, und nicht alle kommen mit dem Heimweh zurecht.', note: 'Взгляд с другой стороны, тоже с плюсом и минусом. Так видно, что ты взвешиваешь.' },
+    { id: 'fazit', label: 'Вывод', color: 'var(--gold)', ink: 'var(--ink)', text: 'Meiner Meinung nach gibt es keine Lösung, die für alle richtig ist. Entscheidend sollte zuerst die Frage sein, wo das gewünschte Fach am besten angeboten wird. Wenn die Hochschule am Heimatort dabei gut abschneidet, spricht nichts dagegen zu bleiben. Wer es sich leisten kann, sollte aber zumindest ein Semester woanders verbringen, zum Beispiel im Rahmen eines Austauschs.', note: 'Позиция с критерием и советом. Вывод не повторяет доводы, а решает вопрос.' },
+  ]}
+/>
+
+<Callout type="trap" title="Плюсы и минусы, а не только мнение">
+  <p>Задание просит «positive und negative Aspekte». Кто сразу пишет «Ich finde, man sollte wegziehen» и пять причин за это, раскрыл половину. Сначала обе стороны, позиция в выводе.</p>
+</Callout>
+
+### Aufgabe 2: текст и график в одном абзаце
+
+<Task title="Schreiben · Aufgabe 2 (Informationen aus Lesetext und Grafik zusammenfassen)" time="30 Minuten" words="ca. 100–150 Wörter">
+  <p>In Ihrem Seminar für Medienpädagogik schreiben Sie eine Hausarbeit zum Thema „Erklärvideos im Studium“. In einem Abschnitt wollen Sie sich mit folgender Frage beschäftigen: Wie häufig nutzen Studierende Erklärvideos, und wo liegen ihre Grenzen?</p>
+  <p>Fassen Sie zu dieser Frage Informationen aus dem Text und der Grafik zusammen. Benutzen Sie eigene Formulierungen. Das Abschreiben von Textpassagen ist nicht erlaubt. Schreiben Sie ca. 100–150 Wörter.</p>
+  <p><b>Lernen mit Erklärvideos</b></p>
+  <p>Ob Integralrechnung, Statistik oder Grundlagen der Chemie: Zu fast jedem Thema gibt es im Internet kurze Videos, die Inhalte anschaulich erklären. Für viele Studierende sind sie zu einem festen Bestandteil des Lernens geworden. Lehrende sehen diese Entwicklung mit gemischten Gefühlen.</p>
+  <p>Ein Vorteil liegt auf der Hand: Videos lassen sich anhalten und wiederholen, so oft man will. Wer in der Vorlesung etwas nicht verstanden hat, findet oft schnell eine zweite Erklärung. Studien zeigen jedoch auch Grenzen. Wer ein gut gemachtes Video ansieht, hat häufig das Gefühl, den Stoff verstanden zu haben, kann ihn aber anschließend nicht selbst anwenden. Fachleute sprechen von einer Illusion des Verstehens. Lernen erfordert eigenes Üben, und das kann kein Video ersetzen.</p>
+  <p>Hinzu kommt, dass die Qualität der Videos sehr unterschiedlich ist. Neben hervorragenden Angeboten gibt es Videos mit fachlichen Fehlern, die Laien kaum erkennen. Manche Hochschulen produzieren deshalb eigene Videos oder empfehlen geprüfte Kanäle.</p>
+  <p class="ru">Курсовая по медиапедагогике. Вопрос: как часто студенты смотрят обучающие видео и где их пределы. Пределы в тексте, частота в графике под ним. Своими словами, 100–150 слов.</p>
+</Task>
+
+**Grafik: Welche Lernmedien nutzen Studierende mindestens einmal pro Woche?** (Befragung, Universität Moorbrügge, Anteil in Prozent)
+
+| Lernmedium | Anteil |
+|---|---|
+| Vorlesungsfolien | 81 % |
+| Erklärvideos | 68 % |
+| Lehrbücher | 34 % |
+| Fachartikel | 22 % |
+| Podcasts | 15 % |
+
+<Trainer id="testdaf-stellas-2-schreiben-2" mode="summary" minutes={30} target={125} points={['Вводная фраза: о чём абзац', 'Как часто смотрят видео и на каком месте они (график)', 'Плюс видео (текст)', 'Пределы: иллюзия понимания и качество (текст)']} />
+
+
+Образец на 113 слов.
+
+<Anatomy
+  window="Hausarbeit · Abschnitt 3.2"
+  subject="Erklärvideos: Nutzung und Grenzen"
+  parts={[
+    { id: 'ein', label: 'Вход', color: 'var(--violet)', text: 'Erklärvideos gehören für viele Studierende inzwischen fest zum Lernen.', note: 'Тема одной фразой, своими словами.' },
+    { id: 'grafik', label: 'График: частота', color: 'var(--sun)', ink: 'var(--ink)', text: 'Eine Befragung an der Universität Moorbrügge zeigt, dass gut zwei Drittel der Studierenden sie mindestens einmal pro Woche nutzen. Damit liegen sie nur hinter den Vorlesungsfolien mit 81 Prozent und weit vor Lehrbüchern, die nur etwa ein Drittel regelmäßig verwendet. Fachartikel und Podcasts spielen eine noch geringere Rolle.', note: 'Главная цифра словами (gut zwei Drittel), сравнение с первым и третьим местом, остальное кратко.' },
+    { id: 'vorteil', label: 'Плюс', color: 'var(--teal)', text: 'Ihr Vorteil besteht darin, dass man sie beliebig oft anhalten und wiederholen kann.', note: 'Одна фраза. Вопрос про пределы, поэтому плюс не раздуваем.' },
+    { id: 'grenzen', label: 'Пределы', color: 'var(--pink)', text: 'Allerdings haben Videos auch Grenzen. Häufig glauben Lernende nach einem Video, den Stoff verstanden zu haben, können ihn aber nicht selbst anwenden, weil das eigene Üben fehlt. Zudem ist die Qualität sehr unterschiedlich, und fachliche Fehler sind für Laien oft kaum zu erkennen.', note: 'Оба предела из текста, оба своими словами. «Illusion des Verstehens» пересказана, а не списана.' },
+  ]}
+/>
+
+Обязательно должно быть в тексте:
+
+- **из графика:** обучающие видео смотрят около двух третей студентов каждую неделю, это второе место после слайдов лекций;
+- **из текста:** иллюзия понимания без собственной практики; разное качество и ошибки, которые трудно заметить.
+
+### На что смотрят эксперты
+
+| Аспект | Вопрос к своему тексту |
+|---|---|
+| Тема и все пункты | В Aufgabe 1 обе стороны, в Aufgabe 2 и частота, и пределы |
+| Нужное действие | Aufgabe 1: аргументы и позиция. Aufgabe 2: сводка без своего мнения |
+| Источники своими словами | Цифры графика верные, фразы текста не списаны |
+| Язык | Точная и разная грамматика, связки, слова к теме |
+| Понятность | Понятно даже при ошибках |
+
+<p class="punch">В графике пять строк. Это не значит, что нужно пять предложений.</p>
+
+## Sprechen
+
+Семь заданий, около 35 минут, ответы записываются. Заметки на бумаге можно. Метод: [Sprechen TestDaF](../../sprechen/testdaf-sprechen/).
+
+| Aufgabe | Тип | Подготовка | Ответ |
+|---|---|---|---|
+| 1 | Rat geben | 0:30 | 0:45 |
+| 2 | Optionen abwägen | 0:45 | 1:30 |
+| 3 | Text zusammenfassen | 4:00 вместе с чтением | 2:00 |
+| 4 | Informationen abgleichen, Stellung nehmen | график 0:30, реплика 0:20, подготовка 1:30 | 1:30 |
+| 5 | Thema präsentieren | 2:00 | 2:30 |
+| 6 | Argumente wiedergeben, Stellung nehmen | реплика 0:58, подготовка 1:30 | 2:00 |
+| 7 | Maßnahmen kritisieren | 1:30 | 1:30 |
+
+### Aufgabe 1: дать совет
+
+<Task title="Sprechen · Aufgabe 1 (Rat geben)" time="Vorbereitung 30 Sekunden, Sprechzeit 45 Sekunden">
+  <p>Sie sitzen mit Ihrem Studienfreund Leander in der Cafeteria. Sein Professor hat ihm angeboten, ein Jahr lang in einem Forschungsprojekt mitzuarbeiten. Dann würde Leander sein Bachelorstudium allerdings ein Semester später abschließen. Er überlegt, ob er das Angebot annehmen soll, und fragt Sie um Rat.</p>
+  <p>Sagen Sie Leander, wozu Sie ihm raten.</p>
+  <p class="ru">Другу предложили год работать в исследовательском проекте профессора, но тогда бакалавриат закончится на семестр позже. Посоветуй ему.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 1: совет за 45 секунд" prep={30} talk={45} topics={[
+  { t: 'Rat geben: Ein Semester länger für ein Forschungsprojekt?', ru: 'Задание 1 этого пробника', points: ['Klare Empfehlung am Anfang', 'Zwei Gründe', 'Auf das Problem mit dem Semester eingehen', 'Kurzer Schluss'] },
+]} />
+
+<Dialog title="Образец: совет Leander" lines={[
+  { who: 'A', name: 'Du', de: 'Ehrlich gesagt würde ich das Angebot an deiner Stelle annehmen, Leander.', ru: 'Честно говоря, на твоём месте я бы согласился, Леандер.' },
+  { who: 'A', name: 'Du', de: 'So eine Chance bekommt man im Bachelor nicht oft. Du lernst, wie Forschung wirklich funktioniert, und du kannst später im Lebenslauf etwas Konkretes vorweisen. Vielleicht merkst du dabei sogar, ob ein Master oder eine Promotion für dich infrage kommt.', ru: 'Такой шанс в бакалавриате выпадает нечасто. Узнаешь, как на самом деле устроена наука, и потом сможешь показать в резюме что-то конкретное. Может, даже поймёшь, нужны ли тебе магистратура или аспирантура.' },
+  { who: 'A', name: 'Du', de: 'Und ein Semester mehr ist wirklich kein Drama. Kein Arbeitgeber fragt, ob du sechs oder sieben Semester gebraucht hast, wenn du so eine Erfahrung erklären kannst.', ru: 'А лишний семестр точно не трагедия. Ни один работодатель не спросит, шесть или семь семестров ты учился, если ты можешь рассказать о таком опыте.' },
+]} />
+
+### Aufgabe 2: взвесить варианты
+
+<Task title="Sprechen · Aufgabe 2 (Optionen abwägen)" time="Vorbereitung 45 Sekunden, Sprechzeit 1 Minute 30 Sekunden">
+  <p>Sie sitzen mit einigen Studienfreunden in der Mensa. Ihre Freundin Wiebke sagt, sie sei dafür, dass alle Studierenden im ersten Semester einen Erste-Hilfe-Kurs besuchen müssen. Sie fragt Sie nach Ihrer Meinung.</p>
+  <p>Wägen Sie positive und negative Folgen einer solchen Pflicht ab. Legen Sie Ihren eigenen Standpunkt dar und begründen Sie Ihre Meinung.</p>
+  <p class="ru">Подруга считает, что все первокурсники должны пройти курс первой помощи. Взвесь плюсы и минусы, скажи своё мнение и обоснуй.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 2: за и против за 1:30" prep={45} talk={90} topics={[
+  { t: 'Optionen abwägen: Erste-Hilfe-Kurs als Pflicht für alle Erstsemester?', ru: 'Задание 2 этого пробника', points: ['Positive Folgen', 'Negative Folgen', 'Eigener Standpunkt', 'Begründung'] },
+]} />
+
+<Dialog title="Образец: курс первой помощи для всех" lines={[
+  { who: 'A', name: 'Du', de: 'Interessante Idee, Wiebke. Ein paar Vorteile liegen auf der Hand. Viele haben ihren letzten Erste-Hilfe-Kurs vor dem Führerschein gemacht und das meiste längst vergessen. Wenn auf dem Campus jemand zusammenbricht, wüssten dann mehr Leute, was zu tun ist. Und so ein Kurs wäre auch eine Gelegenheit, im ersten Semester neue Leute kennenzulernen.', ru: 'Интересная идея, Вибке. Некоторые плюсы очевидны. Многие проходили курс первой помощи перед правами и почти всё забыли. Если на кампусе кому-то станет плохо, больше людей будут знать, что делать. И курс был бы поводом познакомиться с людьми в первом семестре.' },
+  { who: 'A', name: 'Du', de: 'Andererseits ist das erste Semester ohnehin sehr voll. Ein Pflichtkurs kostet Zeit, und irgendjemand muss die Kurse auch bezahlen und organisieren. Außerdem lernt man unter Zwang selten mit Begeisterung.', ru: 'С другой стороны, первый семестр и так забит. Обязательный курс отнимает время, и кто-то должен его оплатить и организовать. К тому же из-под палки редко учатся с охотой.' },
+  { who: 'A', name: 'Du', de: 'Ich wäre deshalb eher für ein freiwilliges, kostenloses Angebot, das die Hochschule aktiv bewirbt, vielleicht in der Orientierungswoche. Dann kommen die, die wirklich wollen.', ru: 'Поэтому я скорее за добровольный бесплатный курс, который вуз активно рекламирует, например, в неделю ориентации. Тогда придут те, кто правда хочет.' },
+]} />
+
+### Aufgabe 3: пересказать текст
+
+<Task title="Sprechen · Aufgabe 3 (Text zusammenfassen)" time="Lesen und Vorbereitung 4 Minuten, Sprechzeit 2 Minuten">
+  <p>In einer Arbeitsgruppe an Ihrer Hochschule behandeln Sie gerade das Thema „Gesund arbeiten“. Sie haben dazu einen interessanten Artikel gelesen und wollen ihn für Ihre Mitstudierenden zusammenfassen.</p>
+  <p>Lesen Sie den Text. Der Text ist 4 Minuten lang zu sehen. Fassen Sie danach die wesentlichen Informationen zusammen.</p>
+  <p><b>Grüne Luftreiniger?</b></p>
+  <p>Zimmerpflanzen gelten als natürliche Luftreiniger. In Ratgebern und Möbelhäusern liest man oft, schon wenige Pflanzen könnten Schadstoffe aus der Raumluft filtern. Eine Forschungsgruppe der Universität Moorbrügge hat diese Behauptung nun überprüft.</p>
+  <p>Die Forschenden stellten fest, dass sich die meisten Ratgeber auf ältere Experimente berufen. Damals hatte man Pflanzen in kleine, luftdicht verschlossene Kammern gestellt und gemessen, wie schnell bestimmte Schadstoffe verschwanden. Unter diesen Bedingungen wirkten die Pflanzen tatsächlich. Ein echtes Büro ist aber keine verschlossene Kammer. Durch Fenster, Türen und Lüftung wird die Luft ständig ausgetauscht.</p>
+  <p>In ihrer eigenen Studie maßen die Forschenden deshalb die Luftqualität in zwölf gewöhnlichen Büros, einmal mit und einmal ohne Pflanzen. Der Unterschied war kaum messbar. Nach ihren Berechnungen bräuchte man mehrere Hundert Pflanzen pro Raum, um so viel zu erreichen wie mit regelmäßigem Lüften.</p>
+  <p>Nutzlos sind Zimmerpflanzen deshalb aber nicht. In einer Befragung gaben die Beschäftigten in den Büros mit Pflanzen an, sich wohler zu fühlen und sich besser konzentrieren zu können. Ob das an den Pflanzen selbst liegt oder einfach daran, dass der Raum freundlicher wirkt, lässt sich nicht sagen.</p>
+  <p>Die Forschenden raten deshalb: Wer bessere Luft möchte, sollte lieber das Fenster öffnen. Wer sich mit Pflanzen wohler fühlt, darf sie aber gern behalten.</p>
+  <p class="ru">Статья: чистят ли комнатные растения воздух. Прочитай за 4 минуты, закрой текст и перескажи главное за 2 минуты.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 3: пересказ за 2 минуты" prep={240} talk={120} topics={[
+  { t: 'Text zusammenfassen: Grüne Luftreiniger?', ru: 'Задание 3 этого пробника. Закрой текст, когда начнётся ответ', points: ['Thema und Behauptung', 'Woher die Behauptung stammt', 'Eigene Studie und Ergebnis', 'Andere Wirkung: Wohlbefinden', 'Empfehlung der Forschenden'] },
+]} />
+
+<Anatomy
+  window="Arbeitsgruppe"
+  subject="Zusammenfassung"
+  parts={[
+    { id: 'thema', label: 'Тема', color: 'var(--violet)', text: 'In dem Artikel geht es um die verbreitete Annahme, dass Zimmerpflanzen die Luft in Räumen reinigen. Eine Forschungsgruppe der Universität Moorbrügge hat das untersucht.', note: 'Сразу утверждение, которое проверяют.' },
+    { id: 'quelle', label: 'Откуда миф', color: 'var(--teal)', text: 'Die meisten Ratgeber stützen sich auf alte Versuche, bei denen Pflanzen in kleinen, geschlossenen Behältern standen. Dort haben sie tatsächlich Schadstoffe entfernt. In einem normalen Büro wird die Luft aber ständig ausgetauscht.', note: 'Своими словами: Behälter вместо Kammer, «ständig ausgetauscht» объясняет, почему старый опыт не подходит.' },
+    { id: 'studie', label: 'Новое исследование', color: 'var(--sun)', ink: 'var(--ink)', text: 'Deshalb haben die Forschenden in zwölf echten Büros gemessen, mit und ohne Pflanzen. Der Unterschied war so gering, dass man Hunderte Pflanzen pro Raum bräuchte, um die Wirkung von regelmäßigem Lüften zu erreichen.', note: 'Цифры, которые несут смысл: двенадцать офисов и сотни растений.' },
+    { id: 'wohl', label: 'Другая польза', color: 'var(--pink)', text: 'Trotzdem haben Pflanzen einen Nutzen. Wer in einem Büro mit Pflanzen arbeitet, fühlt sich laut einer Befragung wohler und kann sich besser konzentrieren. Ob das an den Pflanzen liegt oder nur an der freundlicheren Atmosphäre, ist unklar.', note: 'Оговорка про причину тоже главная информация. Без неё пересказ неточен.' },
+    { id: 'rat', label: 'Совет', color: 'var(--gold)', ink: 'var(--ink)', text: 'Die Empfehlung lautet also, für bessere Luft lieber zu lüften, die Pflanzen aber zu behalten, wenn man sich mit ihnen wohlfühlt.', note: 'Короткий итог закрывает пересказ.' },
+  ]}
+/>
+
+### Aufgabe 4: сверить с графиком и ответить
+
+<Task title="Sprechen · Aufgabe 4 (Informationen abgleichen, Stellung nehmen)" time="Grafik 30 Sekunden, Aussage 20 Sekunden, Vorbereitung 1 Minute 30 Sekunden, Sprechzeit 1 Minute 30 Sekunden">
+  <p>In Ihrem soziologischen Seminar sprechen Sie über Frauen in technischen und naturwissenschaftlichen Studienfächern. Ihr Dozent, Herr Dr. Brinkmann, hat eine Grafik mitgebracht und bittet die Seminarteilnehmenden um eine Stellungnahme.</p>
+  <p>Hören Sie, was eine Seminarteilnehmerin dazu sagt. Nehmen Sie Stellung zu der gehörten Aussage. Beziehen Sie sich dabei auch auf die Grafik.</p>
+  <p class="ru">Семинар о женщинах в технических и естественных специальностях. Посмотри график, послушай однокурсницу, подготовься и ответь: права ли она, если сверить с цифрами, и что думаешь ты.</p>
+</Task>
+
+**Grafik: Frauenanteil unter den Studienanfängern, Universität Moorbrügge** (in Prozent)
+
+| Fach | 2010 | 2025 |
+|---|---|---|
+| Informatik | 17 | 27 |
+| Maschinenbau | 11 | 16 |
+| Mathematik | 43 | 47 |
+
+<Listen title="Aussage einer Seminarteilnehmerin" plays={1} text="Also, ich bin Studentin der Soziologie, und ich sehe das ganz nüchtern. Frauen interessieren sich einfach immer weniger für Technik und Naturwissenschaften. Da können die Hochschulen so viele Förderprogramme starten, wie sie wollen." ru="Я изучаю социологию и смотрю на это трезво. Женщины просто всё меньше интересуются техникой и естественными науками. Вузы могут запускать сколько угодно программ поддержки." />
+
+<SpeakCards title="Aufgabe 4: ответ за 1:30" prep={90} talk={90} topics={[
+  { t: 'Informationen abgleichen: Frauen in MINT-Fächern', ru: 'Задание 4 этого пробника. Сначала график и реплика', points: ['Aussage kurz wiedergeben', 'Was die Grafik tatsächlich zeigt', 'Wo die Aussage nicht stimmt', 'Eigene Einschätzung mit Begründung'] },
+]} />
+
+<Dialog title="Образец: ответ однокурснице" lines={[
+  { who: 'A', name: 'Du', de: 'Du sagst, dass sich Frauen immer weniger für Technik und Naturwissenschaften interessieren. Die Grafik zeigt allerdings das Gegenteil. In allen drei Fächern ist der Frauenanteil zwischen 2010 und 2025 gestiegen, in der Informatik sogar um zehn Prozentpunkte, von 17 auf 27 Prozent.', ru: 'Ты говоришь, что женщины всё меньше интересуются техникой и естественными науками. Но график показывает обратное. Во всех трёх предметах доля женщин с 2010 по 2025 год выросла, в информатике даже на десять пунктов, с 17 до 27 процентов.' },
+  { who: 'A', name: 'Du', de: 'Richtig ist, dass der Anteil im Maschinenbau mit 16 Prozent immer noch sehr niedrig ist. In der Mathematik studieren dagegen schon fast genauso viele Frauen wie Männer.', ru: 'Верно, что в машиностроении доля с 16 процентами всё ещё очень низкая. А в математике женщин уже почти столько же, сколько мужчин.' },
+  { who: 'A', name: 'Du', de: 'Ich glaube deshalb nicht, dass Förderprogramme sinnlos sind. Vielleicht haben sie sogar zu dem Anstieg beigetragen. Man sollte sie aber gezielter in Fächern wie dem Maschinenbau einsetzen, wo der Abstand noch groß ist.', ru: 'Поэтому я не думаю, что программы поддержки бессмысленны. Может, они даже помогли этому росту. Но их стоит направлять на такие предметы, как машиностроение, где разрыв ещё большой.' },
+]} />
+
+### Aufgabe 5: короткая презентация
+
+<Task title="Sprechen · Aufgabe 5 (Thema präsentieren)" time="Vorbereitung 2 Minuten, Sprechzeit 2 Minuten 30 Sekunden">
+  <p>Sie haben für Ihr Tutorium zu Studiertechniken eine Kurzpräsentation zum Thema „Präsentationsfolien gestalten“ vorbereitet. Ihre Tutorin, Frau Marten, bittet Sie, Ihre Präsentation vorzutragen.</p>
+  <p>Erläutern Sie zunächst den Aufbau Ihrer Präsentation. Gehen Sie dann auf die einzelnen Punkte näher ein und heben Sie wichtige Einzelheiten hervor.</p>
+  <p><b>Folie: Präsentationsfolien gestalten</b></p>
+  <ul>
+    <li><i>1</i><span>Wozu überhaupt Folien?</span></li>
+    <li><i>2</i><span>Wie viel Text?</span></li>
+    <li><i>3</i><span>Bilder und Grafiken</span></li>
+    <li><i>4</i><span>Typische Fehler</span></li>
+    <li><i>5</i><span>Präsentieren ohne Folien?</span></li>
+  </ul>
+  <p class="ru">Короткая презентация в туториуме: как делать слайды для доклада. Пять пунктов. Сначала структура презентации, потом пункты.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 5: презентация за 2:30" prep={120} talk={150} topics={[
+  { t: 'Thema präsentieren: Präsentationsfolien gestalten', ru: 'Задание 5 этого пробника', points: ['Aufbau erklären', 'Wozu überhaupt Folien?', 'Wie viel Text?', 'Bilder und Grafiken', 'Typische Fehler', 'Präsentieren ohne Folien?', 'Kurzer Schluss'] },
+]} />
+
+<Anatomy
+  window="Tutorium"
+  subject="Präsentationsfolien gestalten"
+  parts={[
+    { id: 'aufbau', label: 'Сначала структура', color: 'var(--violet)', text: 'In meiner Präsentation gehe ich auf fünf Punkte ein. Zuerst frage ich, wozu wir überhaupt Folien brauchen. Dann spreche ich über die richtige Menge an Text und über Bilder und Grafiken. Danach zeige ich typische Fehler, und zum Schluss überlege ich, ob man auch ganz ohne Folien präsentieren kann.', note: 'Структура до содержания: этого требует задание.' },
+    { id: 'wozu', label: 'Зачем слайды', color: 'var(--teal)', text: 'Folien sollen den Vortrag unterstützen, nicht ersetzen. Sie helfen dem Publikum, die Struktur zu erkennen und sich wichtige Begriffe oder Zahlen zu merken.', note: 'Главная мысль всей презентации в первом же пункте.' },
+    { id: 'text', label: 'Текст и картинки', color: 'var(--sun)', ink: 'var(--ink)', text: 'Was den Text betrifft, gilt die Regel: so wenig wie möglich. Stichpunkte statt ganzer Sätze, höchstens fünf pro Folie. Bilder und Grafiken sind oft wirkungsvoller, aber nur, wenn sie groß genug und gut lesbar sind. Eine Tabelle mit dreißig Zahlen liest im Raum niemand.', note: 'Два пункта слайда в одном блоке, с правилом и примером.' },
+    { id: 'fehler', label: 'Ошибки', color: 'var(--pink)', text: 'Der häufigste Fehler ist, die Folien einfach vorzulesen. Dann hört niemand mehr zu, weil alle schneller lesen, als man spricht. Ein zweiter Fehler sind zu viele Effekte und Animationen, die vom Inhalt ablenken.', note: 'Самое важное помечено: «Der häufigste Fehler».' },
+    { id: 'ohne', label: 'Без слайдов и вывод', color: 'var(--gold)', ink: 'var(--ink)', text: 'Kann man auch ohne Folien präsentieren? Ja, bei kurzen Beiträgen funktioniert das oft sehr gut, weil das Publikum dann ganz auf die Person achtet. Zusammengefasst: Folien sind ein Werkzeug, kein Manuskript. Vielen Dank.', note: 'Ответ на вопрос слайда и короткий вывод.' },
+  ]}
+/>
+
+### Aufgabe 6: пересказать аргументы и ответить
+
+<Task title="Sprechen · Aufgabe 6 (Argumente wiedergeben, Stellung nehmen)" time="Aussage 58 Sekunden, Vorbereitung 1 Minute 30 Sekunden, Sprechzeit 2 Minuten">
+  <p>In Ihrem Seminar zur Hochschulpolitik diskutieren Sie heute darüber, ob alle Studierenden, unabhängig vom Fach, einen Programmierkurs besuchen müssen. Eine Kommilitonin äußert sich zu dem Thema. Ihr Dozent bittet Sie, zu der Äußerung Stellung zu nehmen.</p>
+  <p>Geben Sie die Argumente Ihrer Kommilitonin wieder und nehmen Sie Stellung zu ihren Argumenten. Begründen Sie Ihren eigenen Standpunkt zum Thema.</p>
+  <p class="ru">Семинар: должны ли все студенты, независимо от специальности, проходить курс программирования. Послушай однокурсницу, перескажи её доводы, ответь на них и обоснуй свою позицию.</p>
+</Task>
+
+<Listen title="Äußerung einer Kommilitonin: Programmieren für alle?" plays={1} text="Vielleicht überrascht es Sie, aber ich bin Studentin der Germanistik und trotzdem klar für einen Programmierkurs für alle. Erstens braucht man heute in fast jedem Beruf digitale Kenntnisse. Selbst in meinem Fach arbeiten Forschende mit großen Textsammlungen, die man ohne ein bisschen Programmieren gar nicht auswerten kann. Zweitens schult Programmieren das logische Denken. Man lernt, ein Problem in kleine Schritte zu zerlegen, und das hilft auch beim Schreiben einer Hausarbeit. Und drittens ist es eine Frage der Gerechtigkeit. Wer es nicht im Studium lernt, muss später teure Kurse selbst bezahlen. An der Hochschule wäre es kostenlos. Ich weiß, dass viele Angst vor Mathematik haben. Aber ein Einführungskurs ist keine Mathematikprüfung, und ein Semester lang einmal pro Woche ist wirklich nicht zu viel verlangt." ru="Я изучаю германистику и, может быть, вас удивлю, но я за курс программирования для всех. Во-первых, цифровые навыки сегодня нужны почти в любой профессии, даже в моей науке работают с большими корпусами текстов. Во-вторых, программирование учит логике: разбивать задачу на шаги, это помогает и в курсовой. В-третьих, это вопрос справедливости: кто не научится в вузе, потом платит за дорогие курсы сам. Вводный курс не экзамен по математике, и раз в неделю один семестр не так много." />
+
+<SpeakCards title="Aufgabe 6: ответ за 2 минуты" prep={90} talk={120} topics={[
+  { t: 'Argumente wiedergeben: Programmierkurs für alle?', ru: 'Задание 6 этого пробника. Сначала реплика', points: ['Position der Kommilitonin nennen', 'Ihre drei Argumente wiedergeben', 'Auf die Argumente reagieren', 'Eigener Standpunkt mit Begründung'] },
+]} />
+
+<Anatomy
+  window="Seminar"
+  subject="Programmieren für alle?"
+  parts={[
+    { id: 'wieder', label: 'Пересказ доводов', color: 'var(--violet)', text: 'Meine Kommilitonin ist für einen Programmierkurs, den alle Studierenden besuchen müssen. Sie begründet das mit drei Argumenten. Erstens brauche man digitale Kenntnisse heute in fast jedem Beruf, sogar in der Germanistik. Zweitens fördere Programmieren das logische Denken. Und drittens sei es gerechter, wenn alle das kostenlos an der Hochschule lernen könnten, statt später teure Kurse zu bezahlen.', note: 'Позиция и три довода в косвенной речи: brauche, fördere, sei. Так видно, что это чужое мнение.' },
+    { id: 'reakt', label: 'Ответ на доводы', color: 'var(--teal)', text: 'Dem ersten Argument stimme ich zu. Digitale Kenntnisse sind wirklich in fast allen Bereichen wichtig. Beim zweiten Punkt bin ich nicht ganz überzeugt. Logisches Denken lernt man auch in anderen Fächern, zum Beispiel in der Philosophie oder in der Statistik. Das Argument mit der Gerechtigkeit finde ich dagegen stark, denn private Kurse können sich viele nicht leisten.', note: 'На каждый довод своя реакция: согласие, сомнение, согласие. Это и есть Stellung nehmen.' },
+    { id: 'stand', label: 'Своя позиция', color: 'var(--sun)', ink: 'var(--ink)', text: 'Trotzdem wäre ich nicht für eine Pflicht. Studierende haben schon viele Pflichtmodule, und nicht jeder braucht im Beruf wirklich Programmierkenntnisse. Ich würde stattdessen einen kostenlosen Kurs anbieten, der als Wahlfach angerechnet wird. So hätten alle die Möglichkeit, aber niemand würde gezwungen.', note: 'Позиция с причиной и предложением. Можно соглашаться с доводами и всё равно иметь другой вывод.' },
+  ]}
+/>
+
+### Aufgabe 7: покритиковать решение
+
+<Task title="Sprechen · Aufgabe 7 (Maßnahmen kritisieren)" time="Vorbereitung 1 Minute 30 Sekunden, Sprechzeit 1 Minute 30 Sekunden">
+  <p>Sie haben in der Lokalzeitung gelesen, dass die Stadt den Radweg vor Ihrer Hochschule umbauen will. Auf einer Informationsveranstaltung der Stadtverwaltung wird dieses Vorhaben vorgestellt. Sie vertreten die Studierendenvertretung, die dieser Maßnahme kritisch gegenübersteht, und möchten sich zum Thema äußern.</p>
+  <p>Äußern Sie die Kritik der Studierendenvertretung an der geplanten Maßnahme. Begründen Sie diese Position. Sagen Sie, wie man die Verkehrsfrage studierendenfreundlicher lösen könnte.</p>
+  <p><b>Umbau der Universitätsallee</b></p>
+  <p>Ab dem ersten Mai wird der Radweg in der Universitätsallee zwischen Mensa und Hauptgebäude zurückgebaut. Auf der frei werdenden Fläche entstehen 40 neue Parkplätze. Radfahrende nutzen künftig die Fahrbahn.</p>
+  <p class="ru">Город хочет убрать велодорожку перед вузом и сделать на её месте 40 парковочных мест. Ты говоришь от студенческого представительства: критика, обоснование, предложение получше.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 7: критика за 1:30" prep={90} talk={90} topics={[
+  { t: 'Maßnahmen kritisieren: Parkplätze statt Radweg', ru: 'Задание 7 этого пробника', points: ['Kritik klar benennen', 'Begründung: Sicherheit, Zahl der Radfahrenden', 'Gegenvorschlag', 'Höflicher Schluss'] },
+]} />
+
+<Dialog title="Образец: студенты против парковки" lines={[
+  { who: 'A', name: 'Du', de: 'Guten Abend, ich spreche für die Studierendenvertretung. Wir halten den geplanten Rückbau des Radwegs für einen Fehler.', ru: 'Добрый вечер, я говорю от студенческого представительства. Мы считаем план убрать велодорожку ошибкой.' },
+  { who: 'A', name: 'Du', de: 'Ein großer Teil der Studierenden kommt mit dem Fahrrad zur Uni, gerade weil viele sich kein Auto leisten können. Wenn sie künftig auf der Fahrbahn fahren müssen, zwischen Lieferwagen und Bussen, wird es gefährlich. Vor der Mensa ist zur Mittagszeit ohnehin sehr viel los. Außerdem passt die Maßnahme nicht zu dem Ziel der Stadt, weniger Autoverkehr in der Innenstadt zu haben.', ru: 'Большая часть студентов ездит в вуз на велосипеде, как раз потому, что многим машина не по карману. Если им придётся ехать по проезжей части между фургонами и автобусами, это опасно. У мензы в обед и так очень оживлённо. К тому же мера противоречит цели города уменьшить число машин в центре.' },
+  { who: 'A', name: 'Du', de: 'Unser Vorschlag wäre, den Radweg zu behalten und stattdessen das Parkhaus am Bahnhof besser zu nutzen, das abends oft halb leer steht. Wenn dann noch ein Bus im Zehnminutentakt zur Uni fährt, braucht man die neuen Parkplätze gar nicht.', ru: 'Мы предлагаем оставить велодорожку и лучше использовать парковку у вокзала, которая вечером часто наполовину пустая. А если к вузу будет ходить автобус каждые десять минут, новые места вообще не понадобятся.' },
+]} />
+
+### На что смотрят эксперты
+
+| Аспект | Вопрос к своей записи |
+|---|---|
+| Тема и все пункты | Все пункты задания прозвучали? В 7 критика, причина и предложение |
+| Задача и ситуация | Совет звучит как совет, критика как критика, тон к ситуации |
+| Источники своими словами | В 3, 4 и 6 текст, график и реплика пересказаны верно |
+| Беглость и произношение | Связно, понятно, без долгих пауз |
+| Язык | Точная и разная грамматика, слова к теме |
+
+<p class="punch">В Aufgabe 6 можно согласиться со всеми доводами и всё равно прийти к другому выводу. Это не слабость, это позиция.</p>
+
+## Сложи итог
+
+| Часть | Твой результат | Максимум |
+|---|---|---|
+| Lesen | … верных | 34 |
+| Hören | … верных | 30 |
+| Schreiben | сколько аспектов выполнено в обоих текстах | 5 + 5 |
+| Sprechen | сколько из 7 заданий уложил в таймер со всеми пунктами | 7 |
+
+Сравни с [пробником №1](../testdaf-probnik-stellas-1/) и [официальной Demo-Version](../testdaf-demo-razbor/). Перевода в TDN не делай: TestDaF не публикует, сколько верных даёт сколько баллов. Смотри, какие типы заданий растут, а какие стоят на месте.
+
+## Где утекли баллы
+
+| Слабое место | Что делать | Гайд |
+|---|---|---|
+| Lesen 1: пропуски | Смотри на соседние слова: wie требует so или genauso, глагол должен подходить ко всем дополнениям | [Lesen TestDaF](../../lesen/testdaf-lesen/) |
+| Lesen 2: порядок | Ищи начало и отсылки назад: dieser, erst wenn, die folgenden | [Тренировка Lesen](../../lesen/testdaf-lesen-trenirovka/) |
+| Lesen 3: вопросы по абзацам | Ответ в нужном абзаце. Цифры из текста в неверном варианте частая приманка | [Lesen TestDaF](../../lesen/testdaf-lesen/) |
+| Lesen 4: речевые действия | Номер относится только к следующему предложению | [Lesen TestDaF](../../lesen/testdaf-lesen/) |
+| Lesen 6: два столбца | Верны только четыре. Остальные противоречат тексту или их в тексте нет | [Тренировка Lesen](../../lesen/testdaf-lesen-trenirovka/) |
+| Lesen 7: резюме с графиком | Пять минут разницы это не «großer Unterschied». Сверяй числа | [Lesen TestDaF](../../lesen/testdaf-lesen/) |
+| Hören 1: таблица | Первое время, место и цена часто старые. Пиши то, что после «aber» | [Hören TestDaF](../../hoeren/testdaf-hoeren/) |
+| Hören 2: требование и довод | Модератор предлагает варианты, участник их отклоняет. Это не его позиция | [Тренировка Hören](../../hoeren/testdaf-hoeren-trenirovka/) |
+| Hören 4: кто что сказал | «beide» только если оба сказали это прямо | [Тренировка Hören](../../hoeren/testdaf-hoeren-trenirovka/) |
+| Hören 5: план лекции | «Viele meinen» вводит ошибочное мнение, а не ответ | [Hören TestDaF](../../hoeren/testdaf-hoeren/) |
+| Schreiben 1 | Обе стороны, позиция в выводе, 200 слов минимум | [Аргументация](../../schreiben/testdaf-schreiben-argumentation/) |
+| Schreiben 2 | Главная цифра графика словами, пределы из текста своими словами | [Текст и график](../../schreiben/testdaf-schreiben-grafik/) |
+| Sprechen | Все пункты задания, таймер и диктофон | [Тренировка Sprechen](../../sprechen/testdaf-sprechen-trenirovka/) |
+
+## Шпаргалка
+
+- **Lesen** → 7 типов, 34 задания, около 55 минут. По заданиям 4 / 5 / 15 / 6 / 9 / 7 / 7
+- **Hören** → 7 типов, 30 заданий, около 40 минут, всё один раз, 4 и 5 на экзамене видео
+- **Первое названное** → в диалогах часто старый план. Верное после «aber», «stattdessen», «jetzt»
+- **«beide»** → только при явном согласии обоих: «da gebe ich ... völlig recht»
+- **Schreiben** → аргументация от 200 слов и сводка 100–150 слов, по 30 минут
+- **Sprechen** → 7 заданий, всё по таймеру, заметки на бумаге можно
+- **Баллы** → каждая часть 0–20: 10–15 это TDN 4, 16–20 TDN 5. Таблицы «верные → баллы» нет
+- **Вузы** → обычно TDN 4 во всех четырёх частях
+
+<p class="punch">Второй пробник проверяет не знания. Он проверяет, исправил ли ты ошибки первого.</p>

@@ -1,0 +1,874 @@
+---
+title: 'Пробник Stellas TestDaF №4: полный прогон цифрового экзамена'
+hl: 'полный прогон цифрового экзамена'
+seoTitle: 'Пробник TestDaF онлайн №4: все 4 части с ответами'
+description: 'Пробник Stellas №4 в формате цифрового TestDaF: бланки Lesen (34) и Hören (30) с объяснениями, тренажёр Schreiben, 7 заданий Sprechen с таймером.'
+lede: 'Ещё один полный прогон цифрового TestDaF: 23 задания всех типов, точное время, бланки с объяснениями. Тексты и записи наши, формат официальный.'
+exam: testdaf
+section: probniki
+levels: [B2, C1]
+published: 2026-11-21
+updated: 2026-11-21
+kurz:
+  - 'Пробник №4 от <b>Команды Stellas</b> в формате цифрового TestDaF. Тексты, аудио и задания свои. Это не материал TestDaF-Institut.'
+  - 'Lesen: <b>7 типов, 34 задания, около 55 минут</b>. Hören: <b>7 типов, 30 заданий, около 40 минут</b>, каждый текст звучит один раз.'
+  - 'Schreiben: аргументация <b>от 200 слов</b> и сводка текста с графиком <b>100–150 слов</b>, по 30 минут. Sprechen: 7 заданий с таймером подготовки и ответа.'
+  - 'Бланк считает <b>верные ответы из 34 и из 30</b>. Перевод в баллы 0–20 и TDN официально не публикуется, поэтому TDN мы не обещаем.'
+faq:
+  - q: 'Это официальный тест TestDaF?'
+    a: 'Нет. Тексты, аудио и задания написала Команда Stellas. Из официальных материалов взяты только формат, число заданий, время и правила, которые TestDaF-Institut публикует на testdaf.de.'
+  - q: 'Сколько верных ответов нужно для TDN 4?'
+    a: 'Честного числа нет. TestDaF переводит верные ответы в баллы от 0 до 20 по своей шкале и таблицу перевода не публикует. Известно только, что 10–15 баллов в части это TDN 4. Поэтому бланк показывает верные из 34 и из 30, без TDN.'
+  - q: 'Чем №4 отличается от №1 и №2?'
+    a: 'Формат тот же, темы другие: светящиеся организмы, радиоуглеродный метод, ферменты против пластика, экзопланеты, Земмельвейс, парадокс Пето. Ловушки тоже другие, поэтому прогон честный, даже если ты уже решал первые пробники.'
+  - q: 'Как отвечать на короткие вопросы в Hören?'
+    a: 'На экзамене печатаешь ответ с клавиатуры. Здесь пишешь его на бумаге во время прослушивания, а потом выбираешь в бланке вариант, который совпадает с твоим по смыслу.'
+  - q: 'Можно ли вернуться к прошлому заданию?'
+    a: 'На экзамене нет. Время задания кончилось, и система сама переходит дальше. На странице вернуться можно, но для честного прогона не делай этого.'
+next:
+  - title: 'Пробник Stellas TestDaF №1'
+    text: 'Первый полный прогон: ложные воспоминания, эффект Мпембы, термоядерный синтез и Вегенер.'
+    href: '/ru/testdaf/probniki/testdaf-probnik-stellas-1/'
+  - title: 'Пробник Stellas TestDaF №2'
+    text: 'Второй полный прогон: тихоходки, геотермия, приливы и первые бумажные деньги.'
+    href: '/ru/testdaf/probniki/testdaf-probnik-stellas-2/'
+  - title: 'Разбор официальной Demo-Version'
+    text: 'Все 23 типа заданий от TestDaF-Institut с бланком по официальному ключу.'
+    href: '/ru/testdaf/probniki/testdaf-demo-razbor/'
+  - title: 'Баллы и TDN'
+    text: 'Шкала 0–20, TDN 3–5 и что требуют вузы.'
+    href: '/ru/testdaf/pruefung/testdaf-bally-tdn/'
+sources:
+  - title: 'Aufbau des digitalen TestDaF (testdaf.de): части, типы заданий, Items, время'
+    url: 'https://www.testdaf.de/de/teilnehmende/der-digitale-testdaf/aufbau-des-digitalen-testdaf/'
+  - title: 'Auswertung des digitalen TestDaF (testdaf.de): баллы 0–20 и TDN'
+    url: 'https://www.testdaf.de/de/teilnehmende/der-digitale-testdaf/auswertung-des-digitalen-testdaf/'
+  - title: 'Beispielaufgaben aus der Demo-Version des digitalen TestDaF (PDF): время каждого задания'
+    url: 'https://www.testdaf.de/fileadmin/testdaf/downloads/Demo_Version_digitaler_TestDaF/Beispielaufgaben_Demo-Version_digitaler_TestDaF.pdf'
+  - title: 'FAQ Prüfungsdurchführung (testdaf.de): пробные задания, заметки, словари'
+    url: 'https://www.testdaf.de/de/teilnehmende/mein-testdaf/faq/faq-durchfuehrung/'
+---
+import AnswerSheet from '../../../../components/mdx/AnswerSheet.astro';
+import Callout from '../../../../components/mdx/Callout.astro';
+import Task from '../../../../components/mdx/Task.astro';
+import Listen from '../../../../components/mdx/Listen.astro';
+import Trainer from '../../../../components/mdx/Trainer.astro';
+import Anatomy from '../../../../components/mdx/Anatomy.astro';
+import Dialog from '../../../../components/mdx/Dialog.astro';
+import SpeakCards from '../../../../components/mdx/SpeakCards.astro';
+
+Три часа пятнадцать минут чистого экзамена.
+
+Двадцать три задания. Ни одного шага назад.
+
+Первые пробники показали, где ты теряешь баллы.
+
+Четвёртый проверит, починил ли ты это.
+
+Новые темы, новые ловушки, тот же формат.
+
+## Что внутри
+
+Пробник Stellas №4 в формате **цифрового TestDaF**. Все 23 типа заданий, каждый по одному разу, в порядке экзамена: Lesen, Hören, Schreiben, Sprechen. Тексты, записи и темы написала Команда Stellas. Число заданий и время взяты с testdaf.de и из официальной Demo-Version.
+
+| Часть | Типов заданий | Заданий (Items) | Время | Как отвечаешь на экзамене |
+|---|---|---|---|---|
+| Lesen | 7 | 34 | около 55 минут | клик, перетаскивание |
+| Hören | 7 | 30 | около 40 минут | клик и короткие ответы с клавиатуры |
+| Schreiben | 2 | 2 текста | около 60 минут | текст на компьютере, счётчик слов на экране |
+| Sprechen | 7 | 7 ответов | около 35 минут | говоришь в микрофон, ответ записывается |
+
+Между частями паузы: по информационному листку g.a.s.t. 10 минут после Lesen, 30 после Hören и 10 после Schreiben.
+
+<Callout type="info" title="Люди, вузы и цифры придуманы">
+  <p>Университет Velmbach, его сотрудники, студенты, опросы и исследования вымышлены. Научные сведения упрощены, цифры в графиках придуманы или округлены. Это материал для тренировки, а не источник фактов.</p>
+</Callout>
+
+## Как работать с пробником
+
+1. **Сначала Lesen.** Задания по порядку: 1, 2, 3 и дальше. Время в карточке это лимит из Demo-Version, поставь таймер на каждое задание. Общий таймер бланка стоит на 55 минут.
+2. **Ответы отмечай в бланке** под седьмым заданием. Жми «Проверить», получишь число верных и объяснение к каждому.
+3. **Hören с бумагой.** Перед каждой записью прочитай задание, потом жми «слушать». Каждый текст звучит один раз. Ответы пиши на листке, в бланк переносишь в конце.
+4. **Schreiben в тренажёре.** Таймер на 30 минут, счётчик слов, потом сравни с образцом.
+5. **Sprechen вслух.** У каждого задания свой таймер: сначала подготовка, потом ответ. Запиши себя на телефон и послушай.
+
+<Callout type="trap" title="Назад нельзя">
+  <p>В цифровом TestDaF у каждого задания своё время. Кончилось, и система сама переходит к следующему. Вернуться нельзя. Здесь можно, но для честного прогона не возвращайся.</p>
+</Callout>
+
+<Callout type="tip" title="Короткие ответы: сначала бумага">
+  <p>В трёх заданиях Hören на экзамене ответ печатаешь сам: заполнить таблицу, записать требование и аргумент, дописать план доклада. Здесь пиши ответ на листке во время записи. В бланке потом выбери из трёх вариантов тот, что совпадает с твоим по смыслу. Эксперты TestDaF тоже засчитывают понятный ответ с тем же смыслом.</p>
+</Callout>
+
+<Callout type="info" title="Про аудио и видео">
+  <p>Записи в mp3, в разговорах и дискуссиях разные голоса. Два задания Hören на экзамене это видео: дискуссия и доклад. У нас там аудио. (Смотреть на говорящие головы всё равно не главное)</p>
+  <p>Транскрипт спрятан под каждой записью. Открывай только после бланка.</p>
+</Callout>
+
+## Как считаются <span class="hl">баллы</span>
+
+Сначала о том, чего никто не знает.
+
+В цифровом TestDaF каждую часть переводят в баллы **от 0 до 20**. В Lesen и Hören для этого берут число верных ответов и пересчитывают по шкале, одинаковой для разных вариантов теста. Таблицу «сколько верных = сколько баллов» TestDaF-Institut не публикует.
+
+| Баллы в части | Результат |
+|---|---|
+| 0–4 | unter TDN 3 |
+| 5–9 | TDN 3 |
+| 10–15 | TDN 4 |
+| 16–20 | TDN 5 |
+
+Поэтому бланк считает **верные из 34** и **верные из 30**. Перевод в TDN мы не придумываем. Смотри на две вещи: сколько верных и какие типы заданий проседают.
+
+| Что | Как проверяешь | Максимум на странице |
+|---|---|---|
+| Lesen | бланк, 34 задания по 1 | 34 верных |
+| Hören | бланк, 30 заданий по 1 | 30 верных |
+| Schreiben | тренажёр, образец и список аспектов | без баллов |
+| Sprechen | таймер, образец и список аспектов | без баллов |
+
+Schreiben и Sprechen на экзамене оценивают обученные эксперты, тоже по шкале 0–20. Подробной таблицы по критериям нет, есть только список, на что смотрят. Он ниже в каждой части.
+
+Общего уровня нет. В сертификате четыре отдельных результата, плюс баллы по частям и их сумма от 0 до 80. Для поступления на все программы обычно нужен **TDN 4 во всех четырёх частях**. Свой вуз проверяй отдельно: [баллы и TDN](../../pruefung/testdaf-bally-tdn/).
+
+<p class="punch">Средний балл не спасёт. Каждая часть сдаётся сама за себя.</p>
+
+## Lesen
+
+Семь заданий, 34 Items, около 55 минут. Тексты как в вузе: научно-популярные статьи, комментарии, описания. Специальных знаний не нужно. Метод по каждому типу: [Lesen TestDaF](../../lesen/testdaf-lesen/).
+
+### Aufgabe 1: пропуски в тексте
+
+<Task title="Lesen · Aufgabe 1 (Lückentext ergänzen)" time="4 Minuten">
+  <p>Lesen Sie den Lückentext. Entscheiden Sie, welches Wort in die Lücken 1 bis 5 passt. Für jede Lücke gibt es genau eine richtige Lösung.</p>
+  <p><b>Lebende Lampen</b></p>
+  <p>In der Tiefsee, wohin kein Sonnenlicht mehr dringt, ist es keineswegs völlig dunkel. Zahlreiche Lebewesen erzeugen dort ihr eigenes Licht. Fachleute sprechen von Biolumineszenz. Das Licht entsteht bei einer chemischen Reaktion, an der ein Stoff namens Luciferin und Sauerstoff beteiligt sind. Dabei wird die Energie fast vollständig als Licht und kaum als Wärme <b>[1]</b> ______. Man spricht deshalb auch von kaltem Licht.</p>
+  <p>Wozu das Leuchten dient, ist von Art zu Art <b>[2]</b> ______. Manche Tiefseefische locken mit einem leuchtenden Anhängsel ihre Beute an. Andere Tiere nutzen das Licht, um Partner zu finden, oder sie <b>[3]</b> ______ Angreifer, indem sie plötzlich eine leuchtende Wolke ausstoßen.</p>
+  <p>Erstaunlich ist, wie <b>[4]</b> ______ diese Fähigkeit in der Natur verbreitet ist: Sie ist im Laufe der Evolution offenbar Dutzende Male unabhängig voneinander entstanden, bei Quallen ebenso wie bei Pilzen, Würmern und Insekten. Für die Forschung ist das Leuchten längst mehr als ein Naturschauspiel. Das Enzym, mit dem Glühwürmchen leuchten, wird etwa in Laboren eingesetzt, um sichtbar zu machen, ob ein bestimmtes Gen in einer Zelle <b>[5]</b> ______ wird. Leuchtet die Probe, ist das Gen eingeschaltet.</p>
+  <ul>
+    <li><i>1</i><span><b>a</b> verbraucht <b>b</b> abgegeben <b>c</b> gespeichert <b>d</b> gemessen</span></li>
+    <li><i>2</i><span><b>a</b> unterschiedlich <b>b</b> ähnlich <b>c</b> umstritten <b>d</b> unbekannt</span></li>
+    <li><i>3</i><span><b>a</b> verfolgen <b>b</b> verwirren <b>c</b> ernähren <b>d</b> bemerken</span></li>
+    <li><i>4</i><span><b>a</b> selten <b>b</b> schnell <b>c</b> weit <b>d</b> kaum</span></li>
+    <li><i>5</i><span><b>a</b> abgelesen <b>b</b> entdeckt <b>c</b> vererbt <b>d</b> verändert</span></li>
+  </ul>
+  <p class="ru">Научно-популярный текст о живых существах, которые светятся. В каждый пропуск подходит одно слово из четырёх. Проверяй смысл всего абзаца и то, как слово сочетается с соседними.</p>
+</Task>
+
+### Aufgabe 2: порядок абзацев
+
+<Task title="Lesen · Aufgabe 2 (Textabschnitte ordnen)" time="5 Minuten">
+  <p>Bringen Sie die Textabschnitte in die richtige Reihenfolge. Es gibt genau eine richtige Reihenfolge.</p>
+  <p><b>A</b> Stirbt das Lebewesen, endet diese Aufnahme. Von nun an zerfällt das vorhandene C-14 langsam und gleichmäßig: Nach etwa 5700 Jahren ist nur noch die Hälfte davon übrig. Misst man, wie viel C-14 ein Fund noch enthält, lässt sich also berechnen, wann das Lebewesen gestorben ist.</p>
+  <p><b>B</b> Deshalb werden die Messwerte heute korrigiert, unter anderem mithilfe der Jahresringe sehr alter Bäume, deren Alter man genau kennt. Mit dieser sogenannten Kalibrierung lassen sich Funde bis zu einem Alter von rund 50.000 Jahren zuverlässig datieren.</p>
+  <p><b>C</b> Wie alt ist ein Stück Holz aus einem Grab, ein Knochen aus einer Höhle oder ein Stoffrest aus einer Ausgrabung? Lange konnten Archäologinnen und Archäologen das Alter solcher Funde nur grob schätzen. Erst Mitte des 20. Jahrhunderts änderte sich das grundlegend.</p>
+  <p><b>D</b> Damals entwickelte der amerikanische Chemiker Willard Libby ein Verfahren, das auf einer einfachen Beobachtung beruht. Alle Lebewesen nehmen Kohlenstoff auf, solange sie leben. Ein winziger Teil davon ist eine radioaktive Form, das sogenannte C-14.</p>
+  <p><b>E</b> Ganz so einfach ist es allerdings nicht. Die Rechnung setzt voraus, dass der Anteil von C-14 in der Atmosphäre immer gleich groß war. Das trifft jedoch nicht zu: Er hat im Laufe der Jahrtausende geschwankt.</p>
+  <p class="ru">Пять абзацев о том, как определяют возраст археологических находок. Найди абзац, который может стоять только в начале. Дальше ищи слова, которые отсылают назад: местоимения, «тогда», «поэтому», «этот». В бланке отметь, какой абзац стоит на местах 2, 3, 4 и 5.</p>
+</Task>
+
+### Aufgabe 3: длинный текст, 7 вопросов
+
+<Task title="Lesen · Aufgabe 3 (Multiple-Choice)" time="15 Minuten">
+  <p>Lesen Sie den Text. Beantworten Sie die Fragen 10 bis 16. Für jede Frage gibt es genau eine richtige Lösung.</p>
+  <p><b>Bakterien gegen Plastikberge?</b></p>
+  <p><b>(1)</b> Kunststoffe sind aus dem Alltag nicht mehr wegzudenken. Sie sind leicht, billig und vor allem haltbar. Genau diese Haltbarkeit wird jedoch zum Problem, sobald ein Produkt weggeworfen wird. Eine Flasche aus PET, dem Kunststoff vieler Getränkeflaschen, bleibt in der Umwelt über Jahrhunderte erhalten. Zwar wird ein Teil der Flaschen gesammelt und wiederverwertet, doch beim herkömmlichen Recycling werden die Kunststoffe eingeschmolzen und verlieren dabei an Qualität. Aus einer alten Flasche wird deshalb oft keine neue Flasche, sondern ein Produkt von geringerem Wert, etwa eine Faser für Kleidung.</p>
+  <p><b>(2)</b> Große Hoffnungen setzen manche deshalb auf die Biologie. Im Jahr 2016 berichtete eine japanische Forschungsgruppe von einem Bakterium, das sie in Proben vom Gelände einer Recyclinganlage entdeckt hatte. Es war in der Lage, PET mithilfe von Enzymen in seine Bausteine zu zerlegen und sich davon zu ernähren. Die Nachricht ging um die Welt, und manche Schlagzeile klang, als sei das Plastikproblem damit gelöst. Die Forschenden selbst äußerten sich deutlich vorsichtiger: Das Bakterium brauchte mehrere Wochen, um eine dünne Folie abzubauen.</p>
+  <p><b>(3)</b> Seitdem versuchen Labore weltweit, die Enzyme schneller und robuster zu machen. Dabei verändern sie gezielt einzelne Bausteine eines Enzyms und prüfen, ob die neue Variante besser arbeitet. Inzwischen gibt es Enzyme, die zerkleinerte Kunststoffabfälle bei erhöhter Temperatur innerhalb von Stunden oder wenigen Tagen weitgehend zerlegen. Der entscheidende Vorteil gegenüber dem herkömmlichen Recycling: Aus den gewonnenen Bausteinen lässt sich neuer Kunststoff herstellen, der genauso gut ist wie das ursprüngliche Material.</p>
+  <p><b>(4)</b> Von einer Anwendung im großen Maßstab ist man dennoch ein gutes Stück entfernt. Bislang funktionieren die Enzyme vor allem bei PET. Für andere verbreitete Kunststoffe, etwa die Folien, aus denen viele Verpackungen bestehen, gibt es noch keine vergleichbaren Lösungen. Hinzu kommt, dass die Abfälle vorher sortiert, gereinigt und zerkleinert werden müssen. Diese Schritte verursachen Kosten, die das Verfahren im Vergleich zu neuem Kunststoff aus Erdöl bislang oft unwirtschaftlich machen.</p>
+  <p><b>(5)</b> Manche Fachleute sehen in der Technik außerdem eine Gefahr, die mit Chemie nichts zu tun hat. Wenn es heiße, Kunststoff lasse sich problemlos biologisch abbauen, so ihre Sorge, könnte das den Eindruck verstärken, man müsse am eigenen Verbrauch nichts ändern. Die Umweltchemikerin Merle Tiedgen von der Universität Velmbach hält diese Sorge für berechtigt, zieht daraus aber einen anderen Schluss als die Kritiker: Das eine schließe das andere nicht aus. Man müsse Abfall vermeiden und zugleich für den Abfall, der trotzdem entstehe, bessere Verfahren entwickeln.</p>
+  <p><b>(6)</b> Und die Bakterien in der Natur? Die Vorstellung, man könne sie einfach im Meer aussetzen, damit sie dort den Müll beseitigen, halten Forschende für abwegig. Im offenen Wasser ist es viel zu kalt, und die Kunststoffteile sind zu weit verteilt. Zudem wären die Folgen für Ökosysteme kaum abzuschätzen. Die Zukunft der Enzyme liegt nach Ansicht der meisten Fachleute daher nicht in der freien Natur, sondern in geschlossenen Anlagen, in denen sich Temperatur und Zusammensetzung des Abfalls genau steuern lassen.</p>
+  <ul>
+    <li><i>10</i><span>Was erfährt man in Absatz 1 über das herkömmliche Recycling? <b>a</b> Für PET-Flaschen ist es technisch nicht möglich. <b>b</b> Es ist teurer als die Herstellung neuer Flaschen. <b>c</b> Es liefert meist ein minderwertigeres Material. <b>d</b> Es verlängert die Haltbarkeit der Kunststoffe.</span></li>
+    <li><i>11</i><span>In Absatz 2 wird deutlich, dass … <b>a</b> manche Medien die Entdeckung übertrieben darstellten. <b>b</b> das Bakterium in einem Labor gezüchtet worden war. <b>c</b> die Forschenden das Plastikproblem für gelöst hielten. <b>d</b> das Bakterium nur bestimmte Getränkeflaschen abbauen konnte.</span></li>
+    <li><i>12</i><span>Laut Absatz 3 liegt der wichtigste Vorteil des neuen Verfahrens darin, dass … <b>a</b> es ohne erhöhte Temperaturen auskommt. <b>b</b> es Kunststoffabfälle vollständig und ohne Rückstände in Energie umwandelt. <b>c</b> es mit natürlichen, unveränderten Enzymen arbeitet. <b>d</b> daraus Kunststoff ohne Qualitätsverlust entstehen kann.</span></li>
+    <li><i>13</i><span>Welche Aussage passt zu Absatz 4? <b>a</b> Für Verpackungsfolien werden die Enzyme bereits eingesetzt. <b>b</b> Die Vorbereitung der Abfälle macht das Verfahren teuer. <b>c</b> Neuer Kunststoff aus Erdöl ist inzwischen teurer als recycelter. <b>d</b> Die Enzyme zerlegen alle gängigen Kunststoffe gleich gut.</span></li>
+    <li><i>14</i><span>Welche Überschrift passt am besten zu Absatz 5? <b>a</b> Eine technische Lösung als Ausrede? <b>b</b> Enzyme gefährden die Umwelt <b>c</b> Fachleute fordern ein Verbot von Kunststoffen <b>d</b> Abbauen statt sparen</span></li>
+    <li><i>15</i><span>Laut Absatz 6 sollen die Enzyme künftig vor allem … <b>a</b> in Kläranlagen das Abwasser reinigen. <b>b</b> gezielt im Meer eingesetzt werden. <b>c</b> in kontrollierten Anlagen arbeiten. <b>d</b> Mikroplastik in Böden abbauen.</span></li>
+    <li><i>16</i><span>Der Text will vor allem … <b>a</b> erklären, warum Kunststoffe so lange haltbar sind. <b>b</b> für ein Verbot von Einwegflaschen werben. <b>c</b> die Arbeit einer japanischen Forschungsgruppe ausführlich und anschaulich beschreiben. <b>d</b> Möglichkeiten und Grenzen eines neuen Recyclingverfahrens darstellen.</span></li>
+  </ul>
+  <p class="ru">Статья о ферментах, которые разбирают пластик. Вопросы 10–15 идут по абзацам, вопрос 16 про весь текст. Сначала прочитай вопрос, потом нужный абзац.</p>
+</Task>
+
+### Aufgabe 4: что делает автор
+
+<Task title="Lesen · Aufgabe 4 (Sprachhandlungen zuordnen)" time="6 Minuten">
+  <p>Lesen Sie den Text. Ordnen Sie die Textstellen 17 bis 20 den Aussagen a bis h zu. Die Zahlen beziehen sich immer auf den nachfolgenden Satz. Für jede Textstelle gibt es genau eine richtige Lösung.</p>
+  <p><b>Kommentar: Der Hörsaal mit Firmenlogo</b></p>
+  <p>Der größte Hörsaal der Universität Velmbach soll künftig den Namen eines Versicherungskonzerns tragen. Im Gegenzug zahlt das Unternehmen zehn Jahre lang einen jährlichen Zuschuss, mit dem unter anderem die veraltete Technik im Saal erneuert werden soll. <b>[17]</b> Bei Fußballstadien hat man sich an solche Namen längst gewöhnt, doch eine Universität ist kein Unterhaltungsbetrieb, sondern eine Einrichtung, deren Ansehen auf ihrer Unabhängigkeit beruht. <b>[18]</b> Zugegeben, vielen Hochschulen fehlt das Geld für dringend nötige Sanierungen, und wer jahrelang in einem Hörsaal mit defektem Beamer gesessen hat, wird über jeden Zuschuss froh sein. Doch die Summe deckt nur einen Bruchteil dessen, was das Gebäude tatsächlich braucht. <b>[19]</b> Auch das Argument, ein Name allein beeinflusse doch weder Forschung noch Lehre, greift zu kurz. Wer jeden Tag in einem Saal sitzt, der nach einem Konzern benannt ist, gewöhnt sich an die Vorstellung, dass öffentliche Wissenschaft auf private Geldgeber angewiesen ist. Und wird eine Hochschule wirklich noch unbefangen über die Versicherungsbranche forschen, wenn diese ihr den Hörsaal finanziert? <b>[20]</b> Sinnvoller wäre es, Räume nach verdienten Forscherinnen und Forschern zu benennen und Spenden einzuwerben, die an keine Gegenleistung geknüpft sind. Unternehmen dürften sich dann gern öffentlich als Förderer bezeichnen, nur eben nicht mit ihrem Namen über der Tür des Hörsaals.</p>
+  <ul>
+    <li><i>a</i><span>Der Autor räumt etwas ein.</span></li>
+    <li><i>b</i><span>Der Autor berichtet von einer früheren Entscheidung.</span></li>
+    <li><i>c</i><span>Der Autor macht einen Vorschlag.</span></li>
+    <li><i>d</i><span>Der Autor stellt eine rhetorische Frage.</span></li>
+    <li><i>e</i><span>Der Autor weist ein Argument zurück.</span></li>
+    <li><i>f</i><span>Der Autor zieht einen Vergleich.</span></li>
+    <li><i>g</i><span>Der Autor äußert eine Hoffnung.</span></li>
+    <li><i>h</i><span>Der Autor nennt eine Bedingung.</span></li>
+  </ul>
+  <p class="ru">Комментарий о том, что аудитория получит имя страховой компании. Номер стоит перед предложением и относится только к нему. Соседние предложения могут делать что-то другое.</p>
+</Task>
+
+### Aufgabe 5: к чему относится утверждение
+
+<Task title="Lesen · Aufgabe 5 (Aussagen Kategorien zuordnen)" time="9 Minuten">
+  <p>Lesen Sie den Text. Ordnen Sie die Aussagen 21 bis 27 zu: Entscheiden Sie für jede Aussage, ob sie zur Habilitation, zur Juniorprofessur, zu beiden oder gar nicht passt. Für jede Aussage gibt es genau eine richtige Lösung. Die Aussagen folgen nicht dem Textverlauf.</p>
+  <p><b>Zwei Wege zur Professur</b></p>
+  <p>Wer in Deutschland Professorin oder Professor werden möchte, muss nach der Promotion in der Regel nachweisen, selbstständig forschen und lehren zu können. Dafür gibt es heute zwei Wege. Der traditionelle ist die Habilitation. Dabei arbeiten Nachwuchswissenschaftlerinnen und -wissenschaftler meist als wissenschaftliche Mitarbeitende an einem Lehrstuhl und verfassen über mehrere Jahre eine zweite große Forschungsarbeit, die Habilitationsschrift. Am Ende stehen eine Prüfung vor der Fakultät und ein öffentlicher Vortrag.</p>
+  <p>Viele Habilitierende klagen darüber, dass sie neben der eigenen Forschung zahlreiche Aufgaben für den Lehrstuhl übernehmen müssen, von der Betreuung von Studierenden bis zur Organisation von Tagungen. Für die eigene Arbeit bleibt dann oft wenig Zeit.</p>
+  <p>Die Juniorprofessur wurde Anfang der 2000er-Jahre eingeführt, um diesen Weg zu verkürzen. Juniorprofessorinnen und -professoren leiten von Anfang an eine eigene Arbeitsgruppe, halten eigene Lehrveranstaltungen und betreuen Abschlussarbeiten, ohne einem Lehrstuhl unterstellt zu sein. Sie sind dadurch zwar unabhängiger, berichten aber von einer anderen Belastung: Sie sollen sich gleichzeitig in Forschung, Lehre und Verwaltung bewähren, haben dafür aber meist weniger Mitarbeitende und eine geringere Ausstattung als reguläre Professuren. Auch bei der Juniorprofessur steht am Ende eine Bewertung, die denselben Nachweis erbringen soll wie die Habilitation.</p>
+  <p>Unsicher sind beide Wege. Die Juniorprofessur ist auf sechs Jahre befristet, und auch die Stellen an Lehrstühlen, auf denen die meisten ihre Habilitation schreiben, laufen nach einigen Jahren aus. Wer am Ende keinen Ruf auf eine Professur erhält, muss sich oft beruflich neu orientieren.</p>
+  <p>Viele Juniorprofessuren werden heute allerdings mit einer sogenannten Tenure-Track-Option ausgeschrieben: Fällt die Bewertung am Ende positiv aus, wird die Stelle ohne neues Bewerbungsverfahren in eine unbefristete Professur umgewandelt. Eine solche Zusage gibt es bei der Habilitation nicht. Bei Berufungen gelten beide Wege inzwischen als gleichwertig. In manchen Fächern, etwa in Teilen der Medizin und der Rechtswissenschaft, wird die Habilitation allerdings bis heute erwartet.</p>
+  <ul>
+    <li><i>21</i><span>Wegen der Arbeit für den Lehrstuhl bleibt wenig Zeit für eigene Projekte.</span></li>
+    <li><i>22</i><span>Die Stelle ist zeitlich begrenzt.</span></li>
+    <li><i>23</i><span>Bei einer positiven Bewertung kann man ohne erneute Bewerbung bleiben.</span></li>
+    <li><i>24</i><span>Für diesen Weg ist keine Promotion erforderlich.</span></li>
+    <li><i>25</i><span>In einigen Fächern gilt dieser Weg nach wie vor als üblich.</span></li>
+    <li><i>26</i><span>Man verfügt über weniger Personal als eine reguläre Professur.</span></li>
+    <li><i>27</i><span>Am Ende soll feststehen, dass man eigenständig forschen und lehren kann.</span></li>
+  </ul>
+  <p class="ru">Два пути к профессуре в Германии: хабилитация и младшая профессура. Для каждого утверждения выбери: только хабилитация, только младшая профессура, обе или ни одна. «Passt nicht» значит: текст этого не говорит или говорит обратное для обоих путей.</p>
+</Task>
+
+### Aufgabe 6: два столбца, четыре верных
+
+<Task title="Lesen · Aufgabe 6 (Aussagen einem Begriffspaar zuordnen)" time="7 Minuten">
+  <p>Lesen Sie den Text. Entscheiden Sie, welche Aussagen A bis H stimmen. Ordnen Sie die richtigen Aussagen der passenden Spalte zu: Vorteile oder Probleme. Es müssen vier Aussagen zugeordnet werden.</p>
+  <p><b>Salat aus dem Hochhaus</b></p>
+  <p>In ehemaligen Lagerhallen und eigens errichteten Gebäuden wachsen Salat, Kräuter und Erdbeeren in Regalen übereinander, oft auf zehn oder mehr Etagen. Statt Sonnenlicht erhalten die Pflanzen das Licht von LED-Lampen, statt in Erde wurzeln sie in einer Nährlösung. Man spricht von Vertical Farming, also vom Anbau in die Höhe.</p>
+  <p>Befürworterinnen und Befürworter verweisen vor allem auf den geringen Platzbedarf: Auf derselben Grundfläche lässt sich ein Vielfaches dessen ernten, was auf einem Feld wächst. Weil die Anlagen geschlossen sind, kommen sie meist ohne Pflanzenschutzmittel aus. Das Wasser wird im Kreislauf geführt, sodass nur ein Bruchteil der Menge verbraucht wird, die auf dem Acker nötig wäre. Und da die Farmen mitten in Städten stehen können, sind die Wege zu den Kundinnen und Kunden kurz.</p>
+  <p>Der größte Haken ist der Strom. Die Lampen müssen viele Stunden am Tag leuchten, und die Räume müssen gekühlt und belüftet werden. Steigen die Energiepreise, wird der Anbau schnell unrentabel; mehrere bekannte Unternehmen der Branche mussten in den vergangenen Jahren aufgeben. Hinzu kommt, dass sich bislang nur wenige Pflanzen lohnen. Für Getreide wie Weizen oder Reis, das viel Fläche braucht und billig verkauft wird, ist das Verfahren viel zu teuer. Ob die Klimabilanz positiv ausfällt, hängt außerdem stark davon ab, woher der Strom stammt.</p>
+  <ul>
+    <li><i>A</i><span>Das Verfahren eignet sich besonders für den Anbau von Getreide.</span></li>
+    <li><i>B</i><span>Auf kleiner Fläche lassen sich große Mengen ernten.</span></li>
+    <li><i>C</i><span>Wegen des hohen Strombedarfs reagiert der Anbau empfindlich auf steigende Preise.</span></li>
+    <li><i>D</i><span>Die Pflanzen benötigen mehr Wasser als auf dem Feld.</span></li>
+    <li><i>E</i><span>In Städten dürfen solche Anlagen nicht gebaut werden.</span></li>
+    <li><i>F</i><span>Auf chemischen Pflanzenschutz kann meist verzichtet werden.</span></li>
+    <li><i>G</i><span>Die Erträge liegen deutlich unter denen im Freiland.</span></li>
+    <li><i>H</i><span>Nur für wenige Nutzpflanzen rechnet sich diese Anbauform.</span></li>
+  </ul>
+  <p><b>Tabelle:</b> Vertical Farming · Spalte 1: Vorteile · Spalte 2: Probleme</p>
+  <p class="ru">Вертикальные фермы. Из восьми утверждений верны ровно четыре: два про плюсы, два про проблемы. Остальные противоречат тексту или в нём не упоминаются. На экзамене их перетаскивают в таблицу. В бланке впиши буквы по алфавиту: в каждом столбце сначала более раннюю.</p>
+</Task>
+
+### Aufgabe 7: три ошибки в резюме
+
+<Task title="Lesen · Aufgabe 7 (Fehler in Zusammenfassung erkennen)" time="7 Minuten">
+  <p>Lesen Sie den Text. Beachten Sie auch die Informationen aus der Grafik. Unten sehen Sie eine Zusammenfassung. Die Zusammenfassung folgt nicht dem Textverlauf. Markieren Sie die Sätze, die inhaltlich falsch sind. Es gibt genau drei inhaltlich falsche Sätze.</p>
+  <p><b>Lieber eine E-Mail als ein Gespräch?</b></p>
+  <p>Wer eine Frage zur Hausarbeit hat, kann sie in der Sprechstunde stellen, eine E-Mail schreiben oder den Chat der Lernplattform nutzen. Welche Wege Studierende tatsächlich wählen, wollte das Zentrum für Lehre der Universität Velmbach wissen. Es befragte dazu rund 1500 Studierende aus allen Fakultäten.</p>
+  <p>Das wichtigste Ergebnis überrascht kaum: Die E-Mail ist mit Abstand der häufigste Weg. Bemerkenswert ist dagegen, wie selten viele Studierende die Sprechstunde besuchen. Als Grund nennen die meisten nicht etwa ungünstige Zeiten, sondern Hemmungen. Viele haben Sorge, die Lehrenden zu stören, oder halten ihre Frage für zu unbedeutend.</p>
+  <p>Mit zunehmender Studiendauer scheint diese Scheu zu sinken: Masterstudierende suchen das persönliche Gespräch deutlich häufiger als Studierende im Bachelor. Den Chat der Lernplattform nutzen dagegen vor allem jüngere Studierende, weil die Hürde dort nach eigener Aussage besonders niedrig sei.</p>
+  <p>Auch die Lehrenden wurden befragt. Viele berichten, dass sie zahlreiche E-Mails mit Fragen erhalten, die sich mit einem Blick ins Modulhandbuch beantworten ließen. Die Universität will deshalb im kommenden Semester offene Sprechstunden ohne Anmeldung erproben, zunächst nur in den Einführungsveranstaltungen des ersten Studienjahres.</p>
+  <p class="ru">Опрос о том, как студенты связываются с преподавателями. Под текстом график, на экзамене он стоит рядом с текстом.</p>
+</Task>
+
+**Grafik: Kontakt zu Lehrenden im letzten Semester** (Befragung, Universität Velmbach; Anteil der Befragten, die den Weg mindestens einmal genutzt haben, in Prozent)
+
+| Kontaktweg | Bachelor | Master |
+|---|---|---|
+| E-Mail | 84 | 89 |
+| Sprechstunde vor Ort | 31 | 55 |
+| Videosprechstunde | 18 | 21 |
+| Chat der Lernplattform | 47 | 29 |
+
+<Task title="Lesen · Aufgabe 7: Zusammenfassung">
+  <p>Markieren Sie die drei Sätze, die inhaltlich falsch sind.</p>
+  <ul>
+    <li><i>1</i><span>Befragt wurden Studierende aus sämtlichen Fakultäten der Universität.</span></li>
+    <li><i>2</i><span>Wer die Sprechstunde meidet, tut das vor allem wegen ungünstiger Termine.</span></li>
+    <li><i>3</i><span>Im Master hat mehr als die Hälfte der Befragten eine Sprechstunde vor Ort besucht.</span></li>
+    <li><i>4</i><span>Den Chat der Lernplattform nutzen Bachelorstudierende häufiger als Masterstudierende.</span></li>
+    <li><i>5</i><span>In beiden Gruppen spielt die Videosprechstunde eine kleinere Rolle als die E-Mail.</span></li>
+    <li><i>6</i><span>Nach Auskunft der Lehrenden ließen sich viele Anfragen mit vorhandenen Unterlagen klären.</span></li>
+    <li><i>7</i><span>Ab dem nächsten Semester gibt es in allen Studiengängen offene Sprechstunden ohne Anmeldung.</span></li>
+    <li><i>8</i><span>Unter Masterstudierenden ist die Videosprechstunde verbreiteter als der Chat.</span></li>
+    <li><i>9</i><span>Viele Studierende zögern, weil sie ihre Frage nicht für wichtig genug halten.</span></li>
+  </ul>
+  <p class="ru">Каждое предложение резюме сверяй и с текстом, и с таблицей. Неверных ровно три. В бланке отметь их номера по порядку: сначала самый маленький.</p>
+</Task>
+
+<AnswerSheet
+  id="testdaf-stellas-4-lesen"
+  title="Lesen · Пробник Stellas TestDaF №4"
+  module="lesen"
+  minutes={55}
+  factor={1} maxPoints={34}
+  hint="Читай тексты выше и отмечай ответы здесь. Бланк считает верные из 34. Объяснения откроются после проверки."
+  items={[
+    { n: 1, part: 'Aufgabe 1 · Lückentext', o: ['verbraucht', 'abgegeben', 'gespeichert', 'gemessen'], a: 1, q: 'Пропуск 1', why: 'Энергия выходит наружу в виде света, а не тепла: Energie wird als Licht abgegeben. Следующая фраза подтверждает: «Man spricht deshalb auch von kaltem Licht». **Ловушка:** gespeichert. Запасённая энергия не светит.' },
+    { n: 2, part: 'Aufgabe 1 · Lückentext', o: ['unterschiedlich', 'ähnlich', 'umstritten', 'unbekannt'], a: 0, q: 'Пропуск 2', why: 'Дальше идут три разные цели: приманить добычу, найти партнёра, сбить с толку врага. Значит, от вида к виду unterschiedlich. **Ловушка:** unbekannt. Цели как раз известны и перечислены.' },
+    { n: 3, part: 'Aufgabe 1 · Lückentext', o: ['verfolgen', 'verwirren', 'ernähren', 'bemerken'], a: 1, q: 'Пропуск 3', why: 'Внезапное светящееся облако нужно, чтобы сбить нападающего с толку: Angreifer verwirren. **Ловушка:** verfolgen. Преследует как раз нападающий, а не жертва.' },
+    { n: 4, part: 'Aufgabe 1 · Lückentext', o: ['selten', 'schnell', 'weit', 'kaum'], a: 2, q: 'Пропуск 4', why: 'Устойчивое weit verbreitet. После двоеточия объяснение: свечение возникло «Dutzende Male unabhängig voneinander». **Ловушка:** selten противоречит этому, а kaum с wie … verbreitet по-немецки не сочетается.' },
+    { n: 5, part: 'Aufgabe 1 · Lückentext', o: ['abgelesen', 'entdeckt', 'vererbt', 'verändert'], a: 0, q: 'Пропуск 5', why: 'Ein Gen wird abgelesen: ген работает. Следующая фраза: «Leuchtet die Probe, ist das Gen eingeschaltet». **Ловушка:** entdeckt. Речь о том, включён ли ген, а не о том, нашли ли его.' },
+    { n: 6, part: 'Aufgabe 2 · Reihenfolge', o: ['A', 'B', 'C', 'D', 'E'], a: 3, q: 'Какой абзац на месте 2', why: 'Первым идёт C: вопрос и проблема, «Erst Mitte des 20. Jahrhunderts änderte sich das grundlegend». Сразу за ним D: «Damals» отсылает к середине XX века. **Ловушка:** A начинается с «diese Aufnahme», а о поглощении углерода говорит только D.' },
+    { n: 7, part: 'Aufgabe 2 · Reihenfolge', o: ['A', 'B', 'C', 'D', 'E'], a: 0, q: 'Какой абзац на месте 3', why: '«Stirbt das Lebewesen, endet diese Aufnahme»: эта Aufnahme из D, где живые существа «nehmen Kohlenstoff auf». В A и сам расчёт возраста.' },
+    { n: 8, part: 'Aufgabe 2 · Reihenfolge', o: ['A', 'B', 'C', 'D', 'E'], a: 4, q: 'Какой абзац на месте 4', why: '«Die Rechnung setzt voraus» отсылает к расчёту из A: «lässt sich also berechnen». **Ловушка:** B тоже звучит как продолжение, но «Deshalb werden die Messwerte heute korrigiert» требует причины. Причина в E: доля C-14 колебалась.' },
+    { n: 9, part: 'Aufgabe 2 · Reihenfolge', o: ['A', 'B', 'C', 'D', 'E'], a: 1, q: 'Какой абзац на месте 5', why: 'Значения корректируют, потому что доля C-14 в атмосфере «hat im Laufe der Jahrtausende geschwankt» (E). B с калибровкой закрывает текст.' },
+    { n: 10, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Обычная переработка', why: 'Пластик при переплавке «verlieren dabei an Qualität», из бутылки получается «ein Produkt von geringerem Wert». **Ловушка:** a. Бутылки собирают и перерабатывают, просто материал хуже.' },
+    { n: 11, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 0, q: 'Что видно из абзаца 2', why: 'Заголовки звучали так, «als sei das Plastikproblem damit gelöst», а учёные «äußerten sich deutlich vorsichtiger». Значит, СМИ преувеличили. **Ловушка:** c переворачивает: так думали газеты, а не исследователи.' },
+    { n: 12, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 3, q: 'Главное преимущество', why: '«Der entscheidende Vorteil»: из полученных частиц делают пластик, «der genauso gut ist wie das ursprüngliche Material». **Ловушка:** a и c противоречат абзацу: нужна «erhöhter Temperatur», а ферменты «gezielt» изменяют.' },
+    { n: 13, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 1, q: 'Абзац 4', why: 'Отходы нужно сортировать, мыть и измельчать, и эти шаги «verursachen Kosten». **Ловушка:** c. Наоборот, процесс пока «unwirtschaftlich» по сравнению с новым пластиком из нефти.' },
+    { n: 14, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 0, q: 'Заголовок к абзацу 5', why: 'Опасение: технология создаст впечатление, что «man müsse am eigenen Verbrauch nichts ändern». Это и есть «отговорка». **Ловушка:** d (Abbauen statt sparen) это как раз то, против чего Тидген: «Das eine schließe das andere nicht aus».' },
+    { n: 15, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Где будущее ферментов', why: 'Будущее «in geschlossenen Anlagen, in denen sich Temperatur und Zusammensetzung des Abfalls genau steuern lassen». **Ловушка:** b. Выпускать бактерии в море учёные считают «abwegig».' },
+    { n: 16, part: 'Aufgabe 3 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 3, q: 'Главная цель текста', why: 'Текст описывает надежды и успехи (абзацы 2–3), а потом ограничения: только PET, затраты, ложное ощущение безопасности (абзацы 4–6). **Ловушка:** c. Японская группа только начало истории в абзаце 2.' },
+    { n: 17, part: 'Aufgabe 4 · Sprachhandlungen', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 5, q: 'Отметка 17', why: 'Автор сравнивает университет со стадионом: «doch eine Universität ist kein Unterhaltungsbetrieb». Это сравнение, f. **Ловушка:** b. О решении назвать аудиторию говорит первое предложение, а номер стоит после него.' },
+    { n: 18, part: 'Aufgabe 4 · Sprachhandlungen', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 0, q: 'Отметка 18', why: '«Zugegeben» это уступка: да, денег на ремонт не хватает. Это a. **Ловушка:** возражение «Doch die Summe deckt nur einen Bruchteil» уже в следующем предложении.' },
+    { n: 19, part: 'Aufgabe 4 · Sprachhandlungen', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 4, q: 'Отметка 19', why: 'Довод «ein Name allein beeinflusse doch weder Forschung noch Lehre» автор отвергает: «greift zu kurz». Это e. **Ловушка:** d. Риторический вопрос стоит в конце абзаца, без номера.' },
+    { n: 20, part: 'Aufgabe 4 · Sprachhandlungen', o: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'], a: 2, q: 'Отметка 20', why: '«Sinnvoller wäre es»: называть залы в честь учёных и собирать пожертвования без условий. Это предложение, c. **Ловушка:** h. Слово «dann» в следующей фразе не делает её условием, и номер стоит только перед первой.' },
+    { n: 21, part: 'Aufgabe 5 · Kategorien', o: ['Habilitation', 'Juniorprofessur', 'beide', 'passt nicht'], a: 0, q: 'Работа на кафедру отнимает время', why: 'Хабилитанты жалуются на «zahlreiche Aufgaben für den Lehrstuhl», и «Für die eigene Arbeit bleibt dann oft wenig Zeit». **Ловушка:** Juniorprofessur. У них тоже нагрузка, но они работают «ohne einem Lehrstuhl unterstellt zu sein».' },
+    { n: 22, part: 'Aufgabe 5 · Kategorien', o: ['Habilitation', 'Juniorprofessur', 'beide', 'passt nicht'], a: 2, q: 'Место ограничено по времени', why: '«Unsicher sind beide Wege»: младшая профессура «auf sechs Jahre befristet», а места на кафедрах «laufen nach einigen Jahren aus». Значит, оба.' },
+    { n: 23, part: 'Aufgabe 5 · Kategorien', o: ['Habilitation', 'Juniorprofessur', 'beide', 'passt nicht'], a: 1, q: 'Остаться без нового конкурса', why: 'Tenure-Track бывает у младших профессур: при хорошей оценке ставка становится постоянной «ohne neues Bewerbungsverfahren». Про хабилитацию прямо: «Eine solche Zusage gibt es bei der Habilitation nicht».' },
+    { n: 24, part: 'Aufgabe 5 · Kategorien', o: ['Habilitation', 'Juniorprofessur', 'beide', 'passt nicht'], a: 3, q: 'Без защиты кандидатской', why: 'Обратное сказано в первой фразе: доказывать самостоятельность нужно «nach der Promotion». Это касается обоих путей, поэтому passt nicht.' },
+    { n: 25, part: 'Aufgabe 5 · Kategorien', o: ['Habilitation', 'Juniorprofessur', 'beide', 'passt nicht'], a: 0, q: 'В некоторых науках это норма', why: 'В медицине и праве «wird die Habilitation allerdings bis heute erwartet». **Ловушка:** beide. Равноценность обоих путей сказана в целом, а исключения только про хабилитацию.' },
+    { n: 26, part: 'Aufgabe 5 · Kategorien', o: ['Habilitation', 'Juniorprofessur', 'beide', 'passt nicht'], a: 1, q: 'Меньше персонала', why: 'У младших профессоров «meist weniger Mitarbeitende und eine geringere Ausstattung als reguläre Professuren».' },
+    { n: 27, part: 'Aufgabe 5 · Kategorien', o: ['Habilitation', 'Juniorprofessur', 'beide', 'passt nicht'], a: 2, q: 'Доказать самостоятельность', why: 'Оба пути нужны, чтобы показать, что человек может «selbstständig forschen und lehren». В тексте: «Dafür gibt es heute zwei Wege», а у младшей профессуры в конце оценка, «die denselben Nachweis erbringen soll wie die Habilitation». Значит, оба.' },
+    { n: 28, part: 'Aufgabe 6 · Vorteile und Probleme', o: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], a: 1, q: 'Vorteile: первая буква', why: 'Плюс B: на той же площади можно собрать «ein Vielfaches dessen …, was auf einem Feld wächst». **Ловушка:** G говорит обратное, урожаи не ниже, а выше.' },
+    { n: 29, part: 'Aufgabe 6 · Vorteile und Probleme', o: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], a: 5, q: 'Vorteile: вторая буква', why: 'Плюс F: закрытые фермы «kommen sie meist ohne Pflanzenschutzmittel aus». **Ловушка:** D. Воды нужен «nur ein Bruchteil», а не больше.' },
+    { n: 30, part: 'Aufgabe 6 · Vorteile und Probleme', o: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], a: 2, q: 'Probleme: первая буква', why: 'Проблема C: свет и охлаждение тянут много электричества, и «Steigen die Energiepreise, wird der Anbau schnell unrentabel». **Ловушка:** E. Фермы как раз могут стоять «mitten in Städten».' },
+    { n: 31, part: 'Aufgabe 6 · Vorteile und Probleme', o: ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H'], a: 7, q: 'Probleme: вторая буква', why: 'Проблема H: «dass sich bislang nur wenige Pflanzen lohnen». **Ловушка:** A говорит обратное. Для зерна метод «viel zu teuer».' },
+    { n: 32, part: 'Aufgabe 7 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], a: 1, q: 'Первое неверное предложение', why: 'Неверно 2. Причина «nicht etwa ungünstige Zeiten, sondern Hemmungen». **Ловушка:** 1 верно, опрошены студенты «aus allen Fakultäten».' },
+    { n: 33, part: 'Aufgabe 7 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], a: 6, q: 'Второе неверное предложение', why: 'Неверно 7. Открытые консультации хотят «erproben, zunächst nur in den Einführungsveranstaltungen», а не ввести везде. **Ловушка:** 3 верно, 55 процентов больше половины.' },
+    { n: 34, part: 'Aufgabe 7 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8', '9'], a: 7, q: 'Третье неверное предложение', why: 'Неверно 8. У магистрантов видеоконсультация 21 процент, а чат 29: чат распространён больше. **Ловушка:** 4 верно, в бакалавриате чат 47 против 29.' },
+  ]}
+/>
+
+<details class="after">
+<summary>После проверки: Aufgabe 2 и 6 целиком</summary>
+
+Порядок абзацев: **C → D → A → E → B**. Первый абзац C бланк не спрашивает: на месте 1 может стоять только он.
+
+Таблица Aufgabe 6: Vorteile **B, F**, Probleme **C, H**. A, D, E и G противоречат тексту.
+
+</details>
+
+<p class="punch">Слово из текста в варианте ответа это приманка. Проверяй, что о нём сказано.</p>
+
+## Hören
+
+Семь заданий, 30 Items, около 40 минут. **Каждый текст звучит один раз.** Инструкции на экзамене тебе зачитывают, перед записью есть время прочитать задание, после записи время проверить ответы. Метод: [Hören TestDaF](../../hoeren/testdaf-hoeren/).
+
+| Aufgabe | Тип | Формат | Items | Время по Demo-Version |
+|---|---|---|---|---|
+| 1 | Kurzantwort: Übersicht ergänzen | аудио | 5 | 15 секунд на таблицу, 20 секунд после |
+| 2 | Kurzantwort: Textstellen zu Begriffspaar notieren | аудио | 4 | 3 минуты после |
+| 3 | Fehler in Zusammenfassung erkennen | аудио | 2 | 2 минуты 30 секунд после |
+| 4 | Aussagen Personen zuordnen | видео | 6 | 45 секунд на чтение, 45 после |
+| 5 | Kurzantwort: Gliederungspunkte ergänzen | видео | 4 | 10 секунд на план, 3 минуты после |
+| 6 | Multiple-Choice | аудио | 5 | 1 минута 30 секунд на вопросы, 1:30 после |
+| 7 | Laut- und Schriftbild abgleichen | аудио | 4 | 20 секунд после |
+
+Короткие ответы пишешь на листке. Максимум два слова в Aufgabe 1, в Aufgabe 2 и 5 ключевые слова. Грамматика не важна, важен смысл.
+
+### Aufgabe 1: заполни таблицу
+
+<Task title="Hören · Aufgabe 1 (Kurzantwort: Übersicht ergänzen)" time="15 Sekunden für die Tabelle, nach dem Hören 20 Sekunden">
+  <p>Sie hören ein Gespräch zwischen zwei Studierenden über das Programm einer Sommerschule. Sie hören das Gespräch einmal. Ergänzen Sie beim Hören die fünf leeren Felder in der Tabelle. Schreiben Sie pro Feld maximal 2 Wörter. Die Items folgen nicht dem Textverlauf.</p>
+  <p class="ru">Двое студентов сверяют программу летней школы. Пять пустых полей, в каждом до двух слов. Порядок полей не совпадает с порядком разговора.</p>
+</Task>
+
+**Sommerschule „Wasser und Klima“** · Teilnahmegebühr für Studierende der Universität Velmbach: **[1]** ______
+
+| | Montag | Mittwoch | Freitag |
+|---|---|---|---|
+| Vormittag | Vorlesung „Klimamodelle“, Hörsaal 3 | Exkursion: Besichtigung **[2]** ______ | Workshop „Wissenschaftlich schreiben“, Bibliothek |
+| Hinweise | | Treffpunkt: **[3]** ______, 8 Uhr · bitte mitbringen: **[4]** ______ | |
+| Nachmittag | Deutschkurs | Exkursion, Rückkehr gegen 15 Uhr | **[5]** ______ |
+
+<Listen title="Gespräch: Die Sommerschule" plays={1} text="Simon: Hallo Klara! Du hast dich doch auch für die Sommerschule angemeldet, oder? Hast du das Programm schon bekommen? Klara: Ja, gestern per Mail. Aber danach gab es noch ein paar Änderungen, glaube ich. Gehen wir es mal zusammen durch? Simon: Gern. Also, am Montagvormittag ist die Eröffnungsvorlesung zu Klimamodellen im Hörsaal drei, und am Nachmittag haben wir den ersten Deutschkurs. Klara: Genau. Am Mittwoch ist dann die Exkursion. Im Programm steht als Treffpunkt der Haupteingang, um acht Uhr. Simon: Das stimmt nicht mehr. Vor dem Haupteingang wird gerade gebaut, und der Bus kann dort nicht halten. Wir treffen uns deshalb am Parkplatz Nord. Klara: Gut zu wissen. Und wohin fahren wir eigentlich? Ich dachte, zum Stausee. Simon: Das war der ursprüngliche Plan. Aber die Zufahrt zum Stausee ist im Moment gesperrt, deshalb besichtigen wir jetzt das Wasserwerk. Klara: Das Klärwerk? Simon: Nein, das Wasserwerk, wo das Trinkwasser aufbereitet wird. Im Klärwerk war die Gruppe letztes Jahr, hat mir eine Kommilitonin erzählt. Klara: Ach so. Und muss man etwas mitbringen? Gummistiefel vielleicht? Simon: Gummistiefel braucht man nicht, wir bleiben ja im Gebäude. Aber unbedingt einen Ausweis, weil man sich am Eingang registrieren muss. Eine Regenjacke kann man mitnehmen, Pflicht ist das aber nicht. Klara: Okay. Und am Freitag? Vormittags ist der Workshop zum wissenschaftlichen Schreiben in der Bibliothek, das weiß ich. Simon: Richtig. Und am Nachmittag stellen alle Gruppen ihre Ergebnisse in Kurzvorträgen vor. Am Abend gibt es dann noch einen Empfang beim Rektor. Die Stadtführung war ja schon am Dienstag. Klara: Stimmt. Ach, und was kostet das Ganze jetzt eigentlich? Da stand etwas von zweihundertfünfzig Euro. Simon: Das gilt nur für Teilnehmende von anderen Hochschulen. Wir zahlen als Studierende der Universität Velmbach nur hundertzwanzig Euro. Kostenlos ist nur der Empfang am Freitagabend. Klara: Dann überweise ich das gleich heute. Danke, Simon!" ru="Кратко: место встречи в среду перенесли от главного входа на парковку «Север», потому что у входа стройка. Экскурсия не на водохранилище (подъезд закрыт), а на водопроводную станцию; очистные сооружения были в прошлом году. Нужен документ, удостоверяющий личность; резиновые сапоги не нужны, куртка по желанию. В пятницу днём короткие доклады групп, вечером приём у ректора, экскурсия по городу была во вторник. Взнос 250 евро для гостей, для своих студентов 120 евро." />
+
+### Aufgabe 2: требование и аргумент
+
+<Task title="Hören · Aufgabe 2 (Kurzantwort: Textstellen zu Begriffspaar notieren)" time="nach dem Hören 3 Minuten">
+  <p>Sie hören eine Podiumsdiskussion zum Thema „Zivilklausel: keine Forschung für das Militär?“. Sie hören das Gespräch einmal. Notieren Sie für jede Person, was die Person fordert, und ein dazugehöriges Argument in Stichpunkten.</p>
+  <ul>
+    <li><i>6</i><span>Frau Osterkamp · Forderung: …</span></li>
+    <li><i>7</i><span>Frau Osterkamp · Argument: …</span></li>
+    <li><i>8</i><span>Herr Pfeilschifter · Forderung: …</span></li>
+    <li><i>9</i><span>Herr Pfeilschifter · Argument: …</span></li>
+  </ul>
+  <p class="ru">Дискуссия о «гражданской оговорке»: должны ли вузы отказаться от военных исследований. Для каждого участника запиши, чего он требует и почему. Только его собственную позицию, не то, что он отвергает.</p>
+</Task>
+
+<Listen title="Podiumsdiskussion: Zivilklausel" plays={1} text="Moderator: Guten Abend und herzlich willkommen zu unserer Podiumsdiskussion. Unser Thema ist die sogenannte Zivilklausel. Gemeint ist eine Verpflichtung, mit der sich eine Hochschule festlegt, nur für friedliche Zwecke zu forschen. Bei mir sind Frau Osterkamp, Friedensforscherin an unserer Universität, und Herr Pfeilschifter, Professor für Luft- und Raumfahrttechnik. Frau Osterkamp, was fordern Sie? Frau Osterkamp: Wir fordern, dass sich jede Hochschule eine verbindliche Zivilklausel gibt, und zwar nicht als freundliche Absichtserklärung auf der Internetseite, sondern in ihrer Grundordnung. Moderator: Sie wollen also, dass Rüstungsprojekte an Hochschulen nur noch mit einer besonderen Genehmigung möglich sind? Frau Osterkamp: Nein, eine Genehmigung würde wenig ändern. Wir wollen, dass solche Projekte an Hochschulen gar nicht stattfinden. Moderator: Manche sagen, militärische Forschung sei ohnehin schlechte Wissenschaft. Ist das Ihr Argument? Frau Osterkamp: Das behaupte ich gar nicht. Die Qualität dieser Forschung ist oft sehr hoch. Mein Punkt ist ein anderer. Hochschulen werden zum größten Teil mit Steuergeld finanziert, und dieses öffentliche Geld sollte dem Frieden dienen und nicht der Entwicklung von Waffen. Moderator: Herr Pfeilschifter, Sie sehen das anders. Herr Pfeilschifter: Ja. Ich halte nichts von einem Verbot. Ich fordere stattdessen Transparenz. Jedes Projekt, das von einem Verteidigungsministerium oder einem Rüstungsunternehmen bezahlt wird, sollte öffentlich gemacht werden, mit Thema und Geldgeber. Dann kann jeder selbst urteilen. Moderator: Viele berufen sich in dieser Debatte auf die Freiheit der Forschung. Ist das auch Ihr Argument? Herr Pfeilschifter: Die Forschungsfreiheit ist mir natürlich wichtig, aber sie ist nicht mein Hauptargument. Entscheidend ist etwas anderes. In meinem Fach lassen sich zivile und militärische Forschung kaum trennen. Ein leichteres Material für Flugzeugflügel nutzt der Passagiermaschine ebenso wie dem Kampfflugzeug. Eine Drohne kann Vermisste in den Bergen suchen oder ein Ziel angreifen. Mit einer Zivilklausel müsste man solche Forschung im Zweifel ganz aufgeben. Moderator: Und geht es am Ende nicht auch ums Geld? Herr Pfeilschifter: Kaum. Der Anteil solcher Mittel an unserem Budget ist sehr gering. Frau Osterkamp: Aber gerade weil die Grenze so unscharf ist, brauchen wir klare Regeln. Moderator: Darüber sprechen wir gleich weiter. Zunächst eine Frage aus dem Publikum." ru="Кратко: Остеркамп требует обязательной гражданской оговорки в уставе каждого вуза. Разрешения на отдельные проекты ей мало: военных проектов в вузах не должно быть совсем. Её довод: вузы живут на налоги, и общественные деньги должны служить миру. Качество военной науки она не ругает. Пфайльшифтер против запрета и за прозрачность: все проекты на деньги военных публиковать с темой и заказчиком. Главный довод: в его области гражданское и военное почти не разделить. Свобода науки не главный аргумент, деньги тоже ни при чём." />
+
+### Aufgabe 3: две ошибки в резюме лекции
+
+<Task title="Hören · Aufgabe 3 (Fehler in Zusammenfassung erkennen)" time="nach dem Hören 2 Minuten 30 Sekunden">
+  <p>Sie hören einen Ausschnitt aus einer Vorlesung im Fach Astronomie zum Thema „Wie findet man Exoplaneten?“. Sie hören den Text einmal. Machen Sie sich beim Hören Notizen. Nach dem Hörtext sehen Sie eine schriftliche Zusammenfassung. Markieren Sie die zwei Sätze, die falsche Informationen enthalten.</p>
+  <p class="ru">Фрагмент лекции о том, как ищут планеты у других звёзд. Резюме на экзамене появляется только после записи. Здесь оно под спойлером: открой его, когда запись кончится.</p>
+</Task>
+
+<Listen title="Vorlesung: Wie findet man Exoplaneten?" plays={1} text="Guten Tag, ich bin Astronomin hier am Institut, und heute geht es um Planeten außerhalb unseres Sonnensystems, sogenannte Exoplaneten. Noch vor gut dreißig Jahren war nicht sicher, ob es bei anderen sonnenähnlichen Sternen überhaupt Planeten gibt. Erst neunzehnhundertfünfundneunzig wurde der erste nachgewiesen. Heute kennen wir mehrere Tausend. Wie findet man aber etwas, das man in den allermeisten Fällen gar nicht sehen kann? Ein Planet leuchtet nicht selbst, und neben seinem Stern, der milliardenfach heller ist, geht er im Licht völlig unter. Direkte Aufnahmen gelingen deshalb nur in seltenen Ausnahmefällen. Die Forschung muss also Umwege gehen. Der erfolgreichste Umweg ist die sogenannte Transitmethode. Zieht ein Planet, von uns aus gesehen, vor seinem Stern vorbei, verdeckt er einen winzigen Teil der Sternscheibe. Der Stern wird dann für einige Stunden ein klein wenig dunkler. Bei einem Planeten von der Größe der Erde sinkt die Helligkeit gerade einmal um etwa ein Hundertstel Prozent. Deshalb misst man nicht von der Erde aus, wo die Luft das Licht flimmern lässt, sondern mit Teleskopen im Weltraum. Wiederholt sich die Verdunkelung regelmäßig, kennt man die Umlaufzeit des Planeten, und aus der Stärke der Verdunkelung lässt sich seine Größe berechnen. Die Methode hat allerdings einen Haken. Sie funktioniert nur, wenn wir zufällig ziemlich genau von der Seite auf die Umlaufbahn blicken. Bei den meisten Planetensystemen ist das nicht der Fall, und sie bleiben für diese Methode unsichtbar. Eine zweite Methode setzt beim Stern selbst an. Ein Planet zieht mit seiner Schwerkraft an seinem Stern, sodass dieser ganz leicht hin und her schwankt. Diese Bewegung lässt sich im Licht des Sterns messen. Mit dieser Methode wurde übrigens auch der erste Planet bei einem sonnenähnlichen Stern entdeckt. Kombiniert man beide Verfahren, kennt man Größe und Masse und kann abschätzen, ob ein Planet eher aus Gestein besteht wie die Erde oder aus Gas wie Jupiter. Die spannendste Frage ist natürlich, ob es auf einem dieser Planeten Leben geben könnte. Dafür muss er in der sogenannten bewohnbaren Zone liegen, also in einem Abstand zu seinem Stern, bei dem Wasser flüssig sein kann. Ob er dann tatsächlich Wasser oder gar Leben hat, wissen wir damit aber noch lange nicht. Darüber sprechen wir in der nächsten Sitzung." ru="Кратко: первая экзопланета у звезды, похожей на Солнце, найдена в 1995 году, сейчас их тысячи. Сфотографировать планету почти никогда нельзя: звезда в миллиарды раз ярче. Транзитный метод: планета проходит перед звездой, и та чуть темнеет. Меряют космическими телескопами, потому что воздух мешает. По силе затемнения считают размер. Но метод видит только системы, на которые мы смотрим сбоку, а таких меньшинство. Второй метод: звезда покачивается от притяжения планеты, так и нашли первую планету у солнцеподобной звезды. Вместе методы дают размер и массу. Обитаемая зона ещё не значит, что там есть вода." />
+
+<details>
+<summary><b>Zusammenfassung: открыть после записи</b></summary>
+
+1. Erst seit den Neunzigerjahren weiß man sicher, dass auch andere sonnenähnliche Sterne Planeten haben.
+2. Neben seinem viel helleren Stern ist ein Planet meist nicht direkt zu erkennen.
+3. Zieht ein Planet vor seinem Stern vorbei, nimmt dessen Helligkeit leicht ab.
+4. Für diese Messungen eignen sich Teleskope auf der Erde am besten.
+5. Aus der Stärke der Verdunkelung lässt sich die Größe des Planeten berechnen.
+6. Viele Planetensysteme bleiben für die Transitmethode unsichtbar.
+7. Der erste Planet bei einem sonnenähnlichen Stern wurde mit der Transitmethode entdeckt.
+8. Ein Planet in der bewohnbaren Zone hat nicht unbedingt Wasser.
+
+</details>
+
+### Aufgabe 4: кто что говорит (на экзамене видео)
+
+<Task title="Hören · Aufgabe 4 (Aussagen Personen zuordnen) · Video" time="45 Sekunden zum Lesen, nach dem Video 45 Sekunden">
+  <p>Sie sehen eine Diskussion zum Thema „Geoengineering: Sonnenlicht abschirmen?“. Sie sehen das Video einmal. Entscheiden Sie, zu wem die Aussagen 12 bis 17 passen: zu Herrn Vogelsang, zu Frau Raddatz, zu beiden oder zu keinem. Für jede Aussage gibt es genau eine richtige Lösung.</p>
+  <ul>
+    <li><i>12</i><span>Die Methode könnte dazu verleiten, beim Klimaschutz nachzulassen.</span></li>
+    <li><i>13</i><span>Die Methode würde die Erde wahrscheinlich tatsächlich abkühlen.</span></li>
+    <li><i>14</i><span>Auch Versuche außerhalb des Labors sollten erlaubt sein.</span></li>
+    <li><i>15</i><span>Die Technik sollte bereits heute im großen Stil eingesetzt werden.</span></li>
+    <li><i>16</i><span>Ein plötzlicher Abbruch der Maßnahme hätte gefährliche Folgen.</span></li>
+    <li><i>17</i><span>Man sollte vorbereitet sein, falls ein Staat die Technik eines Tages einsetzt.</span></li>
+  </ul>
+  <p class="ru">На экзамене это видео: модератор, климатолог Керстин Раддатц и специалист по этике Бернд Фогельзанг. У нас запись с репликами. Для каждого утверждения: Фогельзанг, Раддатц, оба или никто. «Оба» только при явном согласии, а не когда второй промолчал.</p>
+</Task>
+
+<Listen title="Video: Geoengineering: Sonnenlicht abschirmen?" plays={1} text="Moderator: Willkommen zu unserer Reihe Wissenschaft im Gespräch. Heute geht es um eine Idee, die vielen wie Science-Fiction vorkommt. Man könnte winzige Teilchen in große Höhe bringen, die einen Teil des Sonnenlichts ins All zurückwerfen und so die Erde kühlen. Bei mir sind Frau Doktor Kerstin Raddatz, Klimaphysikerin, und Herr Bernd Vogelsang, Umweltethiker. Frau Raddatz, kann das überhaupt funktionieren? Frau Raddatz: Physikalisch spricht viel dafür. Wir kennen den Effekt von großen Vulkanausbrüchen. Nach dem Ausbruch des Pinatubo im Jahr neunzehnhunderteinundneunzig war es weltweit ein bis zwei Jahre lang messbar kühler, weil Schwefelteilchen in der Atmosphäre Sonnenlicht abgeschirmt haben. Herr Vogelsang: Dass es funktionieren würde, bestreite ich gar nicht. Die Temperatur ließe sich auf diese Weise vermutlich wirklich senken. Genau das macht mir aber Sorgen. Wenn es eine scheinbar billige Lösung gibt, warum sollten Staaten dann noch teuer ihre Emissionen senken? Ich fürchte, viele würden sich beim Klimaschutz zurücklehnen. Moderator: Frau Raddatz, ist diese Sorge berechtigt? Frau Raddatz: Diese Sorge höre ich oft. Aber darum geht es mir nicht. Niemand, den ich kenne, will diese Technik heute einsetzen. Ich fordere etwas anderes. Wir sollten sie erforschen, und dazu gehören auch kleine, streng kontrollierte Versuche im Freien. Am Computer allein lässt sich vieles nicht klären. Moderator: Warum, wenn sie niemand einsetzen will? Frau Raddatz: Weil wir nicht wissen, wie die Welt in dreißig Jahren aussieht. Wenn die Erwärmung schneller voranschreitet als befürchtet, greift irgendein Staat vielleicht doch zu diesem Mittel. Dann sollten wir die Folgen kennen und nicht völlig unvorbereitet sein. Herr Vogelsang: Und genau diese Folgen sind das Problem. Die Teilchen bleiben nur ein, zwei Jahre in der Luft. Man müsste also ständig nachlegen, über Jahrzehnte. Hört man plötzlich auf, etwa wegen eines Krieges oder einer Wirtschaftskrise, steigt die Temperatur innerhalb weniger Jahre sprunghaft an. Darauf könnten sich weder Menschen noch Ökosysteme einstellen. Moderator: Wir sammeln jetzt Fragen aus dem Publikum." ru="Кратко: Раддатц: физически это скорее сработает, пример извержение Пинатубо в 1991 году. Фогельзанг соглашается, что температура снизится, но боится, что государства перестанут сокращать выбросы. Раддатц на это не отвечает согласием: применять технологию сейчас не хочет никто, она за исследования, включая небольшие опыты под открытым небом, чтобы быть готовыми, если какое-то государство однажды решится. Фогельзанг: частицы держатся год-два, если резко прекратить, температура скачком вырастет." />
+
+### Aufgabe 5: дополни план доклада (на экзамене видео)
+
+<Task title="Hören · Aufgabe 5 (Kurzantwort: Gliederungspunkte zu Vortrag ergänzen) · Video" time="10 Sekunden für die Gliederung, nach dem Video 3 Minuten">
+  <p>Sie sehen einen Ausschnitt aus einer Vorlesung im Fach Medizingeschichte zum Thema „Ignaz Semmelweis und das Kindbettfieber“. Sie sehen das Video einmal. Ergänzen Sie beim Hören die Gliederungspunkte in Stichpunkten.</p>
+  <ul>
+    <li><i>18</i><span>Auffälliger Unterschied zwischen den beiden Abteilungen: …</span></li>
+    <li><i>19</i><span>Entscheidender Hinweis: …</span></li>
+    <li><i>20</i><span>Maßnahme ab 1847: …</span></li>
+    <li><i>21</i><span>Hauptgrund für die Ablehnung: …</span></li>
+  </ul>
+  <p class="ru">На экзамене это видео лекции. Дополни четыре пункта плана ключевыми словами. Слушай сигнальные слова, которыми лектор открывает каждый пункт.</p>
+</Task>
+
+<Listen title="Video: Ignaz Semmelweis und das Kindbettfieber" plays={1} text="Guten Tag, ich bin Medizinhistorikerin und freue mich, Sie in unserer Reihe über Irrwege und Durchbrüche der Medizin begrüßen zu dürfen. Heute geht es um einen Arzt, dessen Namen inzwischen fast jeder Mediziner kennt, der zu Lebzeiten aber kaum Anerkennung fand, nämlich Ignaz Semmelweis. Semmelweis arbeitete in den Vierzigerjahren des neunzehnten Jahrhunderts an der großen Geburtsklinik in Wien. Diese Klinik hatte zwei Abteilungen. In der einen wurden Ärzte und Medizinstudenten ausgebildet, in der anderen Hebammen. Semmelweis fiel ein beunruhigender Unterschied auf. In der Abteilung der Ärzte starben weit mehr Frauen am sogenannten Kindbettfieber als in der Abteilung der Hebammen, zeitweise ein Vielfaches. Die Frauen wussten das übrigens auch, und manche flehten darum, bei den Hebammen aufgenommen zu werden. Semmelweis suchte nach den Ursachen. Er prüfte zum Beispiel, ob es an der Lage der Betten lag, und er ließ sogar den Priester, der mit einer Glocke durch die Säle zu den Sterbenden ging, einen anderen Weg nehmen. Nichts davon änderte etwas. Den entscheidenden Hinweis lieferte schließlich ein tragischer Unfall. Ein befreundeter Kollege wurde bei einer Leichenöffnung versehentlich mit einem Messer verletzt und starb wenige Tage später, und zwar mit denselben Krankheitszeichen wie die Frauen. Semmelweis zog daraus einen kühnen Schluss. Die Ärzte und Studenten kamen oft direkt aus dem Sektionssaal zu den Gebärenden. Sie trugen, so seine Vermutung, unsichtbare Teilchen von den Leichen an ihren Händen zu den Frauen. Die Hebammen dagegen untersuchten keine Leichen. Im Jahr achtzehnhundertsiebenundvierzig ordnete Semmelweis deshalb an, dass sich alle vor der Untersuchung einer Frau die Hände in einer Chlorkalklösung waschen mussten. Die Zahl der Todesfälle sank innerhalb kurzer Zeit drastisch. Man sollte meinen, die Fachwelt hätte ihn gefeiert. Das Gegenteil war der Fall. Dass Semmelweis seine Ergebnisse erst viele Jahre später ausführlich veröffentlichte, hat ihm sicher nicht geholfen, ebenso wenig sein oft schroffer Ton. Vor allem aber war seine Botschaft für viele Ärzte unerträglich. Sie selbst, die Helfer, sollten die tödliche Krankheit zu ihren Patientinnen getragen haben. Erst Jahrzehnte später, als man Bakterien als Krankheitserreger erkannte, verstand man, wie recht Semmelweis gehabt hatte. Er selbst hat das nicht mehr erlebt." ru="Кратко: в венской родильной клинике в отделении врачей от родильной горячки умирало гораздо больше женщин, чем у акушерок. Кровати и путь священника с колокольчиком ничего не меняли. Подсказку дала смерть коллеги, порезанного ножом при вскрытии: те же симптомы. Вывод: врачи переносят частицы с трупов на руках. С 1847 года мыть руки в растворе хлорной извести, смертность резко упала. Поздняя публикация и резкий тон мешали, но главное: врачам было невыносимо, что болезнь переносят они сами." />
+
+### Aufgabe 6: доклад, пять вопросов
+
+<Task title="Hören · Aufgabe 6 (Multiple-Choice)" time="1 Minute 30 Sekunden zum Lesen, nach dem Hören 1 Minute 30 Sekunden">
+  <p>Sie hören einen Ausschnitt aus einem Vortrag zum Thema „Warum Elefanten selten Krebs bekommen“. Sie hören den Text einmal. Beantworten Sie die Fragen 22 bis 26. Für jede Frage gibt es genau eine richtige Lösung.</p>
+  <ul>
+    <li><i>22</i><span>Das Peto-Paradox beschreibt die Beobachtung, dass … <b>a</b> große Tiere häufiger an Krebs erkranken als kleine. <b>b</b> Elefanten älter werden als die meisten anderen Säugetiere. <b>c</b> die Körpergröße kaum mit dem Krebsrisiko zusammenhängt. <b>d</b> Krebs bei wild lebenden Tieren bisher kaum erforscht ist.</span></li>
+    <li><i>23</i><span>Nach der Überlegung am Anfang müssten Elefanten oft an Krebs erkranken, weil … <b>a</b> ihr Erbgut von Natur aus mehr Fehler enthält. <b>b</b> sie viele Zellen haben und lange leben. <b>c</b> sich ihre Zellen schneller teilen als menschliche. <b>d</b> sie stärkeren Umweltbelastungen ausgesetzt sind.</span></li>
+    <li><i>24</i><span>Elefanten schützen sich vor allem dadurch, dass … <b>a</b> beschädigte Zellen besonders gründlich repariert werden. <b>b</b> sich ihre Zellen seltener teilen. <b>c</b> beschädigte Zellen sich selbst zerstören. <b>d</b> sie Krebszellen über das Blut ausscheiden.</span></li>
+    <li><i>25</i><span>Zur Frage, ob man Menschen Elefantengene einsetzen könnte, sagt der Sprecher, dass … <b>a</b> erste Versuche bereits erfolgreich verlaufen sind. <b>b</b> dies technisch unmöglich und rechtlich verboten ist. <b>c</b> man zuerst die Mechanismen der Wale verstehen muss. <b>d</b> ein stärkeres Schutzgen auch Nachteile haben kann.</span></li>
+    <li><i>26</i><span>Das Hauptziel des Vortrags besteht darin, … <b>a</b> zu zeigen, was die Krebsforschung von großen Tieren lernen kann. <b>b</b> für den Schutz bedrohter Elefanten und Wale zu werben. <b>c</b> Versuche an Mäusen im Labor als überflüssig darzustellen. <b>d</b> die Geschichte der Krebsforschung in Großbritannien nachzuzeichnen.</span></li>
+  </ul>
+  <p class="ru">Доклад о том, почему у слонов редко бывает рак. Вопросы идут по порядку доклада, последний про главную цель.</p>
+</Task>
+
+<Listen title="Vortrag: Warum Elefanten selten Krebs bekommen" plays={1} text="Guten Abend, meine Damen und Herren. Mein Name ist Paul Ostwald, ich bin Biologe und erforsche, wie sich Tiere vor Krebs schützen. Beginnen wir mit einer einfachen Überlegung. Krebs entsteht, wenn sich bei der Teilung einer Zelle Fehler ins Erbgut einschleichen und die Zelle sich danach unkontrolliert vermehrt. Jede Zellteilung ist also ein kleines Risiko. Daraus folgt eigentlich, dass ein Tier mit sehr vielen Zellen, das zudem lange lebt, häufiger an Krebs erkranken müsste als ein kleines, kurzlebiges Tier. Ein Elefant hat etwa hundertmal so viele Zellen wie ein Mensch und wird ähnlich alt. Er müsste also ständig an Krebs erkranken. Tatsächlich ist das Gegenteil der Fall. Elefanten sterben deutlich seltener an Krebs als Menschen. Auch bei Walen, den größten Tieren überhaupt, ist Krebs erstaunlich selten. Dass die Körpergröße bei Tieren so wenig mit dem Krebsrisiko zu tun hat, nennt man nach dem britischen Epidemiologen Richard Peto das Peto-Paradox. Lange war das nur eine Kuriosität. Inzwischen weiß man zumindest bei Elefanten mehr. Man könnte vermuten, dass Elefanten beschädigte Zellen besonders gut reparieren. Das ist aber nicht die Hauptsache. Elefanten besitzen etwa zwanzig Kopien eines Gens, das Schäden im Erbgut erkennt. Wir Menschen haben nur eine. Stellt dieses Gen einen Schaden fest, sorgt es dafür, dass die betroffene Zelle sich selbst zerstört. Elefanten opfern also lieber eine Zelle zu viel, als ein Risiko einzugehen. Bei Walen scheinen dagegen andere Mechanismen eine Rolle zu spielen, die noch kaum verstanden sind. Was bedeutet das für uns? Ich werde oft gefragt, ob man Menschen nun einfach Elefantengene einsetzen könnte. Ganz so einfach ist es leider nicht. Ein Gen wirkt immer im Zusammenspiel mit vielen anderen, und ein zu aktives Schutzgen kann auch schaden, zum Beispiel, indem es das Altern beschleunigt. Schnelle Therapien sollte man also nicht erwarten. Aber die Natur hat über Jahrmillionen Lösungen gefunden, auf die wir im Labor kaum gekommen wären. Wer verstehen will, wie man Krebs verhindern kann, sollte deshalb nicht nur auf Mäuse im Labor schauen, sondern auch auf die Riesen der Tierwelt. Das ist die eigentliche Botschaft der Elefanten." ru="Кратко: каждое деление клетки небольшой риск, значит, у крупных долгоживущих животных рака должно быть больше. У слона примерно в сто раз больше клеток, чем у человека, но рак у слонов реже. Это парадокс Пето. Слоны не столько чинят клетки, сколько уничтожают повреждённые: у них около двадцати копий гена-сторожа, у человека одна. У китов, видимо, другие механизмы. Пересадить людям гены слона нельзя просто так: слишком активный защитный ген может ускорить старение. Вывод: учиться у великанов природы, а не только у лабораторных мышей." />
+
+### Aufgabe 7: четыре слова звучат иначе
+
+<Task title="Hören · Aufgabe 7 (Laut- und Schriftbild abgleichen)" time="nach dem Hören 20 Sekunden">
+  <p>Sie hören einen Text zum Thema „Fragen in der Vorlesung“, den Sie gleichzeitig mitlesen. Hörtext und schriftlicher Text sind nicht identisch. Vier Wörter sind unterschiedlich. Sie hören den Text einmal. Markieren Sie beim Hören die vier Wörter, die nicht dem Hörtext entsprechen.</p>
+  <p><b>(27)</b> In großen Vorlesungen melden sich nur wenige Studierende zu Wort.</p>
+  <p><b>(28)</b> Die meisten haben durchaus Fragen, behalten sie aber für sich, weil sie fürchten, sich vor allen anderen zu blamieren.</p>
+  <p><b>(29)</b> Dabei profitieren von einer Frage meist viele, denn oft ist anderen dieselbe Stelle unklar geblieben.</p>
+  <p><b>(30)</b> Manche Lehrende bitten deshalb darum, Fragen vorab anonym über die Lernplattform zu schicken.</p>
+  <p class="ru">Читай и слушай одновременно. На экзамене четыре отличия могут стоять где угодно, их кликают прямо в тексте. Для бланка текст разбит на четыре отрывка, в каждом ровно одно слово звучит иначе. Выбери его из пяти вариантов.</p>
+</Task>
+
+<Listen title="Text: Fragen in der Vorlesung" plays={1} text="In vollen Vorlesungen melden sich nur wenige Studierende zu Wort. Die meisten haben durchaus Fragen, behalten sie aber für sich, weil sie fürchten, sich vor allen Kommilitonen zu blamieren. Dabei profitieren von einer Frage meist viele, denn häufig ist anderen dieselbe Stelle unklar geblieben. Manche Lehrende bitten deshalb darum, Fragen vorab schriftlich über die Lernplattform zu schicken." ru="На переполненных лекциях руку поднимают немногие. Вопросы есть у большинства, но их держат при себе: боятся опозориться перед однокурсниками. А ведь вопрос обычно полезен многим, потому что часто то же место непонятно и другим. Поэтому некоторые преподаватели просят присылать вопросы заранее письменно через учебную платформу." />
+
+<AnswerSheet
+  id="testdaf-stellas-4-hoeren"
+  title="Hören · Пробник Stellas TestDaF №4"
+  module="hoeren"
+  factor={1} maxPoints={30}
+  hint="Переноси ответы со своего листка. В коротких ответах выбери вариант, который совпадает с твоей записью по смыслу. Объяснения откроются после проверки."
+  items={[
+    { n: 1, part: 'Aufgabe 1 · Übersicht', o: ['250 Euro', '120 Euro', 'kostenlos'], a: 1, q: 'Teilnahmegebühr für Studierende in Velmbach', why: '«Wir zahlen als Studierende der Universität Velmbach nur hundertzwanzig Euro». **Ловушка:** 250 евро «gilt nur für Teilnehmende von anderen Hochschulen», а бесплатен только приём.' },
+    { n: 2, part: 'Aufgabe 1 · Übersicht', o: ['Stausee', 'Klärwerk', 'Wasserwerk'], a: 2, q: 'Mittwoch, Besichtigung', why: 'План поменяли: «deshalb besichtigen wir jetzt das Wasserwerk». **Ловушка:** Stausee был в старом плане, а Klärwerk Клара путает на слух, и Симон её поправляет.' },
+    { n: 3, part: 'Aufgabe 1 · Übersicht', o: ['Parkplatz Nord', 'Haupteingang', 'Haltestelle am Bahnhof'], a: 0, q: 'Mittwoch, Treffpunkt', why: '«Wir treffen uns deshalb am Parkplatz Nord». **Ловушка:** Haupteingang написан в программе, но у входа стройка.' },
+    { n: 4, part: 'Aufgabe 1 · Übersicht', o: ['Gummistiefel', 'Regenjacke', 'Ausweis'], a: 2, q: 'Mittwoch, mitbringen', why: '«Aber unbedingt einen Ausweis, weil man sich am Eingang registrieren muss». **Ловушка:** сапоги не нужны, а куртка «Pflicht ist das aber nicht».' },
+    { n: 5, part: 'Aufgabe 1 · Übersicht', o: ['Stadtführung', 'Kurzvorträge', 'Empfang beim Rektor'], a: 1, q: 'Freitagnachmittag', why: '«am Nachmittag stellen alle Gruppen ihre Ergebnisse in Kurzvorträgen vor». **Ловушка:** приём у ректора вечером, а экскурсия по городу «war ja schon am Dienstag».' },
+    { n: 6, part: 'Aufgabe 2 · Forderung und Argument', o: ['Rüstungsprojekte nur mit besonderer Genehmigung zulassen', 'verbindliche Zivilklausel für alle Hochschulen', 'jede Hochschule entscheidet selbst'], a: 1, q: 'Frau Osterkamp, Forderung', why: '«dass sich jede Hochschule eine verbindliche Zivilklausel gibt». **Ловушка:** разрешение предлагает модератор, а она отвечает: «eine Genehmigung würde wenig ändern».' },
+    { n: 7, part: 'Aufgabe 2 · Forderung und Argument', o: ['Steuergeld soll friedlichen Zwecken dienen', 'militärische Forschung ist schlechte Wissenschaft', 'Hochschulen arbeiten zu eng mit Firmen'], a: 0, q: 'Frau Osterkamp, Argument', why: 'Вузы живут на налоги, «dieses öffentliche Geld sollte dem Frieden dienen». **Ловушка:** про плохую науку говорит модератор, а она: «Das behaupte ich gar nicht».' },
+    { n: 8, part: 'Aufgabe 2 · Forderung und Argument', o: ['Zivilklauseln überall abschaffen', 'mehr Geld für Verteidigungsforschung', 'Projekte offenlegen statt verbieten'], a: 2, q: 'Herr Pfeilschifter, Forderung', why: '«Ich halte nichts von einem Verbot. Ich fordere stattdessen Transparenz»: проекты с военными деньгами публиковать. **Ловушка:** отменять оговорки и просить больше денег он не предлагает.' },
+    { n: 9, part: 'Aufgabe 2 · Forderung und Argument', o: ['Forschungsfreiheit steht über allem', 'zivile und militärische Forschung kaum trennbar', 'Hochschulen sind auf Geld aus der Rüstung angewiesen'], a: 1, q: 'Herr Pfeilschifter, Argument', why: '«In meinem Fach lassen sich zivile und militärische Forschung kaum trennen», пример с крылом и дроном. **Ловушка:** свобода науки «nicht mein Hauptargument», а про деньги он говорит «Kaum».' },
+    { n: 10, part: 'Aufgabe 3 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8'], a: 3, q: 'Первое неверное предложение', why: 'Неверно 4. Меряют «nicht von der Erde aus, wo die Luft das Licht flimmern lässt, sondern mit Teleskopen im Weltraum». **Ловушка:** 2 верно, планета теряется в свете звезды.' },
+    { n: 11, part: 'Aufgabe 3 · Zusammenfassung', o: ['1', '2', '3', '4', '5', '6', '7', '8'], a: 6, q: 'Второе неверное предложение', why: 'Неверно 7. Первую планету у солнцеподобной звезды нашли вторым методом, по покачиванию звезды: «Mit dieser Methode wurde übrigens auch der erste Planet bei einem sonnenähnlichen Stern entdeckt». **Ловушка:** транзитный метод назван «der erfolgreichste», но первым он не был.' },
+    { n: 12, part: 'Aufgabe 4 · Personen', o: ['Herr Vogelsang', 'Frau Raddatz', 'beide', 'keiner'], a: 0, q: 'Ослабить усилия по защите климата', why: 'Фогельзанг: «Ich fürchte, viele würden sich beim Klimaschutz zurücklehnen». **Ловушка:** beide. Раддатц отвечает «darum geht es mir nicht», то есть не соглашается.' },
+    { n: 13, part: 'Aufgabe 4 · Personen', o: ['Herr Vogelsang', 'Frau Raddatz', 'beide', 'keiner'], a: 2, q: 'Метод правда охладит Землю', why: 'Раддатц: «Physikalisch spricht viel dafür». Фогельзанг: «Dass es funktionieren würde, bestreite ich gar nicht». Оба.' },
+    { n: 14, part: 'Aufgabe 4 · Personen', o: ['Herr Vogelsang', 'Frau Raddatz', 'beide', 'keiner'], a: 1, q: 'Опыты вне лаборатории', why: 'Раддатц: «dazu gehören auch kleine, streng kontrollierte Versuche im Freien». Фогельзанг об опытах не говорит.' },
+    { n: 15, part: 'Aufgabe 4 · Personen', o: ['Herr Vogelsang', 'Frau Raddatz', 'beide', 'keiner'], a: 3, q: 'Применять в больших масштабах уже сейчас', why: 'Даже сторонница исследований: «Niemand, den ich kenne, will diese Technik heute einsetzen». Фогельзанг тем более против. Значит, keiner.' },
+    { n: 16, part: 'Aufgabe 4 · Personen', o: ['Herr Vogelsang', 'Frau Raddatz', 'beide', 'keiner'], a: 0, q: 'Резкая остановка опасна', why: 'Фогельзанг: «Hört man plötzlich auf …, steigt die Temperatur innerhalb weniger Jahre sprunghaft an». Раддатц про это не говорит.' },
+    { n: 17, part: 'Aufgabe 4 · Personen', o: ['Herr Vogelsang', 'Frau Raddatz', 'beide', 'keiner'], a: 1, q: 'Быть готовыми, если государство решится', why: 'Раддатц: «greift irgendein Staat vielleicht doch zu diesem Mittel. Dann sollten wir die Folgen kennen». **Ловушка:** beide. Фогельзанг подхватывает слово «Folgen», но чтобы возразить.' },
+    { n: 18, part: 'Aufgabe 5 · Gliederung', o: ['mehr Todesfälle bei den Hebammen', 'mehr Todesfälle bei den Ärzten', 'mehr Geburten bei den Ärzten'], a: 1, q: 'Auffälliger Unterschied', why: '«In der Abteilung der Ärzte starben weit mehr Frauen am sogenannten Kindbettfieber als in der Abteilung der Hebammen». **Ловушка:** женщины просились к акушеркам как раз потому, что там умирали реже.' },
+    { n: 19, part: 'Aufgabe 5 · Gliederung', o: ['Tod eines Kollegen nach einer Leichenöffnung', 'der Weg des Priesters mit der Glocke durch die Säle', 'eine andere Lage der Betten in den Krankensälen'], a: 0, q: 'Entscheidender Hinweis', why: '«Den entscheidenden Hinweis lieferte schließlich ein tragischer Unfall»: коллегу порезали при вскрытии, и он умер с теми же симптомами. **Ловушка:** кровати и путь священника Земмельвейс проверял, но «Nichts davon änderte etwas».' },
+    { n: 20, part: 'Aufgabe 5 · Gliederung', o: ['mehr Hebammen in der Ärzteabteilung', 'ein neuer Weg für den Priester', 'Händewaschen mit Chlorkalklösung'], a: 2, q: 'Maßnahme ab 1847', why: 'Все должны были мыть руки «in einer Chlorkalklösung». **Ловушка:** новый путь священника был раньше и не помог.' },
+    { n: 21, part: 'Aufgabe 5 · Gliederung', o: ['sehr späte Veröffentlichung seiner Ergebnisse', 'Ärzte selbst als Überträger beschuldigt', 'sein schroffer Umgangston'], a: 1, q: 'Hauptgrund für die Ablehnung', why: '«Vor allem aber war seine Botschaft für viele Ärzte unerträglich»: болезнь переносили они сами. **Ловушка:** поздняя публикация и тон упомянуты, но про них сказано только «hat ihm sicher nicht geholfen». Это второстепенно.' },
+    { n: 22, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Парадокс Пето', why: '«Dass die Körpergröße bei Tieren so wenig mit dem Krebsrisiko zu tun hat, nennt man … das Peto-Paradox». **Ловушка:** a. Так должно было бы быть по логике, а на деле нет.' },
+    { n: 23, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 1, q: 'Почему ожидали много рака', why: 'Рассуждение: животное «mit sehr vielen Zellen, das zudem lange lebt», должно болеть чаще. У слона клеток в сто раз больше, и живёт он долго. **Ловушка:** c. О скорости деления клеток речи нет.' },
+    { n: 24, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 2, q: 'Как защищаются слоны', why: 'Ген «sorgt es dafür, dass die betroffene Zelle sich selbst zerstört». **Ловушка:** a. Про ремонт клеток сказано: «Das ist aber nicht die Hauptsache».' },
+    { n: 25, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 3, q: 'Гены слона людям', why: '«ein zu aktives Schutzgen kann auch schaden, zum Beispiel, indem es das Altern beschleunigt». **Ловушка:** b. Он говорит «Ganz so einfach ist es leider nicht», а не «невозможно и запрещено».' },
+    { n: 26, part: 'Aufgabe 6 · Multiple-Choice', o: ['a', 'b', 'c', 'd'], a: 0, q: 'Главная цель доклада', why: 'Итог: учёным стоит смотреть «nicht nur auf Mäuse im Labor …, sondern auch auf die Riesen der Tierwelt». **Ловушка:** c. Мышей он не отменяет, он просит смотреть шире.' },
+    { n: 27, part: 'Aufgabe 7 · Laut und Schrift', o: ['großen', 'melden', 'wenige', 'Studierende', 'Wort'], a: 0, q: 'Отрывок 27', why: 'В тексте großen, а звучит «In vollen Vorlesungen». Смысл близкий, поэтому слух легко пропускает.' },
+    { n: 28, part: 'Aufgabe 7 · Laut und Schrift', o: ['Fragen', 'durchaus', 'behalten', 'anderen', 'blamieren'], a: 3, q: 'Отрывок 28', why: 'В тексте anderen, а звучит «vor allen Kommilitonen». **Ловушка:** длинное слово в записи легко принять за то же самое, если читать глазами впереди.' },
+    { n: 29, part: 'Aufgabe 7 · Laut und Schrift', o: ['profitieren', 'viele', 'oft', 'dieselbe', 'unklar'], a: 2, q: 'Отрывок 29', why: 'В тексте oft, а звучит «denn häufig ist anderen». Синоним, решает только слух.' },
+    { n: 30, part: 'Aufgabe 7 · Laut und Schrift', o: ['Lehrende', 'bitten', 'vorab', 'anonym', 'Lernplattform'], a: 3, q: 'Отрывок 30', why: 'В тексте anonym, а звучит «vorab schriftlich». Тут разница уже в смысле: письменно не значит анонимно.' },
+  ]}
+/>
+
+<Callout type="trap" title="Первый вариант в записи часто старый">
+  <p>Haupteingang, Stausee, 250 Euro, Genehmigung, Transitmethode: всё это звучит в записях. И всё неверно, потому что следом идёт поправка или уточнение. Дослушивай реплику до конца, прежде чем писать.</p>
+</Callout>
+
+<p class="punch">Совпало слово, ещё не значит совпал ответ. Ищи, что про это слово сказали.</p>
+
+## Schreiben
+
+Две задачи, около 60 минут, каждая по 30. Порядок фиксированный: вернуться к первому тексту после второго нельзя. Пишешь на компьютере, счётчик слов на экране. Метод: [Schreiben TestDaF](../../schreiben/testdaf-schreiben/).
+
+| Aufgabe | Что пишешь | Объём | Время |
+|---|---|---|---|
+| 1 | аргументативный пост на учебной платформе | минимум 200 слов | 30 минут |
+| 2 | сводка текста и графика для курсовой | около 100–150 слов | 30 минут |
+
+### Aufgabe 1: пост с аргументами
+
+<Task title="Schreiben · Aufgabe 1 (Argumentativen Text schreiben)" time="30 Minuten" words="mindestens 200 Wörter">
+  <p>Auf einer Lernplattform diskutieren Sie mit Ihrer Dozentin und anderen Seminarteilnehmenden über das Thema „Anonyme Korrektur von Prüfungen“. Schreiben Sie einen kurzen Beitrag.</p>
+  <p>Erläutern und begründen Sie, welche positiven und negativen Aspekte es für Studierende und für Lehrende haben kann, wenn Klausuren und Hausarbeiten nur noch mit der Matrikelnummer und nicht mehr mit dem Namen abgegeben und bewertet werden.</p>
+  <p>Schreiben Sie mindestens 200 Wörter.</p>
+  <p class="ru">Пост на учебной платформе для преподавательницы и участников семинара. Тема: сдавать и проверять экзамены и курсовые только под номером студенческого, без имени. Объясни и обоснуй плюсы и минусы и для студентов, и для преподавателей. Минимум 200 слов.</p>
+</Task>
+
+<Trainer id="testdaf-stellas-4-schreiben-1" mode="forum" minutes={30} target={200} points={['Тема и о чём пост, в первых двух предложениях', 'Плюсы и минусы для студентов', 'Плюсы и минусы для преподавателей', 'Вывод: твоя позиция с причиной']} />
+
+Образец на 215 слов. Нажимай на части, чтобы увидеть, что каждая делает.
+
+<Anatomy
+  window="Lernplattform · Seminar"
+  subject="Anonyme Korrektur von Prüfungen"
+  parts={[
+    { id: 'einl', label: 'Вход в тему', color: 'var(--violet)', text: 'Liebe Frau Ellwanger, liebe Kommilitoninnen und Kommilitonen,\nin der letzten Sitzung haben wir darüber gesprochen, ob Klausuren und Hausarbeiten künftig nur noch mit der Matrikelnummer abgegeben werden sollten. Ich möchte hier kurz meine Überlegungen dazu zusammenfassen und dabei beide Seiten betrachten.', note: 'Обращение, тема и план поста в двух предложениях.' },
+    { id: 'pro-s', label: 'Плюсы для студентов', color: 'var(--teal)', text: 'Für Studierende liegt der größte Vorteil auf der Hand: Die Bewertung wäre fairer. Wer im Seminar selten etwas sagt, einen ungewöhnlichen Namen hat oder schon einmal mit einer Dozentin aneinandergeraten ist, müsste nicht befürchten, dass das die Note beeinflusst, auch wenn das niemand absichtlich tut. Allein dieses Gefühl würde vielen den Druck nehmen.', note: 'Главный плюс сразу, потом три конкретных примера. Konjunktiv II (wäre, müsste, würde) показывает гипотезу.' },
+    { id: 'contra-s', label: 'Минусы для студентов', color: 'var(--pink)', text: 'Allerdings hat das Verfahren Grenzen. Bei Hausarbeiten, die man vorher in der Sprechstunde besprochen hat, weiß die Lehrkraft ohnehin, von wem ein Text stammt. Außerdem wird ein persönliches Feedback schwieriger, das an frühere Gespräche anknüpft. Und wer eine besonders gelungene Arbeit geschrieben hat, wird dafür vielleicht nicht mehr persönlich angesprochen.', note: 'Allerdings переключает на минусы. Пример с консультацией показывает, где анонимность не работает.' },
+    { id: 'lehrende', label: 'Для преподавателей: за и против', color: 'var(--sun)', ink: 'var(--ink)', text: 'Auch für Lehrende hätte die Regel Vorteile, denn sie wären vor dem Vorwurf geschützt, jemanden zu bevorzugen. Andererseits bedeutet sie zusätzlichen Aufwand: Die Prüfungsämter müssten Nummern und Namen getrennt verwalten, und bei Rückfragen zu einer Arbeit wäre der Weg länger. Manche Lehrende empfinden eine solche Regel zudem als Misstrauen gegenüber ihrer Professionalität.', note: 'Вторая сторона задания. Без неё задание раскрыто наполовину.' },
+    { id: 'fazit', label: 'Вывод', color: 'var(--gold)', ink: 'var(--ink)', text: 'Insgesamt halte ich die anonyme Korrektur bei Klausuren für sinnvoll, weil sie mit wenig Aufwand mehr Gerechtigkeit schafft. Bei Hausarbeiten und Abschlussarbeiten, die eng betreut werden, sollte man dagegen bei der bisherigen Praxis bleiben. So ließen sich die Vorteile nutzen, ohne die Betreuung zu erschweren. Sinnvoll wäre außerdem, die neue Regel nach einem Jahr gemeinsam mit den Studierenden zu überprüfen.', note: 'Позиция с причиной и разграничение. Вывод отвечает на вопрос, а не пересказывает пост.' },
+  ]}
+/>
+
+<Callout type="trap" title="Две стороны, а не одна">
+  <p>В задании «für Studierende und für Lehrende». Кто пишет только про студентов, теряет пункт задания. Эксперты TestDaF прямо проверяют, учтены ли все пункты.</p>
+</Callout>
+
+### Aufgabe 2: текст и график в одном абзаце
+
+<Task title="Schreiben · Aufgabe 2 (Informationen aus Lesetext und Grafik zusammenfassen)" time="30 Minuten" words="ca. 100–150 Wörter">
+  <p>In Ihrem Seminar für Bildungsforschung schreiben Sie eine Hausarbeit zum Thema „Internationalisierung der Hochschulen“. In einem Abschnitt wollen Sie sich mit folgender Frage beschäftigen: Warum entscheiden sich internationale Studierende für ein Studium in Deutschland und woher kommen sie?</p>
+  <p>Fassen Sie zu dieser Frage Informationen aus dem Text und der Grafik zusammen. Benutzen Sie eigene Formulierungen. Das Abschreiben von Textpassagen ist nicht erlaubt. Schreiben Sie ca. 100–150 Wörter.</p>
+  <p><b>Studieren in Deutschland</b></p>
+  <p>Deutschland gehört zu den beliebtesten Studienländern für junge Menschen aus dem Ausland. Auch an der Universität Velmbach kommt inzwischen etwa jede siebte Studentin oder jeder siebte Student aus einem anderen Land.</p>
+  <p>Nach ihren Gründen gefragt, nennen die meisten zuerst den guten Ruf der deutschen Hochschulen, besonders in den Ingenieur- und Naturwissenschaften. Eine große Rolle spielen auch die Kosten: An staatlichen Hochschulen werden in den meisten Bundesländern keine Studiengebühren erhoben, auch nicht für Studierende aus Staaten außerhalb der EU. Viele hoffen außerdem, nach dem Abschluss in Deutschland eine Stelle zu finden.</p>
+  <p>Der Start ist allerdings oft mühsam. Bezahlbare Zimmer sind in vielen Universitätsstädten knapp, und wer nur wenig Deutsch spricht, findet schwerer Anschluss an einheimische Kommilitoninnen und Kommilitonen. Die Hochschulen bieten deshalb zunehmend Patenprogramme und Sprachkurse an.</p>
+  <p class="ru">Курсовая по исследованиям образования. Вопрос: почему иностранные студенты выбирают Германию и откуда они приезжают. Причины в тексте, регионы в графике под ним. Своими словами, 100–150 слов.</p>
+</Task>
+
+**Grafik: Internationale Studierende an der Universität Velmbach nach Herkunftsregion** (Wintersemester 2025/26, Anteil in Prozent)
+
+| Herkunftsregion | Anteil |
+|---|---|
+| Asien | 41 % |
+| Europa (ohne Deutschland) | 24 % |
+| Nordafrika und Naher Osten | 15 % |
+| Afrika südlich der Sahara | 11 % |
+| Amerika | 9 % |
+
+<Trainer id="testdaf-stellas-4-schreiben-2" mode="summary" minutes={30} target={125} points={['Вводная фраза: Германия популярна у иностранных студентов', 'Причины: репутация вузов, нет платы за учёбу, шансы на работу (текст)', 'Регионы: самый большой и второй с цифрами (график)', 'Остальные регионы коротко (график)']} />
+
+Образец на 121 слово.
+
+<Anatomy
+  window="Hausarbeit · Abschnitt 2.3"
+  subject="Gründe und Herkunft"
+  parts={[
+    { id: 'ein', label: 'Вход', color: 'var(--violet)', text: 'Deutschland zählt zu den attraktivsten Ländern für ein Studium im Ausland.', note: 'Одно предложение ставит тему. «beliebtesten Studienländern» → «attraktivsten Ländern für ein Studium».' },
+    { id: 'gruende', label: 'Причины', color: 'var(--teal)', text: 'Als wichtigsten Grund nennen internationale Studierende das hohe Ansehen der deutschen Hochschulen, vor allem in technischen und naturwissenschaftlichen Fächern. Hinzu kommt, dass staatliche Hochschulen in den meisten Bundesländern kein Geld für das Studium verlangen, und zwar unabhängig von der Herkunft. Außerdem rechnen sich viele gute Chancen aus, nach dem Studium hier zu arbeiten.', note: 'Три причины своими словами: «guter Ruf» → «hohes Ansehen», «keine Studiengebühren» → «kein Geld verlangen».' },
+    { id: 'grafik', label: 'График: регионы', color: 'var(--sun)', ink: 'var(--ink)', text: 'Woher die Studierenden stammen, zeigt das Beispiel der Universität Velmbach. Mit gut zwei Fünfteln kommt die größte Gruppe aus Asien, gefolgt von Studierenden aus anderen europäischen Ländern mit knapp einem Viertel. Die übrigen verteilen sich auf Nordafrika und den Nahen Osten, auf Afrika südlich der Sahara und auf Amerika, das mit neun Prozent den kleinsten Anteil hat.', note: 'Лидер, второй и остальные одной фразой. Не все пять строк подряд.' },
+  ]}
+/>
+
+Обязательно должно быть в тексте:
+
+- **из текста:** хорошая репутация вузов; нет платы за учёбу в большинстве земель; надежда найти работу в Германии;
+- **из графика:** больше всего студентов из Азии (около двух пятых), за ней Европа (около четверти).
+
+<Callout type="trap" title="Не всё из текста нужно">
+  <p>В тексте есть абзац о трудностях: жильё, язык, программы поддержки. Вопрос о них не спрашивает. Кто пересказывает весь текст, тратит слова на лишнее и не успевает к графику.</p>
+</Callout>
+
+### На что смотрят эксперты
+
+Подробных баллов по критериям TestDaF не публикует. Есть список того, что проверяют. Оцени свой текст по нему честно.
+
+| Аспект | Вопрос к своему тексту |
+|---|---|
+| Тема и все пункты | Раскрыл всё, что просили? В Aufgabe 1 и студентов, и преподавателей |
+| Нужное действие | В Aufgabe 1 аргументы и позиция, в Aufgabe 2 сводка без своего мнения |
+| Источники своими словами | В Aufgabe 2 текст и график переданы верно и не списаны |
+| Язык | Грамматика точная и разная, слова и связки подходят к теме |
+| Понятность | Текст понятен, даже если есть ошибки |
+
+<p class="punch">В Aufgabe 1 ты адвокат. В Aufgabe 2 ты протоколист.</p>
+
+## Sprechen
+
+Семь заданий, около 35 минут. Говоришь в микрофон, без живого экзаменатора: реплику собеседника слышишь в наушниках, ответ записывается. Заметки на бумаге разрешены во всех заданиях. Метод: [Sprechen TestDaF](../../sprechen/testdaf-sprechen/).
+
+| Aufgabe | Тип | Ситуация | Подготовка | Ответ |
+|---|---|---|---|---|
+| 1 | Rat geben | разговор в кафе или мензе | 0:30 | 0:45 |
+| 2 | Optionen abwägen | разговор в кафе или мензе | 0:45 | 1:30 |
+| 3 | Text zusammenfassen | учебная рабочая группа | 4:00 вместе с чтением | 2:00 |
+| 4 | Informationen abgleichen, Stellung nehmen | семинар | график 0:30, реплика 0:20, подготовка 1:30 | 1:30 |
+| 5 | Thema präsentieren | туториум | 2:00 | 2:30 |
+| 6 | Argumente wiedergeben, Stellung nehmen | семинар или дискуссия в вузе | реплика 0:58, подготовка 1:30 | 2:00 |
+| 7 | Maßnahmen kritisieren | собрание в вузе или городе | 1:30 | 1:30 |
+
+Время по Demo-Version. Чистого говорения 11 минут 45 секунд. Замолчал, и секунды ушли.
+
+### Aufgabe 1: дать совет
+
+<Task title="Sprechen · Aufgabe 1 (Rat geben)" time="Vorbereitung 30 Sekunden, Sprechzeit 45 Sekunden">
+  <p>Sie sitzen mit Ihrer Kommilitonin Frieda in der Mensa. Sie erzählt, dass die Hochschule am Wochenende einen Hackathon veranstaltet: Gemischte Teams entwickeln 24 Stunden lang Ideen für einen nachhaltigeren Campus. Frieda studiert Geographie und kann kaum programmieren. Sie überlegt, ob sie trotzdem mitmachen soll, und fragt Sie um Rat.</p>
+  <p>Sagen Sie Frieda, wozu Sie ihr raten.</p>
+  <p class="ru">Однокурсница думает, идти ли на 24-часовой хакатон вуза об экологичном кампусе, хотя почти не умеет программировать. Посоветуй ей. 30 секунд на подготовку, 45 на ответ.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 1: совет за 45 секунд" prep={30} talk={45} topics={[
+  { t: 'Rat geben: Soll Frieda am Hackathon teilnehmen?', ru: 'Задание 1 этого пробника', points: ['Klare Empfehlung gleich am Anfang', 'Zwei Gründe', 'Auf ihre Sorge eingehen', 'Kurzer Schluss'] },
+]} />
+
+<Dialog title="Образец: совет для Frieda" lines={[
+  { who: 'A', name: 'Du', de: 'Frieda, ich finde, du solltest unbedingt mitmachen.', ru: 'Фрида, по-моему, тебе обязательно надо участвовать.' },
+  { who: 'A', name: 'Du', de: 'Die Teams sind ja gemischt, und gerade jemand aus der Geographie weiß, wie man Daten zu Energie oder Verkehr auf dem Campus auswertet. Außerdem lernst du in 24 Stunden mehr über Teamarbeit als in einem ganzen Seminar.', ru: 'Команды же смешанные, а человек с географии как раз знает, как разобрать данные об энергии или транспорте в кампусе. К тому же за сутки научишься командной работе больше, чем за целый семинар.' },
+  { who: 'A', name: 'Du', de: 'Dass du kaum programmierst, ist kein Problem. Programmieren können andere, du bringst die Ideen und das Fachwissen mit. Melde dich einfach an!', ru: 'То, что ты почти не программируешь, не проблема. Код напишут другие, а ты принесёшь идеи и знание предмета. Просто запишись!' },
+]} />
+
+45 секунд это примерно 80–100 слов. Совет сразу, две причины, ответ на её «но». Больше не влезет.
+
+### Aufgabe 2: взвесить варианты
+
+<Task title="Sprechen · Aufgabe 2 (Optionen abwägen)" time="Vorbereitung 45 Sekunden, Sprechzeit 1 Minute 30 Sekunden">
+  <p>Sie sitzen mit einigen Studienfreunden in der Cafeteria. Ihr Kommilitone Okan schlägt vor, dass die mündliche Beteiligung in Seminaren künftig mit einem Fünftel in die Note eingehen sollte. Er fragt Sie nach Ihrer Meinung.</p>
+  <p>Wägen Sie positive und negative Folgen einer solchen Regelung ab. Legen Sie Ihren eigenen Standpunkt dar und begründen Sie Ihre Meinung.</p>
+  <p class="ru">Однокурсник предлагает, чтобы активность на семинарах давала пятую часть оценки. Взвесь плюсы и минусы, скажи своё мнение и обоснуй.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 2: за и против за 1:30" prep={45} talk={90} topics={[
+  { t: 'Optionen abwägen: Mündliche Beteiligung als Teil der Note?', ru: 'Задание 2 этого пробника', points: ['Positive Folgen', 'Negative Folgen', 'Eigener Standpunkt', 'Begründung'] },
+]} />
+
+<Dialog title="Образец: активность в оценку" lines={[
+  { who: 'A', name: 'Du', de: 'Hm, Okan, darüber habe ich auch schon nachgedacht. Einerseits hätte so eine Regel klare Vorteile. Viele bereiten sich nur auf die Klausur vor und sagen im Seminar das ganze Semester kein Wort. Wenn die Beteiligung zählt, lesen mehr Leute die Texte vorher, und die Diskussionen werden lebendiger. Außerdem lernt man, seine Meinung vor anderen zu vertreten, und das braucht man später in fast jedem Beruf.', ru: 'Хм, Окан, я тоже об этом думал. С одной стороны, у такого правила явные плюсы. Многие готовятся только к экзамену и весь семестр молчат на семинаре. Если активность считается, больше людей читают тексты заранее, и дискуссии живее. К тому же учишься отстаивать мнение перед другими, а это потом нужно почти в любой профессии.' },
+  { who: 'A', name: 'Du', de: 'Andererseits sehe ich auch Probleme. Ruhige Studierende wären benachteiligt, obwohl sie vielleicht genauso viel verstehen. Und wie will man das gerecht bewerten? Wer oft redet, sagt nicht unbedingt etwas Kluges.', ru: 'С другой стороны, я вижу и проблемы. Тихие студенты оказались бы в проигрыше, хотя понимают, может быть, не меньше. И как это оценить справедливо? Кто много говорит, не обязательно говорит умное.' },
+  { who: 'A', name: 'Du', de: 'Ich wäre deshalb eher für einen Kompromiss. Die Beteiligung sollte zählen, aber nicht nur mündlich. Man könnte auch kurze schriftliche Beiträge auf der Lernplattform anrechnen. Dann hätten alle eine faire Chance.', ru: 'Поэтому я скорее за компромисс. Активность пусть считается, но не только устная. Можно засчитывать и короткие письменные сообщения на платформе. Тогда шанс будет у всех.' },
+]} />
+
+### Aufgabe 3: пересказать текст
+
+<Task title="Sprechen · Aufgabe 3 (Text zusammenfassen)" time="Lesen und Vorbereitung 4 Minuten, Sprechzeit 2 Minuten">
+  <p>In einer Arbeitsgruppe an Ihrer Hochschule behandeln Sie gerade das Thema „Lernstrategien“. Sie haben dazu einen interessanten Artikel gelesen und wollen ihn für Ihre Mitstudierenden zusammenfassen.</p>
+  <p>Lesen Sie den Text. Der Text ist 4 Minuten lang zu sehen. Fassen Sie danach die wesentlichen Informationen zusammen.</p>
+  <p><b>Laut lesen, besser behalten?</b></p>
+  <p>Wer für eine Prüfung lernt, liest seine Unterlagen meist still. Eine Studie der Universität Velmbach legt nahe, dass sich der Stoff besser einprägt, wenn man wichtige Stellen laut liest.</p>
+  <p>An der Untersuchung nahmen 120 Studierende teil. Sie sollten 60 Fachbegriffe lernen: Ein Drittel lasen sie still, ein Drittel laut, und das letzte Drittel hörten sie nur von einer Aufnahme, ohne die Begriffe selbst auszusprechen.</p>
+  <p>Eine Woche später wurde getestet, an welche Begriffe sich die Teilnehmenden erinnerten. Laut gelesene Begriffe wurden deutlich häufiger behalten als still gelesene. Die Begriffe, die nur von der Aufnahme kamen, schnitten am schlechtesten ab.</p>
+  <p>Die Forschenden erklären den Effekt damit, dass man beim lauten Lesen gleichzeitig spricht und sich selbst hört. Ein Begriff wird dadurch im Gedächtnis mit mehr Merkmalen verknüpft und hebt sich von den übrigen ab. Genau darin liegt aber auch eine Grenze: Liest man alles laut, verschwindet der Vorteil weitgehend, weil sich dann kein Begriff mehr von den anderen abhebt.</p>
+  <p>Die Forschenden empfehlen deshalb, nur die wichtigsten Stellen laut zu lesen. Ob das auch bei längeren Texten und komplexen Zusammenhängen funktioniert, wollen sie als Nächstes untersuchen.</p>
+  <p class="ru">Статья: помогает ли чтение вслух запоминать. На экзамене текст исчезает через 4 минуты. Прочитай, закрой текст и перескажи главное за 2 минуты.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 3: пересказ за 2 минуты" prep={240} talk={120} topics={[
+  { t: 'Text zusammenfassen: Laut lesen, besser behalten?', ru: 'Задание 3 этого пробника. Закрой текст, когда начнётся ответ', points: ['Thema und Quelle', 'Aufbau: still, laut, nur gehört', 'Ergebnis nach einer Woche', 'Erklärung der Forschenden', 'Grenze und Empfehlung'] },
+]} />
+
+<Anatomy
+  window="Arbeitsgruppe"
+  subject="Zusammenfassung"
+  parts={[
+    { id: 'thema', label: 'Тема и источник', color: 'var(--violet)', text: 'Ich habe einen Artikel über eine Studie der Universität Velmbach gelesen. Darin geht es um die Frage, ob man sich Lernstoff besser merkt, wenn man ihn laut liest.', note: 'Сразу о чём текст. Без «Der Text ist sehr interessant».' },
+    { id: 'methode', label: 'Как устроен опыт', color: 'var(--teal)', text: '120 Studierende sollten 60 Fachbegriffe lernen. Ein Drittel haben sie leise gelesen, ein Drittel laut, und den Rest haben sie nur von einer Aufnahme gehört.', note: 'Три условия своими словами: «still» → «leise».' },
+    { id: 'ergebnis', label: 'Результат', color: 'var(--sun)', ink: 'var(--ink)', text: 'Beim Test eine Woche später konnten sie sich an die laut gelesenen Begriffe deutlich besser erinnern als an die leise gelesenen. Am schlechtesten waren die Begriffe, die sie nur gehört hatten.', note: 'Полный порядок результатов: вслух, про себя, только слушали.' },
+    { id: 'grund', label: 'Объяснение и граница', color: 'var(--pink)', text: 'Die Forschenden erklären das damit, dass man beim lauten Lesen spricht und sich gleichzeitig hört. Dadurch bleibt das Wort besser hängen, weil es sich von den anderen unterscheidet. Wenn man aber alles laut liest, fällt dieser Vorteil fast weg.', note: 'Причина и её обратная сторона. Без границы пересказ неполный.' },
+    { id: 'empf', label: 'Совет и что дальше', color: 'var(--gold)', ink: 'var(--ink)', text: 'Deshalb raten die Forschenden, nur die wichtigsten Stellen laut zu lesen. Ob das auch bei langen Texten klappt, soll noch untersucht werden.', note: 'Рекомендация авторов и открытый вопрос закрывают пересказ.' },
+  ]}
+/>
+
+### Aufgabe 4: сверить с графиком и ответить
+
+<Task title="Sprechen · Aufgabe 4 (Informationen abgleichen, Stellung nehmen)" time="Grafik 30 Sekunden, Aussage 20 Sekunden, Vorbereitung 1 Minute 30 Sekunden, Sprechzeit 1 Minute 30 Sekunden">
+  <p>In Ihrem Seminar für Politikwissenschaft sprechen Sie über die Beteiligung von Studierenden an der Hochschulpolitik. Ihr Dozent, Herr Dr. Mertsching, hat eine Grafik mitgebracht und bittet die Seminarteilnehmenden um eine Stellungnahme.</p>
+  <p>Hören Sie, was ein Seminarteilnehmer dazu sagt. Nehmen Sie Stellung zu der gehörten Aussage. Beziehen Sie sich dabei auch auf die Grafik.</p>
+  <p class="ru">Семинар о том, участвуют ли студенты в жизни вуза. Сначала 30 секунд смотришь на график явки на выборы студенческого парламента, потом слушаешь однокурсника, потом готовишься и отвечаешь: прав ли он, если сверить с графиком, и что думаешь ты.</p>
+</Task>
+
+**Grafik: Wahlbeteiligung bei den Wahlen zum Studierendenparlament, Universität Velmbach** (in Prozent)
+
+| Jahr | Wahlbeteiligung | Wahlform |
+|---|---|---|
+| 2017 | 17 % | nur an der Urne |
+| 2019 | 14 % | nur an der Urne |
+| 2021 | 8 % | nur online |
+| 2023 | 11 % | Urne und online |
+| 2025 | 13 % | Urne und online |
+
+<Listen title="Aussage eines Seminarteilnehmers" plays={1} text="Also, ich bin Politikwissenschaftler, und ich sage es ganz offen. Hochschulpolitik interessiert hier niemanden mehr. Die Wahlbeteiligung sinkt seit Jahren immer weiter, und die Online-Wahl hat das Ganze nur noch schlimmer gemacht." ru="Я политолог и скажу прямо. Политика в вузе здесь больше никого не интересует. Явка на выборы годами падает всё ниже, а онлайн-голосование сделало только хуже." />
+
+<SpeakCards title="Aufgabe 4: ответ за 1:30" prep={90} talk={90} topics={[
+  { t: 'Informationen abgleichen: Wahlbeteiligung beim Studierendenparlament', ru: 'Задание 4 этого пробника. Сначала график и реплика', points: ['Aussage kurz wiedergeben', 'Was die Grafik tatsächlich zeigt', 'Wo die Aussage nicht stimmt', 'Eigene Einschätzung mit Begründung'] },
+]} />
+
+<Dialog title="Образец: ответ однокурснику" lines={[
+  { who: 'A', name: 'Du', de: 'Du sagst, dass sich niemand mehr für Hochschulpolitik interessiert, dass die Beteiligung immer weiter sinkt und dass die Online-Wahl das verschlimmert hat. Teilweise stimmt das. Die Beteiligung ist insgesamt niedrig, und zwischen 2017 und 2021 ist sie von 17 auf 8 Prozent gefallen.', ru: 'Ты говоришь, что политика в вузе никого не интересует, явка всё падает, а онлайн-выборы сделали хуже. Отчасти это так. Явка в целом низкая, и с 2017 по 2021 год она упала с 17 до 8 процентов.' },
+  { who: 'A', name: 'Du', de: 'Aber von „immer weiter“ kann keine Rede sein. Seit 2021 steigt die Beteiligung wieder, zuletzt auf 13 Prozent. Und gerade seit man sowohl an der Urne als auch online wählen kann, beteiligen sich wieder mehr Studierende. Schlimmer war es nur in dem einen Jahr, in dem ausschließlich online gewählt wurde, und das kann auch andere Gründe gehabt haben.', ru: 'Но о «всё ниже» речи нет. С 2021 года явка снова растёт, в последний раз до 13 процентов. И как раз с тех пор, как можно голосовать и на участке, и онлайн, студентов голосует больше. Хуже было только в тот год, когда голосовали исключительно онлайн, а у этого могли быть и другие причины.' },
+  { who: 'A', name: 'Du', de: 'Ich finde trotzdem, dass 13 Prozent zu wenig sind. Die Hochschule sollte besser erklären, was das Studierendenparlament eigentlich entscheidet. Wer weiß, dass es um sein Semesterticket oder um die Lernräume geht, geht vermutlich auch wählen.', ru: 'Тем не менее, по-моему, 13 процентов мало. Вузу стоит лучше объяснять, что вообще решает студенческий парламент. Кто знает, что речь о его проездном или о комнатах для занятий, скорее всего, и проголосует.' },
+]} />
+
+Схема: пересказ реплики → что на графике → где реплика не сходится с цифрами → своё мнение. Числа называй, но не все: главное и самое важное расхождение.
+
+### Aufgabe 5: короткая презентация
+
+<Task title="Sprechen · Aufgabe 5 (Thema präsentieren)" time="Vorbereitung 2 Minuten, Sprechzeit 2 Minuten 30 Sekunden">
+  <p>Sie haben für das Tutorium zum Grundpraktikum Chemie eine Kurzpräsentation zum Thema „Ein Laborprotokoll schreiben“ vorbereitet. Ihr Tutor, Herr Sievers, bittet Sie, Ihre Präsentation vorzutragen.</p>
+  <p>Erläutern Sie zunächst den Aufbau Ihrer Präsentation. Gehen Sie dann auf die einzelnen Punkte näher ein und heben Sie wichtige Einzelheiten hervor.</p>
+  <p><b>Folie: Ein Laborprotokoll schreiben</b></p>
+  <ul>
+    <li><i>1</i><span>Wozu ein Protokoll?</span></li>
+    <li><i>2</i><span>Der Aufbau</span></li>
+    <li><i>3</i><span>Messwerte darstellen</span></li>
+    <li><i>4</i><span>Fehler diskutieren</span></li>
+    <li><i>5</i><span>Häufige Schwächen</span></li>
+  </ul>
+  <p class="ru">Короткая презентация в туториуме к лабораторному практикуму по химии: как писать лабораторный протокол. Пять пунктов на слайде. Сначала скажи, как построена презентация, потом пройди по пунктам.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 5: презентация за 2:30" prep={120} talk={150} topics={[
+  { t: 'Thema präsentieren: Ein Laborprotokoll schreiben', ru: 'Задание 5 этого пробника', points: ['Aufbau erklären', 'Wozu ein Protokoll?', 'Der Aufbau', 'Messwerte darstellen', 'Fehler diskutieren', 'Häufige Schwächen', 'Kurzer Schluss'] },
+]} />
+
+<Anatomy
+  window="Tutorium"
+  subject="Ein Laborprotokoll schreiben"
+  parts={[
+    { id: 'aufbau', label: 'Сначала структура', color: 'var(--violet)', text: 'Meine Präsentation besteht aus fünf Teilen. Zuerst erkläre ich, wozu man überhaupt ein Protokoll schreibt. Danach geht es um den Aufbau und um die Darstellung der Messwerte. Im vierten Teil spreche ich über die Fehlerdiskussion, und zum Schluss nenne ich häufige Schwächen.', note: 'Задание прямо требует начать со структуры. Пропустил это, пропустил пункт.' },
+    { id: 'wozu', label: 'Зачем протокол', color: 'var(--teal)', text: 'Ein Protokoll soll vor allem eines leisten: Eine andere Person muss den Versuch allein mit diesem Text wiederholen können. Deshalb gehört alles hinein, was man gemacht hat, auch das, was schiefgegangen ist.', note: 'Главное выделено через «vor allem». Дальше следствие через «Deshalb».' },
+    { id: 'aufbau2', label: 'Структура и данные', color: 'var(--sun)', ink: 'var(--ink)', text: 'Was den Aufbau betrifft, folgt fast jedes Protokoll demselben Muster: Ziel, Material und Methode, Ergebnisse und Diskussion. Bei den Messwerten ist wichtig, dass man Ergebnisse und Deutung trennt. In den Ergebnisteil gehören nur Tabellen und Diagramme mit Einheiten, die Interpretation kommt erst danach.', note: 'Два пункта слайда за раз. Правило звучит конкретно: единицы, таблицы, отдельно толкование.' },
+    { id: 'fehler', label: 'Обсуждение ошибок', color: 'var(--pink)', text: 'Genauso wichtig ist die Fehlerdiskussion. Hier erklärt man, warum die eigenen Werte vom erwarteten Ergebnis abweichen, zum Beispiel wegen ungenauer Waagen oder Verunreinigungen. Ein Fehler ist also keine Schande, solange man ihn begründet.', note: '«Genauso wichtig» связывает пункты. Пример делает совет живым.' },
+    { id: 'schwaechen', label: 'Слабые места и конец', color: 'var(--gold)', ink: 'var(--ink)', text: 'Die häufigste Schwäche ist, dass Studierende ihre Messwerte nachträglich schönen, damit sie besser passen. Das fällt fast immer auf und kostet mehr Punkte als ein ehrlicher Fehler. Zusammenfassend kann man sagen: Ein gutes Protokoll ist vollständig, ehrlich und nachvollziehbar. Vielen Dank.', note: 'Типичная ошибка и короткий итог из трёх слов закрывают презентацию.' },
+  ]}
+/>
+
+### Aufgabe 6: пересказать аргументы и ответить
+
+<Task title="Sprechen · Aufgabe 6 (Argumente wiedergeben, Stellung nehmen)" time="Aussage 58 Sekunden, Vorbereitung 1 Minute 30 Sekunden, Sprechzeit 2 Minuten">
+  <p>In Ihrem Seminar zur Wissenschaftstheorie diskutieren Sie heute darüber, ob Studierende in naturwissenschaftlichen und technischen Fächern einen Kurs in Ethik belegen müssen. Ein Kommilitone äußert sich zu dem Thema. Ihre Dozentin bittet Sie, zu der Äußerung Stellung zu nehmen.</p>
+  <p>Geben Sie die Argumente Ihres Kommilitonen wieder und nehmen Sie Stellung zu seinen Argumenten. Begründen Sie Ihren eigenen Standpunkt zum Thema.</p>
+  <p class="ru">Семинар: нужен ли обязательный курс этики студентам естественных и технических наук. Послушай однокурсника, перескажи его доводы, ответь на каждый и обоснуй свою позицию.</p>
+</Task>
+
+<Listen title="Äußerung eines Kommilitonen: Ethik als Pflichtfach" plays={1} text="Also, ich bin Physiker, und gerade deshalb bin ich für einen Pflichtkurs in Ethik für alle Studierenden in Naturwissenschaften und Technik. Viele von uns werden später an Dingen arbeiten, die das Leben von Millionen Menschen verändern, zum Beispiel an künstlicher Intelligenz, an Gentechnik oder an neuen Energieformen. Im Studium lernen wir aber nur, wie etwas funktioniert, und nie, ob wir es überhaupt tun sollten. Ein zweiter Punkt ist die Verantwortung im Beruf. Wer in einem Unternehmen merkt, dass Daten geschönt werden, muss wissen, wie er sich verhalten kann und wo er Unterstützung bekommt. Und schließlich hat die Gesellschaft ein Recht darauf, dass Fachleute ihre Entscheidungen begründen können und nicht nur sagen, es sei technisch möglich. Ein Semester mit zwei Stunden pro Woche würde schon reichen." ru="Я физик и именно поэтому за обязательный курс этики для всех студентов естественных и технических наук. Многие из нас будут работать над тем, что меняет жизнь миллионов: искусственный интеллект, генные технологии, новые виды энергии. А в учёбе мы узнаём только, как что-то работает, и никогда, стоит ли это делать. Второе: ответственность на работе. Кто видит, что данные подправляют, должен знать, как поступить и где искать поддержку. И наконец, общество вправе ждать, что специалисты объяснят свои решения, а не скажут только, что это технически возможно. Хватило бы одного семестра по две пары в неделю." />
+
+<SpeakCards title="Aufgabe 6: ответ за 2 минуты" prep={90} talk={120} topics={[
+  { t: 'Argumente wiedergeben: Ethik als Pflichtkurs in MINT-Fächern?', ru: 'Задание 6 этого пробника. Сначала реплика', points: ['Position des Kommilitonen nennen', 'Seine drei Argumente wiedergeben', 'Auf jedes Argument reagieren', 'Eigener Standpunkt mit Begründung'] },
+]} />
+
+<Anatomy
+  window="Seminar"
+  subject="Ethik als Pflichtkurs"
+  parts={[
+    { id: 'wieder', label: 'Пересказ доводов', color: 'var(--violet)', text: 'Mein Kommilitone ist für einen Pflichtkurs in Ethik in allen naturwissenschaftlichen und technischen Fächern. Er nennt drei Gründe. Erstens arbeiten viele später an Technologien mit großen Folgen, lernen im Studium aber nicht, ob sie das tun sollten. Zweitens braucht man im Beruf Orientierung, wenn zum Beispiel Daten manipuliert werden. Und drittens erwartet die Gesellschaft, dass Fachleute ihre Entscheidungen begründen.', note: 'Позиция и три довода своими словами. «geschönt» → «manipuliert».' },
+    { id: 'reakt', label: 'Ответ на доводы', color: 'var(--teal)', text: 'Den ersten und den dritten Punkt finde ich überzeugend. Wer an künstlicher Intelligenz arbeitet, sollte über die Folgen nachdenken können. Beim zweiten Punkt bin ich mir weniger sicher. Ob ein Kurs im Studium wirklich hilft, Jahre später im Unternehmen mutig zu handeln, bezweifle ich. Dafür braucht es eher klare Regeln und Ansprechpartner in den Firmen.', note: 'Согласие и сомнение. Каждый довод получил ответ.' },
+    { id: 'stand', label: 'Своя позиция', color: 'var(--sun)', ink: 'var(--ink)', text: 'Insgesamt bin ich auch für einen solchen Kurs, aber unter einer Bedingung. Er darf keine trockene Philosophievorlesung sein, sondern sollte mit Fällen aus dem eigenen Fach arbeiten. Sonst nehmen die Studierenden ihn nicht ernst und lernen nur für die Prüfung.', note: 'Позиция названа прямо, с условием и причиной.' },
+    { id: 'schluss', label: 'Итог', color: 'var(--pink)', text: 'Zwei Stunden pro Woche halte ich dafür für realistisch. Wichtiger als die Zahl der Stunden ist aber, dass das Thema im ganzen Studium immer wieder vorkommt.', note: 'Отклик на последнюю фразу однокурсника. Видно, что ты слушал до конца.' },
+  ]}
+/>
+
+### Aufgabe 7: покритиковать решение
+
+<Task title="Sprechen · Aufgabe 7 (Maßnahmen kritisieren)" time="Vorbereitung 1 Minute 30 Sekunden, Sprechzeit 1 Minute 30 Sekunden">
+  <p>Sie haben auf der Internetseite Ihrer Hochschule gelesen, dass die Regeln für die Anmeldung zu Prüfungen geändert werden sollen. Auf einer Informationsveranstaltung wird dieses Vorhaben vorgestellt. Sie vertreten die Fachschaft, die dieser Maßnahme kritisch gegenübersteht, und möchten sich zum Thema äußern.</p>
+  <p>Äußern Sie die Kritik der Fachschaft an der geplanten Maßnahme. Begründen Sie diese Position. Sagen Sie, wie man die Prüfungsanmeldung studierendenfreundlicher regeln könnte.</p>
+  <p><b>Neue Regeln für die Prüfungsanmeldung</b></p>
+  <p>Ab dem Sommersemester ist die Anmeldung zu allen Prüfungen nur noch in einer einzigen Woche in der Mitte des Semesters möglich. Bisher standen dafür vier Wochen zur Verfügung. Wer sich danach anmeldet, zahlt eine Bearbeitungsgebühr von 30 Euro pro Prüfung.</p>
+  <p class="ru">Вуз сокращает запись на экзамены с четырёх недель до одной в середине семестра. Кто запишется позже, платит 30 евро за каждый экзамен. Ты говоришь от студенческого совета факультета: критика, обоснование, предложение получше.</p>
+</Task>
+
+<SpeakCards title="Aufgabe 7: критика за 1:30" prep={90} talk={90} topics={[
+  { t: 'Maßnahmen kritisieren: Eine Woche für die Prüfungsanmeldung und 30 Euro Gebühr', ru: 'Задание 7 этого пробника', points: ['Kritik klar benennen', 'Begründung mit Beispielen', 'Gegenvorschlag', 'Höflicher Schluss'] },
+]} />
+
+<Dialog title="Образец: студсовет против" lines={[
+  { who: 'A', name: 'Du', de: 'Guten Tag, ich spreche für die Fachschaft. Wir sehen die neuen Regeln für die Prüfungsanmeldung sehr kritisch, und zwar aus zwei Gründen.', ru: 'Добрый день, я говорю от студсовета факультета. Мы очень критически относимся к новым правилам записи на экзамены, и тому две причины.' },
+  { who: 'A', name: 'Du', de: 'Erstens ist eine einzige Woche viel zu knapp. Wer in dieser Zeit krank ist, im Praktikum steckt oder ein Kind betreut, verpasst die Frist sehr leicht. Zweitens trifft die Gebühr genau diejenigen, die ohnehin wenig Geld haben. Dreißig Euro pro Prüfung sind für viele Studierende mit Nebenjob ein halber Arbeitstag. Mit Verwaltungsaufwand lässt sich so ein Betrag kaum begründen.', ru: 'Во-первых, одна неделя это слишком мало. Кто в это время болеет, на практике или сидит с ребёнком, легко пропустит срок. Во-вторых, сбор бьёт как раз по тем, у кого и так мало денег. Тридцать евро за экзамен для многих студентов с подработкой это полдня работы. Административными расходами такую сумму трудно оправдать.' },
+  { who: 'A', name: 'Du', de: 'Wir verstehen, dass das Prüfungsamt früher planen möchte. Unser Vorschlag wäre deshalb, die Frist auf zwei Wochen zu verkürzen, alle Studierenden eine Woche vorher per E-Mail zu erinnern und bei einer Verspätung mit gutem Grund keine Gebühr zu verlangen. So hätte die Verwaltung Planungssicherheit, ohne dass jemand bestraft wird, der einmal eine Frist verpasst.', ru: 'Мы понимаем, что экзаменационному отделу нужно планировать заранее. Поэтому предлагаем сократить срок до двух недель, за неделю напоминать всем письмом и не брать сбор, если опоздание по уважительной причине. Тогда у администрации будет предсказуемость, и никого не накажут за один пропущенный срок.' },
+]} />
+
+### На что смотрят эксперты
+
+| Аспект | Вопрос к своей записи |
+|---|---|
+| Тема и все пункты | Все пункты задания прозвучали? В Aufgabe 7 и критика, и причина, и предложение |
+| Задача и ситуация | Совет звучит как совет, критика как критика. Тон подходит: подруге в мензе иначе, чем на собрании |
+| Источники своими словами | В 3, 4 и 6 текст, график и реплика пересказаны верно, а не прочитаны вслух |
+| Беглость и произношение | Говоришь связно, понятно, без долгих пауз |
+| Язык | Точная и разная грамматика, слова к теме |
+
+<Callout type="life" title="Запиши и послушай">
+  <p>Включи диктофон на телефоне, запусти таймер в карточке и отвечай. Потом слушай запись со списком выше. Неловко, но работает: эксперт TestDaF тоже слышит только запись.</p>
+</Callout>
+
+<p class="punch">Микрофон не кивает и не переспрашивает. Он просто пишет всё, включая паузы.</p>
+
+## Сложи итог
+
+Запиши, что получилось.
+
+| Часть | Твой результат | Максимум |
+|---|---|---|
+| Lesen | … верных | 34 |
+| Hören | … верных | 30 |
+| Schreiben | сколько аспектов выполнено в обоих текстах | 5 + 5 |
+| Sprechen | сколько из 7 заданий уложил в таймер со всеми пунктами | 7 |
+
+Что из этого понять. Верные ответы на экзамене пересчитывают в баллы 0–20, таблицу TestDaF не публикует, а сложность вариантов разная. Поэтому число верных не переводи в TDN сам. Сравнивай свои прогоны между собой: этот пробник, [№1](../testdaf-probnik-stellas-1/), [№2](../testdaf-probnik-stellas-2/) и [официальную Demo-Version](../testdaf-demo-razbor/).
+
+## Где утекли баллы
+
+| Слабое место | Что делать | Гайд |
+|---|---|---|
+| Lesen 1: пропуски | Проверяй связь со следующей фразой: kaltes Licht, eingeschaltet, Dutzende Male | [Lesen TestDaF](../../lesen/testdaf-lesen/) |
+| Lesen 2: порядок абзацев | Ищи отсылки назад: Damals, diese Aufnahme, die Rechnung, Deshalb | [Тренировка Lesen](../../lesen/testdaf-lesen-trenirovka/) |
+| Lesen 3: длинный текст | Отделяй, что думают газеты или критики, от того, что думает автор или учёный | [Lesen TestDaF](../../lesen/testdaf-lesen/) |
+| Lesen 4: речевые действия | Номер относится только к следующему предложению. Риторический вопрос без номера не считается | [Lesen TestDaF](../../lesen/testdaf-lesen/) |
+| Lesen 5 и 6: категории | «beide» только если текст говорит про оба. Обратное для обоих значит passt nicht | [Тренировка Lesen](../../lesen/testdaf-lesen-trenirovka/) |
+| Lesen 7: резюме с графиком | Сверяй каждое число и каждое «alle», «nur», «zunächst» | [Lesen TestDaF](../../lesen/testdaf-lesen/) |
+| Hören 1, 2, 5: короткие ответы | Пиши ключевые слова сразу. Первый вариант в записи часто поправляют | [Hören TestDaF](../../hoeren/testdaf-hoeren/) |
+| Hören 4: кто что сказал | «Diese Sorge höre ich oft» ещё не согласие. Нужно явное «bestreite ich nicht» | [Тренировка Hören](../../hoeren/testdaf-hoeren-trenirovka/) |
+| Hören 7: звук и текст | Читай глазами и слушай одновременно. Синонимы на слух коварнее всего | [Hören TestDaF](../../hoeren/testdaf-hoeren/) |
+| Schreiben 1 | Две стороны задания, позиция в выводе, 200 слов минимум | [Аргументация](../../schreiben/testdaf-schreiben-argumentation/) |
+| Schreiben 2 | Без своего мнения, своими словами, главное из графика | [Текст и график](../../schreiben/testdaf-schreiben-grafik/) |
+| Sprechen | Таймер и диктофон. Все пункты задания, никаких длинных пауз | [Тренировка Sprechen](../../sprechen/testdaf-sprechen-trenirovka/) |
+
+## Шпаргалка
+
+- **Lesen** → 7 типов, 34 задания, около 55 минут. Время по заданиям 4 / 5 / 15 / 6 / 9 / 7 / 7
+- **Hören** → 7 типов, 30 заданий, около 40 минут. Всё звучит один раз, задания 4 и 5 это видео
+- **Короткие ответы** → в Hören 1, 2 и 5. Засчитывают понятный ответ с тем же смыслом
+- **Назад нельзя** → время задания кончилось, система переходит дальше сама
+- **Schreiben** → аргументация от 200 слов и сводка 100–150 слов, по 30 минут
+- **Sprechen** → 7 заданий, 11:45 чистого ответа, заметки на бумаге можно
+- **Баллы** → каждая часть 0–20: 10–15 это TDN 4, 16–20 TDN 5. Таблицы «верные → баллы» нет
+- **Вузы** → обычно TDN 4 во всех четырёх частях
+
+<p class="punch">Четвёртый прогон не про новые знания. Он про то, чтобы старые ошибки не вернулись.</p>

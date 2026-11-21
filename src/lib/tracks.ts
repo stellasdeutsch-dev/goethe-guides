@@ -11,6 +11,7 @@ const GLOBAL = ['goethe-zertifikat-urovni', 'goethe-telc-oesd-testdaf', 'goethe-
 
 export function trackIdsOf(g: Guide): string[] {
   const slug = slugOf(g);
+  if (g.data.exam === 'testdaf') return ['testdaf'];
   const m = slug.match(TRACK_RE);
   if (m) return [m[1]];
   if (g.data.exam !== 'goethe' || GLOBAL.includes(slug)) return [];
@@ -33,7 +34,7 @@ function rank(g: Guide): number {
     if (s.includes('bally')) return 1;
     return 2;
   }
-  if (/^(goethe|telc|oesd)-[a-z0-9-]+-(lesen|hoeren|schreiben|sprechen|sprachbausteine)$/.test(s) || s.startsWith('sovety')) return 0;
+  if (/^(goethe|telc|oesd|testdaf)-[a-z0-9-]+-(lesen|hoeren|schreiben|sprechen|sprachbausteine)$/.test(s) || s.startsWith('sovety')) return 0;
   if (s.includes('trenirovka')) return 1;
   if (s.startsWith('redemittel')) return 4;
   if (s.startsWith('kriterii')) return 5;

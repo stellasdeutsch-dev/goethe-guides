@@ -1,7 +1,7 @@
 import type { Level } from './site';
 import { SECTIONS, type Section } from './sections';
 
-export type ExamId = 'goethe' | 'telc' | 'oesd';
+export type ExamId = 'goethe' | 'telc' | 'oesd' | 'testdaf';
 
 export interface Exam {
   id: ExamId;
@@ -57,6 +57,15 @@ const OESD_SECTIONS: Section[] = [
   mod('hoeren', 'Аудирование', 'Hören', 'headphones', 'var(--pink)', '#fff', 'Модуль Hören ÖSD: австрийский немецкий, паузы, ловушки.'),
   mod('schreiben', 'Письмо', 'Schreiben', 'pen-line', 'var(--burst)', 'var(--ink)', 'Модуль Schreiben ÖSD: тексты по пунктам и критерии.'),
   mod('sprechen', 'Говорение', 'Sprechen', 'mic', 'var(--sun)', '#fff', 'Модуль Sprechen ÖSD: монолог, диалог, задания в паре.'),
+];
+
+const TESTDAF_SECTIONS: Section[] = [
+  mod('pruefung', 'Об экзамене', 'Prüfung', 'graduation-cap', 'var(--violet)', '#fff', 'Цифровой TestDaF: формат, уровни TDN 3–5, требования вузов, запись и цены.'),
+  mod('probniki', 'Пробники', 'Modellsätze', 'file-text', 'var(--teal)', '#fff', 'Официальные тренировочные материалы TestDaF с разбором и наши пробники.'),
+  mod('lesen', 'Чтение', 'Lesen', 'book-open', 'var(--deep)', 'var(--ink)', 'Lesen TestDaF: семь заданий, научные и учебные тексты, стратегия по минутам.'),
+  mod('hoeren', 'Аудирование', 'Hören', 'headphones', 'var(--pink)', '#fff', 'Hören TestDaF: лекции, интервью, разговоры в вузе, что звучит один раз.'),
+  mod('schreiben', 'Письмо', 'Schreiben', 'pen-line', 'var(--burst)', 'var(--ink)', 'Schreiben TestDaF: аргументация и пересказ текста с графиком, критерии.'),
+  mod('sprechen', 'Говорение', 'Sprechen', 'mic', 'var(--sun)', '#fff', 'Sprechen TestDaF: семь заданий в наушниках, время на подготовку и ответ.'),
 ];
 
 export const EXAMS: Record<ExamId, Exam> = {
@@ -117,12 +126,33 @@ export const EXAMS: Record<ExamId, Exam> = {
     tracks: [],
     helpSlug: 'pruefung/oesd-ekzameny-kakoj-vybrat',
   },
+  testdaf: {
+    id: 'testdaf',
+    name: 'TestDaF',
+    full: 'TestDaF',
+    base: '/ru/testdaf',
+    color: 'var(--teal)',
+    blurb: 'Экзамен для поступления в немецкий вуз. Только на компьютере, четыре модуля, результат по уровням TDN 3–5.',
+    sections: TESTDAF_SECTIONS,
+    levelInfo: generic({
+      A1: ['', ''], A2: ['', ''], B1: ['', ''],
+      B2: ['TDN 3', 'Нижняя граница TestDaF.'],
+      C1: ['TDN 4–5', 'Уровень, который просят вузы.'],
+      C2: ['', ''],
+    }),
+    tracks: [],
+    helpSlug: 'pruefung/testdaf-chto-eto',
+  },
 };
 
 for (const e of Object.values(EXAMS)) e.tracks = levelTracks(e.levelInfo);
+// У TestDaF нет уровней: один экзамен, результат TDN 3–5 по каждому модулю.
+EXAMS.testdaf.tracks = [{ id: 'testdaf', label: 'TestDaF', title: 'Для вуза', text: 'Цифровой TestDaF: четыре модуля, результат TDN 3, 4 или 5.', levels: ['B2', 'C1'] }];
 // У telc два отдельных экзамена, которые не равны уровню.
 EXAMS.telc.tracks.splice(2, 0, { id: 'dtz', label: 'DTZ', title: 'Тест для мигрантов', text: 'Deutsch-Test für Zuwanderer: итог интеграционного курса, результат A2 или B1.', levels: ['A2', 'B1'] });
 EXAMS.telc.tracks.splice(EXAMS.telc.tracks.findIndex((t) => t.id === 'c1') + 1, 0, { id: 'c1-hochschule', label: 'C1 H', title: 'Для вуза', text: 'telc C1 Hochschule: поступление в немецкий университет.', levels: ['C1'] });
 
-export const EXAM_IDS: ExamId[] = ['goethe', 'telc', 'oesd'];
+export const EXAM_IDS: ExamId[] = ['goethe', 'telc', 'oesd', 'testdaf'];
+/** Экзамены со своим разделом /ru/<exam>/ (Goethe живёт в /ru/guides/). */
+export const OTHER_EXAMS: ExamId[] = EXAM_IDS.filter((e) => e !== 'goethe');
 export const sectionOf = (exam: ExamId, id: string) => EXAMS[exam].sections.find((s) => s.id === id);

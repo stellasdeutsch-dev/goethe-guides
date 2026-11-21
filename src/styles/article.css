@@ -83,6 +83,18 @@
 .table th:first-child{border-top-left-radius:var(--r-m)}.table th:last-child{border-top-right-radius:var(--r-m)}
 .table td{padding:12px 16px;border-top:1px solid var(--paper-2);vertical-align:top}
 .table tr:nth-child(even) td{background:#FAFAF8}
+/* На телефоне таблица превращается в карточки: строка = карточка, подписи столбцов из data-label. */
+@media (max-width:640px){
+  .table.cards{overflow:visible;background:none;box-shadow:none;border-radius:0}
+  .table.cards thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  .table.cards table,.table.cards tbody,.table.cards tr,.table.cards td{display:block}
+  .table.cards tr{margin:0 0 10px;padding:12px 14px;border-radius:var(--r-m);background:#fff;box-shadow:0 0 0 1px var(--ink-line)}
+  .table.cards td,.table.cards tr:nth-child(even) td{display:grid;grid-template-columns:minmax(84px,36%) 1fr;gap:10px;padding:7px 0;border-top:1px solid var(--paper-2);background:none}
+  .table.cards td::before{content:attr(data-label);color:var(--text-2);font:600 13px/1.4 var(--f)}
+  .table.cards td:first-child{display:block;padding-top:0;border-top:0;font:700 16px/1.35 var(--f)}
+  .table.cards td:first-child::before{content:none}
+  .table.cards td:empty{display:none}
+}
 
 /* подсказки */
 .callout{display:grid;grid-template-columns:auto minmax(0,1fr);gap:14px;margin:24px 0;padding:18px 20px;border-radius:var(--r-m);background:#fff;box-shadow:0 0 0 1px var(--ink-line);font-size:16px;line-height:1.55}
@@ -385,3 +397,20 @@
 .prose details[open]>summary::before{transform:rotate(45deg)}
 .prose details>:not(summary){padding:0 16px}
 .prose details[open]{padding-bottom:12px}
+
+/* Все пробники уровня внизу страницы пробника */
+.mocks{margin:28px 0 0}
+.mocks-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:8px}
+.mocks-list a{display:flex;flex-direction:column;gap:4px;height:100%;padding:12px 14px;border-radius:var(--r-m);background:#fff;box-shadow:inset 0 0 0 1px var(--ink-line);color:var(--ink);text-decoration:none;transition:transform .2s var(--out),box-shadow .2s,background .2s}
+.mocks-list a:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 2px var(--sky)}
+.mocks-list a[aria-current]{background:var(--lime);color:var(--lime-ink);box-shadow:none}
+.mocks-n{font:800 22px/1 var(--f);letter-spacing:-.02em}
+.mocks-t{font-size:12.5px;line-height:1.3;color:inherit;opacity:.75}
+@media (prefers-reduced-motion:reduce){.mocks-list a{transition:none}}
+
+/* Разбор, который нельзя видеть до проверки (какие варианты остались лишними) */
+.prose details.after{margin:12px 0 20px;padding:12px 16px;border-radius:var(--r-m);background:#F6F6F3;box-shadow:inset 0 0 0 1px var(--ink-line)}
+.prose details.after>summary{cursor:pointer;font:600 14.5px/1.4 var(--f);color:var(--text-2);transition:color .2s}
+.prose details.after>summary:hover{color:var(--ink)}
+.prose details.after[open]>summary{margin-bottom:8px}
+.prose details.after p:last-child{margin-bottom:0}

@@ -18,8 +18,8 @@ OUT = ROOT / 'public/audio/listen'
 RATE = '-6%'
 F_DE, M_DE = ['de-DE-KatjaNeural', 'de-DE-AmalaNeural', 'de-DE-SeraphinaMultilingualNeural'], ['de-DE-ConradNeural', 'de-DE-KillianNeural', 'de-DE-FlorianMultilingualNeural']
 F_AT, M_AT = ['de-AT-IngridNeural', *F_DE[:2]], ['de-AT-JonasNeural', *M_DE[:2]]
-FEMALE = set('anna maria lena julia sarah sara laura lisa katrin katharina monika sabine petra claudia andrea nina eva lea marie sophie emma mia hannah hanna jana sandra birgit ute karin heike susanne paula elif ayşe ayse olga irina natalia svenja miriam jasmin franziska johanna clara klara greta ida frieda carla frau mutter tochter oma schwester ärztin'.split())
-MALE = set('jonas thomas peter michael stefan andreas markus tobias lukas paul max felix jan tim tom uwe klaus jürgen frank daniel david martin leon jens tarek kemal sergej ali ivan mehmet ahmed falk ludwig ben noah elias finn lars sven jakob simon florian moritz herr herrn mann vater sohn opa bruder arzt moderator sprecher reporter kellner verkäufer gast anrufer hörer'.split())
+FEMALE = set('anna maria lena julia sarah sara laura lisa katrin katharina monika sabine petra claudia andrea nina eva lea marie sophie emma mia hannah hanna jana sandra birgit ute karin heike susanne paula elif ayşe ayse olga irina natalia svenja miriam jasmin franziska johanna clara klara greta ida frieda carla frau mutter tochter oma schwester ärztin nicole simone saskia bettina martina mira lina dana mara ingrid doris gisela helga renate ursula brigitte gabriele angelika christine christina stefanie stephanie melanie daniela tanja anja silke kerstin manuela nadine vanessa jessica jennifer janina lara leonie luisa marlene mathilda emilia charlotte amelie antonia elena alina selina carolin caroline theresa therese veronika barbara elisabeth magdalena rosa paulina ronja frida ella nele pia jule anne hanne dorothea irmgard hildegard margarete waltraud yasmin aylin zeynep fatma leyla mariam olena oksana tatjana svetlana ludmila marina galina yvonne sophia sofia isabel isabella'.split())
+MALE = set('jonas thomas peter michael stefan andreas markus tobias lukas paul max felix jan tim tom uwe klaus jürgen frank daniel david martin leon jens tarek kemal sergej ali ivan mehmet ahmed falk ludwig ben noah elias finn lars sven jakob simon florian moritz herr herrn mann vater sohn opa bruder arzt moderator sprecher reporter kellner verkäufer gast anrufer hörer jannik jannis niklas nils jonathan julian lennard lennart luca luis louis malte ole arman bernd dieter günter horst karl karsten kurt manfred norbert rainer ralf rolf ulrich volker walter werner wolfgang gerhard harald helmut hans heinz herbert hermann josef georg christian christoph sebastian matthias benjamin dominik fabian johannes konstantin kilian marcel marco mario oliver patrick philipp robert sascha timo torsten thorsten vincent emil anton theo henri hannes mats milan till linus erik oskar leo samuel alexander andrej dmitri pavel taras yusuf emre can murat hakan cem mustafa omar karim'.split())
 
 LABEL = re.compile(r'(?:^|(?<=[.!?…“"»]\s))((?:[A-ZÄÖÜ][\wäöüß-]*\.?\s){0,2}[A-ZÄÖÜ][\wäöüß-]+):\s')
 
@@ -155,7 +155,7 @@ async def make(key, text, austrian, sem):
             n = len(chain)
             fc = ''.join(f'{c}aresample=24000,aformat=channel_layouts=mono[s{k}];' for k, c in enumerate(chain))
             fc += ''.join(f'[s{k}]' for k in range(n)) + f'concat=n={n}:v=0:a=1[out]'
-            proc = await asyncio.create_subprocess_exec('ffmpeg', '-y', '-loglevel', 'error', *inputs, '-filter_complex', fc, '-map', '[out]', '-ac', '1', '-b:a', '48k', str(dst))
+            proc = await asyncio.create_subprocess_exec('ffmpeg', '-y', '-loglevel', 'error', *inputs, '-filter_complex', fc, '-map', '[out]', '-ac', '1', '-b:a', '32k', str(dst))
             await proc.wait()
             if proc.returncode:
                 raise RuntimeError(f'ffmpeg failed for {key}')

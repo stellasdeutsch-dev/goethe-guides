@@ -12,20 +12,22 @@ for (const e of EXAM_IDS) {
   const n = (await getGuides(e)).length;
   if (!n) continue;
   const t = await readyTracks(e);
-  ready.push({ id: e, n, range: t.length ? `${t[0].label}–${t[t.length - 1].label}` : '' });
+  ready.push({ id: e, n, range: t.length > 1 ? `${t[0].label}–${t[t.length - 1].label}` : e === 'testdaf' ? 'TDN 3–5' : '' });
 }
-const ICON: Record<ExamId, string> = { goethe: 'landmark', telc: 'briefcase', oesd: 'globe' };
-const SUB: Record<ExamId, string> = { goethe: 'Goethe-Zertifikat', telc: 'telc Deutsch и DTZ', oesd: 'ÖSD Zertifikat' };
+const names = ready.map((e) => EXAMS[e.id].name);
+const ICON: Record<ExamId, string> = { goethe: 'landmark', telc: 'briefcase', oesd: 'globe', testdaf: 'graduation-cap' };
+const SUB_FULL: Record<ExamId, string> = { goethe: 'Goethe-Zertifikat', telc: 'telc Deutsch, DTZ', oesd: 'ÖSD', testdaf: 'TestDaF' };
+const SUB: Record<ExamId, string> = { goethe: 'Goethe-Zertifikat', telc: 'telc Deutsch и DTZ', oesd: 'ÖSD Zertifikat', testdaf: 'для поступления в вуз' };
 ---
-<App title="Подготовка к экзаменам по немецкому: Goethe, telc, ÖSD | Stellas" description="Подготовка к экзаменам по немецкому: Goethe-Zertifikat, telc Deutsch, DTZ, ÖSD. Формат, официальные пробники с разбором и гайды по каждой части." plan={false}>
+<App title={`Подготовка к экзаменам по немецкому: ${names.join(', ')} | Stellas`} description={`Подготовка к экзаменам по немецкому: ${ready.map((e) => SUB_FULL[e.id]).join(', ')}. Формат, официальные пробники с разбором и гайды по каждой части.`} plan={false}>
   <section class="screen">
     <div class="hero">
       <HeroArt kind="exam" />
-      <span class="tag"><i class="dot"></i>Goethe · telc · ÖSD · A1–C2</span>
+      <span class="tag"><i class="dot"></i>{names.join(' · ')}</span>
       <h1 class="ask">Какой экзамен <em>сдаёшь?</em></h1>
       <p class="sub">Выбери экзамен. Потом уровень. Дальше покажем, с чего начать.</p>
     </div>
-    <ul class="picks three" role="list">
+    <ul class="picks three" role="list" style={`--cols:${ready.length}`}>
       {ready.map((e, i) => (
         <li style={`--i:${i}`}>
           <a class="pick" href={url(`${EXAMS[e.id].base}/`)}>

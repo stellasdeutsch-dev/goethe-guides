@@ -7,6 +7,7 @@ import { guideHref, levelLabels, plural, readingTime, ruDate, slugOf, type Guide
 import { toItem, trackData, trackHref, trackIdsOf } from '../lib/tracks';
 import type { MarkdownHeading } from 'astro';
 import { artOf } from '../data/art';
+import ExamMap from '../components/ExamMap.astro';
 
 interface Props { entry: Guide; headings: MarkdownHeading[] }
 const { entry, headings } = Astro.props;
@@ -44,6 +45,12 @@ if (primary) {
     } else next = { title: `Все шаги ${EX.name} ${primary.track.label}`, href: trackHref(d.exam, primary.track.id), kicker: 'Часть пройдена' };
   }
 }
+
+// Все пробники трека: официальные разборы и наши, со ссылкой на каждый.
+const mocks = (primary?.bySection.probniki ?? []).map(toItem).filter((m) => !/skachat|katalog/.test(m.slug)).map((m) => {
+  const ours = /stellas/.test(m.slug);
+  return { ...m, num: ours ? `№${m.slug.match(/(\d+)$/)?.[1] ?? ''}` : 'Офиц.', label: ours ? 'Пробник Stellas' : m.title.replace(/^Разбор\s+/i, '').split(':')[0] };
+});
 
 const jsonld: object[] = [
   {
@@ -94,6 +101,7 @@ if (d.faq.length) jsonld.push({ '@context': 'https://schema.org', '@type': 'FAQP
       </aside>
 
       <div class="prose" data-pagefind-body>
+        {d.section === 'probniki' && <ExamMap body={entry.body ?? ''} headings={headings} exam={d.exam} />}
         <slot />
         {d.faq.length > 0 && (
           <>
@@ -109,6 +117,17 @@ if (d.faq.length) jsonld.push({ '@context': 'https://schema.org', '@type': 'FAQP
           </>
         )}
       </div>
+
+      {d.section === 'probniki' && mocks.length > 1 && (
+        <nav class="x mocks" aria-label="Все пробники уровня">
+          <div class="x-h"><b><svg class="ic"><use href="#i-list-checks" /></svg>Все пробники: {EX.name} {primary!.track.label}</b><span class="x-cap">{mocks.length}</span></div>
+          <ol class="mocks-list" role="list">
+            {mocks.map((m) => (
+              <li><a href={m.href} aria-current={m.slug === slugOf(entry) ? 'page' : undefined}><span class="mocks-n">{m.num}</span><span class="mocks-t">{m.label}</span></a></li>
+            ))}
+          </ol>
+        </nav>
+      )}
 
       {d.sources.length > 0 && (
         <details class="sources">

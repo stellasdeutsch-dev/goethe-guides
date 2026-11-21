@@ -30,10 +30,18 @@ async def make(key, text, sem):
     async with sem:
         for attempt in range(4):
             try:
-                await edge_tts.Communicate(text, VOICE, rate=RATE).save(str(dst))
+                raw = dst.with_suffix('.raw.mp3')
+                await edge_tts.Communicate(text, VOICE, rate=RATE).save(str(raw))
+                # 32 кбит/с моно: речь разборчива, а сайт помещается в лимит GitHub Pages.
+                proc = await asyncio.create_subprocess_exec('ffmpeg', '-y', '-loglevel', 'error', '-i', str(raw), '-ac', '1', '-ar', '24000', '-b:a', '32k', str(dst))
+                await proc.wait()
+                raw.unlink(missing_ok=True)
+                if proc.returncode:
+                    raise RuntimeError(f'ffmpeg failed for {key}')
                 return True
             except Exception:
                 dst.unlink(missing_ok=True)
+                dst.with_suffix('.raw.mp3').unlink(missing_ok=True)
                 if attempt == 3:
                     raise
                 await asyncio.sleep(2 + attempt * 3)

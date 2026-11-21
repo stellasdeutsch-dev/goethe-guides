@@ -1,9 +1,9 @@
 ---
 /* Тренажёр письма: таймер, счётчик слов, автопроверка формы текста под тип задания.
    Правило «меньше половины объёма = 0 баллов» есть только у Goethe, поэтому для telc и ÖSD его не показываем. */
-interface Props { points: string[]; mode?: 'informal' | 'forum' | 'formal' | 'basic'; minutes?: number; target?: number; id?: string }
+interface Props { points: string[]; mode?: 'informal' | 'forum' | 'formal' | 'basic' | 'summary'; minutes?: number; target?: number; id?: string }
 const { points, mode = 'informal', minutes = 20, target = 80, id = 'trainer' } = Astro.props;
-const goethe = !/\/ru\/(telc|oesd)\//.test(Astro.url.pathname);
+const goethe = !/\/ru\/(telc|oesd|testdaf)\//.test(Astro.url.pathname);
 const min = Math.round(target * 0.875);
 const half = Math.round(target / 2);
 const len = goethe
@@ -33,6 +33,13 @@ const CHECKS: Record<string, { k: string; t: string; s: string }[]> = {
     { k: 'sents', t: 'Минимум 3 предложения', s: 'По одному на каждый пункт задания' },
     len,
   ],
+  summary: [
+    { k: 'quelle', t: 'Ссылки на источники', s: 'Laut dem Text… / Die Grafik zeigt… / Dem Text zufolge…' },
+    { k: 'zahl', t: 'Цифры из графика', s: '35 Prozent / um 12 % gestiegen' },
+    { k: 'noich', t: 'Без своего мнения', s: 'Это пересказ: ни одного «ich», «meiner Meinung nach»' },
+    { k: 'konn', t: 'Минимум 3 связки', s: 'außerdem, dagegen, während, zudem…' },
+    len,
+  ],
   formal: [
     { k: 'anredeF', t: 'Вежливое обращение', s: 'Sehr geehrte Frau … / Liebe Frau … / Guten Tag,' },
     { k: 'sie', t: 'Пишешь на «Sie»', s: 'Sie, Ihnen, Ihr…' },
@@ -58,7 +65,7 @@ const checks = CHECKS[mode];
 
   <label class="tr-field">
     <span class="sr">Твой текст</span>
-    <textarea data-text lang="de" spellcheck="false" autocapitalize="sentences" placeholder={mode === 'formal' ? 'Sehr geehrte Frau …,' : mode === 'forum' ? 'Ich finde, …' : 'Liebe Anna, …'}></textarea>
+    <textarea data-text lang="de" spellcheck="false" autocapitalize="sentences" placeholder={mode === 'formal' ? 'Sehr geehrte Frau …,' : mode === 'forum' ? 'Ich finde, …' : mode === 'summary' ? 'Der Text und die Grafik …' : 'Liebe Anna, …'}></textarea>
   </label>
 
   <div class="words">
@@ -81,7 +88,7 @@ const checks = CHECKS[mode];
   import { $, $$, icon, onReady, pop, spring } from '../../scripts/lib';
   // \b не видит умлауты, поэтому границы слова через \p{L}.
   const W = (alts: string) => new RegExp(`(?<!\\p{L})(${alts})(?!\\p{L})`, 'giu');
-  const CONN = W('weil|denn|deshalb|deswegen|darum|dann|danach|aber|sondern|obwohl|trotzdem|außerdem|ausserdem|zuerst|zum schluss|leider|übrigens|dass|wenn|als|einerseits|andererseits|zum beispiel|allerdings|jedoch');
+  const CONN = W('weil|denn|deshalb|deswegen|darum|dann|danach|aber|sondern|obwohl|trotzdem|außerdem|ausserdem|zuerst|zum schluss|leider|übrigens|dass|wenn|als|einerseits|andererseits|zum beispiel|allerdings|jedoch|während|zudem|dagegen|hingegen|darüber hinaus|im gegensatz dazu|folglich|somit|daher');
   const DU = W('du|dir|dich|dein|deine|deinen|deinem|deiner');
   const test = (re: RegExp, t: string) => { re.lastIndex = 0; return re.test(t); };
 
@@ -142,6 +149,9 @@ const checks = CHECKS[mode];
           grussF: /(mit freundlichen grüßen|freundliche grüße|viele grüße|beste grüße)/.test(tail),
           hello: /^(liebe|lieber|hallo|hi|sehr geehrte|sehr geehrter|guten tag)/.test(first),
           bye: /(grüße|grüßen|bis bald|tschüss|dein|deine)/.test(tail),
+          quelle: /(laut (dem |der |des )?(text|artikel|grafik|studie|umfrage)|dem text zufolge|der grafik zufolge|die grafik (zeigt|stellt)|aus der grafik|im text|der text (beschreibt|behandelt|stellt))/.test(low),
+          zahl: /\d+([.,]\d+)? ?(%|prozent)/.test(low),
+          noich: n > 5 && !/(?<!\p{L})(ich|mir|mich|meiner meinung)(?!\p{L})/iu.test(t),
           sents: (t.match(/[.!?](\s|$)/g) || []).length >= 3,
         };
         $$<HTMLLIElement>('[data-chk]', root).forEach((li) => {
